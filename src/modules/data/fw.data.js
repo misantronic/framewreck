@@ -6,10 +6,11 @@ F.ext({
 	 * the first elements data will be returned
 	 * @param [v] value
 	 * @param [x] placeholder for context
+	 * @param [i] placeholder
 	 */
-	data: function(v,x){
+	data:function(v,x,i){
 		x=this.x;
-		for(var i=x[F.L];i--;)
+		for(i=x[F.L];i--;)
 			if(v)x[i].D=v;
 		return v?this:x[0].D
 	}
