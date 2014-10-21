@@ -48,7 +48,7 @@ var eventHandler = function(e) {
 // common events
 F('a.button').on('click', eventHandler);
 F('a.button').on('mouseover', eventHandler);
-*...*
+...
 
 // custom events
 F('#id').on('myEvent', eventHandler);
