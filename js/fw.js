@@ -96,27 +96,6 @@ F=function(c){
 	};
 
 	/**
-	 * Show/Hide context
-	 * @param {Boolean|Number} [v] flag to hide element
-	 * @returns {F}
-	 */
-	/*_.show=function(v){
-		_.css({display:v?"none":"block"});
-
-		return this
-	};*/
-
-	/**
-	 * Hide context
-	 * @returns {F}
-	 */
-	_.hide=function(){
-		_.css({display:"none");
-
-		return this
-	};
-
-	/**
 	 * Apply CSS to context
 	 * @param {String|Object} o object containg CSS-Attributes
 	 * or a string to return the contexts first element CSS-attribute
@@ -207,15 +186,15 @@ F=function(c){
 	 * @param M method - get/post
 	 * @param u url
 	 * @param [g] callback if passed -> asych call
-	 * @param [d] post_data
+	 * @param [D] post_data
 	 * @param X
 	 */
-	_.ajax=function(M,u,g,d,X){
+	_.ajax=function(M,u,g,D,X){
 		with(X=new XMLHttpRequest)
 			return onreadystatechange=function(){
 				readyState^4||g(this)
 			},
-			open(M,u,g),send(d),
+			open(M,u,g),send(D),
 			X
 	};
 
