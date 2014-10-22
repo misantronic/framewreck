@@ -139,42 +139,6 @@ F=function(c){
 	};
 
 	/**
-	 * Attach event listener
-	 * @param {String} v eventname
-	 * @param {Function} D callback
-	 * @returns {F}
-	 */
-	_.on=function(v,D){
-		for(i=l;i--;)x[i].addEventListener(v,D);
-
-		return this
-	};
-
-	/**
-	 * Remove event listener
-	 * @param {String} v eventname
-	 * @param {Function} D callback
-	 * @returns {F}
-	 */
-	_.off=function(v,D){
-		for(i=l;i--;)x[i].removeEventListener(v,D);
-
-		return this
-	};
-
-	/**
-	 * Fire event listener
-	 * @param {String} v eventname
-	 * @param {*} [D] data
-	 * @returns {F}
-	 */
-	_.fire=function(v,D){
-		for(i=l;i--;)x[i].dispatchEvent(new CustomEvent(v,{detail:D}));
-
-		return this
-	};
-
-	/**
 	 * AJAX Call
 	 * @param v method - get/post
 	 * @param D url
@@ -208,4 +172,13 @@ F=function(c){
 	_.find(c);
 
 	return this
+};
+
+/**
+ * Extend frameWreck with a module
+ * @param {Object} m Module
+ */
+F.extend=function(m){
+	for(i in m)
+		F.prototype[i]=m[i]
 };
