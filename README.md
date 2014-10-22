@@ -113,7 +113,7 @@ F('#id')
 
 
 [fw.packed.js] crushed with [RegPack]<br>
-Configuration: No Math-Packing, all checkboxes off except "Reassign variable names except: F x l i j a e m q h d g G N" 
+Configuration: No Math-Packing, all checkboxes off except "Reassign variable names except: F" 
 
 [fw.packed.js]:https://github.com/misantronic/min/blob/master/framewreck/fw.packed.js
 [RegPack]:http://siorki.github.io/regPack.html
