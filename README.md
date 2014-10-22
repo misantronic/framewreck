@@ -6,7 +6,7 @@ A lightweight JavaScript framework.
 **Features**
  - Only 1kb
  - CSS Selectors
- - CSS
+ - CSS Manipulation
  - DOM Manipulation
  - Traversing
  - AJAX-Requests
