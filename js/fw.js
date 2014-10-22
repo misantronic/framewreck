@@ -72,8 +72,7 @@ F=function(c){
 
 			x=[];
 			for(i=0;i<a[m];i++)
-				g=a[i],
-				if(g[m]&&!g.tagName.match(/SEL/))
+				if((g=a[i])[m]&&!g.tagName.match(/SEL/))
 					for(j=0;j<g[m];j++)
 						x.push(g[j]);
 				else x.push(g);
