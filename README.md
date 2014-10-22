@@ -43,7 +43,7 @@ F('#id').append('<a href="#">Link</a>');
 // Move an existing DOM-Element to another
 F('#id-2').appendTo('.class-1');
 
-// Set / get value of an input/select
+// Set / get value of an input/textarea
 F('input').val('value');
 var value = F('input').val();
 
