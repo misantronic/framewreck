@@ -1,7 +1,16 @@
 frameWreck
 =========
 
-A lightweight *jQuery-like* JavaScript library (~1kb) featuring **CSS Selectors**, **CSS**, **DOM Manipulation/Traversing**, **AJAX-Requests** and **Events**.
+A lightweight JavaScript framework.
+
+**Features**
+ - Only 1kb
+ - CSS Selectors
+ - CSS
+ - DOM Manipulation
+ - Traversing
+ - AJAX-Requests
+ - Events
 
 ### Usage:
 ```html
@@ -22,6 +31,15 @@ F('#id .class').get(1);
 F('#id .class:first-child');
 F('#id .class').find('a:first-of-type');
 F('#id .class').find('a:last-of-type');
+```
+
+### CSS
+```javascript
+// Set CSS
+F('#id').css({ display: 'block', backgroundColor: 'blue', padding: '10px' });
+
+// Get CSS
+var cssValue = F('#id').css('padding') // outputs '10px'
 ```
 
 ### DOM Manipulation/Traversing
@@ -48,15 +66,6 @@ var value = F('body').find('select').val();
 
 // Remove elements
 F('#id').remove();
-```
-
-### CSS
-```javascript
-// Set CSS
-F('#id').css({ display: 'block', backgroundColor: 'blue', padding: '10px' });
-
-// Get CSS
-var cssValue = F('#id').css('padding') // outputs '10px'
 ```
 
 ### Events
