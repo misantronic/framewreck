@@ -108,10 +108,6 @@ F('#id')
 
 ---
 
-#### Issues
-- [ ] Because of the .length-check in find(), F('select') selects its options. Workaround: Use F('body').find('select')
-
----
 
 [fw.packed.js] crushed with [RegPack]<br>
 Configuration: No Math-Packing, all checkboxes off except "Reassign variable names except: F x l i j a e m q h d g G N" 

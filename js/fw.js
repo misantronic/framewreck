@@ -72,8 +72,7 @@ F=function(c){
 
 			x=[];
 			for(i=0;i<a[m];i++)
-				// TODO: Because of the .length-check, F('select') selects its options. Workaround: Use F('body').find('select')
-				if((g=a[i])[m])
+				if((g=a[i])[m]&&!g.options)
 					for(j=0;j<g[m];j++)
 						x.push(g[j]);
 				else x.push(g);
