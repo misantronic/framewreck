@@ -42,6 +42,14 @@ F('#id').append('<a href="#">Link</a>');
 
 // Move an existing DOM-Element to another
 F('#id-2').appendTo('.class-1');
+
+// Set / get value of an input/select
+F('input').val('value');
+var value = F('input').val();
+
+// Set / get select-fields selected value
+F('select').val(1)
+var value = F('select').val();
 ```
 
 ### Event-System
@@ -97,7 +105,7 @@ F('#id')
 ---
 
 [fw.packed.js] crushed with [RegPack]<br>
-Configuration: No Math-Packing, all checkboxes off except "Reassign variable names except: F x l i j a e m q h d g" 
+Configuration: No Math-Packing, all checkboxes off except "Reassign variable names except: F x l i j a e m q h d g G N" 
 
 [fw.packed.js]:https://github.com/misantronic/min/blob/master/framewreck/fw.packed.js
 [RegPack]:http://siorki.github.io/regPack.html

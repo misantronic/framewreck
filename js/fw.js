@@ -10,6 +10,8 @@ F=function(c){
 		,q="querySelectorAll"	// placeholder querySelectorAll
 		,h="innerHTML"			// placeholder innerHTML
 		,d=document				// placeholder document
+		,N						// placeholder generic
+		,G						// placeholder generic
 		,g;						// placeholder generic
 
 	if(_.__proto__.constructor!=F)return new F(c);
@@ -22,11 +24,14 @@ F=function(c){
 	_.html=function(v){
 		a=[];
 		for(i=0;i<l;i++)
-			e=x[i],
-			a.push(e[h]),
-			v&&(e[h]=v);
+			e=x[i],										// assign e as current element
+			g=h,										// store innerHTML in g, as it might change
+			e.tagName.match(/INP|SEL/)&&(g="value"),	// if e is input or select change g to "value"
+			a.push(e[g]),								// save html/value in array
+			v!=[]._&&(e[g]=v);							// when v is set, assign new value to element
 		return v&&this||a.join("").replace(/\s/g,"")
 	};
+	_.val=_.html;
 
 	/**
 	 * Iterate over context, call f for each item
@@ -60,7 +65,7 @@ F=function(c){
 
 		x=[];
 		for(i=0;i<a[m];i++)
-			if(a[i][m])
+			if(a[i][m]&&!a[i].tagName.match(/SEL/))
 				for(j=0;j<a[i][m];j++)
 					x.push(a[i][j]);
 			else x.push(a[i]);
