@@ -1,7 +1,7 @@
 frameWreck
 =========
 
-A lightweight *jQuery-like* JavaScript library (~ 900b) featuring **CSS Selectors**, **DOM Manipulation/Traversing**, **AJAX-Requests** and a native **Event-System**.
+A lightweight *jQuery-like* JavaScript library (~ 900b) featuring **CSS Selectors**, **DOM Manipulation/Traversing**, **AJAX-Requests** and a native **Events**.
 
 Source:
 ```javascript
@@ -52,7 +52,7 @@ F('select').val(1)
 var value = F('select').val();
 ```
 
-### Event-System
+### Events
 ```javascript
 var eventHandler = function(e) {
 	console.log(e, e.detail); // output event and given parameter object
