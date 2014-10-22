@@ -110,7 +110,7 @@ F=function(c){
 	_.css=function(v){
 		if(v&&v.big)return getComputedStyle(x[0],null).getPropertyValue(v);
 		for(i=l;i--;)
-			for(j in v) x[i].style[j]=v[j];
+			for(j in v)x[i].style[j]=v[j];
 
 		return this
 	};
