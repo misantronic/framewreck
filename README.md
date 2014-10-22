@@ -1,7 +1,7 @@
 frameWreck
 =========
 
-A lightweight *jQuery-like* JavaScript library (~ 900b) featuring **CSS Selectors**, **DOM Manipulation/Traversing**, **AJAX-Requests** and **Events**.
+A lightweight *jQuery-like* JavaScript library (< 1kb) featuring **CSS Selectors**, **DOM Manipulation/Traversing**, **AJAX-Requests** and **Events**.
 
 Source:
 ```javascript
