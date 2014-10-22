@@ -40,13 +40,13 @@ F=function(c){
 	_.val=_.html;
 
 	/**
-	 * Iterate over context, call f for each item
+	 * Iterate over context, call v for each item
 	 * Note: Iteration is inverse
-	 * @param {Function} f
+	 * @param {Function} v
 	 * @returns {F}
 	 */
-	_.each=function(f){
-		for(i=l;i--;)f(_[i],i);
+	_.each=function(v){
+		for(i=l;i--;)v(_[i],i);
 		return this
 	};
 
@@ -60,23 +60,23 @@ F=function(c){
 	};
 
 	/**
-	 * Find selector s in context
-	 * @param {String} s
+	 * Find selector v in context
+	 * @param {String} v
 	 * @returns {F}
 	 */
-	_.find=function(s){
+	_.find=function(v){
 		try{
 			a=[];
-			if(!x)a=d[q](s);
-			else for(i=l;i--;)a[i]=x[i][q](s);
+			if(!x)a=d[q](v);
+			else for(i=l;i--;)a[i]=x[i][q](v);
 
 			x=[];
 			for(i=0;i<a[m];i++)
-				if((g=a[i])[m]&&!g.tagName.match(/SEL/))
+				// TODO: Because of the .length-check, F('select') selects its options. Workaround: Use F('body').find('select')
+				if((g=a[i])[m])
 					for(j=0;j<g[m];j++)
 						x.push(g[j]);
 				else x.push(g);
-
 			_.y();
 		}catch(e){};
 
@@ -84,12 +84,12 @@ F=function(c){
 	};
 
 	/**
-	 * Get element at index g from context
-	 * @param {Number} g index
+	 * Get element at index v from context
+	 * @param {Number} v index
 	 * @returns {F}
 	 */
-	_.get=function(g){
-		x=[x[g]];
+	_.get=function(v){
+		x=[x[v]];
 		_.y();
 
 		return this
@@ -97,14 +97,14 @@ F=function(c){
 
 	/**
 	 * Apply CSS to context
-	 * @param {String|Object} o object containg CSS-Attributes
+	 * @param {String|Object} v object containg CSS-Attributes
 	 * or a string to return the contexts first element CSS-attribute
 	 * @returns {String|F}
 	 */
-	_.css=function(o){
-		if(o&&o.big)return getComputedStyle(x[0],null).getPropertyValue(o);
+	_.css=function(v){
+		if(v&&v.big)return getComputedStyle(x[0],null).getPropertyValue(v);
 		for(i=l;i--;)
-			for(j in o) x[i].style[j]=o[j];
+			for(j in v) x[i].style[j]=v[j];
 
 		return this
 	};
@@ -112,47 +112,27 @@ F=function(c){
 	/**
 	 * Move selector around in the context
 	 * or insert HTML/Text
-	 * Note: selector s will always appended
+	 * Note: selector v will always appended
 	 * to the first element in context
-	 * @param {String} s selector or HTML/Text
+	 * @param {String} v selector or HTML/Text
 	 */
-	_.append=function(s){
-		g=s.match(/^</)?0:d[q](s)[0];
+	_.append=function(v){
+		g=v.match(/^</)?0:d[q](v)[0];
 		for(i=l;i--;)
-			g?g.appendChild(x[i]):x[i].innerHTML+=s;
+			g?g.appendChild(x[i]):x[i].innerHTML+=v;
 
 		return this
 	};
 	_.appendTo=_.append;
 
 	/**
-	 * Get direct children of the context
-	 * @returns {F}
-	 */
-	//_.children=function(){
-	//	x=x[0].children;
-	//	_.y();
-	//	return this
-	//};
-
-	/**
-	 * Get direct parent of the context
-	 * @returns {F}
-	 */
-	//_.parent=function(){
-	//	x=[x[0].parentNode];
-	//	_.y();
-	//	return this
-	//};
-
-	/**
 	 * Attach event listener
 	 * @param {String} v eventname
-	 * @param {Function} m callback
+	 * @param {Function} D callback
 	 * @returns {F}
 	 */
-	_.on=function(v,m){
-		for(i=l;i--;)x[i].addEventListener(v,m);
+	_.on=function(v,D){
+		for(i=l;i--;)x[i].addEventListener(v,D);
 
 		return this
 	};
@@ -160,11 +140,11 @@ F=function(c){
 	/**
 	 * Remove event listener
 	 * @param {String} v eventname
-	 * @param {Function} m callback
+	 * @param {Function} D callback
 	 * @returns {F}
 	 */
-	_.off=function(v,m){
-		for(i=l;i--;)x[i].removeEventListener(v,m);
+	_.off=function(v,D){
+		for(i=l;i--;)x[i].removeEventListener(v,D);
 
 		return this
 	};
@@ -183,18 +163,18 @@ F=function(c){
 
 	/**
 	 * AJAX Call
-	 * @param M method - get/post
-	 * @param u url
-	 * @param [g] callback if passed -> asych call
+	 * @param v method - get/post
+	 * @param D url
+	 * @param [F] callback if passed -> asych call
 	 * @param [D] post_data
 	 * @param X
 	 */
-	_.ajax=function(M,u,g,D,X){
+	_.ajax=function(v,D,F,P,X){
 		with(X=new XMLHttpRequest)
 			return onreadystatechange=function(){
-				readyState^4||g(this)
+				readyState^4||F(this)
 			},
-			open(M,u,g),send(D),
+			open(v,P,F),send(D),
 			X
 	};
 

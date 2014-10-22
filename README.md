@@ -43,8 +43,8 @@ F('input').val('value');
 var value = F('input').val();
 
 // Set/get Select selected value
-F('select').val(1)
-var value = F('select').val();
+F('body').find('select').val(1)
+var value = F('body').find('select').val();
 ```
 
 ### CSS
@@ -105,6 +105,11 @@ F('#id')
 - [x] AJAX
 - [x] Data-Binding
 - [ ] Other great stuff
+
+---
+
+#### Issues
+- [ ] Because of the .length-check in find(), F('select') selects its options. Workaround: Use F('body').find('select')
 
 ---
 
