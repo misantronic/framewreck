@@ -4,13 +4,13 @@ frameWreck
 A lightweight JavaScript framework.
 
 **Features**
- - Only 1kb
  - CSS Selectors
  - CSS Manipulation
  - DOM Manipulation
  - Traversing
  - AJAX-Requests
  - Events
+ - ~1 kb 
 
 ### Usage:
 ```html
@@ -24,8 +24,10 @@ F('#id');
 F('#id').find('.class');
 F('#id .class').find('a');
 
-// get .class at index 1
+// Index selectors
 F('#id .class').get(1);
+F('#id .class:0')
+F('#id:1 .class:0 p')
 
 // Pseudo classes
 F('#id .class:first-child');
