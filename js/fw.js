@@ -70,9 +70,9 @@ F=function(c){
 			v="";
 			for(i in a)
 				g=a[i].split(":"),
-				g[1]=g[1]?":nth-of-type("+(parseInt(g[1])+1)+")":"",
+				g[1]=!isNaN(g[1])?":nth-of-type("+(parseInt(g[1])+1)+")":g[1]?":"+g[1]:"",
 				v+=" "+g[0]+g[1];
-
+			console.log(v);
 			a=[];
 			if(!x)a=d[q](v);
 			else for(i=l;i--;)a[i]=x[i][q](v);
