@@ -7,7 +7,7 @@ F.data={
 	 * @param [v] value
 	 */
 	data: function(v){
-		for(i=this.x.length;i--;)
+		for(var i=this.x.length;i--;)
 			if(v)this.x[i].D=v;
 		return v?this:this.x[0].D
 	}

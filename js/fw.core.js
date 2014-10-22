@@ -17,29 +17,6 @@ F=function(c){
 	if(_.__proto__.constructor!=F)return new F(c);
 
 	/**
-	 * Set or return html content of context
-	 * or set or return the value of an input
-	 * or select field
-	 * @param {*} [v] value
-	 * @returns {F|string}
-	 */
-	_.html=function(v){
-		a=[];
-		for(i=0;i<l;i++)
-			e=x[i],											// assign e as current element
-			g=h,											// store innerHTML in g, as it might change
-			e.tagName.match(/INP|SEL|TEX/)&&(g="value"),	// if e is input, select or textarea change g to "value"
-			a.push(e[g]),									// save html/value in array
-			v!=[]._&&(e[g]=v);								// when v is set, assign new value to element
-		return v&&this||a.join("").replace(/\s/g,"")
-	};
-	/**
-	 * @see html
-	 * @type {Function|F.html}
-	 */
-	_.val=_.html;
-
-	/**
 	 * Iterate over context, call v for each item
 	 * Note: Iteration is inverse
 	 * @param {Function} v
@@ -57,6 +34,7 @@ F=function(c){
 		for(i=99;i--;)delete _[i];	// clean up objects indicies
 		for(i in x)_[i]=x[i];		// assign new indicies
 		_[m]=l=x[m]					// set .length and internal placeholder l
+		this.x=x;
 	};
 
 	/**
@@ -97,43 +75,6 @@ F=function(c){
 	_.get=function(v){
 		x=[x[v]];
 		_.y();
-
-		return this
-	};
-
-	/**
-	 * Apply CSS to context
-	 * @param {String|Object} v object containg CSS-Attributes
-	 * or a string to return the contexts first element CSS-attribute
-	 * @returns {String|F}
-	 */
-	_.css=function(v){
-		if(v&&v.big)return getComputedStyle(x[0],null).getPropertyValue(v);
-		for(i=l;i--;)
-			for(j in v) x[i].style[j]=v[j];
-
-		return this
-	};
-
-	/**
-	 * Move selector around in the context
-	 * or insert HTML/Text
-	 * Note: selector v will always appended
-	 * to the first element in context
-	 * @param {String} v selector or HTML/Text
-	 */
-	_.append=function(v){
-		g=v.match(/^</)?0:d[q](v)[0];
-		for(i=l;i--;)
-			g?g.appendChild(x[i]):x[i].innerHTML+=v;
-
-		return this
-	};
-	_.appendTo=_.append;
-
-	_.remove=function(){
-		for(i=l;i--;)
-			x[i].parentNode.removeChild(x[i]);
 
 		return this
 	};
