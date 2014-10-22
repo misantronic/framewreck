@@ -96,6 +96,41 @@ F=function(c){
 	};
 
 	/**
+	 * Show/Hide context
+	 * @param {Boolean|Number} [v] flag to hide element
+	 * @returns {F}
+	 */
+	/*_.show=function(v){
+		_.css({display:v?'none':'block'});
+
+		return this
+	};*/
+
+	/**
+	 * Hide context
+	 * @returns {F}
+	 */
+	_.hide=function(){
+		_.css({display:'none');
+
+		return this
+	};
+
+	/**
+	 * Apply CSS to context
+	 * @param {String|Object} o object containg CSS-Attributes
+	 * or a string to return the contexts first element CSS-attribute
+	 * @returns {String|F}
+	 */
+	_.css=function(o){
+		if(o&&o.big)return getComputedStyle(x[0],null).getPropertyValue(o);
+		for(i=l;i--;)
+			for(j in o) x[i].style[j]=o[j];
+
+		return this
+	};
+
+	/**
 	 * Move selector around in the context
 	 * or insert HTML/Text
 	 * Note: selector s will always appended

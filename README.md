@@ -1,7 +1,7 @@
 frameWreck
 =========
 
-A lightweight *jQuery-like* JavaScript library (< 1kb) featuring **CSS Selectors**, **DOM Manipulation/Traversing**, **AJAX-Requests** and **Events**.
+A lightweight *jQuery-like* JavaScript library (~1kb) featuring **CSS Selectors**, **CSS**, **DOM Manipulation/Traversing**, **AJAX-Requests** and **Events**.
 
 ### Usage:
 ```html
@@ -42,9 +42,18 @@ F('#id-2').appendTo('.class-1');
 F('input').val('value');
 var value = F('input').val();
 
-// Set / get select-fields selected value
+// Set / get Select selected value
 F('select').val(1)
 var value = F('select').val();
+```
+
+### CSS
+```javascript
+// Set CSS
+F('#id').css({ display: 'block', backgroundColor: 'blue', padding: '10px' });
+
+// Get CSS
+var cssValue = F('#id').css('padding') // outputs '10px'
 ```
 
 ### Events
