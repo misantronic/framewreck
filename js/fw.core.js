@@ -125,7 +125,7 @@ F=function(c){
 	_.append=function(v){
 		g=v.match(/^</)?0:d[q](v)[0];
 		for(i=l;i--;)
-			g?g.appendChild(x[i]):x[i].innerHTML+=v;
+			g?g.appendChild(x[i]):x[i][h]+=v;
 
 		return this
 	};
