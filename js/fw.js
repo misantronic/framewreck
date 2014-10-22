@@ -101,7 +101,7 @@ F=function(c){
 	 * @returns {F}
 	 */
 	/*_.show=function(v){
-		_.css({display:v?'none':'block'});
+		_.css({display:v?"none":"block"});
 
 		return this
 	};*/
@@ -111,7 +111,7 @@ F=function(c){
 	 * @returns {F}
 	 */
 	_.hide=function(){
-		_.css({display:'none');
+		_.css({display:"none");
 
 		return this
 	};
