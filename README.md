@@ -45,6 +45,9 @@ var value = F('input').val();
 // Set/get Select selected value
 F('body').find('select').val(1)
 var value = F('body').find('select').val();
+
+// Remove elements
+F('#id').remove();
 ```
 
 ### CSS

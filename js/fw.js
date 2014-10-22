@@ -28,7 +28,7 @@ F=function(c){
 		for(i=0;i<l;i++)
 			e=x[i],											// assign e as current element
 			g=h,											// store innerHTML in g, as it might change
-			e.tagName.match(/INP|SEL|TEX/)&&(g="value"),	// if e is input or select change g to "value"
+			e.tagName.match(/INP|SEL|TEX/)&&(g="value"),	// if e is input, select or textarea change g to "value"
 			a.push(e[g]),									// save html/value in array
 			v!=[]._&&(e[g]=v);								// when v is set, assign new value to element
 		return v&&this||a.join("").replace(/\s/g,"")
@@ -123,6 +123,11 @@ F=function(c){
 		return this
 	};
 	_.appendTo=_.append;
+
+	_.remove=function(){
+		for(i=l;i--;)
+			x[i].parentNode.removeChild(x[i]);
+	}
 
 	/**
 	 * Attach event listener
