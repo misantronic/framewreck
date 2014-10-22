@@ -14,7 +14,7 @@ A lightweight JavaScript framework.
 
 ### Usage:
 ```html
-<script src="https://raw.githubusercontent.com/misantronic/min/master/framewreck/fw.min.js"></script>
+<script src="https://raw.githubusercontent.com/misantronic/min/master/framewreck/fw.core.min.js"></script>
 ```
 
 ### CSS Selectors
@@ -123,8 +123,8 @@ F('#id')
 ---
 
 
-[fw.packed.js] crushed with [RegPack]<br>
+[fw.core.packed.js] crushed with [RegPack]<br>
 Configuration: No Math-Packing, all checkboxes off except "Reassign variable names except: F" 
 
-[fw.packed.js]:https://github.com/misantronic/min/blob/master/framewreck/fw.packed.js
+[fw.core.packed.js]:https://github.com/misantronic/min/blob/master/framewreck/fw.core.packed.js
 [RegPack]:http://siorki.github.io/regPack.html
