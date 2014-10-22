@@ -127,7 +127,9 @@ F=function(c){
 	_.remove=function(){
 		for(i=l;i--;)
 			x[i].parentNode.removeChild(x[i]);
-	}
+
+		return this
+	};
 
 	/**
 	 * Attach event listener
