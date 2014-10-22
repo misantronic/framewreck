@@ -18,19 +18,25 @@ F=function(c){
 
 	/**
 	 * Set or return html content of context
+	 * or set or return the value of an input
+	 * or select field
 	 * @param {*} [v] value
 	 * @returns {F|string}
 	 */
 	_.html=function(v){
 		a=[];
 		for(i=0;i<l;i++)
-			e=x[i],										// assign e as current element
-			g=h,										// store innerHTML in g, as it might change
-			e.tagName.match(/INP|SEL/)&&(g="value"),	// if e is input or select change g to "value"
-			a.push(e[g]),								// save html/value in array
-			v!=[]._&&(e[g]=v);							// when v is set, assign new value to element
+			e=x[i],											// assign e as current element
+			g=h,											// store innerHTML in g, as it might change
+			e.tagName.match(/INP|SEL|TEX/)&&(g="value"),	// if e is input or select change g to "value"
+			a.push(e[g]),									// save html/value in array
+			v!=[]._&&(e[g]=v);								// when v is set, assign new value to element
 		return v&&this||a.join("").replace(/\s/g,"")
 	};
+	/**
+	 * @see html
+	 * @type {Function|F.html}
+	 */
 	_.val=_.html;
 
 	/**
@@ -59,18 +65,20 @@ F=function(c){
 	 * @returns {F}
 	 */
 	_.find=function(s){
-		a=[];
-		if(!x)a=d[q](s);
-		else for(i=l;i--;)a[i]=x[i][q](s);
+		try{
+			a=[];
+			if(!x)a=d[q](s);
+			else for(i=l;i--;)a[i]=x[i][q](s);
 
-		x=[];
-		for(i=0;i<a[m];i++)
-			if(a[i][m]&&!a[i].tagName.match(/SEL/))
-				for(j=0;j<a[i][m];j++)
-					x.push(a[i][j]);
-			else x.push(a[i]);
+			x=[];
+			for(i=0;i<a[m];i++)
+				if(a[i][m]&&!a[i].tagName.match(/SEL/))
+					for(j=0;j<a[i][m];j++)
+						x.push(a[i][j]);
+				else x.push(a[i]);
 
-		_.y();
+			_.y();
+		}catch(e){};
 
 		return this
 	};
