@@ -27,7 +27,6 @@ F().require([
 
 // all modules are loaded synchronously, 
 // so you can chain module functions right away
-
 F('#id')
 	.require([
 		'modules/events/fw.events.min.js',
@@ -36,6 +35,8 @@ F('#id')
 	.on('click', function() { alert('clicked!'); })
 	.data('my favorite id');
 </script>
+
+*Note:* All modules are globally available after loading.
 ```
 
 ### Core: CSS Selectors
