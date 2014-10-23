@@ -13,7 +13,7 @@ Modular structure featuring:
 
 ### Usage:
 ```html
-<script src="https://raw.githubusercontent.com/misantronic/frameWreck/modular/js/fw.core.min.js"></script>
+<script src="fw.core.min.js"></script>
 
 <script>
 // synchronously load modules 
