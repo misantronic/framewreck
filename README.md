@@ -1,4 +1,4 @@
-frameWreck
+<img src="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_launch_black_48dp.png" style="max-height:36px; position: relative; top: 9px"> frameWreck
 =========
 
 A lightweight JavaScript framework.
