@@ -19,7 +19,7 @@
 	<script src=""></script>
 	<script src=""></script>
 	<script>
-	F().getScripts([
+	F().require([
 		'../js/modules/events/fw.events.js',
 		'../js/modules/dom/fw.dom.js',
 		'../js/modules/css/fw.css.js',
@@ -27,7 +27,9 @@
 		'../js/modules/data/fw.data.js'
 	], function(el) {
 		console.log("F: module loaded", el.src);
-	})
+	}).find('h1').data('ABC');
+	// F.require('frameWrecks',['ajax', 'data'])
+	// F.require('frameWrecks','*')
 	</script>
 </body>
 </html>

@@ -90,10 +90,13 @@ F=function(c){
 	_.require=function(a,c,f){
 		for(;
 			(f=F.d.createElement('script')).src=a.shift();
-			F.d.head.appendChild(f))
+			F.d.head.appendChild(f)
+		)
 			f.onload=function(){
 				c&&c(this)
 			}
+
+		return this
 	};
 
 	// select context
