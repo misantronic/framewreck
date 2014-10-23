@@ -1,4 +1,4 @@
-F.dom={
+F.ext({
 	/**
 	 * Set or return html content of context
 	 * or set or return the value of an input
@@ -10,9 +10,9 @@ F.dom={
 		var a=[], e, g;
 		for(var i=0;i<this.x.length;i++)
 			e=this.x[i],									// assign e as current element
-			g='innerHTML',									// store innerHTML in g, as it might change
+				g='innerHTML',									// store innerHTML in g, as it might change
 			e.tagName.match(/INP|SEL|TEX/)&&(g="value"),	// if e is input, select or textarea change g to "value"
-			a.push(e[g]),									// save html/value in array
+				a.push(e[g]),									// save html/value in array
 			v!=[]._&&(e[g]=v);								// when v is set, assign new value to element
 		return v&&this||a.join("").replace(/\s/g,"")
 	},
@@ -46,7 +46,5 @@ F.dom={
 
 		return this
 	}
-};
-
-F.ext(F.dom);
+});
 

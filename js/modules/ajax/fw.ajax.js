@@ -1,4 +1,4 @@
-F.ajax={
+F.ext({
 	/**
 	 * AJAX Call
 	 * @param v method - get/post
@@ -17,7 +17,5 @@ F.ajax={
 	getScript:function(){
 
 	}
-};
-
-F.ext(F.ajax);
+});
 

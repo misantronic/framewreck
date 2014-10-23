@@ -1,4 +1,4 @@
-F.events={
+F.ext({
 	/**
 	 * Attach event listener
 	 * @param {String} v eventname
@@ -37,7 +37,5 @@ F.events={
 
 		return this
 	}
-};
-
-F.ext(F.events);
+});
 

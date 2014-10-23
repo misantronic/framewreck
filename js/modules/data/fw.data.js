@@ -1,4 +1,4 @@
-F.data={
+F.ext({
 	/**
 	 * Set data for context
 	 * or return its data
@@ -11,7 +11,5 @@ F.data={
 			if(v)this.x[i].D=v;
 		return v?this:this.x[0].D
 	}
-};
-
-F.ext(F.data);
+});
 

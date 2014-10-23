@@ -1,4 +1,4 @@
-F.css={
+F.ext({
 	/**
 	 * Apply CSS to context
 	 * @param {String|Object} v object containg CSS-Attributes
@@ -12,7 +12,5 @@ F.css={
 
 		return this
 	}
-};
-
-F.ext(F.css);
+});
 
