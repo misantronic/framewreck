@@ -14,7 +14,7 @@ A lightweight JavaScript framework.
 
 ### Usage:
 ```html
-<script src="https://raw.githubusercontent.com/misantronic/min/master/framewreck/fw.min.js"></script>
+<script src="https://raw.githubusercontent.com/misantronic/frameWreck/master/js/fw.min.js"></script>
 ```
 
 ### CSS Selectors
