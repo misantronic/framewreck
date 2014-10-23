@@ -82,7 +82,7 @@ F=function(c){
 	};
 
 	/**
-	 * Load a number of scripts
+	 * Load a number of scripts synchronously
 	 * @param {Array} a contains urls
 	 * @param [s] placeholder script-string
 	 * @param [r] placeholder xhr-request
