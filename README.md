@@ -92,7 +92,7 @@ F().ajax('get', 'http://server.com/api?id=1337', function(e){ console.log(e.resp
 F().ajax('post', 'http://server.com', function(e){ console.log(e.responseText) }, { name: '@misantronic' });
 ```
 
-### Data-Binding
+### Data
 ```javascript
 F('#id').data({ name: '@misantronic' });
 F('#id').data() // output { name: '@misantronic' }
