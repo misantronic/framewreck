@@ -14,21 +14,15 @@
 		</div>
 	</div>
 
-	<script src="../js/modules/core/fw.core.js"></script>
+	<script src="../dist/frameWreck.min.js"></script>
 	<script>
 	F()
-		.require([
-			'../js/modules/events/fw.events.js',
-			'../js/modules/dom/fw.dom.js',
-			'../js/modules/css/fw.css.js',
-			'../js/modules/ajax/fw.ajax.js',
-			'../js/modules/data/fw.data.js'
-		])
 		.find('#wrapper')
 		.data('F() initialized')
 		.append('<a href="#">Crazy Link</a>');
 
 		console.log(F('#wrapper').data());
 	</script>
+
 </body>
 </html>

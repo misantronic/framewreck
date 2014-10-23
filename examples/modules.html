@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>frameWreck examples</title>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>Head</h1>
+		<div class="box">
+			<p>Text 1</p>
+			<p>Text 2</p>
+			<p>Text 3</p>
+		</div>
+	</div>
+
+	<script src="../src/modules/core/fw.core.js"></script>
+	<script>
+	F()
+		.require([
+			'../src/modules/events/fw.events.js',
+			'../src/modules/dom/fw.dom.js',
+			'../src/modules/css/fw.css.js',
+			'../src/modules/ajax/fw.ajax.js',
+			'../src/modules/data/fw.data.js'
+		])
+		.find('#wrapper')
+		.data('F() initialized')
+		.append('<a href="#">Crazy Link</a>');
+
+		console.log(F('#wrapper').data());
+	</script>
+</body>
+</html>
