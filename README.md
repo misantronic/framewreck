@@ -1,5 +1,4 @@
-frameWreck
-=========
+<h1><img src="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_dashboard_black_24dp.png" valign="bottom"> frameWreck</h1>
 
 A lightweight JavaScript framework.
 
