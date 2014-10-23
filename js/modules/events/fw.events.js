@@ -39,5 +39,5 @@ F.events={
 	}
 };
 
-F.extend(F.events);
+F.ext(F.events);
 

@@ -17,5 +17,5 @@ F.ajax={
 	}
 };
 
-F.extend(F.ajax);
+F.ext(F.ajax);
 

@@ -13,5 +13,5 @@ F.data={
 	}
 };
 
-F.extend(F.data);
+F.ext(F.data);
 

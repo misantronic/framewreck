@@ -48,5 +48,5 @@ F.dom={
 	}
 };
 
-F.extend(F.dom);
+F.ext(F.dom);
 

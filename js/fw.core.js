@@ -89,7 +89,7 @@ F=function(c){
  * Extend frameWreck with a module
  * @param {Object} m Module
  */
-F.extend=function(m){
+F.ext=function(m){
 	for(i in m)
 		F.prototype[i]=m[i]
 };

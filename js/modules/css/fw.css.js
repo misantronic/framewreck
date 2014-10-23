@@ -14,5 +14,5 @@ F.css={
 	}
 };
 
-F.extend(F.css);
+F.ext(F.css);
 
