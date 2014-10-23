@@ -84,17 +84,17 @@ F=function(c){
 	/**
 	 * Load a number of scripts
 	 * @param {Array} a contains urls
-	 * @param {Function} c callback
-	 * @param [f] placeholder
+	 * @param [s] placeholder script-string
+	 * @param [r] placeholder xhr-request
 	 */
-	_.require=function(a,c,f){
-		for(;
-			(f=F.d.createElement('script')).src=a.shift();
-			F.d.head.appendChild(f)
-		)
-			f.onload=function(){
-				c&&c(this)
-			}
+	_.require=function(a,s,r){
+		s="";
+		for(i in a)
+			(r=new XMLHttpRequest).open('GET',a[i],false),
+			r.send(''),
+			s+=r.responseText;
+
+		eval(s);
 
 		return this
 	};
