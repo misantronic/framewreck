@@ -1,8 +1,8 @@
 <h1><img src="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_dashboard_black_24dp.png" valign="bottom"> frameWreck</h1>
 
-A lightweight JavaScript framework.
+A lightweight modular JavaScript framework.
 
-**Features**
+Modular structure featuring:
  - CSS Selectors
  - CSS Manipulation
  - DOM Manipulation
@@ -10,14 +10,35 @@ A lightweight JavaScript framework.
  - AJAX-Requests
  - Events
  - Data
- - ~1 kb 
 
 ### Usage:
 ```html
-<script src="https://raw.githubusercontent.com/misantronic/min/master/framewreck/fw.core.min.js"></script>
+<script src="https://raw.githubusercontent.com/misantronic/frameWreck/modular/js/fw.core.min.js"></script>
+
+<script>
+// synchronously load modules 
+F().require([
+		'modules/events/fw.events.min.js',
+		'modules/dom/fw.dom.min.js',
+		'modules/css/fw.css.min.js',
+		'modules/ajax/fw.ajax.min.js',
+		'modules/data/fw.data.min.js'
+	]);	
+
+// all modules are loaded synchronously, 
+// so you can chain module functions right away
+
+F('#id')
+	.require([
+		'modules/events/fw.events.min.js',
+		'modules/data/fw.data.min.js'
+	])
+	.on('click', function() { alert('clicked!'); })
+	.data('my favorite id');
+</script>
 ```
 
-### CSS Selectors
+### Core: CSS Selectors
 ```javascript
 // IDs and classes
 F('#id');
@@ -35,7 +56,7 @@ F('#id .class').find('a:first-of-type');
 F('#id .class').find('a:last-of-type');
 ```
 
-### CSS
+### CSS Module
 ```javascript
 // Set CSS
 F('#id').css({ display: 'block', backgroundColor: 'blue', padding: '10px' });
@@ -44,7 +65,7 @@ F('#id').css({ display: 'block', backgroundColor: 'blue', padding: '10px' });
 var cssValue = F('#id').css('padding') // outputs '10px'
 ```
 
-### DOM Manipulation/Traversing
+### DOM Module
 ```javascript
 // Output HTML of a selector
 var html = F('#id').find('.class').html();
@@ -70,7 +91,7 @@ var value = F('body').find('select').val();
 F('#id').remove();
 ```
 
-### Events
+### Event Module
 ```javascript
 var eventHandler = function(e) {
 	console.log(e, e.detail); // output event and given parameter object
@@ -87,13 +108,13 @@ F('#id').trigger('myEvent', { name: '@misantronic' } );
 F('#id').off('myEvent', eventHandler);
 ```
 
-### AJAX
+### AJAX Module
 ```javascript
 F().ajax('get', 'http://server.com/api?id=1337', function(e){ console.log(e.responseText) });
 F().ajax('post', 'http://server.com', function(e){ console.log(e.responseText) }, { name: '@misantronic' });
 ```
 
-### Data
+### Data Module
 ```javascript
 F('#id').data({ name: '@misantronic' });
 F('#id').data() // output { name: '@misantronic' }
