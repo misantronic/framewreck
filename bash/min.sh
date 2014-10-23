@@ -1,5 +1,5 @@
 #!/bin/bash
-MODULES=js/modules
+MODULES=../js/modules
 
 uglifyjs -o ${MODULES}/ajax/fw.ajax.min.js ${MODULES}/ajax/fw.ajax.js
 uglifyjs -o ${MODULES}/css/fw.css.min.js ${MODULES}/css/fw.css.js
