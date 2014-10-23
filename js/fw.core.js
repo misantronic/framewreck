@@ -81,6 +81,21 @@ F=function(c){
 		return this
 	};
 
+	/**
+	 * Load a number of scripts
+	 * @param {Array} a contains urls
+	 * @param {Function} c callback
+	 * @param [f] placeholder
+	 */
+	_.getScripts=function(a,c,f){
+		for(;
+			(f=F.d.createElement('script')).src=a.shift();
+			F.d.head.appendChild(f))
+			f.onload=function(){
+				c&&c(this)
+			}
+	};
+
 	// select context
 	_.find(c);
 

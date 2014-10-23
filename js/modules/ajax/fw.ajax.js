@@ -12,16 +12,6 @@ F.ext({
 			return onreadystatechange=function(){
 				readyState^4||C(this)
 			},open(v,P,F),send(D),X
-	},
-
-	getScript: function(a,c,f){
-		with(F.d)
-			for(;
-				(f=createElement('script')).src=a.shift();
-				head.appendChild(f))
-					f.onload=function(){
-						c&&c(this)
-					}
 	}
 });
 
