@@ -8,6 +8,7 @@ A lightweight JavaScript framework.
  - DOM Manipulation
  - Traversing
  - AJAX-Requests
+ - Data
  - Events
  - ~1 kb 
 
