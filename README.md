@@ -35,9 +35,9 @@ F('#id')
 	.on('click', function() { alert('clicked!'); })
 	.data('my favorite id');
 </script>
-
-*Note:* All modules are globally available after loading.
 ```
+*Note:* All modules are globally available after loading.
+
 
 ### Core: CSS Selectors
 ```javascript
