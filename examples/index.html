@@ -5,18 +5,29 @@
 	<title>frameWreck examples</title>
 </head>
 <body>
-
-<div id="wrapper">
-	<h1>Head</h1>
-	<div class="box">
-		<p>Text 1</p>
-		<p>Text 2</p>
-		<p>Text 3</p>
+	<div id="wrapper">
+		<h1>Head</h1>
+		<div class="box">
+			<p>Text 1</p>
+			<p>Text 2</p>
+			<p>Text 3</p>
+		</div>
 	</div>
-</div>
 
 	<script src="../js/fw.core.js"></script>
-	<script src="../js/modules/events/fw.events.js"></script>
-	<script src="../js/modules/dom/fw.dom.js"></script>
+	<script src=""></script>
+	<script src=""></script>
+	<script src=""></script>
+	<script>
+	F().getScripts([
+		'../js/modules/events/fw.events.js',
+		'../js/modules/dom/fw.dom.js',
+		'../js/modules/css/fw.css.js',
+		'../js/modules/ajax/fw.ajax.js',
+		'../js/modules/data/fw.data.js'
+	], function(el) {
+		console.log("F: module loaded", el.src);
+	})
+	</script>
 </body>
 </html>
