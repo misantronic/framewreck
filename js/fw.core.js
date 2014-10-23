@@ -6,13 +6,14 @@ F=function(c){
 		,j						// placeholder counter2
 		,a						// placeholder array
 		,e						// placeholder element
-		,m="length"				// placeholder length
-		,q="querySelectorAll"	// placeholder querySelectorAll
-		,h="innerHTML"			// placeholder innerHTML
-		,d=document				// placeholder document
 		,N						// placeholder generic
 		,G						// placeholder generic
 		,g;						// placeholder generic
+
+	F.d=d=document;
+	F.L=L="length";
+	F.Q=Q="querySelectorAll";
+	F.H="innerHTML";
 
 	if(_.__proto__.constructor!=F)return new F(c);
 
@@ -33,7 +34,7 @@ F=function(c){
 	_.y=function(){
 		for(i=99;i--;)delete _[i];	// clean up objects indicies
 		for(i in x)_[i]=x[i];		// assign new indicies
-		_[m]=l=x[m]					// set .length and internal placeholder l
+		_[L]=l=x[L]					// set .length and internal placeholder l
 		this.x=x;
 	};
 
@@ -52,13 +53,13 @@ F=function(c){
 				v+=" "+g[0]+g[1];
 
 			a=[];
-			if(!x)a=d[q](v);
-			else for(i=l;i--;)a[i]=x[i][q](v);
+			if(!x)a=d[Q](v);
+			else for(i=l;i--;)a[i]=x[i][Q](v);
 
 			x=[];
-			for(i=0;i<a[m];i++)
-				if((g=a[i])[m]&&!g.options)
-					for(j=0;j<g[m];j++)
+			for(i=0;i<a[L];i++)
+				if((g=a[i])[L]&&!g.options)
+					for(j=0;j<g[L];j++)
 						x.push(g[j]);
 				else x.push(g);
 			_.y();
@@ -87,7 +88,7 @@ F=function(c){
 
 /**
  * Extend frameWreck with a module
- * @param {Object} m Module
+ * @param {Object} L Module
  */
 F.ext=function(m){
 	for(i in m)
