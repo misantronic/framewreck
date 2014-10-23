@@ -87,7 +87,7 @@ F=function(c){
 	 * @param {Function} c callback
 	 * @param [f] placeholder
 	 */
-	_.getScripts=function(a,c,f){
+	_.require=function(a,c,f){
 		for(;
 			(f=F.d.createElement('script')).src=a.shift();
 			F.d.head.appendChild(f))
