@@ -9,6 +9,7 @@ A lightweight JavaScript framework.
  - Traversing
  - AJAX-Requests
  - Events
+ - Data
  - ~1 kb 
 
 ### Usage:
