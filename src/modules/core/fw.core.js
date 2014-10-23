@@ -5,9 +5,6 @@ F=function(c){
 		,i						// placeholder counter1
 		,j						// placeholder counter2
 		,a						// placeholder array
-		,e						// placeholder element
-		,N						// placeholder generic
-		,G						// placeholder generic
 		,g;						// placeholder generic
 
 	// Global vars
