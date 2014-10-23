@@ -10,10 +10,11 @@ F=function(c){
 		,G						// placeholder generic
 		,g;						// placeholder generic
 
-	F.d=d=document;
-	F.L=L="length";
-	F.Q=Q="querySelectorAll";
-	F.H="innerHTML";
+	// Global vars
+	F.d=d	=document;
+	F.L=L	="length";
+	F.Q=Q	="querySelectorAll";
+	F.H		="innerHTML";
 
 	if(_.__proto__.constructor!=F)return new F(c);
 
