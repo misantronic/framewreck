@@ -111,17 +111,6 @@ F('#id')
 
 ---
 
-#### Tasks
-- [x] CSS Selectors
-- [x] DOM Manipulation
-- [x] Traversing
-- [x] Events
-- [x] AJAX
-- [x] Data-Binding
-- [ ] Other great stuff
-
----
-
 
 [fw.core.packed.js] crushed with [RegPack]<br>
 Configuration: No Math-Packing, all checkboxes off except "Reassign variable names except: F" 
