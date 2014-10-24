@@ -4,7 +4,27 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		qunit: {
-			files: ['test/**/**/*.html']
+			all: {
+				options: {
+					urls: [
+						'http://localhost:8000/test/modules/core/fw.core.html',
+						'http://localhost:8000/test/modules/ajax/fw.ajax.html',
+						'http://localhost:8000/test/modules/css/fw.css.html',
+						'http://localhost:8000/test/modules/data/fw.data.html',
+						'http://localhost:8000/test/modules/dom/fw.dom.html',
+						'http://localhost:8000/test/modules/events/fw.events.html'
+					]
+				}
+			}
+		},
+
+		connect: {
+			server: {
+				options: {
+					port: 8000,
+					base: '.'
+				}
+			}
 		},
 
 		concat: {
@@ -40,8 +60,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-qunit');
+	grunt.loadNpmTasks('grunt-contrib-connect');
 
 	// tasks
-	grunt.registerTask('test', ['qunit']);
-	grunt.registerTask('default', ['qunit', 'concat', 'uglify']);
+	grunt.registerTask('test', ['connect', 'qunit']);
+	grunt.registerTask('default', ['connect', 'qunit', 'concat', 'uglify']);
 };
