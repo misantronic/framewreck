@@ -104,7 +104,7 @@ F=function(c){
 
 /**
  * Extend frameWreck with a module
- * @param {Object} L Module
+ * @param {Object} m Module
  */
 F.ext=function(m){
 	for(i in m)
