@@ -9,12 +9,12 @@ F.ext({
 	 */
 	html: function(v,x){
 		x=this.x;
-		var a=[], e, g;
+		var a=[],e,g;
 		for(var i=0;i<x[F.L];i++)
 			e=x[i],											// assign e as current element
-				g=F.H,										// store innerHTML in g, as it might change
+			g=F.H,											// store innerHTML in g, as it might change
 			e.tagName.match(/INP|SEL|TEX/)&&(g="value"),	// if e is input, select or textarea change g to "value"
-				a.push(e[g]),								// save html/value in array
+			a.push(e[g]),									// save html/value in array
 			v!=[]._&&(e[g]=v);								// when v is set, assign new value to element
 		return v&&this||a.join("").replace(/\s/g,"")
 	},
