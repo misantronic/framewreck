@@ -25,8 +25,8 @@
 		})();
 
 		// tests
-		module("events");
-		test("events", function() {
+		QUnit.module("events");
+		QUnit.test("events", function() {
 			var x = 1;
 			var handler = function() {
 				x++;
@@ -36,7 +36,7 @@
 				.on('myTestEvent', handler)
 				.fire('myTestEvent');
 
-			equal(
+			QUnit.equal(
 					x,
 					2,
 					"on() or fire() failed"
@@ -46,7 +46,7 @@
 				.off('myTestEvent', handler)
 				.fire('myTestEvent');
 
-			equal(
+			QUnit.equal(
 					x,
 					2,
 					"off() failed"

@@ -11,11 +11,11 @@
 	<script src="../../../src/modules/data/fw.data.js"></script>
 	<script>
 		// tests
-		module("data");
-		test("data", function() {
+		QUnit.module("data");
+		QUnit.test("data", function() {
 			F('#wrapper').data({test: "test"});
 
-			equal(
+			QUnit.equal(
 					F('#wrapper').data().test,
 					"test",
 					"data assignment failed"

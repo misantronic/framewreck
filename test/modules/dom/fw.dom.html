@@ -11,11 +11,11 @@
 	<script src="../../../src/modules/dom/fw.dom.js"></script>
 	<script>
 		// tests
-		module("css");
-		test("css", function() {
+		QUnit.module("css");
+		QUnit.test("css", function() {
 			F('#test').html('<b>TestValue</b>');
 
-			equal(
+			QUnit.equal(
 					F('#test').html(),
 					"<b>TestValue</b>",
 					"html() insert failed"
@@ -23,7 +23,7 @@
 
 			F('#name').html('test');
 
-			equal(
+			QUnit.equal(
 					F('#name').html(),
 					"test",
 					"input val() insert failed"
@@ -31,7 +31,7 @@
 
 			F('#wrapper').append('<a id="test-link" href="http://www.github.com">Link</a>');
 
-			equal(
+			QUnit.equal(
 					F('a#test-link').length,
 					1,
 					"append() failed"
@@ -39,7 +39,7 @@
 
 			F('#test-link').append('#test');
 
-			equal(
+			QUnit.equal(
 					F('#test').find('a').html(),
 					'Link',
 					"appendTo() failed"
@@ -47,7 +47,7 @@
 
 			F('#test').remove();
 
-			ok(
+			QUnit.ok(
 					!F('#test').length,
 					"remove() failed"
 			);

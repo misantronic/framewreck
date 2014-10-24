@@ -11,11 +11,11 @@
 	<script src="../../../src/modules/css/fw.css.js"></script>
 	<script>
 		// tests
-		module("css");
-		test("css", function() {
+		QUnit.module("css");
+		QUnit.test("css", function() {
 			F('#wrapper').css({ overflow: "hidden"});
 
-			equal(
+			QUnit.equal(
 					F('#wrapper').css('overflow'),
 					"hidden",
 					"css assignment failed"

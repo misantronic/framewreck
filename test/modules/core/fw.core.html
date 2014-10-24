@@ -10,56 +10,56 @@
 	<script src="../../../src/modules/core/fw.core.js"></script>
 	<script>
 		// tests
-		module("selections");
-		test("selections", function() {
+		QUnit.module("selections");
+		QUnit.test("selections", function() {
 
-			equal(
+			QUnit.equal(
 					F('#wrapper')[0].constructor,
 					HTMLDivElement,
 					"basic selection failed"
 			);
 
-			equal(
+			QUnit.equal(
 					F('#wrapper').find('.box p')[0].constructor,
 					HTMLParagraphElement,
 					"find() selection failed"
 			);
 
-			equal(
+			QUnit.equal(
 					F('#wrapper').find('.box p').length,
 					3,
 					"multiple find() selection failed"
 			);
 
-			equal(
+			QUnit.equal(
 					F('#wrapper').find('.box p:1')[0],
 					F('#wrapper').find('.box p').get(1)[0],
 					"index selection / get() selection failed"
 			);
 
-			equal(
+			QUnit.equal(
 					F('#wrapper').find('.box p:first-of-type')[0],
 					F('#wrapper').find('.box p')[0],
 					"pseudo-selector selection failed"
 			);
 		});
 
-		module("extend");
-		test("extend", function() {
+		QUnit.module("extend");
+		QUnit.test("extend", function() {
 			F.ext({
 				test: function() { }
 			});
 
-			ok(F().test, "extending failed");
+			QUnit.ok(F().test, "extending failed");
 		});
 
-		module("require");
-		test("require", function() {
+		QUnit.module("require");
+		QUnit.test("require", function() {
 			F().require(['../../../src/modules/events/fw.events.js']);
 
-			ok(F().on, "synchronous require failed");
-			ok(F().off, "synchronous require failed");
-			ok(F().fire, "synchronous require failed");
+			QUnit.ok(F().on, "synchronous require failed");
+			QUnit.ok(F().off, "synchronous require failed");
+			QUnit.ok(F().fire, "synchronous require failed");
 		});
 	</script>
 </head>

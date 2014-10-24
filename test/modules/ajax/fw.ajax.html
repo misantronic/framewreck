@@ -11,23 +11,23 @@
 	<script src="../../../src/modules/ajax/fw.ajax.js"></script>
 	<script>
 		// tests
-		module("ajax");
+		QUnit.module("ajax");
 
-		asyncTest( "asynchronous test: ajax get request", function(assert) {
-			expect(1);
+		QUnit.asyncTest( "asynchronous test: ajax get request", function(assert) {
+			QUnit.expect(1);
 
 			F().ajax('GET', 'data.txt', function(e) {
 				assert.ok(e.responseText, "ajax get request successful" );
-				start();
+				QUnit.start();
 			});
 		});
 
-		asyncTest( "asynchronous test: ajax post request", function(assert) {
-			expect(1);
+		QUnit.asyncTest( "asynchronous test: ajax post request", function(assert) {
+			QUnit.expect(1);
 
 			F().ajax('POST', 'data.txt', function(e) {
 				assert.ok(e.responseText, "ajax get request successful" );
-				start();
+				QUnit.start();
 			}, { test: true });
 		});
 
