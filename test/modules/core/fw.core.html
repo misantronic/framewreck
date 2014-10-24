@@ -10,58 +10,61 @@
 	<script src="http://localhost:8000/src/modules/core/fw.core.js"></script>
 	<script>
 		// tests
-		console.log(">>", QUnit);
-		QUnit.module("selections");
-		QUnit.test("selections", function() {
+		console.log("F", F);
+		window.onload = function() {
+			QUnit.module("selections");
+			QUnit.test("selections", function() {
 
-			QUnit.equal(
-					F('#wrapper')[0].constructor,
-					HTMLDivElement,
-					"basic selection failed"
-			);
+				QUnit.equal(
+						F('#wrapper')[0].constructor,
+						HTMLDivElement,
+						"basic selection failed"
+				);
 
-			QUnit.equal(
-					F('#wrapper').find('.box p')[0].constructor,
-					HTMLParagraphElement,
-					"find() selection failed"
-			);
+				QUnit.equal(
+						F('#wrapper').find('.box p')[0].constructor,
+						HTMLParagraphElement,
+						"find() selection failed"
+				);
 
-			QUnit.equal(
-					F('#wrapper').find('.box p').length,
-					3,
-					"multiple find() selection failed"
-			);
+				QUnit.equal(
+						F('#wrapper').find('.box p').length,
+						3,
+						"multiple find() selection failed"
+				);
 
-			QUnit.equal(
-					F('#wrapper').find('.box p:1')[0],
-					F('#wrapper').find('.box p').get(1)[0],
-					"index selection / get() selection failed"
-			);
+				QUnit.equal(
+						F('#wrapper').find('.box p:1')[0],
+						F('#wrapper').find('.box p').get(1)[0],
+						"index selection / get() selection failed"
+				);
 
-			QUnit.equal(
-					F('#wrapper').find('.box p:first-of-type')[0],
-					F('#wrapper').find('.box p')[0],
-					"pseudo-selector selection failed"
-			);
-		});
-
-		QUnit.module("extend");
-		QUnit.test("extend", function() {
-			F.ext({
-				test: function() { }
+				QUnit.equal(
+						F('#wrapper').find('.box p:first-of-type')[0],
+						F('#wrapper').find('.box p')[0],
+						"pseudo-selector selection failed"
+				);
 			});
 
-			QUnit.ok(F().test, "extending failed");
-		});
+			QUnit.module("extend");
+			QUnit.test("extend", function() {
+				F.ext({
+					test: function() { }
+				});
 
-		QUnit.module("require");
-		QUnit.test("require", function() {
-			F().require(['http://localhost:8000/src/modules/events/fw.events.js']);
+				QUnit.ok(F().test, "extending failed");
+			});
 
-			QUnit.ok(F().on, "synchronous require failed");
-			QUnit.ok(F().off, "synchronous require failed");
-			QUnit.ok(F().fire, "synchronous require failed");
-		});
+			QUnit.module("require");
+			QUnit.test("require", function() {
+				F().require(['http://localhost:8000/src/modules/events/fw.events.js']);
+
+				QUnit.ok(F().on, "synchronous require failed");
+				QUnit.ok(F().off, "synchronous require failed");
+				QUnit.ok(F().fire, "synchronous require failed");
+			});
+		}
+
 	</script>
 </head>
 <body>
