@@ -10,19 +10,56 @@
 	<script src="../../../src/modules/core/fw.core.js"></script>
 	<script>
 		// tests
-		module("Basic selections");
-		test("truthy", function() {
-			console.log(F('#wrapper').find('.box p')[0]);
+		module("selections");
+		test("selections", function() {
 
-			equal(F('#wrapper')[0].constructor, HTMLDivElement, "#wrapper is not a div-element");
+			equal(
+					F('#wrapper')[0].constructor,
+					HTMLDivElement,
+					"basic selection failed"
+			);
 
-			equal(F('#wrapper').find('.box p')[0].constructor, HTMLParagraphElement, "#wrapper .box p is not a p-element");
+			equal(
+					F('#wrapper').find('.box p')[0].constructor,
+					HTMLParagraphElement,
+					"find() selection failed"
+			);
 
-			equal(F('#wrapper').find('.box p').length, 3, "#wrapper .box p are not 3 elements");
+			equal(
+					F('#wrapper').find('.box p').length,
+					3,
+					"multiple find() selection failed"
+			);
 
+			equal(
+					F('#wrapper').find('.box p:1')[0],
+					F('#wrapper').find('.box p').get(1)[0],
+					"index selection / get() selection failed"
+			);
 
-			//ok(true, "true is truthy");
-			//notEqual(0, true, "0 is NOT truthy");
+			equal(
+					F('#wrapper').find('.box p:first-of-type')[0],
+					F('#wrapper').find('.box p')[0],
+					"pseudo-selector selection failed"
+			);
+		});
+
+		module("extend");
+		test("extend", function() {
+			F.ext({
+				test: function() { }
+			});
+
+			ok(F().test, "extending failed");
+		});
+
+		module("require");
+		test("require", function() {
+			F().require(['../../../src/modules/events/fw.events.js']);
+
+			ok(F().on, "synchronous require failed");
+			ok(F().off, "synchronous require failed");
+			ok(F().fire, "synchronous require failed");
 		});
 	</script>
 </head>
@@ -35,21 +72,6 @@
 				<p>Text 1</p>
 				<p>Text 2</p>
 				<p>Text 3</p>
-			</div>
-			<div class="box">
-				<label for="name"></label>
-				<input type="text" name="name" id="name">
-				<br/>
-				<label for="password"></label>
-				<input type="password" name="password" id="password">
-				<br/>
-				<label for="select"></label>
-				<select name="select" id="select">
-					<option value="1">Admin</option>
-					<option value="0">Guest</option>
-					<option value="2" selected="selected">User</option>
-				</select>
-				<br/>
 			</div>
 		</div>
 	</div>

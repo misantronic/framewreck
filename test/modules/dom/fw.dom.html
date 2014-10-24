@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>test</title>
+
+	<link rel="stylesheet" href="../../../lib/bower_components/qunit/qunit/qunit.css">
+	<script src="../../../lib/bower_components/qunit/qunit/qunit.js"></script>
+
+	<script src="../../../src/modules/core/fw.core.js"></script>
+	<script src="../../../src/modules/dom/fw.dom.js"></script>
+	<script>
+		// tests
+		module("css");
+		test("css", function() {
+			F('#test').html('<b>TestValue</b>');
+
+			equal(
+					F('#test').html(),
+					"<b>TestValue</b>",
+					"html() insert failed"
+			);
+
+			F('#name').html('test');
+
+			equal(
+					F('#name').html(),
+					"test",
+					"input val() insert failed"
+			);
+
+		});
+	</script>
+</head>
+<body>
+	<div id="qunit"></div>
+	<div id='qunit-fixture'>
+		<div id="wrapper">
+			<div id="test"></div>
+			<div class="box">
+				<label for="name"></label>
+				<input type="text" name="name" id="name">
+				<br/>
+				<label for="password"></label>
+				<input type="password" name="password" id="password">
+				<br/>
+				<label for="select"></label>
+				<select name="select" id="select">
+					<option value="1">Admin</option>
+					<option value="0">Guest</option>
+					<option value="2" selected="selected">User</option>
+				</select>
+				<br/>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

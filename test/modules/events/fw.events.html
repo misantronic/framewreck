@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>test</title>
+
+	<link rel="stylesheet" href="../../../lib/bower_components/qunit/qunit/qunit.css">
+	<script src="../../../lib/bower_components/qunit/qunit/qunit.js"></script>
+
+	<script src="../../../src/modules/core/fw.core.js"></script>
+	<script src="../../../src/modules/events/fw.events.js"></script>
+	<script>
+		// polyfill for phantomjs -> CustomEvent
+		(function () {
+			function CustomEvent ( event, params ) {
+				params = params || { bubbles: false, cancelable: false, detail: undefined };
+				var evt = document.createEvent( 'CustomEvent' );
+				evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+				return evt;
+			};
+
+			CustomEvent.prototype = window.Event.prototype;
+
+			window.CustomEvent = CustomEvent;
+		})();
+
+		// tests
+		module("events");
+		test("events", function() {
+			var x = 1;
+			var handler = function() {
+				x++;
+			};
+
+			F('#wrapper')
+				.on('myTestEvent', handler)
+				.fire('myTestEvent');
+
+			equal(
+					x,
+					2,
+					"on() or fire() failed"
+			);
+
+			F('#wrapper')
+				.off('myTestEvent', handler)
+				.fire('myTestEvent');
+
+			equal(
+					x,
+					2,
+					"off() failed"
+			);
+
+		});
+	</script>
+</head>
+<body>
+	<div id="qunit"></div>
+	<div id='qunit-fixture'>
+		<div id="wrapper"></div>
+	</div>
+</body>
+</html>
