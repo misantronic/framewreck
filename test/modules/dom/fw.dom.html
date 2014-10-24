@@ -29,6 +29,28 @@
 					"input val() insert failed"
 			);
 
+			F('#wrapper').append('<a id="test-link" href="http://www.github.com">Link</a>');
+
+			equal(
+					F('a#test-link').length,
+					1,
+					"append() failed"
+			);
+
+			F('#test-link').append('#test');
+
+			equal(
+					F('#test').find('a').html(),
+					'Link',
+					"appendTo() failed"
+			);
+
+			F('#test').remove();
+
+			ok(
+					!F('#test').length,
+					"remove() failed"
+			);
 		});
 	</script>
 </head>
