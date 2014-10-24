@@ -4,12 +4,17 @@
 	<meta charset="UTF-8">
 	<title>test</title>
 
+	<script>
+		console.log("CORE TEST top of page")
+	</script>
+
 	<link rel="stylesheet" href="http://localhost:8000/bower_components/qunit/qunit/qunit.css">
 	<script src="http://localhost:8000/bower_components/qunit/qunit/qunit.js"></script>
 
 	<script src="http://localhost:8000/src/modules/core/fw.core.js"></script>
 	<script>
 		// tests
+		console.log("CORE TEST selections!")
 		QUnit.module("selections");
 		QUnit.test("selections", function() {
 
@@ -44,6 +49,8 @@
 			);
 		});
 
+		console.log("CORE TEST extend!")
+
 		QUnit.module("extend");
 		QUnit.test("extend", function() {
 			F.ext({
@@ -53,6 +60,8 @@
 			QUnit.ok(F().test, "extending failed");
 		});
 
+		console.log("CORE TEST require!")
+
 		QUnit.module("require");
 		QUnit.test("require", function() {
 			F().require(['http://localhost:8000/src/modules/events/fw.events.js']);
@@ -61,6 +70,8 @@
 			QUnit.ok(F().off, "synchronous require failed");
 			QUnit.ok(F().fire, "synchronous require failed");
 		});
+
+		console.log("CORE TEST end!")
 	</script>
 </head>
 <body>
@@ -75,5 +86,8 @@
 			</div>
 		</div>
 	</div>
+<script>
+	console.log("CORE TEST bottom of page")
+</script>
 </body>
 </html>
