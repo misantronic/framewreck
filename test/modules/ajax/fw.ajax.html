@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>test</title>
+
+	<link rel="stylesheet" href="../../../bower_components/qunit/qunit/qunit.css">
+	<script src="../../../bower_components/qunit/qunit/qunit.js"></script>
+
+	<script src="../../../src/modules/core/fw.core.js"></script>
+	<script src="../../../src/modules/ajax/fw.ajax.js"></script>
+	<script>
+		// tests
+		module("ajax");
+
+		asyncTest( "asynchronous test: ajax get request", function(assert) {
+			expect(1);
+
+			F().ajax('GET', 'data.txt', function(e) {
+				assert.ok(e.responseText, "ajax get request successful" );
+				start();
+			});
+		});
+
+		asyncTest( "asynchronous test: ajax post request", function(assert) {
+			expect(1);
+
+			F().ajax('POST', 'data.txt', function(e) {
+				assert.ok(e.responseText, "ajax get request successful" );
+				start();
+			}, { test: true });
+		});
+
+	</script>
+</head>
+<body>
+	<div id="qunit"></div>
+	<div id='qunit-fixture'>
+		<div id="wrapper"></div>
+	</div>
+</body>
+</html>
