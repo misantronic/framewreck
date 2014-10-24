@@ -1,7 +1,12 @@
 module.exports = function(grunt) {
-	// Project configuration.
+
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+
+		qunit: {
+			files: ['test/**/**/*.html']
+		},
+
 		concat: {
 			options: {
 				separator: ''
@@ -18,6 +23,7 @@ module.exports = function(grunt) {
 				dest: 'dist/<%= pkg.name %>.js'
 			}
 		},
+
 		uglify: {
 			options: {
 				banner: '/*! <%= pkg.name %> <%= pkg.version %> build on <%= grunt.template.today("yyyy-mm-dd") %> */\n'
@@ -30,8 +36,12 @@ module.exports = function(grunt) {
 		}
 	});
 
+	// load tasks
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-qunit');
 
-	grunt.registerTask('default', ['concat', 'uglify']);
+	// tasks
+	grunt.registerTask('test', ['qunit']);
+	grunt.registerTask('default', ['qunit', 'concat', 'uglify']);
 };
