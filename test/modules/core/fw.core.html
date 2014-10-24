@@ -3,25 +3,13 @@
 <head lang="en">
 	<meta charset="UTF-8">
 	<title>test</title>
-	<link rel="stylesheet" href="../../../bower_components/qunit/qunit/qunit.css">
-</head>
-<body>
-	<div id="qunit"></div>
-	<div id='qunit-fixture'>
-		<div id="wrapper">
-			<h1>Headline</h1>
-			<div class="box">
-				<p>Text 1</p>
-				<p>Text 2</p>
-				<p>Text 3</p>
-			</div>
-		</div>
-	</div>
 
+	<link rel="stylesheet" href="../../../bower_components/qunit/qunit/qunit.css">
 	<script src="../../../bower_components/qunit/qunit/qunit.js"></script>
 
 	<script src="../../../src/modules/core/fw.core.js"></script>
 	<script>
+		console.log("START FW.CORE!");
 		// tests
 		QUnit.module("selections");
 		QUnit.test("selections", function() {
@@ -75,5 +63,18 @@
 			QUnit.ok(F().fire, "synchronous require failed");
 		});
 	</script>
+</head>
+<body>
+	<div id="qunit"></div>
+	<div id='qunit-fixture'>
+		<div id="wrapper">
+			<h1>Headline</h1>
+			<div class="box">
+				<p>Text 1</p>
+				<p>Text 2</p>
+				<p>Text 3</p>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
