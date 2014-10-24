@@ -14,8 +14,8 @@
 	<script src="http://localhost:8000/src/modules/core/fw.core.js"></script>
 	<script>
 		// tests
-		console.log("CORE TEST selections!")
-		//QUnit.module("selections");
+		console.log(QUnit);
+		QUnit.module("selections");
 		QUnit.test("selections", function() {
 
 			QUnit.equal(
@@ -49,9 +49,7 @@
 			);
 		});
 
-		console.log("CORE TEST extend!")
-
-		//QUnit.module("extend");
+		QUnit.module("extend");
 		QUnit.test("extend", function() {
 			F.ext({
 				test: function() { }
@@ -60,9 +58,7 @@
 			QUnit.ok(F().test, "extending failed");
 		});
 
-		console.log("CORE TEST require!")
-
-		//QUnit.module("require");
+		QUnit.module("require");
 		QUnit.test("require", function() {
 			F().require(['http://localhost:8000/src/modules/events/fw.events.js']);
 
@@ -70,8 +66,6 @@
 			QUnit.ok(F().off, "synchronous require failed");
 			QUnit.ok(F().fire, "synchronous require failed");
 		});
-
-		console.log("CORE TEST end!")
 	</script>
 </head>
 <body>
