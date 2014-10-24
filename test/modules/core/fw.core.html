@@ -4,12 +4,11 @@
 	<meta charset="UTF-8">
 	<title>test</title>
 
-	<link rel="stylesheet" href="../../../bower_components/qunit/qunit/qunit.css">
-	<script src="../../../bower_components/qunit/qunit/qunit.js"></script>
+	<link rel="stylesheet" href="http://localhost:8000/bower_components/qunit/qunit/qunit.css">
+	<script src="http://localhost:8000/bower_components/qunit/qunit/qunit.js"></script>
 
-	<script src="../../../src/modules/core/fw.core.js"></script>
+	<script src="http://localhost:8000/src/modules/core/fw.core.js"></script>
 	<script>
-		console.log("START FW.CORE!");
 		// tests
 		QUnit.module("selections");
 		QUnit.test("selections", function() {
@@ -56,7 +55,7 @@
 
 		QUnit.module("require");
 		QUnit.test("require", function() {
-			F().require(['../../../src/modules/events/fw.events.js']);
+			F().require(['http://localhost:8000/src/modules/events/fw.events.js']);
 
 			QUnit.ok(F().on, "synchronous require failed");
 			QUnit.ok(F().off, "synchronous require failed");
