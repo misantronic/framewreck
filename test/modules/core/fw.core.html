@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>test</title>
+
+	<link rel="stylesheet" href="../../../lib/bower_components/qunit/qunit/qunit.css">
+	<script src="../../../lib/bower_components/qunit/qunit/qunit.js"></script>
+
+	<script src="../../../src/modules/core/fw.core.js"></script>
+	<script>
+		// tests
+		module("Basic selections");
+		test("truthy", function() {
+			console.log(F('#wrapper').find('.box p')[0]);
+
+			equal(F('#wrapper')[0].constructor, HTMLDivElement, "#wrapper is not a div-element");
+
+			equal(F('#wrapper').find('.box p')[0].constructor, HTMLParagraphElement, "#wrapper .box p is not a p-element");
+
+			equal(F('#wrapper').find('.box p').length, 3, "#wrapper .box p are not 3 elements");
+
+
+			//ok(true, "true is truthy");
+			//notEqual(0, true, "0 is NOT truthy");
+		});
+	</script>
+</head>
+<body>
+	<div id="qunit"></div>
+	<div id='qunit-fixture'>
+		<div id="wrapper">
+			<h1>Headline</h1>
+			<div class="box">
+				<p>Text 1</p>
+				<p>Text 2</p>
+				<p>Text 3</p>
+			</div>
+			<div class="box">
+				<label for="name"></label>
+				<input type="text" name="name" id="name">
+				<br/>
+				<label for="password"></label>
+				<input type="password" name="password" id="password">
+				<br/>
+				<label for="select"></label>
+				<select name="select" id="select">
+					<option value="1">Admin</option>
+					<option value="0">Guest</option>
+					<option value="2" selected="selected">User</option>
+				</select>
+				<br/>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
