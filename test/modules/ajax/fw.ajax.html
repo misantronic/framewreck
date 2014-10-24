@@ -17,7 +17,6 @@
 			QUnit.expect(1);
 
 			F().ajax('GET', '/test/modules/ajax/data.txt', function(e) {
-				console.log(e.response);
 				assert.ok(e.responseText, "ajax get failed" );
 				QUnit.start();
 			});
