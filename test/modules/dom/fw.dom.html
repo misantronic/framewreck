@@ -21,10 +21,10 @@
 					"html() insert failed"
 			);
 
-			F('#name').html('test');
+			F('#name').val('test');
 
 			QUnit.equal(
-					F('#name').html(),
+					F('#name').val(),
 					"test",
 					"input val() insert failed"
 			);
