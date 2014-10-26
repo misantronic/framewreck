@@ -56,6 +56,7 @@ F=function(c){
 					for(j=0;j<g[L];j++)
 						x.push(g[j]);
 				else x.push(g);
+			if(x.toString().match(/NodeList/))x=[];
 			_.y();
 		}catch(e){}
 
