@@ -1,6 +1,8 @@
-<h1><img src="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_dashboard_black_24dp.png" valign="bottom"> frameWreck</h1> [![Build Status](https://travis-ci.org/misantronic/frameWreck.svg?branch=modular)](https://travis-ci.org/misantronic/frameWreck)
+<h1><img src="https://raw.githubusercontent.com/google/material-design-icons/master/action/2x_web/ic_dashboard_black_24dp.png" valign="bottom"> frameWreck</h1>
 
 A lightweight modular JavaScript framework.
+
+[![Build Status](https://travis-ci.org/misantronic/frameWreck.svg?branch=modular)](https://travis-ci.org/misantronic/frameWreck)
 
 Modular structure featuring:
  - CSS Selectors
