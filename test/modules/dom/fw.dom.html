@@ -47,8 +47,9 @@
 
 			F('#test').remove();
 
-			QUnit.ok(
-					!F('#test').length,
+			QUnit.equal(
+					F('#test').length,
+					0,
 					"remove() failed"
 			);
 		});
