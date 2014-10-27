@@ -64,10 +64,10 @@ F.ext({
 		x=this.x;
 		a=[];
 		for(var i=x[F.L];i--;)
-			if(x[i].type.match(/ch|rad/))
-				v!=[]._?x[i].checked=v:a.push(x[i].checked);
+			if((g=x[i]).type.match(/ch|rad/))
+				v!=[]._?g.checked=v:a.push(g.checked);
 
-		return !(g=a[F.L])?this:g^1?a:a[0];
+		return !a[F.L]?this:a[F.L]^1?a:a[0];
 	}
 });
 
