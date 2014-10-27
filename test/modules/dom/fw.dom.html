@@ -52,6 +52,26 @@
 					0,
 					"remove() failed"
 			);
+
+			QUnit.ok(
+				F('#checkbox2').checked(),
+				"checked() on checkbox failed"
+			);
+
+			QUnit.ok(
+				F('#checkbox1').checked(true).checked(),
+				"checked(true) on checkbox failed"
+			);
+
+			QUnit.ok(
+				F('#radio2').checked(),
+				"checked() on radio button failed"
+			);
+
+			QUnit.ok(
+				F('#radio1').checked(true).checked(),
+				"checked(true) on radio button failed"
+			);
 		});
 	</script>
 </head>
@@ -73,7 +93,16 @@
 					<option value="0">Guest</option>
 					<option value="2" selected="selected">User</option>
 				</select>
+
 				<br/>
+				<input type="checkbox" name="checkbox" id="checkbox1"/>
+				<input type="checkbox" name="checkbox" id="checkbox2" checked="checked"/>
+				<input type="checkbox" name="checkbox" id="checkbox3"/>
+
+				<br/>
+				<input type="radio" name="radio" id="radio1"/>
+				<input type="radio" name="radio" id="radio2" checked="checked"/>
+				<input type="radio" name="radio" id="radio3"/>
 			</div>
 		</div>
 	</div>
