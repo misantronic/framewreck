@@ -21,7 +21,6 @@ $ bower install framewreck
 ### Usage:
 ```html
 <script src="fw.core.min.js"></script>
-
 <script>
 // synchronously load modules 
 F().require([
