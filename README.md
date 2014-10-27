@@ -2,6 +2,8 @@
 
 A lightweight modular JavaScript framework.
 
+[![Build Status](https://travis-ci.org/misantronic/frameWreck.svg?branch=master)](https://travis-ci.org/misantronic/frameWreck)
+
 Modular structure featuring:
  - CSS Selectors
  - CSS Manipulation
