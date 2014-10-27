@@ -208,6 +208,28 @@ F.ext({
 			x[i].parentNode.removeChild(x[i]);
 
 		return this
+	},
+
+	/**
+	 * Checks one or a set of checkboxes/radio buttons
+	 * or return if checked
+	 * If set length == 1: return Boolean
+	 * If set length > 1: return Array with boolean for each set
+	 * @param {Boolean} [v] change checkbox state
+	 * @param [x] placeholder for context
+	 * @param [a] placeholder
+	 * @param [g] placeholder
+	 * @returns {F|Array|Boolean}
+	 */
+	checked: function(v,x,a,g) {
+		x=this.x;
+		a=[];
+		for(var i=x[F.L];i--;)
+			if(x[i].type.match(/che|rad/))
+				if(v!=[]._)x[i].checked=v;
+				else a.push(x[i].checked);
+
+		return !(g=a[F.L])?this:g^1?a:a[0];
 	}
 });
 
