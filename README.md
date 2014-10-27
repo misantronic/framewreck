@@ -17,6 +17,11 @@ Modular structure featuring:
 $ bower install framewreck
 ```
 
+### Embed frameWreck incl. all modules
+```html
+<script src="dist/frameWreck.min.js"></script>
+```
+
 ### Embed module wise
 ```html
 <script src="fw.core.min.js"></script>
@@ -29,6 +34,7 @@ F().require([
 		'modules/ajax/fw.ajax.min.js',
 		'modules/data/fw.data.min.js'
 	]);	
+```
 
 // all modules are loaded synchronously, 
 // so you can chain module functions right away
@@ -41,11 +47,6 @@ F('#id')
 	.on('click', function() { alert('clicked!'); })
 	.data('my favorite id');
 </script>
-```
-
-### Embed all modules
-```html
-<script src="dist/frameWreck.min.js"></script>
 ```
 
 
