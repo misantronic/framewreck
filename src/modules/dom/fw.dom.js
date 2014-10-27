@@ -64,9 +64,8 @@ F.ext({
 		x=this.x;
 		a=[];
 		for(var i=x[F.L];i--;)
-			if(x[i].type.match(/che|rad/))
-				if(v!=[]._)x[i].checked=v;
-				else a.push(x[i].checked);
+			if(x[i].type.match(/ch|rad/))
+				v!=[]._?x[i].checked=v:a.push(x[i].checked);
 
 		return !(g=a[F.L])?this:g^1?a:a[0];
 	}
