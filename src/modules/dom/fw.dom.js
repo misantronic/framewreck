@@ -12,9 +12,9 @@ F.ext({
 		var a = [], e, g;
 		for (var i = 0; i < x[F.L]; i++)
 			e = x[i],											// assign e as current element
-				g = F.H,										// store innerHTML in g, as it might change
+			g = F.H,											// store innerHTML in g, as it might change
 			e.tagName.match(/INP|SEL|TEX/) && (g = "value"),	// if e is input, select or textarea change g to "value"
-				a.push(e[g]),									// save html/value in array
+			a.push(e[g]),										// save html/value in array
 			v != []._ && (e[g] = v);							// when v is set, assign new value to element
 		return v && this || a.join("").replace(/\s/g, "")
 	},
@@ -58,16 +58,27 @@ F.ext({
 	 * @param [x] placeholder for context
 	 * @param [a] placeholder
 	 * @param [g] placeholder
+	 * @param [i] placeholder
 	 * @returns {F|Array|Boolean}
 	 */
-	checked: function (v, x, a, g) {
+	checked: function (v, x, a, g, i) {
 		x = this.x;
 		a = [];
-		for (var i = x[F.L]; i--;)
+		for (i = x[F.L]; i--;)
 			if ((g = x[i]).type.match(/ch|rad/))
 				v != []._ ? g.checked = v : a.push(g.checked);
 
-		return !a[F.L] ? this : a[F.L] ^ 1 ? a : a[0];
+		return !a[F.L] ? this : a[F.L] ^ 1 ? a : a[0]
+	},
+
+	serialize: function(a, i) {
+		x = this.x;
+		a = {};
+		this.find('input,select,textarea');
+		for(i = this[F.L]; i--;)
+			a[this[i].name] = this[i].value;
+
+		return a
 	}
 });
 
