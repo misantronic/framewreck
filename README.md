@@ -13,6 +13,11 @@ Modular structure featuring:
  - Events
  - Data
 
+### Install with Bower
+```shell
+$ bower install bootstrap
+```
+
 ### Usage:
 ```html
 <script src="fw.core.min.js"></script>
