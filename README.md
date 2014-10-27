@@ -105,6 +105,11 @@ var value = F('input').val();
 F('body').find('select').val(1)
 var value = F('body').find('select').val();
 
+// Checkbox / Radio buttons
+F('input.checkboxOrRadio').checked(true); 	// checks a checkbox or radio button
+F('input.checkboxOrRadio').checked(false); 	// unchecks a checkbox or radio button
+F('input.checkboxOrRadio').checked(); 		// return checkbox or radio button state
+
 // Remove elements
 F('#id').remove();
 ```
