@@ -5,14 +5,32 @@
 	<title>frameWreck examples</title>
 </head>
 <body>
-	<div id="wrapper">
-		<h1>Head</h1>
-		<div class="box">
-			<p>Text 1</p>
-			<p>Text 2</p>
-			<p>Text 3</p>
-		</div>
+<div id="wrapper">
+	<h1>Head</h1>
+	<div class="box">
+		<p>Text 1</p>
+		<p>Text 2</p>
+		<p>Text 3</p>
 	</div>
+	<div class="box">
+		<label for="name"></label>
+		<input type="text" name="name" id="name">
+		<br/>
+		<label for="password"></label>
+		<input type="password" name="password" id="password">
+		<br/>
+		<label for="select"></label>
+		<select name="select" id="select">
+			<option value="1">Admin</option>
+			<option value="0">Guest</option>
+			<option value="2" selected="selected">User</option>
+		</select>
+		<br/>
+		<label for="checkbox">Check:</label>
+		<input type="checkbox" name="checkbox" id="checkbox"/>
+		<br/>
+	</div>
+</div>
 
 	<script src="../dist/frameWreck.min.js"></script>
 	<script>

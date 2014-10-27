@@ -58,3 +58,9 @@ F.ext({
 	}
 });
 
+// method aliases
+F.ext({
+	val: F.prototype.html,
+	appendTo: F.prototype.append
+});
+

@@ -4,11 +4,12 @@ F.ext({
 	 * @param {String} v eventname
 	 * @param {Function} D callback
 	 * @param [x] placeholder for context
+	 * @param [i] placeholder
 	 * @returns {F}
 	 */
-	on: function(v,D,x){
+	on:function(v,D,x,i){
 		x=this.x;
-		for(var i=x[F.L];i--;)
+		for(i=x[F.L];i--;)
 			x[i].addEventListener(v,D);
 
 		return this
@@ -19,11 +20,12 @@ F.ext({
 	 * @param {String} v eventname
 	 * @param {Function} D callback
 	 * @param [x] placeholder for context
+	 * @param [i] placeholder
 	 * @returns {F}
 	 */
-	off:function(v,D,x){
+	off:function(v,D,x,i){
 		x=this.x;
-		for(var i=x[F.L];i--;)
+		for(i=x[F.L];i--;)
 			x[i].removeEventListener(v,D);
 
 		return this
@@ -34,11 +36,12 @@ F.ext({
 	 * @param {String} v eventname
 	 * @param {*} [D] data
 	 * @param [x] placeholder for context
+	 * @param [i] placeholder
 	 * @returns {F}
 	 */
-	fire:function(v,D,x){
+	fire:function(v,D,x,i){
 		x=this.x;
-		for(var i=x[F.L];i--;)
+		for(i=x[F.L];i--;)
 			x[i].dispatchEvent(new CustomEvent(v,{detail:D}));
 
 		return this

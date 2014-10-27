@@ -23,16 +23,15 @@ F=function(c){
 	 */
 	_.each=function(v){
 		for(i=l;i--;)v(_[i],i);
-		return this
+		return _
 	};
 
 	/**
 	 * Reset keys inside this object and recount length
 	 */
 	_.y=function(){
-		for(i=99;i--;)delete _[i];	// clean up objects indicies
-		for(i in x)_[i]=x[i];		// assign new indicies
-		_[L]=l=x[L]					// set .length and internal placeholder l
+		for(i=99;i--;)x[i]?_[i]=x[i]:delete _[i];	// clean up objects indicies and assign new indicies
+		_[L]=l=x[L];								// set .length and internal placeholder l
 		this.x=x;
 	};
 
@@ -46,13 +45,10 @@ F=function(c){
 			a=v.split(" ");
 			v="";
 			for(i in a)
-				g=a[i].split(":"),
-				g[1]=!isNaN(g[1])?":nth-of-type("+(parseInt(g[1])+1)+")":g[1]?":"+g[1]:"",
-				v+=" "+g[0]+g[1];
+				v+=" "+(g=a[i].split(":"))[0]+(!isNaN(j=g[1])?":nth-of-type("+(+j+1)+")":j?":"+j:"");
 
-			a=[];
-			if(!x)a=d[Q](v);
-			else for(i=l;i--;)a[i]=x[i][Q](v);
+			if(!x)l=1,x=[d];
+			for(a=[],i=l;i--;)a[i]=x[i][Q](v);
 
 			x=[];
 			for(i=0;i<a[L];i++)
@@ -60,10 +56,11 @@ F=function(c){
 					for(j=0;j<g[L];j++)
 						x.push(g[j]);
 				else x.push(g);
+			if(x.toString().match(/NodeList/))x=[];
 			_.y();
-		}catch(e){};
+		}catch(e){}
 
-		return this
+		return _
 	};
 
 	/**
@@ -75,7 +72,7 @@ F=function(c){
 		x=[x[v]];
 		_.y();
 
-		return this
+		return _
 	};
 
 	/**
@@ -93,13 +90,11 @@ F=function(c){
 
 		eval(s);
 
-		return this
+		return _
 	};
 
 	// select context
-	_.find(c);
-
-	return this
+	return _.find(c)
 };
 
 /**
