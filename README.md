@@ -10,7 +10,8 @@ Modular structure featuring:
  - Traversing
  - AJAX-Requests
  - Events
- - Data
+ - Data 
+ - Minified and GZipped only ~1 kb
 
 ### Install with Bower
 ```shell
