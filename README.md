@@ -33,6 +33,7 @@ F().require([
 
 // all modules are loaded synchronously, 
 // so you can chain module functions right away
+// note: all modules are globally available after loading.
 F('#id')
 	.require([
 		'modules/events/fw.events.min.js',
@@ -42,7 +43,11 @@ F('#id')
 	.data('my favorite id');
 </script>
 ```
-*Note:* All modules are globally available after loading.
+
+### Embed all modules
+```html
+<script src="dist/frameWreck.min.js"></script>
+```
 
 
 ### Core: CSS Selectors
