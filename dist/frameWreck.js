@@ -181,12 +181,6 @@ F.ext({
 	},
 
 	/**
-	 * @see html
-	 * @type {Function|F.html}
-	 */
-	val: this.html,
-
-	/**
 	 * Move selector around in the context
 	 * or insert HTML/Text
 	 * Note: selector v will always appended
@@ -202,8 +196,6 @@ F.ext({
 
 		return this
 	},
-
-	appendTo: this.append,
 
 	/**
 	 * Remove context
