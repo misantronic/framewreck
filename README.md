@@ -28,11 +28,11 @@ $ bower install framewreck
 <script>
 // synchronously load modules 
 F().require([
-		'modules/events/fw.events.min.js',
-		'modules/dom/fw.dom.min.js',
-		'modules/css/fw.css.min.js',
-		'modules/ajax/fw.ajax.min.js',
-		'modules/data/fw.data.min.js'
+		'src/modules/events/fw.events.min.js',
+		'src/modules/dom/fw.dom.min.js',
+		'src/modules/css/fw.css.min.js',
+		'src/modules/ajax/fw.ajax.min.js',
+		'src/modules/data/fw.data.min.js'
 	]);	
 ```
 
@@ -41,8 +41,8 @@ F().require([
 // note: all modules are globally available after loading.
 F('#id')
 	.require([
-		'modules/events/fw.events.min.js',
-		'modules/data/fw.data.min.js'
+		'src/modules/events/fw.events.min.js',
+		'src/modules/data/fw.data.min.js'
 	])
 	.on('click', function() { alert('clicked!'); })
 	.data('my favorite id');
