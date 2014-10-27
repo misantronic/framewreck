@@ -23,7 +23,9 @@ $ bower install framewreck
 <script src="dist/frameWreck.min.js"></script>
 ```
 
-### Embed module wise
+**or**
+
+### Embed frameWreck module wise
 ```html
 <script src="fw.core.min.js"></script>
 <script>
