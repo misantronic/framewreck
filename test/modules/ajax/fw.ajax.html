@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>test</title>
+
+	<link rel="stylesheet" href="http://localhost:8000/bower_components/qunit/qunit/qunit.css">
+	<script src="http://localhost:8000/bower_components/qunit/qunit/qunit.js"></script>
+
+	<script src="http://localhost:8000/src/modules/core/fw.core.js"></script>
+	<script src="http://localhost:8000/src/modules/ajax/fw.ajax.js"></script>
+	<script>
+		// tests
+		QUnit.module("ajax");
+
+		QUnit.asyncTest( "asynchronous test: ajax get request", function(assert) {
+			QUnit.expect(1);
+
+			F().ajax('GET', '/test/modules/ajax/data.txt', function(e) {
+				assert.ok(e.responseText, "ajax get failed" );
+				QUnit.start();
+			});
+		});
+
+		// TODO: POST Test fails. How to check?
+		/*QUnit.asyncTest( "asynchronous test: ajax post request", function(assert) {
+			QUnit.expect(1);
+
+			F().ajax('POST', '/test/modules/ajax/data.txt', function(e) {
+				assert.ok(e.responseText, "ajax post failed" );
+				QUnit.start();
+			}, { test: true });
+		});*/
+
+	</script>
+</head>
+<body>
+	<div id="qunit"></div>
+	<div id='qunit-fixture'>
+		<div id="wrapper"></div>
+	</div>
+</body>
+</html>

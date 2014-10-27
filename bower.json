@@ -1,0 +1,20 @@
+{
+  "name": "frameWreck",
+  "version": "1.0.0",
+  "homepage": "https://github.com/misantronic/frameWreck",
+  "authors": [
+    "misantronic <david.skx@posteo.de>"
+  ],
+  "description": "A lightweight modular JavaScript framework.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "qunit": "~1.15.0"
+  }
+}
