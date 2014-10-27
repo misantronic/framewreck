@@ -15,7 +15,7 @@ Modular structure featuring:
 
 ### Install with Bower
 ```shell
-$ bower install bootstrap
+$ bower install framewreck
 ```
 
 ### Usage:
