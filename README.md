@@ -34,7 +34,6 @@ F().require([
 		'src/modules/ajax/fw.ajax.min.js',
 		'src/modules/data/fw.data.min.js'
 	]);	
-```
 
 // all modules are loaded synchronously, 
 // so you can chain module functions right away
