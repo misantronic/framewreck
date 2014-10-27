@@ -18,7 +18,7 @@ Modular structure featuring:
 $ bower install framewreck
 ```
 
-### Usage:
+### Embed module wise
 ```html
 <script src="fw.core.min.js"></script>
 <script>
@@ -52,6 +52,8 @@ F('#id')
 
 ### Core: CSS Selectors
 ```javascript
+F().require(['src/modules/css/fw.core.min.js']);
+
 // IDs and classes
 F('#id');
 F('#id').find('.class');
@@ -70,7 +72,7 @@ F('#id .class').find('a:last-of-type');
 
 ### CSS Module
 ```javascript
-F().require(['modules/css/fw.css.min.js']);
+F().require(['src/modules/css/fw.core.min.js', 'src/modules/css/fw.css.min.js']);
 
 // Set CSS
 F('#id').css({ display: 'block', backgroundColor: 'blue', padding: '10px' });
@@ -81,7 +83,7 @@ var cssValue = F('#id').css('padding') // outputs '10px'
 
 ### DOM Module
 ```javascript
-F().require(['modules/dom/fw.dom.min.js']);
+F().require(['src/modules/css/fw.core.min.js', 'src/modules/dom/fw.dom.min.js']);
 
 // Output HTML of a selector
 var html = F('#id').find('.class').html();
@@ -109,7 +111,7 @@ F('#id').remove();
 
 ### Event Module
 ```javascript
-F().require(['modules/events/fw.events.min.js']);
+F().require(['src/modules/css/fw.core.min.js', 'src/modules/events/fw.events.min.js']);
 
 var eventHandler = function(e) {
 	console.log(e, e.detail); // output event and given parameter object
@@ -128,7 +130,7 @@ F('#id').off('myEvent', eventHandler);
 
 ### AJAX Module
 ```javascript
-F().require(['modules/ajax/fw.ajax.min.js']);
+F().require(['src/modules/css/fw.core.min.js', 'src/modules/ajax/fw.ajax.min.js']);
 
 F().ajax('get', 'http://server.com/api?id=1337', function(e){ console.log(e.responseText) });
 F().ajax('post', 'http://server.com', function(e){ console.log(e.responseText) }, { name: '@misantronic' });
@@ -136,7 +138,7 @@ F().ajax('post', 'http://server.com', function(e){ console.log(e.responseText) }
 
 ### Data Module
 ```javascript
-F().require(['modules/data/fw.data.min.js']);
+F().require(['src/modules/css/fw.core.min.js', 'src/modules/data/fw.data.min.js']);
 
 F('#id').data({ name: '@misantronic' });
 F('#id').data() // output { name: '@misantronic' }
