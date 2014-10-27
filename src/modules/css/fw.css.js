@@ -8,11 +8,11 @@ F.ext({
 	 * @param [j] placeholder
 	 * @returns {String|F}
 	 */
-	css: function(v,x,i,j){
-		x=this.x;
-		if(v&&v.big)return getComputedStyle(x[0],null).getPropertyValue(v);
-		for(i=x[F.L];i--;)
-			for(j in v)x[i].style[j]=v[j];
+	css: function (v, x, i, j) {
+		x = this.x;
+		if (v && v.big)return getComputedStyle(x[0], null).getPropertyValue(v);
+		for (i = x[F.L]; i--;)
+			for (j in v)x[i].style[j] = v[j];
 
 		return this
 	}

@@ -8,11 +8,11 @@ F.ext({
 	 * @param [x] placeholder for context
 	 * @param [i] placeholder
 	 */
-	data:function(v,x,i){
-		x=this.x;
-		for(i=x[F.L];i--;)
-			if(v)x[i].D=v;
-		return v?this:x[0].D
+	data: function (v, x, i) {
+		x = this.x;
+		for (i = x[F.L]; i--;)
+			if (v)x[i].D = v;
+		return v ? this : x[0].D
 	}
 });
 

@@ -7,10 +7,10 @@ F.ext({
 	 * @param [i] placeholder
 	 * @returns {F}
 	 */
-	on:function(v,D,x,i){
-		x=this.x;
-		for(i=x[F.L];i--;)
-			x[i].addEventListener(v,D);
+	on: function (v, D, x, i) {
+		x = this.x;
+		for (i = x[F.L]; i--;)
+			x[i].addEventListener(v, D);
 
 		return this
 	},
@@ -23,10 +23,10 @@ F.ext({
 	 * @param [i] placeholder
 	 * @returns {F}
 	 */
-	off:function(v,D,x,i){
-		x=this.x;
-		for(i=x[F.L];i--;)
-			x[i].removeEventListener(v,D);
+	off: function (v, D, x, i) {
+		x = this.x;
+		for (i = x[F.L]; i--;)
+			x[i].removeEventListener(v, D);
 
 		return this
 	},
@@ -39,10 +39,10 @@ F.ext({
 	 * @param [i] placeholder
 	 * @returns {F}
 	 */
-	fire:function(v,D,x,i){
-		x=this.x;
-		for(i=x[F.L];i--;)
-			x[i].dispatchEvent(new CustomEvent(v,{detail:D}));
+	fire: function (v, D, x, i) {
+		x = this.x;
+		for (i = x[F.L]; i--;)
+			x[i].dispatchEvent(new CustomEvent(v, {detail: D}));
 
 		return this
 	}
