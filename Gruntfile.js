@@ -7,13 +7,7 @@ module.exports = function(grunt) {
 			all: {
 				options: {
 					urls: [
-						'http://localhost:8000/test/modules/core/fw.core.html',
-						'http://localhost:8000/test/modules/ajax/fw.ajax.html',
-						'http://localhost:8000/test/modules/css/fw.css.html',
-						'http://localhost:8000/test/modules/data/fw.data.html',
-						'http://localhost:8000/test/modules/dom/fw.dom.html',
-						'http://localhost:8000/test/modules/events/fw.events.html',
-						'http://localhost:8000/test/modules/animate/fw.animate.html'
+						'/test/**/**/*.html'
 					]
 				}
 			}
