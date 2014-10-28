@@ -12,7 +12,7 @@ Modular structure featuring:
  - [Data](#data-module)
  - [Animations](#animate-module)
  - [Chaining](#chaining)
- - Minified and GZipped only ~1.5 kb
+ - Minified and GZipped only ~1 kb
 
 ## Install with Bower
 ```shell
