@@ -188,13 +188,3 @@ F('#id').animate( ['X:100,2,1'] );				// translates x #id 100 pixels with a dura
 // note: all translations are relative to the contexts initial position
 F('#id').animate( ['X:100', 'X:100'] ); 		// #id is still at 100
 ```
-
-
----
-
-
-[fw.core.packed.js] crushed with [RegPack]<br>
-Configuration: No Math-Packing, all checkboxes off except "Reassign variable names except: F" 
-
-[fw.core.packed.js]:https://github.com/misantronic/min/blob/master/framewreck/fw.core.packed.js
-[RegPack]:http://siorki.github.io/regPack.html
