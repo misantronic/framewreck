@@ -19,14 +19,14 @@ $ bower install framewreck
 
 ## Embed
 
-### Embed frameWreck incl. all modules
+### All modules
 ```html
 <script src="dist/frameWreck.min.js"></script>
 ```
 
 **or**
 
-### Embed frameWreck module wise
+### Module wise
 ```html
 <script src="fw.core.min.js"></script>
 <script>
