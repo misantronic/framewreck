@@ -177,6 +177,7 @@ F().require(['src/modules/css/fw.core.min.js', 'src/modules/animate/fw.animate.m
 // animate expects an array containing the animation instructions
 // every element in the array represents one animation or more animations at that point in time separated by a space.
 
+F('#id').animate( ['O:0'] ); 					// changes #id's opacity to 0
 F('#id').animate( ['X:100'] ); 					// translates x #id 100 pixels
 F('#id').animate( ['X:100 Y:100'] ); 			// translates x/y #id 100 pixels
 F('#id').animate( ['X:100 Y:100', 'O:0.5'] ); 	// translates x/y #id 100 pixels, after that change the opacity to 0.5
