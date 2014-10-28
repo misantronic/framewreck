@@ -171,7 +171,7 @@ F('#id')
 
 ### Animate module
 
-*Note:* This module is optional and not included in dist/*.js
+*Note:* This module is optional and not included in dist/*.js<br>
 Dependencies:<br>
  - css
  - events
