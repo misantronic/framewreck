@@ -23,16 +23,16 @@ $ bower install framewreck
 
 ### All modules
 ```html
-<script src="dist/frameWreck.min.js"></script>
+<script src="dist/framewreck.min.js"></script>
 ```
 
 **or**
 
 ### Module wise
 ```html
-<script src="fw.core.min.js"></script>
+<script src="dist/modules/core/fw.core.min.js"></script>
 <script>
-// asynchronously load modules 
+// asynchronously load other modules 
 F().require([
 		'dist/modules/events/fw.events.min.js',
 		'dist/modules/dom/fw.dom.min.js',
