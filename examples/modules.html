@@ -3,6 +3,15 @@
 <head lang="en">
 	<meta charset="UTF-8">
 	<title>frameWreck examples</title>
+	<style>
+		#wrapper {
+			width: 400px;
+		}
+
+		#wrapper h1 {
+			display: inline-block;
+		}
+	</style>
 </head>
 <body>
 	<div id="wrapper">
@@ -45,12 +54,11 @@
 			'../src/modules/ajax/fw.ajax.js',
 			'../src/modules/data/fw.data.js',
 			'../src/modules/animate/fw.animate.js'
-		])
-		.find('#wrapper')
-		.data('F() initialized')
-		.append('<a href="#">Crazy Link</a>');
+		], function() {
+			F('#wrapper').data('F() initialized');
 
-		console.log(F('#wrapper').data());
+			console.log(F('#wrapper').data());
+		});
 	</script>
 </body>
 </html>
