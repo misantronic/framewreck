@@ -197,10 +197,10 @@ F('#id').animate( ['X:100', 'X:100'] ); 		// #id is still at 100
 
 #### Propery Overview
 
-| Propery  | CSS           | Example                       |
-| -------- |:-------------:|:-----------------------------:|
-| O        | opacity       | F('#id').animate(['O:0.5']);  |
-| X        | translateX()  | F('#id').animate(['X:50']);   |
-| Y	       | translateY()  | F('#id').animate(['Y:-10']);  |
-| R        | rotate()      | F('#id').animate(['R:-90']);  |
-| S        | scale()       | F('#id').animate(['S:3']);    |
+Propery | CSS | Example
+--- | --- | ---
+O | opacity | F('#id').animate(['O:0.5'])
+X | translateX() | F('#id').animate(['X:50'])
+Y | translateY() | F('#id').animate(['Y:-10'])
+R | rotate() | F('#id').animate(['R:-90'])
+S | scale() | F('#id').animate(['S:3'])
