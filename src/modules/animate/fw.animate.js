@@ -1,23 +1,33 @@
 F.ext({
-	animate: function(o, s) {
+	/**
+	 * Animates the context according to the animation rules
+	 * @param {Array} a Animations
+	 * @param {Function} c Callback
+	 * @returns {*}
+	 * @see https://github.com/misantronic/framewreck#animate-module
+	 * @example F('#id').animate(['X:100 Y:50', 'O:0.5', 'X:0 Y:0', 'O:1'], function() {
+	 * 	console.log("all done");
+	 * });
+	 */
+	animate: function(a, c) {
 		var _ = this;
 
-		_.A = o;
-		_.S = s;
+		_.A = a;
+		_.Ac = c;
 
 		for(var i = _.x[F.L]; i--;) {
-			this.animateMe(F(_.x[i]), 0);
+			this._a(F(_.x[i]), 0);
 		}
 
 		return this
 	},
 
-	animateMe: function(el, i) {
+	_a: function(el, i) {
 		var _		= this;
 		var anims	= _.A[i].split(" ");
 		var trs 	= []; // transition
 		var trf		= []; // transform
-		var c		= {};
+		var o		= {};
 
 		for(var k=0; k < anims.length; k++) {
 			var anim 	= anims[k];
@@ -25,12 +35,12 @@ F.ext({
 			var prop 	= anim.substr(2).split(",");
 			var val 	= prop[0];
 
-			var dur 	= prop[1] || _.S || 0.5; // duration
+			var dur 	= prop[1] || 0.5; // duration
 			var del 	= parseFloat(prop[2]) || 0; // delay
 
-			if(type == 'T') {
+			if(type == 'O') {
 				trs[k] = 'opacity '+ dur +'s linear '+ del +'s';
-				c.opacity = val;
+				o.opacity = val;
 			}
 
 			if(type == 'X') {
@@ -63,28 +73,24 @@ F.ext({
 		}
 
 		if(trs.length)
-			c.transition = trs.join(",");
+			o.transition = trs.join(",");
 
 		if(trf.length)
-			c.transform = trf.join(" ");
+			o.transform = trf.join(" ");
 
 		function handler() {
 			el.off('transitionend', handler);
 
-			_.animateMeComplete(el, ++i);
+			if(_.A[++i]) {
+				_._a(el, i);
+			} else {
+				_.Ac&&_.Ac();
+			}
 		}
 
 		el
-			.css(c)
-			.on('transitionend', handler.bind(_));
-	},
-
-	animateMeComplete: function(el, i) {
-		var _ = this;
-
-		if(_.A[i]) {
-			_.animateMe(el, i);
-		}
+			.css(o)
+			.on('transitionend', handler);
 	}
 });
 //F.vendor = (Array.prototype.slice.call(getComputedStyle(F.d.documentElement, '')).join('').match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o']))[1];

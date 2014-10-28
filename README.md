@@ -179,11 +179,16 @@ F().require(['src/modules/css/fw.core.min.js', 'src/modules/animate/fw.animate.m
 
 F('#id').animate( ['X:100'] ); 					// translates x #id 100 pixels
 F('#id').animate( ['X:100 Y:100'] ); 			// translates x/y #id 100 pixels
-F('#id').animate( ['X:100 Y:100', 'T:0.5'] ); 	// translates x/y #id 100 pixels, after that change the transparency to 0.5
+F('#id').animate( ['X:100 Y:100', 'O:0.5'] ); 	// translates x/y #id 100 pixels, after that change the opacity to 0.5
 F('#id').animate( ['S:2'] );					// scale #id to factor 2
 F('#id').animate( ['R:30'] );					// rotate #id 30 deg
 
 F('#id').animate( ['X:100,2,1'] );				// translates x #id 100 pixels with a duration of 2s and a delay of 1s
+
+// callback
+F('#id').animate( ['X:100', 'O:0'], function() {
+	console.log("all done"); 
+});
 
 // note: all translations are relative to the contexts initial position
 F('#id').animate( ['X:100', 'X:100'] ); 		// #id is still at 100
