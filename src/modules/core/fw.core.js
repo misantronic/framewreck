@@ -96,7 +96,13 @@ F = function (c) {
 		return _
 	};
 
-	// select context
+	if (c && c[0] == '<') {
+		(g = d.createElement('div'))[F.H] = c;
+		x = g.childNodes;
+
+		return _.y()
+	}
+
 	return _.find(c)
 };
 
