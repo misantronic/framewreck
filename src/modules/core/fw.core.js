@@ -1,3 +1,9 @@
+/**
+ *
+ * @param {String|HTMLElement} c context querySelect or HTML Element to become the context
+ * @returns {F|*}
+ * @constructor
+ */
 F = function (c) {
 	var _ = this					// this context
 		, x						// the context selected by querySelector
