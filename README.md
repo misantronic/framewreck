@@ -1,5 +1,4 @@
-frameWreck [![Build Status](https://travis-ci.org/misantronic/frameWreck.svg?branch=master)](https://travis-ci.org/misantronic/frameWreck) [![Dependency Status](https://gemnasium.com/misantronic/frameWreck.svg)](https://gemnasium.com/misantronic/frameWreck)
-====================
+# frameWreck [![Build Status](https://travis-ci.org/misantronic/frameWreck.svg?branch=master)](https://travis-ci.org/misantronic/frameWreck) [![Dependency Status](https://gemnasium.com/misantronic/frameWreck.svg)](https://gemnasium.com/misantronic/frameWreck)
 
 A lightweight modular JavaScript framework.
 
@@ -13,10 +12,12 @@ Modular structure featuring:
  - Data 
  - Minified and GZipped only ~1 kb
 
-### Install with Bower
+## Install with Bower
 ```shell
 $ bower install framewreck
 ```
+
+## Embed
 
 ### Embed frameWreck incl. all modules
 ```html
@@ -51,6 +52,7 @@ F('#id')
 </script>
 ```
 
+## Modules
 
 ### Core: CSS Selectors
 ```javascript
