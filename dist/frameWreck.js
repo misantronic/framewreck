@@ -33,6 +33,7 @@ F = function (c) {
 		for (i = 99; i--;)x[i] ? _[i] = x[i] : delete _[i];	// clean up objects indicies and assign new indicies
 		_[L] = l = x[L];								// set .length and internal placeholder l
 		this.x = x;
+		return this
 	};
 
 	/**
@@ -41,6 +42,11 @@ F = function (c) {
 	 * @returns {F}
 	 */
 	_.find = function (v) {
+		if(v && v.type){
+			x=[v];
+			return _.y()
+		}
+
 		try {
 			a = v.split(" ");
 			v = "";
@@ -57,11 +63,9 @@ F = function (c) {
 						x.push(g[j]);
 				else x.push(g);
 			if (x.toString().match(/NodeList/))x = [];
-			_.y();
+			return _.y()
 		} catch (e) {
 		}
-
-		return _
 	};
 
 	/**
@@ -71,9 +75,7 @@ F = function (c) {
 	 */
 	_.get = function (v) {
 		x = [x[v]];
-		_.y();
-
-		return _
+		return _.y()
 	};
 
 	/**
@@ -174,10 +176,10 @@ F.ext({
 		var a = [], e, g;
 		for (var i = 0; i < x[F.L]; i++)
 			e = x[i],											// assign e as current element
-				g = F.H,											// store innerHTML in g, as it might change
+			g = F.H,											// store innerHTML in g, as it might change
 			e.tagName.match(/INP|SEL|TEX/) && (g = "value"),	// if e is input, select or textarea change g to "value"
-				a.push(e[g]),									// save html/value in array
-			v != []._ && (e[g] = v);								// when v is set, assign new value to element
+			a.push(e[g]),										// save html/value in array
+			v != []._ && (e[g] = v);							// when v is set, assign new value to element
 		return v && this || a.join("").replace(/\s/g, "")
 	},
 
@@ -220,16 +222,35 @@ F.ext({
 	 * @param [x] placeholder for context
 	 * @param [a] placeholder
 	 * @param [g] placeholder
+	 * @param [i] placeholder
 	 * @returns {F|Array|Boolean}
 	 */
-	checked: function (v, x, a, g) {
+	checked: function (v, x, a, g, i) {
 		x = this.x;
 		a = [];
-		for (var i = x[F.L]; i--;)
+		for (i = x[F.L]; i--;)
 			if ((g = x[i]).type.match(/ch|rad/))
 				v != []._ ? g.checked = v : a.push(g.checked);
 
-		return !a[F.L] ? this : a[F.L] ^ 1 ? a : a[0];
+		return !a[F.L] ? this : a[F.L] ^ 1 ? a : a[0]
+	},
+
+	/**
+	 * Serializes all form-fields in context
+	 * @param [a] placeholder
+	 * @param [i] placeholder
+	 * @param [g] placeholder
+	 * @returns {{}}
+	 */
+	serialize: function(a, i, g) {
+		x = this.x;
+		a = {};
+		this.find('input,select,textarea');
+		for(i = this[F.L]; i--;)
+			g=F(this[i]),
+			a[g[0].name] = g[0].type.match(/ch|rad/)?g.checked():g.val();
+
+		return a
 	}
 });
 
