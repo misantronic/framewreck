@@ -4,13 +4,7 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		qunit: {
-			all: {
-				options: {
-					urls: [
-						'test/**/**/*.html'
-					]
-				}
-			}
+			all: ['test/**/*.html']
 		},
 
 		concat: {
