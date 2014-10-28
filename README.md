@@ -202,7 +202,7 @@ F('#id').animate( ['X:100', 'X:100'] ); 		// #id is still at 100
 
 #### Propery Overview
 
-Propery | CSS | Example
+Property | CSS | Example
 --- | --- | ---
 O | opacity | `F('#id').animate( ['O:0.5'] )`
 X | translateX() | `F('#id').animate( ['X:50'] )`
