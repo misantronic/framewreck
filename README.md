@@ -163,7 +163,7 @@ F('#id')
 	.find('.class')
 	.html('test')
 	.on('event', eventHandler)
-	.trigger('event', { name: '@misantronic' } )
+	.fire('event', { name: '@misantronic' } )
 	.off('event', eventHandler);
 ```
 
