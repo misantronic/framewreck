@@ -1,6 +1,6 @@
 # framewreck [![Build Status](https://travis-ci.org/misantronic/framewreck.svg?branch=master)](https://travis-ci.org/misantronic/framewreck) [![Dependency Status](https://gemnasium.com/misantronic/frameWreck.svg)](https://gemnasium.com/misantronic/frameWreck)
 
-A lightweight modular JavaScript framework.
+**A lightweight modular JavaScript framework.**
 
 Modular structure featuring:
  - [CSS Selectors](#core-css-selectors)
