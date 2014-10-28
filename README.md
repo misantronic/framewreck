@@ -34,11 +34,11 @@ $ bower install framewreck
 <script>
 // asynchronously load modules 
 F().require([
-		'src/modules/events/fw.events.min.js',
-		'src/modules/dom/fw.dom.min.js',
-		'src/modules/css/fw.css.min.js',
-		'src/modules/ajax/fw.ajax.min.js',
-		'src/modules/data/fw.data.min.js'
+		'dist/modules/events/fw.events.min.js',
+		'dist/modules/dom/fw.dom.min.js',
+		'dist/modules/css/fw.css.min.js',
+		'dist/modules/ajax/fw.ajax.min.js',
+		'dist/modules/data/fw.data.min.js'
 	], function() {
 		// ...
 	});
@@ -50,7 +50,7 @@ F().require([
 ### Core: CSS Selectors
 ```javascript
 // load module
-F().require(['src/modules/css/fw.core.min.js']);
+F().require(['dist/modules/css/fw.core.min.js']);
 
 // IDs and classes
 F('#id');
@@ -71,7 +71,7 @@ F('#id .class').find('a:last-of-type');
 ### CSS module
 ```javascript
 // load module
-F().require(['src/modules/css/fw.core.min.js', 'src/modules/css/fw.css.min.js']);
+F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/css/fw.css.min.js']);
 
 // Set CSS
 F('#id').css({ display: 'block', backgroundColor: 'blue', padding: '10px' });
@@ -83,7 +83,7 @@ var cssValue = F('#id').css('padding') // outputs '10px'
 ### DOM module
 ```javascript
 // load module
-F().require(['src/modules/css/fw.core.min.js', 'src/modules/dom/fw.dom.min.js']);
+F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/dom/fw.dom.min.js']);
 
 // Output HTML of a selector
 var html = F('#id').find('.class').html();
@@ -123,7 +123,7 @@ F('#id').remove();
 ### Event module
 ```javascript
 // load module
-F().require(['src/modules/css/fw.core.min.js', 'src/modules/events/fw.events.min.js']);
+F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/events/fw.events.min.js']);
 
 var eventHandler = function(e) {
 	console.log(e, e.detail); // output event and given parameter object
@@ -143,7 +143,7 @@ F('#id').off('myEvent', eventHandler);
 ### AJAX module
 ```javascript
 // load module
-F().require(['src/modules/css/fw.core.min.js', 'src/modules/ajax/fw.ajax.min.js']);
+F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/ajax/fw.ajax.min.js']);
 
 F().ajax('get', 'http://server.com/api?id=1337', function(e){ console.log(e.responseText) });
 F().ajax('post', 'http://server.com', function(e){ console.log(e.responseText) }, { name: '@misantronic' });
@@ -152,7 +152,7 @@ F().ajax('post', 'http://server.com', function(e){ console.log(e.responseText) }
 ### Data module
 ```javascript
 // load module
-F().require(['src/modules/css/fw.core.min.js', 'src/modules/data/fw.data.min.js']);
+F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/data/fw.data.min.js']);
 
 F('#id').data({ name: '@misantronic' });
 F('#id').data() // output { name: '@misantronic' }
@@ -175,7 +175,7 @@ F('#id')
 
 ```javascript
 // load module
-F().require(['src/modules/css/fw.core.min.js', 'src/modules/animate/fw.animate.min.js']);
+F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/animate/fw.animate.min.js']);
 
 // animation syntax: propery:value[[,duration],delay]
 // animate expects an array containing the animation instructions
