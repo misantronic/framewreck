@@ -3,14 +3,16 @@
 A lightweight modular JavaScript framework.
 
 Modular structure featuring:
- - CSS Selectors
- - CSS Manipulation
- - DOM Manipulation
- - Traversing
- - AJAX-Requests
- - Events
- - Data 
- - Minified and GZipped only ~1 kb
+ - [CSS Selectors](#core-css-selectors)
+ - [CSS Manipulation](#css-module)
+ - [DOM Manipulation](#dom-module)
+ - [Traversing](#dom-module)
+ - [AJAX-Requests](#ajax-module)
+ - [Events](#event-module)
+ - [Data](#data-module)
+ - [Animations](#animate-module)
+ - [Chaining](#chaining)
+ - Minified and GZipped only ~1.5 kb
 
 ## Install with Bower
 ```shell
@@ -168,6 +170,8 @@ F('#id')
 ```
 
 ### Animate module
+
+*Note:* This module is not included in dist/*.js 
 
 ```javascript
 // load module
