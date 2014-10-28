@@ -66,7 +66,7 @@ F('#id .class').find('a:first-of-type');
 F('#id .class').find('a:last-of-type');
 ```
 
-### CSS Module
+### CSS module
 ```javascript
 // load module
 F().require(['src/modules/css/fw.core.min.js', 'src/modules/css/fw.css.min.js']);
@@ -78,7 +78,7 @@ F('#id').css({ display: 'block', backgroundColor: 'blue', padding: '10px' });
 var cssValue = F('#id').css('padding') // outputs '10px'
 ```
 
-### DOM Module
+### DOM module
 ```javascript
 // load module
 F().require(['src/modules/css/fw.core.min.js', 'src/modules/dom/fw.dom.min.js']);
@@ -118,7 +118,7 @@ F('form').serialize(); // output an object containg all serialized form-field va
 F('#id').remove();
 ```
 
-### Event Module
+### Event module
 ```javascript
 // load module
 F().require(['src/modules/css/fw.core.min.js', 'src/modules/events/fw.events.min.js']);
@@ -138,7 +138,7 @@ F('#id').trigger('myEvent', { name: '@misantronic' } );
 F('#id').off('myEvent', eventHandler);
 ```
 
-### AJAX Module
+### AJAX module
 ```javascript
 // load module
 F().require(['src/modules/css/fw.core.min.js', 'src/modules/ajax/fw.ajax.min.js']);
@@ -147,7 +147,7 @@ F().ajax('get', 'http://server.com/api?id=1337', function(e){ console.log(e.resp
 F().ajax('post', 'http://server.com', function(e){ console.log(e.responseText) }, { name: '@misantronic' });
 ```
 
-### Data Module
+### Data module
 ```javascript
 // load module
 F().require(['src/modules/css/fw.core.min.js', 'src/modules/data/fw.data.min.js']);
@@ -166,6 +166,23 @@ F('#id')
 	.trigger('event', { name: '@misantronic' } )
 	.off('event', eventHandler);
 ```
+
+### Animate module
+
+```javascript
+// animation syntax: propery:value[[,duration],delay]
+// animate expects an array containing the animation instructions
+// every element in the array represents one animation or more animations at that point in time separated by a space.
+
+F('#id').animate( ['X:100'] ); 					// translates x #id 100 pixels
+F('#id').animate( ['X:100 Y:100'] ); 			// translates x/y #id 100 pixels
+F('#id').animate( ['X:100 Y:100', 'T:0.5'] ); 	// translates x/y #id 100 pixels, after that change the transparency to 0.5
+F('#id').animate( ['S:2'] );					// scale #id to facor 2
+F('#id').animate( ['R:30'] );					// rotate #id 30 deg
+
+F('#id').animate( ['X:100,2,1'] );				// translates x #id 100 pixels with a duration of 2s and a delay of 1s
+```
+
 
 ---
 
