@@ -11,8 +11,10 @@
 	<script src="http://localhost:8000/src/modules/dom/fw.dom.js"></script>
 	<script>
 		// tests
-		QUnit.module("css");
-		QUnit.test("css", function() {
+		QUnit.module("dom");
+		QUnit.test("dom", function() {
+			/** HTML **/
+
 			F('#test').html('<b>TestValue</b>');
 
 			QUnit.equal(
@@ -20,6 +22,8 @@
 					"<b>TestValue</b>",
 					"html() insert failed"
 			);
+
+			/** SET VAL **/
 
 			F('#name').val('test');
 
@@ -31,11 +35,15 @@
 
 			F('#select').val(1);
 
+			/** GET VAL **/
+
 			QUnit.equal(
 					F('#select').val(),
 					"1",
 					"select val() failed"
 			);
+
+			/** APPEND HTML **/
 
 			F('#wrapper').append('<a id="test-link" href="http://www.github.com">Link</a>');
 
@@ -45,13 +53,17 @@
 					"append() failed"
 			);
 
-			F('#test-link').append('#test');
+			/** APPENDTO context **/
+
+			F('#test-link').appendTo('#test');
 
 			QUnit.equal(
 					F('#test').find('a').html(),
 					'Link',
 					"appendTo() failed"
 			);
+
+			/** REMOVE **/
 
 			F('#test').remove();
 
@@ -60,6 +72,8 @@
 					0,
 					"remove() failed"
 			);
+
+			/** CHECKBOX CHECKED **/
 
 			QUnit.ok(
 				F('#checkbox2').checked(),
@@ -71,6 +85,8 @@
 				"checked(true) on checkbox failed"
 			);
 
+			/** RADIO CHECKED **/
+
 			QUnit.ok(
 				F('#radio2').checked(),
 				"checked() on radio button failed"
@@ -80,6 +96,8 @@
 				F('#radio1').checked(true).checked(),
 				"checked(true) on radio button failed"
 			);
+
+			/** SERIALIZE **/
 
 			F('#name').val('test');
 
