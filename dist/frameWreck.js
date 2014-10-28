@@ -1,3 +1,9 @@
+/**
+ *
+ * @param {String|HTMLElement} c context querySelect or HTML Element to become the context
+ * @returns {F|*}
+ * @constructor
+ */
 F = function (c) {
 	var _ = this					// this context
 		, x						// the context selected by querySelector
@@ -42,7 +48,7 @@ F = function (c) {
 	 * @returns {F}
 	 */
 	_.find = function (v) {
-		if(v && v.type){
+		if(v && !v.big){
 			x=[v];
 			return _.y()
 		}
@@ -79,19 +85,15 @@ F = function (c) {
 	};
 
 	/**
-	 * Load a number of scripts synchronously
+	 * Load a number of scripts asynchronously
 	 * @param {Array} a contains urls
-	 * @param [s] placeholder script-string
+	 * @param {Function} c callback
+	 * @param [s] placeholder number script loaded
 	 * @param [r] placeholder xhr-request
 	 */
-	_.require = function (a, s, r) {
-		s = "";
-		for (i in a)
-			(r = new XMLHttpRequest).open('GET', a[i], false),
-				r.send(''),
-				s += r.responseText;
-
-		eval(s);
+	_.require = function (a, c, s, r, i) {
+		s=0;i=a[F.L];
+		with(d)for(;(r=createElement('script')).src=a.shift();head.appendChild(r))r.onload=function(){s++;c&&s==i&&c(this)}
 
 		return _
 	};
