@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 			all: {
 				options: {
 					urls: [
-						'/test/**/**/*.html'
+						'test/**/**/*.html'
 					]
 				}
 			}
