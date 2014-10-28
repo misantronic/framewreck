@@ -30,25 +30,16 @@ $ bower install framewreck
 ```html
 <script src="fw.core.min.js"></script>
 <script>
-// synchronously load modules 
+// asynchronously load modules 
 F().require([
 		'src/modules/events/fw.events.min.js',
 		'src/modules/dom/fw.dom.min.js',
 		'src/modules/css/fw.css.min.js',
 		'src/modules/ajax/fw.ajax.min.js',
 		'src/modules/data/fw.data.min.js'
-	]);	
-
-// all modules are loaded synchronously, 
-// so you can chain module functions right away
-// note: all modules are globally available after loading.
-F('#id')
-	.require([
-		'src/modules/events/fw.events.min.js',
-		'src/modules/data/fw.data.min.js'
-	])
-	.on('click', function() { alert('clicked!'); })
-	.data('my favorite id');
+	], function() {
+		// ...
+	});
 </script>
 ```
 
@@ -56,6 +47,7 @@ F('#id')
 
 ### Core: CSS Selectors
 ```javascript
+// load module
 F().require(['src/modules/css/fw.core.min.js']);
 
 // IDs and classes
@@ -76,6 +68,7 @@ F('#id .class').find('a:last-of-type');
 
 ### CSS Module
 ```javascript
+// load module
 F().require(['src/modules/css/fw.core.min.js', 'src/modules/css/fw.css.min.js']);
 
 // Set CSS
@@ -87,6 +80,7 @@ var cssValue = F('#id').css('padding') // outputs '10px'
 
 ### DOM Module
 ```javascript
+// load module
 F().require(['src/modules/css/fw.core.min.js', 'src/modules/dom/fw.dom.min.js']);
 
 // Output HTML of a selector
@@ -126,6 +120,7 @@ F('#id').remove();
 
 ### Event Module
 ```javascript
+// load module
 F().require(['src/modules/css/fw.core.min.js', 'src/modules/events/fw.events.min.js']);
 
 var eventHandler = function(e) {
@@ -145,6 +140,7 @@ F('#id').off('myEvent', eventHandler);
 
 ### AJAX Module
 ```javascript
+// load module
 F().require(['src/modules/css/fw.core.min.js', 'src/modules/ajax/fw.ajax.min.js']);
 
 F().ajax('get', 'http://server.com/api?id=1337', function(e){ console.log(e.responseText) });
@@ -153,6 +149,7 @@ F().ajax('post', 'http://server.com', function(e){ console.log(e.responseText) }
 
 ### Data Module
 ```javascript
+// load module
 F().require(['src/modules/css/fw.core.min.js', 'src/modules/data/fw.data.min.js']);
 
 F('#id').data({ name: '@misantronic' });
@@ -161,6 +158,7 @@ F('#id').data() // output { name: '@misantronic' }
 
 ### Chaining
 ```javascript
+// load module
 F('#id')
 	.find('.class')
 	.html('test')
