@@ -96,7 +96,13 @@ F = function (c) {
 		return _
 	};
 
-	// select context
+	if (c && c[0] == '<') {
+		(g = d.createElement('div'))[F.H] = c;
+		x = g.childNodes;
+
+		return _.y()
+	}
+
 	return _.find(c)
 };
 
@@ -193,7 +199,7 @@ F.ext({
 	 */
 	append: function (v, x) {
 		x = this.x;
-		var g = v.match(/^</) ? 0 : F.d[F.Q](v)[0];
+		var g = v[0]=='<' ? 0 : F.d[F.Q](v)[0];
 		for (var i = x[F.L]; i--;)
 			g ? g.appendChild(x[i]) : x[i][F.H] += v;
 
