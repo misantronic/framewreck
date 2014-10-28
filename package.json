@@ -1,5 +1,5 @@
 {
-  "name": "frameWreck",
+  "name": "framewreck",
   "version": "1.2.4a",
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -18,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/misantronic/frameWreck.git"
+    "url": "https://github.com/misantronic/framewreck.git"
   },
   "author": "misantronic <david.skx@posteo.de>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/misantronic/frameWreck/issues"
+    "url": "https://github.com/misantronic/framewreck/issues"
   },
-  "homepage": "https://github.com/misantronic/frameWreck"
+  "homepage": "https://github.com/misantronic/framewreck"
 }
