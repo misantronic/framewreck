@@ -63,6 +63,14 @@
 					"appendTo() failed"
 			);
 
+			F('<a id="test-link2" href="http://github.com">Test</a>').appendTo('body');
+
+			QUnit.equal(
+					F('#test-link2').length,
+					1,
+					"create an element in F() constructor failed"
+			);
+
 			/** REMOVE **/
 
 			F('#test').remove();
