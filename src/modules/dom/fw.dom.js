@@ -71,12 +71,20 @@ F.ext({
 		return !a[F.L] ? this : a[F.L] ^ 1 ? a : a[0]
 	},
 
-	serialize: function(a, i) {
+	/**
+	 * Serializes all form-fields in context
+	 * @param [a] placeholder
+	 * @param [i] placeholder
+	 * @param [g] placeholder
+	 * @returns {{}}
+	 */
+	serialize: function(a, i, g) {
 		x = this.x;
 		a = {};
 		this.find('input,select,textarea');
 		for(i = this[F.L]; i--;)
-			a[this[i].name] = this[i].value;
+			g=F(this[i]),
+			a[g[0].name] = g[0].type.match(/ch|rad/)?g.checked():g.val();
 
 		return a
 	}

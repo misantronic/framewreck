@@ -29,6 +29,14 @@
 					"input val() insert failed"
 			);
 
+			F('#select').val(1);
+
+			QUnit.equal(
+					F('#select').val(),
+					"1",
+					"select val() failed"
+			);
+
 			F('#wrapper').append('<a id="test-link" href="http://www.github.com">Link</a>');
 
 			QUnit.equal(
@@ -72,6 +80,27 @@
 				F('#radio1').checked(true).checked(),
 				"checked(true) on radio button failed"
 			);
+
+			F('#name').val('test');
+
+			QUnit.equal(
+				F('form').serialize().name,
+				'test',
+				'serialize() failed'
+			);
+
+			F('#checkbox2').checked(false);
+
+			QUnit.ok(
+				F('form').serialize().checkbox1,
+				'serialize() failed'
+			);
+
+			QUnit.equal(
+				F('form').serialize().select,
+				"2",
+				'serialize() failed'
+			);
 		});
 	</script>
 </head>
@@ -81,28 +110,30 @@
 		<div id="wrapper">
 			<div id="test"></div>
 			<div class="box">
-				<label for="name"></label>
-				<input type="text" name="name" id="name">
-				<br/>
-				<label for="password"></label>
-				<input type="password" name="password" id="password">
-				<br/>
-				<label for="select"></label>
-				<select name="select" id="select">
-					<option value="1">Admin</option>
-					<option value="0">Guest</option>
-					<option value="2" selected="selected">User</option>
-				</select>
+				<form action="" method="POST">
+					<label for="name"></label>
+					<input type="text" name="name" id="name">
+					<br/>
+					<label for="password"></label>
+					<input type="password" name="password" id="password">
+					<br/>
+					<label for="select"></label>
+					<select name="select" id="select">
+						<option value="1">Admin</option>
+						<option value="0">Guest</option>
+						<option value="2" selected="selected">User</option>
+					</select>
 
-				<br/>
-				<input type="checkbox" name="checkbox" id="checkbox1"/>
-				<input type="checkbox" name="checkbox" id="checkbox2" checked="checked"/>
-				<input type="checkbox" name="checkbox" id="checkbox3"/>
+					<br/>
+					<input type="checkbox" name="checkbox1" id="checkbox1"/>
+					<input type="checkbox" name="checkbox2" id="checkbox2" checked="checked"/>
+					<input type="checkbox" name="checkbox3" id="checkbox3"/>
 
-				<br/>
-				<input type="radio" name="radio" id="radio1"/>
-				<input type="radio" name="radio" id="radio2" checked="checked"/>
-				<input type="radio" name="radio" id="radio3"/>
+					<br/>
+					<input type="radio" name="radio" id="radio1"/>
+					<input type="radio" name="radio" id="radio2" checked="checked"/>
+					<input type="radio" name="radio" id="radio3"/>
+				</form>
 			</div>
 		</div>
 	</div>

@@ -33,6 +33,7 @@ F = function (c) {
 		for (i = 99; i--;)x[i] ? _[i] = x[i] : delete _[i];	// clean up objects indicies and assign new indicies
 		_[L] = l = x[L];								// set .length and internal placeholder l
 		this.x = x;
+		return this
 	};
 
 	/**
@@ -41,6 +42,11 @@ F = function (c) {
 	 * @returns {F}
 	 */
 	_.find = function (v) {
+		if(v && v.type){
+			x=[v];
+			return _.y()
+		}
+
 		try {
 			a = v.split(" ");
 			v = "";
@@ -57,11 +63,9 @@ F = function (c) {
 						x.push(g[j]);
 				else x.push(g);
 			if (x.toString().match(/NodeList/))x = [];
-			_.y();
+			return _.y()
 		} catch (e) {
 		}
-
-		return _
 	};
 
 	/**
@@ -71,9 +75,7 @@ F = function (c) {
 	 */
 	_.get = function (v) {
 		x = [x[v]];
-		_.y();
-
-		return _
+		return _.y()
 	};
 
 	/**
