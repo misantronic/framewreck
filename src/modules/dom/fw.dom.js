@@ -29,7 +29,7 @@ F.ext({
 	 */
 	append: function (v, x) {
 		x = this.x;
-		var g = v.match(/^</) ? 0 : F.d[F.Q](v)[0];
+		var g = v[0]=='<' ? 0 : F.d[F.Q](v)[0];
 		for (var i = x[F.L]; i--;)
 			g ? g.appendChild(x[i]) : x[i][F.H] += v;
 
