@@ -19,15 +19,6 @@ module.exports = function(grunt) {
 			}
 		},
 
-		connect: {
-			server: {
-				options: {
-					port: 8000,
-					base: '.'
-				}
-			}
-		},
-
 		concat: {
 			options: {
 				separator: ''
@@ -69,9 +60,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-qunit');
-	grunt.loadNpmTasks('grunt-contrib-connect');
 
 	// tasks
-	grunt.registerTask('test', ['connect', 'qunit']);
-	grunt.registerTask('default', ['connect', 'qunit', 'concat', 'uglify']);
+	grunt.registerTask('test', ['qunit']);
+	grunt.registerTask('default', ['qunit', 'concat', 'uglify']);
 };
