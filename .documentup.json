@@ -1,8 +1,8 @@
 {
-	"name": "FrameWreck",
+	"name": "frameWreck",
 	"twitter": "misantronic",
 	"google_analytics": "UA-56156433-1",
 	"travis": true,
 	"issues": true,
-	"theme": "V1"
+	"theme": "v1"
 }
