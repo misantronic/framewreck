@@ -112,6 +112,9 @@ F('input.checkboxOrRadio').checked(true); 	// checks a checkbox or radio button
 F('input.checkboxOrRadio').checked(false); 	// unchecks a checkbox or radio button
 F('input.checkboxOrRadio').checked(); 		// return checkbox or radio button state
 
+// Serialize
+F('form').serialize(); // output an object containg all serialized form-field values
+
 // Remove elements
 F('#id').remove();
 ```
