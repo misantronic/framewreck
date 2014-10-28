@@ -170,6 +170,9 @@ F('#id')
 ### Animate module
 
 ```javascript
+// load module
+F().require(['src/modules/css/fw.core.min.js', 'src/modules/animate/fw.animate.min.js']);
+
 // animation syntax: propery:value[[,duration],delay]
 // animate expects an array containing the animation instructions
 // every element in the array represents one animation or more animations at that point in time separated by a space.
@@ -181,6 +184,9 @@ F('#id').animate( ['S:2'] );					// scale #id to facor 2
 F('#id').animate( ['R:30'] );					// rotate #id 30 deg
 
 F('#id').animate( ['X:100,2,1'] );				// translates x #id 100 pixels with a duration of 2s and a delay of 1s
+
+// note: all translations are relative to the contexts initial position
+F('#id').animate( ['X:100', 'X:100'] ); 		// #id is still at 100
 ```
 
 
