@@ -84,7 +84,7 @@ F.ext({
 			if(_.A[++i]) {
 				_._a(el, i);
 			} else {
-				_.Ac&&_.Ac();
+				_.Ac&&_.Ac.call(_);
 			}
 		}
 

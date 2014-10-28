@@ -187,9 +187,9 @@ F('#id').animate( ['R:30'] );					// rotate #id 30 deg
 F('#id').animate( ['X:100,2,1'] );				// translates x #id 100 pixels with a duration of 2s and a delay of 1s
 
 // callback
-F('#id').animate( ['X:100', 'O:0'], function() {
-	console.log("all done"); 
-});
+F('#id').animate( [ 'O:0' ], function() { 
+	this.css({ display: 'none' }) 
+})
 
 // note: all translations are relative to the contexts initial position
 F('#id').animate( ['X:100', 'X:100'] ); 		// #id is still at 100
