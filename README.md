@@ -172,9 +172,7 @@ F('#id')
 ### Animate module
 
 *Note:* This module is optional and not included in dist/*.js<br>
-Dependencies:<br>
- - css
- - events
+Dependencies: [CSS](#css-module), [Events](#event-module)
 
 ```javascript
 // load module
