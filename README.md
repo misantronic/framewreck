@@ -200,7 +200,7 @@ F('#id').animate( [ 'O:0' ], function() {
 F('#id').animate( ['X:100', 'X:100'] ); 		// #id is still at 100
 ```
 
-#### Propery Overview
+#### Property Overview
 
 Property | CSS | Example
 --- | --- | ---
