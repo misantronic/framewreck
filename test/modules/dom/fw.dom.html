@@ -127,6 +127,26 @@
 				"2",
 				'serialize() failed'
 			);
+
+			/** ATTR **/
+
+			QUnit.equal(
+				F('#wrapper').attr('id'),
+				'wrapper',
+				'attr getting failed'
+			);
+
+			QUnit.equal(
+				F('#wrapper').attr('class', 'testClass').attr('class'),
+				'testClass',
+				'attr setting failed'
+			);
+
+			QUnit.equal(
+				F('#wrapper').attr('data-test', 'test').attr('data-test'),
+				'test',
+				'custom attr setting failed'
+			);
 		});
 	</script>
 </head>

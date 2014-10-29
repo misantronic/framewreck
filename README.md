@@ -118,6 +118,11 @@ F('form').serialize(); // output an object containg all serialized form-field va
 
 // Remove elements
 F('#id').remove();
+
+// Attributes
+F('#id').attr('id');					// return attribute
+F('#id').attr('class', 'myClass');		// set attribute
+F('#id').attr('data-test', 'myData');	// set custom attribute
 ```
 
 ### Event module
