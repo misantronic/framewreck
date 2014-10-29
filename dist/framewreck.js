@@ -248,9 +248,10 @@ F.ext({
 	 * @param [a] placeholder
 	 * @param [i] placeholder
 	 * @param [g] placeholder
+	 * @param [x] placeholder
 	 * @returns {{}}
 	 */
-	serialize: function(a, i, g) {
+	serialize: function(a, i, g, x) {
 		x = this.x;
 		a = {};
 		this.find('input,select,textarea');
@@ -259,6 +260,22 @@ F.ext({
 			a[g[0].name] = g[0].type.match(/ch|rad/)?g.checked():g.val();
 
 		return a
+	},
+
+	/**
+	 * Get attribute of first element in context
+	 * or set attribute for all context elements
+	 * @param {String} key
+	 * @param {String} [value]
+	 * @param [x] placeholder
+	 * @returns {F|String}
+	 */
+	attr: function(key, value, x) {
+		x = this.x;
+		for (i = x[F.L]; i--;)
+			value&&x[i].setAttribute(key, value);
+
+		return value?this:x[0].getAttribute(key)
 	}
 });
 
