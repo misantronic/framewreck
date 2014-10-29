@@ -214,3 +214,8 @@ X | translateX() | `F('#id').animate( ['X:50'] )`
 Y | translateY() | `F('#id').animate( ['Y:-10'] )`
 R | rotate() | `F('#id').animate( ['R:-90'] )`
 S | scale() | `F('#id').animate( ['S:3'] )`
+
+## Contact
+
+If you have any questions, praise or contempt feel free to write me: <misantronic@posteo.se>.
+Of course, you can file an issue if you find evil bugs.
