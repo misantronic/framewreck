@@ -1,8 +1,8 @@
 F.ext({
 	/**
 	 * Animates the context according to the animation rules
-	 * @param {Array} anims Animations
-	 * @param {Function} callback Callback
+	 * @param {Array|String} a Animations
+	 * @param {Function} c Callback
 	 * @param [i] placeholder
 	 * @returns {*}
 	 * @see https://github.com/misantronic/framewreck#animate-module
@@ -10,11 +10,14 @@ F.ext({
 	 * 	console.log("all done");
 	 * });
 	 */
-	animate: function(anims, callback, i) {
+	animate: function(a, c, i) {
 		var _ = this;
 
-		_.A = anims;
-		_.Ac = callback;
+		// animation shorthands
+		a = a == 'hide' ? ['O:0'] : a == 'show' ? ['O:1'] : a;
+
+		_.A  = a;
+		_.Ac = c;
 
 		for(i = _.x[F.L]; i--;)
 			_._a(F(_.x[i]), 0);
