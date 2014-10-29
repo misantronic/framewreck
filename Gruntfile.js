@@ -32,13 +32,13 @@ module.exports = function(grunt) {
 				files: {
 					'dist/<%= pkg.name %>.min.js'		: ['<%= concat.dist.dest %>'],
 
-					'dist/core/fw.core.min.js'			: ['src/modules/core/fw.core.js'],
-					'dist/ajax/fw.ajax.min.js'			: ['src/modules/ajax/fw.ajax.js'],
-					'dist/animate/fw.animate.min.js'	: ['src/modules/animate/fw.animate.js'],
-					'dist/css/fw.css.min.js'			: ['src/modules/css/fw.css.js'],
-					'dist/data/fw.data.min.js'			: ['src/modules/data/fw.data.js'],
-					'dist/dom/fw.dom.min.js'			: ['src/modules/dom/fw.dom.js'],
-					'dist/events/fw.events.min.js'		: ['src/modules/events/fw.events.js']
+					'dist/modules/core/fw.core.min.js'			: ['src/modules/core/fw.core.js'],
+					'dist/modules/ajax/fw.ajax.min.js'			: ['src/modules/ajax/fw.ajax.js'],
+					'dist/modules/animate/fw.animate.min.js'	: ['src/modules/animate/fw.animate.js'],
+					'dist/modules/css/fw.css.min.js'			: ['src/modules/css/fw.css.js'],
+					'dist/modules/data/fw.data.min.js'			: ['src/modules/data/fw.data.js'],
+					'dist/modules/dom/fw.dom.min.js'			: ['src/modules/dom/fw.dom.js'],
+					'dist/modules/events/fw.events.min.js'		: ['src/modules/events/fw.events.js']
 				}
 			}
 		}
