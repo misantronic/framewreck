@@ -177,7 +177,7 @@ F('#id')
 ### Animate module
 
 Animation Syntax: `propery:value[[,duration],delay]`<br>
-animate() expects an array containing the animation instructions
+animate() expects an array containing the animation instructions.<br>
 Every element in the array represents one animation or more animations at that point in time separated by a space.
 
 *Note:* This module is optional and not included in dist/*.js<br>
