@@ -204,7 +204,7 @@ F('#id')
 ### Animate module
 
 The animate module makes CSS3-Transforms and Animations super-easy using a unique synatx.<br>
-The commands in the animation queue are invoked at the same time ( `[ X:5 Y:5 W:10 ]` ) or one after another ( `[ X:5 ], [ Y:5 ], [ W:10 ]` ).
+The commands in the animation queue are invoked at the same time ( `[ 'X:5 Y:5 W:10' ]` ) or one after another ( `[ 'X:5' , 'Y:5', 'W:10' ]` ).
 
 *Note:* This module is optional and not included in dist/*.js<br>
 Dependencies: [CSS](#css-module), [Events](#event-module)
