@@ -32,16 +32,34 @@ F.ext({
 			trf		= [], // transform
 			obj		= {};
 
+		var map = {
+			W: "width",
+			H: "height",
+			O: "opacity"
+		};
+
 		for(var k=0; k < anims[F.L]; k++) {
 			var anim 	= anims[k],
 				type 	= anim[0],						// animation type
 				prop 	= anim.substr(2).split(","),	// property
 				val 	= prop[0],						// value
 				dur 	= prop[1] || 0.5, 				// duration
-				del 	= parseFloat(prop[2]) || 0;  	// delay
+				del 	= parseFloat(prop[2]) || 0,		// delay
+				cur		= el.css(map[type]);  			// current property value
 
-			trs[k] = type=='O' ? (obj.opacity = val)&&'opacity '+ dur +'s linear '+ del +'s' : 'transform '+ dur +'s linear '+ del +'s';
+			// reset width and height
+			if(type == 'W')
+				el.css({width: cur});
+			if(type == 'H')
+				el.css({height: cur});
 
+			// set object property + value
+			map[type] ? obj[map[type]] = val : map[type] = 'transform';
+
+			// set transition
+			trs[k] = map[type] + ' '+dur +'s linear '+ del +'s';
+
+			// set transform
 			trf.push('translateX('+ (type == 'X' ? val : 0) +'px)');
 			trf.push('translateY('+ (type == 'Y' ? val : 0) +'px)');
 			trf.push('rotate('+ (type == 'R' ? val : 0) +'deg)');
@@ -60,7 +78,11 @@ F.ext({
 			_.A[++i]?_._a(el, i):_.Ac&&_.Ac.call(_)
 		}
 
-		el.on('transitionend', h).css(obj)
+		// trigger animation on next tick
+		setTimeout(function() {
+			el.on("transitionend", h).css(obj)
+		}, 0);
+
 	}
 });
 //F.vendor = (Array.prototype.slice.call(getComputedStyle(F.d.documentElement, '')).join('').match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o']))[1];
