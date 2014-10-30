@@ -19,26 +19,27 @@ Modular structure featuring:
 $ bower install framewreck
 ```
 
-## Embed
+## Embed via CDN
 
-### All modules
+### all modules
 ```html
-<script src="dist/framewreck.min.js"></script>
+<script src="http://cdn.jsdelivr.net/framewreck/latest/framewreck.min.js"></script>
 ```
 
 **or**
 
-### Module wise
+### module wise
 ```html
-<script src="dist/modules/core/fw.core.min.js"></script>
+<script src="http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js"></script>
 <script>
 // asynchronously load other modules 
 F().require([
-		'dist/modules/events/fw.events.min.js',
-		'dist/modules/dom/fw.dom.min.js',
-		'dist/modules/css/fw.css.min.js',
-		'dist/modules/ajax/fw.ajax.min.js',
-		'dist/modules/data/fw.data.min.js'
+		'http://cdn.jsdelivr.net/framewreck/latest/modules/events/fw.events.min.js',
+		'http://cdn.jsdelivr.net/framewreck/latest/modules/animate/fw.animate.min.js',
+		'http://cdn.jsdelivr.net/framewreck/latest/modules/dom/fw.dom.min.js',
+		'http://cdn.jsdelivr.net/framewreck/latest/modules/css/fw.css.min.js',
+		'http://cdn.jsdelivr.net/framewreck/latest/modules/ajax/fw.ajax.min.js',
+		'http://cdn.jsdelivr.net/framewreck/latest/modules/data/fw.data.min.js'
 	], function() {
 		// ...
 	});
@@ -206,7 +207,6 @@ F('#id')
 The animate module makes CSS3-Transforms and Animations super-easy using a unique synatx.<br>
 The commands in the animation queue are invoked at the same time ( `[ 'X:5 Y:5 W:10' ]` ) or one after another ( `[ 'X:5' , 'Y:5', 'W:10' ]` ).
 
-*Note:* This module is optional and not included in dist/*.js<br>
 Dependencies: [CSS](#css-module), [Events](#event-module)
 
 ```javascript
