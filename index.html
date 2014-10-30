@@ -1,0 +1,363 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Framewreck by misantronic</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/misantronic/framewreck">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/misantronic/framewreck/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/misantronic/framewreck/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Framewreck</h1>
+          <p>A lightweight modular JavaScript framework</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/misantronic">misantronic</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="framewreck--" class="anchor" href="#framewreck--"><span class="octicon octicon-link"></span></a>framewreck <a href="https://travis-ci.org/misantronic/framewreck"><img src="https://travis-ci.org/misantronic/framewreck.svg?branch=master" alt="Build Status"></a> <a href="https://gemnasium.com/misantronic/frameWreck"><img src="https://gemnasium.com/misantronic/frameWreck.svg" alt="Dependency Status"></a>
+</h1>
+
+<p><strong>A lightweight modular JavaScript framework.</strong></p>
+
+<p>Modular structure featuring:</p>
+
+<ul>
+<li><a href="#core-css-selectors">CSS Selectors</a></li>
+<li><a href="#css-module">CSS Manipulation</a></li>
+<li><a href="#dom-module">DOM Manipulation</a></li>
+<li><a href="#dom-module">Traversing</a></li>
+<li><a href="#ajax-module">AJAX-Requests</a></li>
+<li><a href="#event-module">Events</a></li>
+<li><a href="#data-module">Data</a></li>
+<li><a href="#animate-module">Animations</a></li>
+<li><a href="#chaining">Chaining</a></li>
+<li>Minified and GZipped only ~1 kb</li>
+</ul>
+
+<h2>
+<a name="install-with-bower" class="anchor" href="#install-with-bower"><span class="octicon octicon-link"></span></a>Install with Bower</h2>
+
+<div class="highlight highlight-shell"><pre><span class="nv">$ </span>bower install framewreck
+</pre></div>
+
+<h2>
+<a name="embed" class="anchor" href="#embed"><span class="octicon octicon-link"></span></a>Embed</h2>
+
+<h3>
+<a name="all-modules" class="anchor" href="#all-modules"><span class="octicon octicon-link"></span></a>All modules</h3>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"dist/framewreck.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<p><strong>or</strong></p>
+
+<h3>
+<a name="module-wise" class="anchor" href="#module-wise"><span class="octicon octicon-link"></span></a>Module wise</h3>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"dist/modules/core/fw.core.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="c1">// asynchronously load other modules </span>
+<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span>
+        <span class="s1">'dist/modules/events/fw.events.min.js'</span><span class="p">,</span>
+        <span class="s1">'dist/modules/dom/fw.dom.min.js'</span><span class="p">,</span>
+        <span class="s1">'dist/modules/css/fw.css.min.js'</span><span class="p">,</span>
+        <span class="s1">'dist/modules/ajax/fw.ajax.min.js'</span><span class="p">,</span>
+        <span class="s1">'dist/modules/data/fw.data.min.js'</span>
+    <span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+
+<h2>
+<a name="modules" class="anchor" href="#modules"><span class="octicon octicon-link"></span></a>Modules</h2>
+
+<h3>
+<a name="core-css-selectors" class="anchor" href="#core-css-selectors"><span class="octicon octicon-link"></span></a>Core: CSS Selectors</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// load module</span>
+<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/css/fw.core.min.js'</span><span class="p">]);</span>
+
+<span class="c1">// IDs and classes</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">);</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.class'</span><span class="p">);</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id .class'</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'a'</span><span class="p">);</span>
+
+<span class="c1">// Index selectors</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id .class'</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id .class:0'</span><span class="p">)</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id:1 .class:0 p'</span><span class="p">)</span>
+
+<span class="c1">// Pseudo classes</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id .class:first-child'</span><span class="p">);</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id .class'</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'a:first-of-type'</span><span class="p">);</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id .class'</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'a:last-of-type'</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="css-module" class="anchor" href="#css-module"><span class="octicon octicon-link"></span></a>CSS module</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// load module</span>
+<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/css/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/css/fw.css.min.js'</span><span class="p">]);</span>
+
+<span class="c1">// Set CSS</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span> <span class="nx">display</span><span class="o">:</span> <span class="s1">'block'</span><span class="p">,</span> <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">'blue'</span><span class="p">,</span> <span class="nx">padding</span><span class="o">:</span> <span class="s1">'10px'</span> <span class="p">});</span>
+
+<span class="c1">// Get CSS</span>
+<span class="kd">var</span> <span class="nx">cssValue</span> <span class="o">=</span> <span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s1">'padding'</span><span class="p">)</span> <span class="c1">// outputs '10px'</span>
+</pre></div>
+
+<h3>
+<a name="dom-module" class="anchor" href="#dom-module"><span class="octicon octicon-link"></span></a>DOM module</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// load module</span>
+<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/css/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/dom/fw.dom.min.js'</span><span class="p">]);</span>
+
+<span class="c1">// Output HTML of a selector</span>
+<span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.class'</span><span class="p">).</span><span class="nx">html</span><span class="p">();</span>
+
+<span class="c1">// Set HTML of a selector</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.class'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">'&lt;a href="#"&gt;Link&lt;/a&gt;'</span><span class="p">);</span>
+
+<span class="c1">// Append HTML/Text to a DOM-Element</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">'&lt;a href="#"&gt;Link&lt;/a&gt;'</span><span class="p">);</span>
+
+<span class="c1">// Move an existing DOM-Element to another</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id-2'</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="s1">'.class-1'</span><span class="p">);</span>
+
+<span class="c1">// create HTML-Elements in F() constructor</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'&lt;a href="#"&gt;Link&lt;/a&gt;'</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="s1">'body'</span><span class="p">);</span>
+
+<span class="c1">// Set/get value of an input/textarea</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'input'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s1">'value'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">F</span><span class="p">(</span><span class="s1">'input'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+
+<span class="c1">// Set/get Select selected value</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'body'</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'select'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">F</span><span class="p">(</span><span class="s1">'body'</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'select'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+
+<span class="c1">// Checkbox / Radio buttons</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'input.checkboxOrRadio'</span><span class="p">).</span><span class="nx">checked</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>   <span class="c1">// checks a checkbox or radio button</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'input.checkboxOrRadio'</span><span class="p">).</span><span class="nx">checked</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>  <span class="c1">// unchecks a checkbox or radio button</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'input.checkboxOrRadio'</span><span class="p">).</span><span class="nx">checked</span><span class="p">();</span>       <span class="c1">// return checkbox or radio button state</span>
+
+<span class="c1">// Serialize</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">serialize</span><span class="p">();</span> <span class="c1">// output an object containg all serialized form-field values</span>
+
+<span class="c1">// Remove elements</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
+
+<span class="c1">// Attributes</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'id'</span><span class="p">);</span>                    <span class="c1">// return attribute</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'class'</span><span class="p">,</span> <span class="s1">'myClass'</span><span class="p">);</span>      <span class="c1">// set attribute</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'data-test'</span><span class="p">,</span> <span class="s1">'myData'</span><span class="p">);</span>   <span class="c1">// set custom attribute</span>
+</pre></div>
+
+<h3>
+<a name="event-module" class="anchor" href="#event-module"><span class="octicon octicon-link"></span></a>Event module</h3>
+
+<p>Add/Remove/Fire default or custom events using the browsers native event-system.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// load module</span>
+<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/css/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/events/fw.events.min.js'</span><span class="p">]);</span>
+
+<span class="kd">var</span> <span class="nx">eventHandler</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">);</span> <span class="c1">// output event and given parameter object</span>
+<span class="p">};</span>
+
+<span class="c1">// common events</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'a.button'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="nx">eventHandler</span><span class="p">);</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'a.button'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'mouseover'</span><span class="p">,</span> <span class="nx">eventHandler</span><span class="p">);</span>
+<span class="p">...</span>
+
+<span class="c1">// custom events</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'myEvent'</span><span class="p">,</span> <span class="nx">eventHandler</span><span class="p">);</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">fire</span><span class="p">(</span><span class="s1">'myEvent'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">'@misantronic'</span> <span class="p">}</span> <span class="p">);</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">off</span><span class="p">(</span><span class="s1">'myEvent'</span><span class="p">,</span> <span class="nx">eventHandler</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="ajax-module" class="anchor" href="#ajax-module"><span class="octicon octicon-link"></span></a>AJAX module</h3>
+
+<p>Make asynchronously XHR-Requests via GET/POST</p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// load module</span>
+<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/css/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/ajax/fw.ajax.min.js'</span><span class="p">]);</span>
+
+<span class="nx">F</span><span class="p">().</span><span class="nx">ajax</span><span class="p">(</span>
+    <span class="s1">'get'</span><span class="p">,</span> 
+    <span class="s1">'http://server.com/api?id=1337'</span><span class="p">,</span> 
+    <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> 
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">responseText</span><span class="p">)</span> 
+    <span class="p">});</span>
+
+<span class="nx">F</span><span class="p">().</span><span class="nx">ajax</span><span class="p">(</span>
+    <span class="s1">'post'</span><span class="p">,</span> 
+    <span class="s1">'http://server.com'</span><span class="p">,</span> 
+    <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> 
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">responseText</span><span class="p">)</span> 
+    <span class="p">},</span> 
+    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">'@misantronic'</span> <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="data-module" class="anchor" href="#data-module"><span class="octicon octicon-link"></span></a>Data module</h3>
+
+<p>The data module enables saving all types of data to the context using the dynamic DOM attribute structure.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// load module</span>
+<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/css/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/data/fw.data.min.js'</span><span class="p">]);</span>
+
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">data</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">'@misantronic'</span> <span class="p">});</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">data</span><span class="p">()</span> <span class="c1">// output { name: '@misantronic' }</span>
+</pre></div>
+
+<h3>
+<a name="chaining" class="anchor" href="#chaining"><span class="octicon octicon-link"></span></a>Chaining</h3>
+
+<p>Any method returning <code>F</code> can be chained to the next.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// load module</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.class'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="s1">'test'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'event'</span><span class="p">,</span> <span class="nx">eventHandler</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">fire</span><span class="p">(</span><span class="s1">'event'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">'@misantronic'</span> <span class="p">}</span> <span class="p">)</span>
+    <span class="p">.</span><span class="nx">off</span><span class="p">(</span><span class="s1">'event'</span><span class="p">,</span> <span class="nx">eventHandler</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="animate-module" class="anchor" href="#animate-module"><span class="octicon octicon-link"></span></a>Animate module</h3>
+
+<p>The animate module makes CSS3-Transforms and Animations super-easy using a unique synatx.<br>
+The commands in the animation queue are invoked at the same time ( <code>[ 'X:5 Y:5 W:10' ]</code> ) or one after another ( <code>[ 'X:5' , 'Y:5', 'W:10' ]</code> ).</p>
+
+<p><em>Note:</em> This module is optional and not included in dist/*.js<br>
+Dependencies: <a href="#css-module">CSS</a>, <a href="#event-module">Events</a></p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// load module</span>
+<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/css/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/animate/fw.animate.min.js'</span><span class="p">]);</span>
+
+<span class="c1">// animate( Array animationQueue )</span>
+<span class="c1">// syntax: propery:value[[,duration],delay]</span>
+
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span><span class="s1">'O:0'</span><span class="p">]</span> <span class="p">);</span>                            <span class="c1">// changes #id's opacity to 0</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span><span class="s1">'X:100'</span><span class="p">]</span> <span class="p">);</span>                          <span class="c1">// translates x #id 100 pixels</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span><span class="s1">'X:100 Y:100'</span><span class="p">]</span> <span class="p">);</span>                    <span class="c1">// translates x/y #id 100 pixels</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span><span class="s1">'X:100 Y:100'</span><span class="p">,</span> <span class="s1">'O:0.5'</span><span class="p">,</span> <span class="s1">'W:100'</span><span class="p">]</span> <span class="p">);</span>  <span class="c1">// queuing: translates x/y #id 100 pixels, after that change the opacity to 0.5, after that change the width to 100px</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span><span class="s1">'S:2'</span><span class="p">]</span> <span class="p">);</span>                            <span class="c1">// scale #id to factor 2</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span><span class="s1">'R:30'</span><span class="p">]</span> <span class="p">);</span>                           <span class="c1">// rotate #id 30 deg</span>
+
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span><span class="s1">'X:100,2,1'</span><span class="p">]</span> <span class="p">);</span>                      <span class="c1">// translates x #id 100 pixels with a duration of 2s and a delay of 1s</span>
+
+<span class="c1">// shorthands</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span><span class="s1">'show'</span><span class="p">);</span>
+
+<span class="c1">// callback</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span> <span class="s1">'O:0'</span> <span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+    <span class="k">this</span><span class="p">.</span><span class="nx">css</span><span class="p">({</span> <span class="nx">display</span><span class="o">:</span> <span class="s1">'none'</span> <span class="p">})</span> 
+<span class="p">})</span>
+
+<span class="c1">// note: all translations are relative to the contexts initial position</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span><span class="s1">'X:100'</span><span class="p">,</span> <span class="s1">'X:100'</span><span class="p">]</span> <span class="p">);</span>         <span class="c1">// #id is still at 100</span>
+</pre></div>
+
+<h4>
+<a name="property-overview" class="anchor" href="#property-overview"><span class="octicon octicon-link"></span></a>Property Overview</h4>
+
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>CSS</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O</td>
+<td>opacity</td>
+<td><code>F('#id').animate( ['O:0.5'] )</code></td>
+</tr>
+<tr>
+<td>X</td>
+<td>translateX()</td>
+<td><code>F('#id').animate( ['X:50'] )</code></td>
+</tr>
+<tr>
+<td>Y</td>
+<td>translateY()</td>
+<td><code>F('#id').animate( ['Y:-10'] )</code></td>
+</tr>
+<tr>
+<td>R</td>
+<td>rotate()</td>
+<td><code>F('#id').animate( ['R:-90'] )</code></td>
+</tr>
+<tr>
+<td>S</td>
+<td>scale()</td>
+<td><code>F('#id').animate( ['S:3'] )</code></td>
+</tr>
+<tr>
+<td>W</td>
+<td>width</td>
+<td><code>F('#id').animate( ['W:100'] )</code></td>
+</tr>
+<tr>
+<td>H</td>
+<td>height</td>
+<td><code>F('#id').animate( ['H:100'] )</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a name="contact" class="anchor" href="#contact"><span class="octicon octicon-link"></span></a>Contact</h2>
+
+<p>If you have any questions, praise or contempt feel free to write me: <a href="mailto:misantronic@posteo.se">misantronic@posteo.se</a>.
+Of course, you can file an issue if you find evil bugs.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-56156433-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
