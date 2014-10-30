@@ -69,6 +69,7 @@ F('#id .class').find('a:last-of-type');
 ```
 
 ### CSS module
+
 ```javascript
 // load module
 F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/css/fw.css.min.js']);
@@ -81,6 +82,7 @@ var cssValue = F('#id').css('padding') // outputs '10px'
 ```
 
 ### DOM module
+
 ```javascript
 // load module
 F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/dom/fw.dom.min.js']);
@@ -126,6 +128,9 @@ F('#id').attr('data-test', 'myData');	// set custom attribute
 ```
 
 ### Event module
+
+Add/Remove/Fire default or custom events using the browsers native eventy-system.
+
 ```javascript
 // load module
 F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/events/fw.events.min.js']);
@@ -141,20 +146,39 @@ F('a.button').on('mouseover', eventHandler);
 
 // custom events
 F('#id').on('myEvent', eventHandler);
-F('#id').trigger('myEvent', { name: '@misantronic' } );
+F('#id').fire('myEvent', { name: '@misantronic' } );
 F('#id').off('myEvent', eventHandler);
 ```
 
 ### AJAX module
+
+Make asynchronously XHR-Requests via GET/POST
+
 ```javascript
 // load module
 F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/ajax/fw.ajax.min.js']);
 
-F().ajax('get', 'http://server.com/api?id=1337', function(e){ console.log(e.responseText) });
-F().ajax('post', 'http://server.com', function(e){ console.log(e.responseText) }, { name: '@misantronic' });
+F().ajax(
+	'get', 
+	'http://server.com/api?id=1337', 
+	function(e) { 
+		console.log(e.responseText) 
+	});
+	
+F().ajax(
+	'post', 
+	'http://server.com', 
+	function(e) { 
+		console.log(e.responseText) 
+	}, 
+	{ name: '@misantronic' }
+);
 ```
 
 ### Data module
+
+The data module enables saving all types of data to the context using the dynamic DOM attribute structure.
+
 ```javascript
 // load module
 F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/data/fw.data.min.js']);
@@ -164,6 +188,9 @@ F('#id').data() // output { name: '@misantronic' }
 ```
 
 ### Chaining
+
+Any method returning `F` can be chained to the next.
+
 ```javascript
 // load module
 F('#id')
@@ -176,8 +203,8 @@ F('#id')
 
 ### Animate module
 
-Animation Syntax: `propery:value[[,duration],delay]`<br>
-animate() expects an array containing the animation instructions.<br>
+The animate module makes CSS3-transitions, transforms and animations super-easy using a unique synatx.<br>
+All instructions are passed in an array containing an animation queue.<br>
 Every element in the array represents one animation or more animations at that point in time separated by a space.
 
 *Note:* This module is optional and not included in dist/*.js<br>
@@ -186,6 +213,8 @@ Dependencies: [CSS](#css-module), [Events](#event-module)
 ```javascript
 // load module
 F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/animate/fw.animate.min.js']);
+
+// animation syntax: propery:value[[,duration],delay]
 
 F('#id').animate( ['O:0'] ); 					// changes #id's opacity to 0
 F('#id').animate( ['X:100'] ); 					// translates x #id 100 pixels
