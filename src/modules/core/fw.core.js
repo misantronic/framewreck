@@ -68,7 +68,7 @@ F = function (c) {
 					for (j = 0; j < g[L]; j++)
 						x.push(g[j]);
 				else x.push(g);
-			if (x.toString().match(/NodeList/))x = [];
+			if (x.toString().match(/No/))x = [];
 			return _.y()
 		} catch (e) {
 		}
