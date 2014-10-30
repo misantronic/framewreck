@@ -59,10 +59,12 @@ F.ext({
 			trs[k] = map[type] + ' '+dur +'s linear '+ del +'s';
 
 			// set transform
-			trf.push('translateX('+ (type == 'X' ? val : 0) +'px)');
-			trf.push('translateY('+ (type == 'Y' ? val : 0) +'px)');
-			trf.push('rotate('+ (type == 'R' ? val : 0) +'deg)');
-			trf.push('scale('+ (type == 'S' ? val : 1) +')');
+			trf.push(
+				'translateX('+ (type == 'X' ? val : 0) +'px)',
+				'translateY('+ (type == 'Y' ? val : 0) +'px)',
+				'rotate('+ (type == 'R' ? val : 0) +'deg)',
+				'scale('+ (type == 'S' ? val : 1) +')'
+			);
 		}
 
 		if(trs.length)
