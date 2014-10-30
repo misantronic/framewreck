@@ -26,6 +26,19 @@
 				QUnit.start();
 			}, 300 );
 		});
+
+		QUnit.test("animate hide/show test", function( assert ) {
+			QUnit.stop();
+			QUnit.expect(1);
+
+			F('h1').css({opacity:0}).animate('show');
+
+			setTimeout(function() {
+				if(F('h1').css('opacity') == 1)
+					assert.ok(1);
+				QUnit.start();
+			}, 550 );
+		});
 	</script>
 </head>
 <body>
