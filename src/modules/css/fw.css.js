@@ -12,7 +12,7 @@ F.ext({
 		x = this.x;
 		if (v && v.big)return getComputedStyle(x[0], null).getPropertyValue(v);
 		for (i = x[F.L]; i--;)
-			for (j in v)x[i].style[j] = v[j];
+			for (j in v)x[i].style[j] = v[j] + (!isNaN(v[j]) && j != 'opacity' ? 'px' : '');
 
 		return this
 	}
