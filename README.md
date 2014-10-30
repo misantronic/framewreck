@@ -129,7 +129,7 @@ F('#id').attr('data-test', 'myData');	// set custom attribute
 
 ### Event module
 
-Add/Remove/Fire default or custom events using the browsers native eventy-system.
+Add/Remove/Fire default or custom events using the browsers native event-system.
 
 ```javascript
 // load module
@@ -203,9 +203,8 @@ F('#id')
 
 ### Animate module
 
-The animate module makes CSS3-transitions, transforms and animations super-easy using a unique synatx.<br>
-All instructions are passed in an array containing an animation queue.<br>
-Every element in the array represents one animation or more animations at that point in time separated by a space.
+The animate module makes CSS3-Transforms and Animations super-easy using a unique synatx.<br>
+The commands in the animation queue are invoked at the same time ( `[ X:5 Y:5 W:10 ]` ) or one after another ( `[ X:5 ], [ Y:5 ], [ W:10 ]` ).
 
 *Note:* This module is optional and not included in dist/*.js<br>
 Dependencies: [CSS](#css-module), [Events](#event-module)
@@ -214,16 +213,17 @@ Dependencies: [CSS](#css-module), [Events](#event-module)
 // load module
 F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/animate/fw.animate.min.js']);
 
-// animation syntax: propery:value[[,duration],delay]
+// animate( Array animationQueue )
+// syntax: propery:value[[,duration],delay]
 
-F('#id').animate( ['O:0'] ); 					// changes #id's opacity to 0
-F('#id').animate( ['X:100'] ); 					// translates x #id 100 pixels
-F('#id').animate( ['X:100 Y:100'] ); 			// translates x/y #id 100 pixels
-F('#id').animate( ['X:100 Y:100', 'O:0.5'] ); 	// translates x/y #id 100 pixels, after that change the opacity to 0.5
-F('#id').animate( ['S:2'] );					// scale #id to factor 2
-F('#id').animate( ['R:30'] );					// rotate #id 30 deg
+F('#id').animate( ['O:0'] ); 							// changes #id's opacity to 0
+F('#id').animate( ['X:100'] ); 							// translates x #id 100 pixels
+F('#id').animate( ['X:100 Y:100'] ); 					// translates x/y #id 100 pixels
+F('#id').animate( ['X:100 Y:100', 'O:0.5', 'W:100'] ); 	// queuing: translates x/y #id 100 pixels, after that change the opacity to 0.5, after that change the width to 100px
+F('#id').animate( ['S:2'] );							// scale #id to factor 2
+F('#id').animate( ['R:30'] );							// rotate #id 30 deg
 
-F('#id').animate( ['X:100,2,1'] );				// translates x #id 100 pixels with a duration of 2s and a delay of 1s
+F('#id').animate( ['X:100,2,1'] );						// translates x #id 100 pixels with a duration of 2s and a delay of 1s
 
 // shorthands
 $('#id').animate('hide');
