@@ -196,6 +196,10 @@ F('#id').animate( ['R:30'] );					// rotate #id 30 deg
 
 F('#id').animate( ['X:100,2,1'] );				// translates x #id 100 pixels with a duration of 2s and a delay of 1s
 
+// shorthands
+$('#id').animate('hide');
+$('#id').animate('show');
+
 // callback
 F('#id').animate( [ 'O:0' ], function() { 
 	this.css({ display: 'none' }) 
@@ -214,6 +218,8 @@ X | translateX() | `F('#id').animate( ['X:50'] )`
 Y | translateY() | `F('#id').animate( ['Y:-10'] )`
 R | rotate() | `F('#id').animate( ['R:-90'] )`
 S | scale() | `F('#id').animate( ['S:3'] )`
+W | width | `F('#id').animate( ['W:100'] )`
+H | height | `F('#id').animate( ['H:100'] )`
 
 ## Contact
 
