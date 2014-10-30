@@ -25,18 +25,17 @@ F.ext({
 		return _
 	},
 
-	_a: function(el, i) {
+	_a: function(e, i) {
 		var _		= this,
 			anims	= _.A[i].split(" "),
 			trs 	= [], // transition
 			trf		= [], // transform
-			obj		= {};
-
-		var map = {
-			W: "width",
-			H: "height",
-			O: "opacity"
-		};
+			obj		= {},
+			map 	= {
+				W: "width",
+				H: "height",
+				O: "opacity"
+			};
 
 		for(var k=0; k < anims[F.L]; k++) {
 			var anim 	= anims[k],
@@ -45,13 +44,13 @@ F.ext({
 				val 	= prop[0],						// value
 				dur 	= prop[1] || 0.5, 				// duration
 				del 	= parseFloat(prop[2]) || 0,		// delay
-				cur		= el.css(map[type]);  			// current property value
+				cur		= e.css(map[type]);  			// current property value
 
 			// reset width and height
 			if(type == 'W')
-				el.css({width: cur});
+				e.css({width: cur});
 			if(type == 'H')
-				el.css({height: cur});
+				e.css({height: cur});
 
 			// set object property + value
 			map[type] ? obj[map[type]] = val : map[type] = 'transform';
@@ -73,14 +72,14 @@ F.ext({
 			obj.transform = trf.join(" ");
 
 		function h() {
-			el.off('transitionend', h);
+			e.off('transitionend', h);
 
-			_.A[++i]?_._a(el, i):_.Ac&&_.Ac.call(_)
+			_.A[++i]?_._a(e, i):_.Ac&&_.Ac.call(_)
 		}
 
 		// trigger animation on next tick
 		setTimeout(function() {
-			el.on("transitionend", h).css(obj)
+			e.on("transitionend", h).css(obj)
 		}, 0);
 
 	}

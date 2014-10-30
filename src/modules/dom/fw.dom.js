@@ -93,17 +93,17 @@ F.ext({
 	/**
 	 * Get attribute of first element in context
 	 * or set attribute for all context elements
-	 * @param {String} key
-	 * @param {String} [value]
+	 * @param {String} k
+	 * @param {String} [v]
 	 * @param [x] placeholder
 	 * @returns {F|String}
 	 */
-	attr: function(key, value, x) {
+	attr: function(k, v, x) {
 		x = this.x;
 		for (i = x[F.L]; i--;)
-			value&&x[i].setAttribute(key, value);
+			v&&x[i].setAttribute(k, v);
 
-		return value?this:x[0].getAttribute(key)
+		return v?this:x[0].getAttribute(k)
 	}
 });
 
