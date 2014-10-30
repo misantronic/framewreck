@@ -109,7 +109,7 @@ F = function (c) {
 };
 
 /**
- * Extend frameWreck with a module
+ * Extend framewreck with a module
  * @param {Object} m Module
  */
 F.ext = function (m) {
