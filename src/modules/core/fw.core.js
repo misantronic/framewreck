@@ -90,6 +90,7 @@ F = function (c) {
 	 * @param {Function} c callback
 	 * @param [s] placeholder number script loaded
 	 * @param [r] placeholder xhr-request
+	 * @param [i] placeholder
 	 */
 	_.require = function (a, c, s, r, i) {
 		s=0;i=a[F.L];
