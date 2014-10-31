@@ -252,7 +252,15 @@ S | scale() | `F('#id').animate( ['S:3'] )`
 W | width | `F('#id').animate( ['W:100'] )`
 H | height | `F('#id').animate( ['H:100'] )`
 P | padding | `F('#id').animate( ['P:10'] )`
+P | padding-top | `F('#id').animate( ['PT:10'] )`
+P | padding-right | `F('#id').animate( ['PR:10'] )`
+P | padding-bottom | `F('#id').animate( ['PB:10'] )`
+P | padding-left | `F('#id').animate( ['PL:10'] )`
 M | margin | `F('#id').animate( ['M:10'] )`
+M | margin-top | `F('#id').animate( ['MT:10'] )`
+M | margin-right | `F('#id').animate( ['MR:10'] )`
+M | margin-bottom | `F('#id').animate( ['MB:10'] )`
+M | margin-left | `F('#id').animate( ['ML:10'] )`
 
 ## Contact
 
