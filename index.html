@@ -56,7 +56,7 @@
 <li><a href="#data-module">Data</a></li>
 <li><a href="#animate-module">Animations</a></li>
 <li><a href="#chaining">Chaining</a></li>
-<li>Minified and GZipped only ~1 kb</li>
+<li>Minified and GZipped only ~1.5 kb</li>
 </ul>
 
 <h2>
@@ -66,28 +66,29 @@
 </pre></div>
 
 <h2>
-<a name="embed" class="anchor" href="#embed"><span class="octicon octicon-link"></span></a>Embed</h2>
+<a name="embed-via-cdn" class="anchor" href="#embed-via-cdn"><span class="octicon octicon-link"></span></a>Embed via CDN</h2>
 
 <h3>
-<a name="all-modules" class="anchor" href="#all-modules"><span class="octicon octicon-link"></span></a>All modules</h3>
+<a name="all-modules" class="anchor" href="#all-modules"><span class="octicon octicon-link"></span></a>all modules</h3>
 
-<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"dist/framewreck.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://cdn.jsdelivr.net/framewreck/latest/framewreck.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </pre></div>
 
 <p><strong>or</strong></p>
 
 <h3>
-<a name="module-wise" class="anchor" href="#module-wise"><span class="octicon octicon-link"></span></a>Module wise</h3>
+<a name="module-wise" class="anchor" href="#module-wise"><span class="octicon octicon-link"></span></a>module wise</h3>
 
-<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"dist/modules/core/fw.core.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script&gt;</span>
 <span class="c1">// asynchronously load other modules </span>
 <span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span>
-        <span class="s1">'dist/modules/events/fw.events.min.js'</span><span class="p">,</span>
-        <span class="s1">'dist/modules/dom/fw.dom.min.js'</span><span class="p">,</span>
-        <span class="s1">'dist/modules/css/fw.css.min.js'</span><span class="p">,</span>
-        <span class="s1">'dist/modules/ajax/fw.ajax.min.js'</span><span class="p">,</span>
-        <span class="s1">'dist/modules/data/fw.data.min.js'</span>
+        <span class="s1">'http://cdn.jsdelivr.net/framewreck/latest/modules/events/fw.events.min.js'</span><span class="p">,</span>
+        <span class="s1">'http://cdn.jsdelivr.net/framewreck/latest/modules/animate/fw.animate.min.js'</span><span class="p">,</span>
+        <span class="s1">'http://cdn.jsdelivr.net/framewreck/latest/modules/dom/fw.dom.min.js'</span><span class="p">,</span>
+        <span class="s1">'http://cdn.jsdelivr.net/framewreck/latest/modules/css/fw.css.min.js'</span><span class="p">,</span>
+        <span class="s1">'http://cdn.jsdelivr.net/framewreck/latest/modules/ajax/fw.ajax.min.js'</span><span class="p">,</span>
+        <span class="s1">'http://cdn.jsdelivr.net/framewreck/latest/modules/data/fw.data.min.js'</span>
     <span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// ...</span>
     <span class="p">});</span>
@@ -234,8 +235,8 @@
 <div class="highlight highlight-javascript"><pre><span class="c1">// load module</span>
 <span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/css/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/data/fw.data.min.js'</span><span class="p">]);</span>
 
-<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">data</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">'@misantronic'</span> <span class="p">});</span>
-<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">data</span><span class="p">()</span> <span class="c1">// output { name: '@misantronic' }</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">'myObject'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">'@misantronic'</span> <span class="p">});</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">'myObject'</span><span class="p">)</span> <span class="c1">// outputs { name: '@misantronic' }</span>
 </pre></div>
 
 <h3>
@@ -258,11 +259,12 @@
 <p>The animate module makes CSS3-Transforms and Animations super-easy using a unique synatx.<br>
 The commands in the animation queue are invoked at the same time ( <code>[ 'X:5 Y:5 W:10' ]</code> ) or one after another ( <code>[ 'X:5' , 'Y:5', 'W:10' ]</code> ).</p>
 
-<p><em>Note:</em> This module is optional and not included in dist/*.js<br>
-Dependencies: <a href="#css-module">CSS</a>, <a href="#event-module">Events</a></p>
+<p><em>Note:</em> This module is optional and not included in dist/framewreck.min.js<br></p>
+
+<p>Dependencies: <a href="#css-module">CSS</a>, <a href="#event-module">Events</a>, <a href="#data-module">Data</a></p>
 
 <div class="highlight highlight-javascript"><pre><span class="c1">// load module</span>
-<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/css/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/animate/fw.animate.min.js'</span><span class="p">]);</span>
+<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/core/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/events/fw.events.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/data/fw.data.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/animate/fw.animate.min.js'</span><span class="p">]);</span>
 
 <span class="c1">// animate( Array animationQueue )</span>
 <span class="c1">// syntax: propery:value[[,duration],delay]</span>
