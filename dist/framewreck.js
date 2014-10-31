@@ -68,7 +68,7 @@ F = function (c) {
 					for (j = 0; j < g[L]; j++)
 						x.push(g[j]);
 				else x.push(g);
-			if (x.toString().match(/NodeList/))x = [];
+			if (x.toString().match(/No/))x = [];
 			return _.y()
 		} catch (e) {
 		}
@@ -90,6 +90,7 @@ F = function (c) {
 	 * @param {Function} c callback
 	 * @param [s] placeholder number script loaded
 	 * @param [r] placeholder xhr-request
+	 * @param [i] placeholder
 	 */
 	_.require = function (a, c, s, r, i) {
 		s=0;i=a[F.L];
@@ -265,17 +266,17 @@ F.ext({
 	/**
 	 * Get attribute of first element in context
 	 * or set attribute for all context elements
-	 * @param {String} key
-	 * @param {String} [value]
+	 * @param {String} k
+	 * @param {String} [v]
 	 * @param [x] placeholder
 	 * @returns {F|String}
 	 */
-	attr: function(key, value, x) {
+	attr: function(k, v, x) {
 		x = this.x;
 		for (i = x[F.L]; i--;)
-			value&&x[i].setAttribute(key, value);
+			v&&x[i].setAttribute(k, v);
 
-		return value?this:x[0].getAttribute(key)
+		return v?this:x[0].getAttribute(k)
 	}
 });
 
@@ -366,14 +367,13 @@ F.ext({
 		var _		= this,
 			anims	= _.A[i].split(" "),
 			trs 	= [], // transition
-			trf		= [], // transform
-			obj		= {};
-
-		var map = {
-			W: "width",
-			H: "height",
-			O: "opacity"
-		};
+			trf		= {}, // transform
+			obj		= {},
+			map 	= {
+				W: "width",
+				H: "height",
+				O: "opacity"
+			};
 
 		for(var k=0; k < anims[F.L]; k++) {
 			var anim 	= anims[k],
@@ -396,18 +396,44 @@ F.ext({
 			// set transition
 			trs[k] = map[type] + ' '+dur +'s linear '+ del +'s';
 
-			// set transform
-			trf.push('translateX('+ (type == 'X' ? val : 0) +'px)');
-			trf.push('translateY('+ (type == 'Y' ? val : 0) +'px)');
-			trf.push('rotate('+ (type == 'R' ? val : 0) +'deg)');
-			trf.push('scale('+ (type == 'S' ? val : 1) +')');
+			if(type == 'X') trf.tx = val;
+			if(type == 'Y') trf.ty = val;
+			if(type == 'R') trf.deg = val;
+			if(type == 'S') trf.scale = val;
 		}
 
-		if(trs.length)
-			obj.transition = trs.join(",");
+		var mD = el.data();
 
-		if(trf.length)
-			obj.transform = trf.join(" ");
+		if(mD && mD.T) {
+			if(trf.tx == []._)
+				trf.tx = mD.T.e(1, 3);
+
+			if(trf.ty == []._)
+				trf.ty = mD.T.e(2, 3);
+		}
+
+		var rad = parseFloat(trf.deg || 0) * (Math.PI/180),
+			cos = Math.cos(rad),
+			sin = Math.sin(rad);
+
+		// translation
+		var tM = $M([ [1, 0, trf.tx], [0, 1, trf.ty], [0, 0, 1] ]);
+
+		// rotation
+		var rM = trf.deg == []._ && mD ? mD.R : $M([ [cos, -sin, 0], [sin, cos, 0], [0, 0, 1] ]);
+
+		// scale
+		var sM = trf.scale == []._ && mD ? mD.S : $M([ [trf.scale, 0,  0], [0,  trf.scale, 0], [0,  0,  1] ]);
+
+		el.data({ T: tM, R: rM, S: sM });
+
+		var m = tM.x(rM).x(sM);
+
+		obj.transform = 'matrix('+ m.e(1, 1) +', '+ m.e(2, 1) +', '+ m.e(1, 2) +', '+ m.e(2, 2) +', '+ m.e(1, 3) +', '+ m.e(2, 3) +')';
+
+		//console.log("matrix", m);
+
+		obj.transition 	= trs.join(",");
 
 		function h() {
 			el.off('transitionend', h);

@@ -25,11 +25,11 @@ F.ext({
 		return _
 	},
 
-	_a: function(e, i) {
+	_a: function(el, i) {
 		var _		= this,
 			anims	= _.A[i].split(" "),
 			trs 	= [], // transition
-			trf		= [], // transform
+			trf		= {}, // transform
 			obj		= {},
 			map 	= {
 				W: "width",
@@ -44,13 +44,13 @@ F.ext({
 				val 	= prop[0],						// value
 				dur 	= prop[1] || 0.5, 				// duration
 				del 	= parseFloat(prop[2]) || 0,		// delay
-				cur		= e.css(map[type]);  			// current property value
+				cur		= el.css(map[type]);  			// current property value
 
 			// reset width and height
 			if(type == 'W')
-				e.css({width: cur});
+				el.css({width: cur});
 			if(type == 'H')
-				e.css({height: cur});
+				el.css({height: cur});
 
 			// set object property + value
 			map[type] ? obj[map[type]] = val : map[type] = 'transform';
@@ -58,25 +58,54 @@ F.ext({
 			// set transition
 			trs[k] = map[type] + ' '+dur +'s linear '+ del +'s';
 
-			// set transform
-			trf[k] = 'translateX('+ (type == 'X' ? val : 0) +'px) translateY('+ (type == 'Y' ? val : 0) +'px) rotate('+ (type == 'R' ? val : 0) +'deg) scale('+ (type == 'S' ? val : 1) +')';
+			if(type == 'X') trf.tx = val;
+			if(type == 'Y') trf.ty = val;
+			if(type == 'R') trf.deg = val;
+			if(type == 'S') trf.scale = val;
 		}
 
-		if(trs.length)
-			obj.transition = trs.join(",");
+		var mD = el.data();
 
-		if(trf.length)
-			obj.transform = trf.join(" ");
+		if(mD && mD.T) {
+			if(trf.tx == []._)
+				trf.tx = mD.T.e(1, 3);
+
+			if(trf.ty == []._)
+				trf.ty = mD.T.e(2, 3);
+		}
+
+		var rad = parseFloat(trf.deg || 0) * (Math.PI/180),
+			cos = Math.cos(rad),
+			sin = Math.sin(rad);
+
+		// translation
+		var tM = $M([ [1, 0, trf.tx], [0, 1, trf.ty], [0, 0, 1] ]);
+
+		// rotation
+		var rM = trf.deg == []._ && mD ? mD.R : $M([ [cos, -sin, 0], [sin, cos, 0], [0, 0, 1] ]);
+
+		// scale
+		var sM = trf.scale == []._ && mD ? mD.S : $M([ [trf.scale, 0,  0], [0,  trf.scale, 0], [0,  0,  1] ]);
+
+		el.data({ T: tM, R: rM, S: sM });
+
+		var m = tM.x(rM).x(sM);
+
+		obj.transform = 'matrix('+ m.e(1, 1) +', '+ m.e(2, 1) +', '+ m.e(1, 2) +', '+ m.e(2, 2) +', '+ m.e(1, 3) +', '+ m.e(2, 3) +')';
+
+		//console.log("matrix", m);
+
+		obj.transition 	= trs.join(",");
 
 		function h() {
-			e.off('transitionend', h);
+			el.off('transitionend', h);
 
-			_.A[++i]?_._a(e, i):_.Ac&&_.Ac.call(_)
+			_.A[++i]?_._a(el, i):_.Ac&&_.Ac.call(_)
 		}
 
 		// trigger animation on next tick
 		setTimeout(function() {
-			e.on("transitionend", h).css(obj)
+			el.on("transitionend", h).css(obj)
 		}, 0);
 
 	}
