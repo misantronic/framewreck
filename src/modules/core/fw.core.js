@@ -28,7 +28,7 @@ F = function (c) {
 	 * @returns {F}
 	 */
 	_.each = function (v) {
-		for (i = l; i--;)v(_[i], i);
+		for (i = l; i--;)v(F(_[i]), i);
 		return _
 	};
 
