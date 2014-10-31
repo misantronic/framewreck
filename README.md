@@ -23,7 +23,7 @@ $ bower install framewreck
 
 ### all modules
 ```html
-<script src="http://cdn.jsdelivr.net/framewreck/latest/framewreck.min.js"></script>
+<script src="http://cdn.jsdelivr.net/g/framewreck"></script>
 ```
 
 **or**
