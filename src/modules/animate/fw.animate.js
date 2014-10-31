@@ -25,7 +25,7 @@ F.ext({
 		return _
 	},
 
-	_a: function(el, i, M) {
+	_a: function(el, i) {
 		var _		= this,
 			anims	= _.A[i].split(" "),
 			trs 	= [], // transition
@@ -44,7 +44,9 @@ F.ext({
 				val 	= prop[0],						// value
 				dur 	= prop[1] || 0.5, 				// duration
 				del 	= parseFloat(prop[2]) || 0,		// delay
-				cur		= el.css(map[type]);  			// current property value
+				cur		= el.css(map[type]),  			// current property value
+				mD 		= el.data(),
+				mA		= [0, 0, 1];
 
 			// reset width and height
 			if(type == 'W')
@@ -64,8 +66,6 @@ F.ext({
 			if(type == 'S') trf.scale = val;
 		}
 
-		var mD = el.data();
-
 		if(mD && mD.T) {
 			if(trf.tx == []._)
 				trf.tx = mD.T.e(1, 3);
@@ -78,24 +78,23 @@ F.ext({
 			cos = Math.cos(rad),
 			sin = Math.sin(rad);
 
-		// translation
-		var tM = $M([ [1, 0, trf.tx], [0, 1, trf.ty], [0, 0, 1] ]);
 
-		// rotation
-		var rM = trf.deg == []._ && mD ? mD.R : $M([ [cos, -sin, 0], [sin, cos, 0], [0, 0, 1] ]);
-
-		// scale
-		var sM = trf.scale == []._ && mD ? mD.S : $M([ [trf.scale, 0,  0], [0,  trf.scale, 0], [0,  0,  1] ]);
+		var
+			// translation
+			tM = $M([ [1, 0, trf.tx], [0, 1, trf.ty], mA ]),
+			// rotation
+			rM = trf.deg == []._ && mD ? mD.R : $M([ [cos, -sin, 0], [sin, cos, 0], mA ]),
+			// scale
+			sM = trf.scale == []._ && mD ? mD.S : $M([ [trf.scale, 0,  0], [0,  trf.scale, 0], mA ]),
+			// multiply matrices
+			m = tM.x(rM).x(sM);
 
 		el.data({ T: tM, R: rM, S: sM });
 
-		var m = tM.x(rM).x(sM);
-
 		obj.transform = 'matrix('+ m.e(1, 1) +', '+ m.e(2, 1) +', '+ m.e(1, 2) +', '+ m.e(2, 2) +', '+ m.e(1, 3) +', '+ m.e(2, 3) +')';
+		obj.transition 	= trs.join(",");
 
 		//console.log("matrix", m);
-
-		obj.transition 	= trs.join(",");
 
 		function h() {
 			el.off('transitionend', h);
@@ -115,6 +114,7 @@ F.ext({
 // === Sylvester ===
 // Vector and Matrix mathematics modules for JavaScript
 // Copyright (c) 2007 James Coglan
+// Modifications: Redundant methods removed and script minifiying by @misantronic
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the "Software"),
@@ -133,60 +133,40 @@ F.ext({
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
-function Matrix() {}
-Matrix.prototype = {
+F.M = function() {};
+F.M.prototype = {
 
 	// Returns element (i,j) of the matrix
 	e: function(i,j) {
-		if (i < 1 || i > this.elements.length || j < 1 || j > this.elements[0].length) { return null; }
-		return this.elements[i-1][j-1];
-	},
-
-	// Returns column k of the matrix as a vector
-	col: function(j) {
-		if (j > this.elements[0].length) { return null; }
-		var col = [], n = this.elements.length, k = n, i;
-		do { i = k - n;
-			col.push(this.elements[i][j-1]);
-		} while (--n);
-		return Vector.create(col);
+		return this.E[i-1][j-1]
 	},
 
 	// Maps the matrix to another matrix (of the same dimensions) according to the given function
 	map: function(fn) {
-		var els = [], ni = this.elements.length, ki = ni, i, nj, kj = this.elements[0].length, j;
+		var _ = this, els = [], ni = _.E[F.L], ki = ni, i, nj, kj = _.E[0][F.L], j;
 		do { i = ki - ni;
 			nj = kj;
 			els[i] = [];
 			do { j = kj - nj;
-				els[i][j] = fn(this.elements[i][j], i + 1, j + 1);
+				els[i][j] = fn(_.E[i][j], i + 1, j + 1);
 			} while (--nj);
 		} while (--ni);
-		return Matrix.create(els);
-	},
-
-	// Returns true iff the matrix can multiply the argument from the left
-	canMultiplyFromLeft: function(matrix) {
-		var M = matrix.elements || matrix;
-		if (typeof(M[0][0]) == 'undefined') { M = Matrix.create(M).elements; }
-		// this.columns should equal matrix.rows
-		return (this.elements[0].length == M.length);
+		return $M(els)
 	},
 
 	// Returns the result of multiplying the matrix from the right by the argument.
 	// If the argument is a scalar then just multiply all the elements. If the argument is
 	// a vector, a vector is returned, which saves you having to remember calling
 	// col(1) on the result.
-	multiply: function(matrix) {
-		if (!matrix.elements) {
-			return this.map(function(x) { return x * matrix; });
+	x: function(matrix) {
+		var _ = this;
+		if (!matrix.E) {
+			return _.map(function(x) { return x * matrix; });
 		}
-		var returnVector = matrix.modulus ? true : false;
-		var M = matrix.elements || matrix;
-		if (typeof(M[0][0]) == 'undefined') { M = Matrix.create(M).elements; }
-		if (!this.canMultiplyFromLeft(M)) { return null; }
-		var ni = this.elements.length, ki = ni, i, nj, kj = M[0].length, j;
-		var cols = this.elements[0].length, elements = [], sum, nc, c;
+		var M = matrix.E || matrix;
+		if (M[0][0] == []._) M = $M(M).E;
+		if (!_.E[0][F.L] == M[F.L]) return null;
+		var ni = _.E[F.L], ki = ni, i, nj, kj = M[0][F.L], j, cols = _.E[0][F.L], elements = [], sum, nc, c;
 		do { i = ki - ni;
 			elements[i] = [];
 			nj = kj;
@@ -194,47 +174,34 @@ Matrix.prototype = {
 				sum = 0;
 				nc = cols;
 				do { c = cols - nc;
-					sum += this.elements[i][c] * M[c][j];
+					sum += _.E[i][c] * M[c][j];
 				} while (--nc);
 				elements[i][j] = sum;
 			} while (--nj);
 		} while (--ni);
-		var M = Matrix.create(elements);
-		return returnVector ? M.col(1) : M;
-	},
-
-	x: function(matrix) { return this.multiply(matrix); },
-
-	// Set the matrix's elements from an array. If the argument passed
-	// is a vector, the resulting matrix will be a single column.
-	setElements: function(els) {
-		var i, elements = els.elements || els;
-		if (typeof(elements[0][0]) != 'undefined') {
-			var ni = elements.length, ki = ni, nj, kj, j;
-			this.elements = [];
-			do { i = ki - ni;
-				nj = elements[i].length; kj = nj;
-				this.elements[i] = [];
-				do { j = kj - nj;
-					this.elements[i][j] = elements[i][j];
-				} while (--nj);
-			} while(--ni);
-			return this;
-		}
-		var n = elements.length, k = n;
-		this.elements = [];
-		do { i = k - n;
-			this.elements.push([elements[i]]);
-		} while (--n);
-		return this;
+		return $M(elements)
 	}
 };
 
-// Constructor function
-Matrix.create = function(elements) {
-	var M = new Matrix();
-	return M.setElements(elements);
-};
+$M = function(els) {
+	var M = new F.M(), i, elements = els.E || els;
+	if (elements[0][0] != []._) {
+		var ni = elements[F.L], ki = ni, nj, kj, j;
+		M.E = [];
+		do { i = ki - ni;
+			nj = elements[i][F.L]; kj = nj;
+			M.E[i] = [];
+			do { j = kj - nj;
+				M.E[i][j] = elements[i][j];
+			} while (--nj);
+		} while(--ni);
+		return M;
+	}
+	var n = elements[F.L], k = n;
+	M.E = [];
+	do { i = k - n;
+		M.E.push([elements[i]]);
+	} while (--n);
 
-// Utility functions
-var $M = Matrix.create;
+	return M
+};
