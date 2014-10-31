@@ -18,8 +18,7 @@ module.exports = function(grunt) {
 					'src/modules/css/fw.css.js',
 					'src/modules/data/fw.data.js',
 					'src/modules/dom/fw.dom.js',
-					'src/modules/events/fw.events.js',
-					'src/modules/animate/fw.animate.js'
+					'src/modules/events/fw.events.js'
 				],
 				dest: 'dist/<%= pkg.name %>.js'
 			}
