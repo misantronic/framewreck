@@ -32,15 +32,26 @@ F.ext({
 			trf		= {}, // transform
 			obj		= {},
 			map 	= {
-				W: "width",
-				H: "height",
-				O: "opacity"
+				W	: "width",
+				H	: "height",
+				O	: "opacity",
+				P	: "padding",
+				PT	: "padding-top",
+				PR	: "padding-right",
+				PB	: "padding-bottom",
+				PL	: "padding-left",
+				M	: "margin",
+				MT	: "margin-top",
+				MR	: "margin-right",
+				MB	: "margin-bottom",
+				ML	: "margin-left"
 			};
 
 		for(var k=0; k < anims[F.L]; k++) {
 			var anim 	= anims[k],
-				type 	= anim[0],						// animation type
-				prop 	= anim.substr(2).split(","),	// property
+				line	= anim.split(":"),
+				type 	= line[0],						// animation type
+				prop 	= line[1].split(","),			// property
 				val 	= prop[0],						// value
 				dur 	= prop[1] || 0.5, 				// duration
 				del 	= parseFloat(prop[2]) || 0,		// delay
@@ -87,6 +98,8 @@ F.ext({
 			m = tM.x(rM).x(sM);
 
 		el.data('matrixData', { T: tM, R: rM, S: sM });
+
+		console.log("obj", obj);
 
 		obj.transform = 'matrix('+ m.e(1, 1) +', '+ m.e(2, 1) +', '+ m.e(1, 2) +', '+ m.e(2, 2) +', '+ m.e(1, 3) +', '+ m.e(2, 3) +')';
 		obj.transition 	= trs.join(",");

@@ -251,6 +251,8 @@ R | rotate() | `F('#id').animate( ['R:-90'] )`
 S | scale() | `F('#id').animate( ['S:3'] )`
 W | width | `F('#id').animate( ['W:100'] )`
 H | height | `F('#id').animate( ['H:100'] )`
+P | padding | `F('#id').animate( ['P:10'] )`
+M | margin | `F('#id').animate( ['M:10'] )`
 
 ## Contact
 
