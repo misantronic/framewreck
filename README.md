@@ -213,7 +213,7 @@ Dependencies: [CSS](#css-module), [Events](#event-module), [Data](#data-module)
 
 ```javascript
 // load module
-F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/events/fw.events.min.js', 'dist/modules/data/fw.data.min.js', 'dist/modules/animate/fw.animate.min.js']);
+F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/events/fw.events.min.js', 'dist/modules/data/fw.data.min.js', 'dist/modules/animate/fw.animate.min.js']);
 
 // animate( Array animationQueue )
 // syntax: propery:value[[,duration],delay]
