@@ -42,6 +42,16 @@
 					F('#wrapper').find('.box p')[0],
 					"pseudo-selector selection failed"
 			);
+
+			var check = false;
+			F('#wrapper').find('p').each(function(item) {
+				check = item.constructor === F && item[0].constructor == HTMLParagraphElement
+			});
+
+			QUnit.ok(
+				check,
+				"each failed"
+			);
 		});
 
 		QUnit.module("extend");
