@@ -184,8 +184,8 @@ The data module enables saving all types of data to the context using the dynami
 // load module
 F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/data/fw.data.min.js']);
 
-F('#id').data({ name: '@misantronic' });
-F('#id').data() // output { name: '@misantronic' }
+F('#id').data('myObject', { name: '@misantronic' });
+F('#id').data('myObject') // outputs { name: '@misantronic' }
 ```
 
 ### Chaining

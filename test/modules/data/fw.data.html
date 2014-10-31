@@ -13,10 +13,10 @@
 		// tests
 		QUnit.module("data");
 		QUnit.test("data", function() {
-			F('#wrapper').data({test: "test"});
+			F('#wrapper').data('myObject', {test: "test"});
 
 			QUnit.equal(
-					F('#wrapper').data().test,
+					F('#wrapper').data('myObject').test,
 					"test",
 					"data assignment failed"
 			);
