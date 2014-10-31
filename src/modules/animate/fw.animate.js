@@ -45,7 +45,7 @@ F.ext({
 				dur 	= prop[1] || 0.5, 				// duration
 				del 	= parseFloat(prop[2]) || 0,		// delay
 				cur		= el.css(map[type]),  			// current property value
-				mD 		= el.data(),
+				mD 		= el.data('matrixData'),
 				mA		= [0, 0, 1];
 
 			// reset width and height
@@ -76,10 +76,7 @@ F.ext({
 
 		var rad = parseFloat(trf.deg || 0) * (Math.PI/180),
 			cos = Math.cos(rad),
-			sin = Math.sin(rad);
-
-
-		var
+			sin = Math.sin(rad),
 			// translation
 			tM = $M([ [1, 0, trf.tx], [0, 1, trf.ty], mA ]),
 			// rotation
@@ -89,7 +86,7 @@ F.ext({
 			// multiply matrices
 			m = tM.x(rM).x(sM);
 
-		el.data({ T: tM, R: rM, S: sM });
+		el.data('matrixData', { T: tM, R: rM, S: sM });
 
 		obj.transform = 'matrix('+ m.e(1, 1) +', '+ m.e(2, 1) +', '+ m.e(1, 2) +', '+ m.e(2, 2) +', '+ m.e(1, 3) +', '+ m.e(2, 3) +')';
 		obj.transition 	= trs.join(",");
