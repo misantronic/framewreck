@@ -99,8 +99,6 @@ F.ext({
 
 		el.data('matrixData', { T: tM, R: rM, S: sM });
 
-		console.log("obj", obj);
-
 		obj.transform = 'matrix('+ m.e(1, 1) +', '+ m.e(2, 1) +', '+ m.e(1, 2) +', '+ m.e(2, 2) +', '+ m.e(1, 3) +', '+ m.e(2, 3) +')';
 		obj.transition 	= trs.join(",");
 
@@ -120,6 +118,8 @@ F.ext({
 	}
 });
 //F.vendor = (Array.prototype.slice.call(getComputedStyle(F.d.documentElement, '')).join('').match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o']))[1];
+
+
 
 // === Sylvester ===
 // Vector and Matrix mathematics modules for JavaScript
