@@ -33,13 +33,14 @@
 </div>
 
 	<script src="../dist/framewreck.min.js"></script>
+	<script src="../dist/modules/animate/fw.animate.min.js"></script>
 	<script>
 	F()
 		.find('#wrapper')
-		.data('F() initialized')
+		.data('init', 'F() initialized')
 		.append('<a href="#">Crazy Link</a>');
 
-		console.log(F('#wrapper').data());
+		console.log(F('#wrapper').data('init'));
 	</script>
 
 </body>
