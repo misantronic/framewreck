@@ -1,4 +1,6 @@
 F.ext({
+	Ad: 0.5,
+
 	/**
 	 * Animates the context according to the animation rules
 	 * @param {Array|String} a Animations
@@ -14,7 +16,8 @@ F.ext({
 		var _ = this;
 
 		// animation shorthands
-		a = a == 'hide' ? ['O:0'] : a == 'show' ? ['O:1'] : a;
+		// deprecated: use .hide() / .show()
+		// a = a == 'hide' ? ['O:0'] : a == 'show' ? ['O:1'] : a;
 
 		_.A  = a;
 		_.Ac = c;
@@ -53,7 +56,7 @@ F.ext({
 				type 	= line[0],						// animation type
 				prop 	= line[1].split(","),			// property
 				val 	= prop[0],						// value
-				dur 	= prop[1] || 0.5, 				// duration
+				dur 	= prop[1] || _.Ad, 				// duration
 				del 	= parseFloat(prop[2]) || 0,		// delay
 				cur		= el.css(map[type]),  			// current property value
 				mD 		= el.data('matrixData'),
@@ -119,7 +122,46 @@ F.ext({
 });
 //F.vendor = (Array.prototype.slice.call(getComputedStyle(F.d.documentElement, '')).join('').match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o']))[1];
 
+// method aliases
+F.ext({
+	/**
+	 * animated fading out of context
+	 * @param {String} [d] duration to fade out in seconds
+	 * @param {Function} [c] callback
+	 * @param [_] placeholder
+	 * @param [i] placeholder
+	 * @returns {F}
+	 */
+	hide: function(d, c, _, i) {
+		_ = this;
+		for(i = _.x[F.L]; i--;)
+			F(_[i]).animate( [ 'O:0,'+(d || _.Ad) ], function() {
+				_.css({display: 'none'});
+				c&&c.call(_)
+			});
+		return _
+	},
 
+	/**
+	 * animated fading out of context
+	 * @param {String} [d] duration to fade in in seconds
+	 * @param {Function} [c] callback
+	 * @param [_] placeholder
+	 * @param [i] placeholder
+	 * @returns {F}
+	 */
+	show: function(d, c, _, i) {
+		_ = this;
+		for(i = _.x[F.L]; i--;)
+			F(_[i]).css('display') == 'none' && F(_[i]).css({opacity: 0, display: 'block'}),
+			setTimeout(function(e) {
+				e.animate( [ 'O:1,'+(d || _.Ad) ], function() {
+					c&&c.call(_)
+				});
+			}, 0, F(_[i]));
+		return _
+	}
+});
 
 // === Sylvester ===
 // Vector and Matrix mathematics modules for JavaScript

@@ -29,7 +29,7 @@
 			}, 300 );
 		});
 
-		QUnit.test("animate hide/show test", function( assert ) {
+		/*QUnit.test("animate hide/show test", function( assert ) {
 			QUnit.stop();
 			QUnit.expect(1);
 
@@ -40,6 +40,34 @@
 					assert.ok(1);
 				QUnit.start();
 			}, 550 );
+		});*/
+
+		QUnit.test("animate show test with shorthands", function( assert ) {
+			QUnit.stop();
+			QUnit.expect(1);
+
+			F('h2').show(0.5);
+
+			setTimeout(function() {
+				if(F('h2').css('display') == 'block')
+					assert.ok(1);
+				QUnit.start();
+			}, 550);
+		});
+
+		// TODO: transitionend is not working in unit test
+
+		QUnit.test("animate hide test with shorthands", function( assert ) {
+			QUnit.stop();
+			QUnit.expect(1);
+
+			F('h3').hide(0.5);
+
+			setTimeout(function() {
+				if(F('h3').css('opacity') == 0)
+					assert.ok(1);
+				QUnit.start();
+			}, 550);
 		});
 	</script>
 </head>
@@ -47,6 +75,8 @@
 	<div id="qunit"></div>
 	<div id='qunit-fixture'>
 		<h1 style="display: inline-block;">Test</h1>
+		<h2 style="display: none;">Test</h2>
+		<h3>Test</h3>
 	</div>
 </body>
 </html>
