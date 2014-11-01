@@ -38,8 +38,8 @@ F = function (c) {
 	_.y = function () {
 		for (i = 99; i--;)x[i] ? _[i] = x[i] : delete _[i];	// clean up objects indicies and assign new indicies
 		_[L] = l = x[L];								// set .length and internal placeholder l
-		this.x = x;
-		return this
+		_.x = x;
+		return _
 	};
 
 	/**
