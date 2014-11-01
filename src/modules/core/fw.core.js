@@ -11,13 +11,16 @@ F = function (c) {
 		, i						// placeholder counter1
 		, j						// placeholder counter2
 		, a						// placeholder array
-		, g;					// placeholder generic
+		, g						// placeholder generic
+		, e						// placeholder
+		, d;					// placeholder document
 
 	// Global vars
 	F.d = d = document;
 	F.L = L = "length";
-	F.Q = Q = "querySelectorAll";
+	F.Q = "querySelectorAll";
 	F.H = "innerHTML";
+	e = "createElement";
 
 	if (_.__proto__.constructor != F) return new F(c);
 
@@ -60,7 +63,7 @@ F = function (c) {
 				v += " " + (g = a[i].split(":"))[0] + (!isNaN(j = g[1]) ? ":nth-of-type(" + (+j + 1) + ")" : j ? ":" + j : "");
 
 			if (!x)l = 1, x = [d];
-			for (a = [], i = l; i--;)a[i] = x[i][Q](v);
+			for (a = [], i = l; i--;)a[i] = x[i][F.Q](v);
 
 			x = [];
 			for (i = 0; i < a[L]; i++)
@@ -112,13 +115,13 @@ F = function (c) {
 	 */
 	_.require = function (a, c, s, r, i) {
 		s=0;i=a[F.L];
-		for(;(r= d.createElement('script')).src=a.shift(); d.head.appendChild(r))r.onload=function(){s++;c&&s==i&&c(_)}
+		for(;(r= d[e]('script')).src=a.shift(); d.head.appendChild(r))r.onload=function(){s++;c&&s==i&&c(_)}
 
 		return _
 	};
 
 	if (c && c[0] == '<') {
-		(g = d.createElement('div'))[F.H] = c;
+		(g = d[e]('div'))[F.H] = c;
 		x = g.childNodes;
 
 		return _.y()
