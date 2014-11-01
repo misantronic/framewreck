@@ -5,13 +5,13 @@
  * @constructor
  */
 F = function (c) {
-	var _ = this					// this context
+	var _ = this				// this context
 		, x						// the context selected by querySelector
 		, l						// length of x
 		, i						// placeholder counter1
 		, j						// placeholder counter2
 		, a						// placeholder array
-		, g;						// placeholder generic
+		, g;					// placeholder generic
 
 	// Global vars
 	F.d = d = document;
@@ -19,7 +19,7 @@ F = function (c) {
 	F.Q = Q = "querySelectorAll";
 	F.H = "innerHTML";
 
-	if (_.__proto__.constructor != F)return new F(c);
+	if (_.__proto__.constructor != F) return new F(c);
 
 	/**
 	 * Iterate over context, call v for each item
@@ -28,7 +28,7 @@ F = function (c) {
 	 * @returns {F}
 	 */
 	_.each = function (v) {
-		for (i = l; i--;)v(F(_[i]), i);
+		for (i = l; i--;) v(F(_[i]), i);
 		return _
 	};
 
