@@ -85,6 +85,24 @@ F = function (c) {
 	};
 
 	/**
+	 * Get previous sibling element from first element in context
+	 * @returns {F}
+	 */
+	_.prev = function() {
+		x = [x[0].previousElementSibling];
+		return _.y()
+	};
+
+	/**
+	 * Get next sibling element from first element in context
+	 * @returns {F}
+	 */
+	_.next = function() {
+		x = [x[0].nextElementSibling];
+		return _.y()
+	};
+
+	/**
 	 * Load a number of scripts asynchronously
 	 * @param {Array} a contains urls
 	 * @param {Function} c callback

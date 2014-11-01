@@ -43,6 +43,18 @@
 					"pseudo-selector selection failed"
 			);
 
+			QUnit.equal(
+					F('#wrapper .box').prev()[0],
+					F('#wrapper h1')[0],
+					"prev() failed"
+			);
+
+			QUnit.equal(
+					F('#wrapper h1').next()[0],
+					F('#wrapper .box')[0],
+					"next() failed"
+			);
+
 			var check = false;
 			F('#wrapper').find('p').each(function(item) {
 				check = item.constructor === F && item[0].constructor == HTMLParagraphElement
@@ -50,7 +62,7 @@
 
 			QUnit.ok(
 				check,
-				"each failed"
+				"each() failed"
 			);
 		});
 
