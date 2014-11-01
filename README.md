@@ -2,7 +2,8 @@
 
 **A lightweight modular JavaScript framework.**
 
-Modular structure featuring:
+Main features:
+ - Minified and GZipped only ~1.5 kb
  - [CSS Selectors](#core-css-selectors)
  - [CSS Manipulation](#css-module)
  - [DOM Manipulation](#dom-module)
@@ -10,9 +11,10 @@ Modular structure featuring:
  - [AJAX-Requests](#ajax-module)
  - [Events](#event-module)
  - [Data](#data-module)
- - [Animations](#animate-module)
  - [Chaining](#chaining)
- - Minified and GZipped only ~1.5 kb
+ 
+Opational features:
+ - [Animations](#animate-module)
 
 ## Install with Bower
 ```shell
@@ -21,7 +23,9 @@ $ bower install framewreck
 
 ## Embed via CDN
 
-### all modules
+You can use [this generator](http://rawgit.com/misantronic/framewreck/master/cdn/index.html) to choose from all available modules and generate a dynamic URL.
+
+### all main modules
 ```html
 <script src="//cdn.jsdelivr.net/g/framewreck"></script>
 ```
@@ -42,8 +46,6 @@ F().require([
 	});
 </script>
 ```
-
-You can also use [this generator](http://rawgit.com/misantronic/framewreck/master/cdn/index.html) to choose from all available modules and generate a dynamic URL.
 
 ## Modules
 
