@@ -100,7 +100,7 @@ F.ext({
 		obj.transform = 'matrix('+ m.e(1, 1) +', '+ m.e(2, 1) +', '+ m.e(1, 2) +', '+ m.e(2, 2) +', '+ m.e(1, 3) +', '+ m.e(2, 3) +')';
 		obj.transition 	= trs.join(",");
 
-		console.log("obj.transform", obj.transform);
+		//console.log("obj.transform", obj.transform);
 
 		function h() {
 			el.off('transitionend', h);
