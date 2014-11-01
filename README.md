@@ -68,6 +68,10 @@ F('#id:1 .class:0 p')
 F('#id .class:first-child');
 F('#id .class').find('a:first-of-type');
 F('#id .class').find('a:last-of-type');
+
+// Next / Previous siblings
+F('#id').next();
+F('#id').prev();
 ```
 
 ### CSS module
