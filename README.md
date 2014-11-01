@@ -248,7 +248,7 @@ F('#id').animate( [ 'O:0' ], function() {	// is invoked as soon as the animation
 
 #### Easing
 
-A cheatsheet with available easing functions can be found at [easings.net](http://easings.net)
+A cheatsheet with available easing functions can be found at [easings.net](http://easings.net).
 
 ```javascript
 F('#id').animate( ['X:100'], 'ease-out' );
