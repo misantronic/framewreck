@@ -2,18 +2,20 @@ F.ext({
 	/**
 	 * Animates the context according to the animation rules
 	 * @param {Array|String} a AnimationQueue
-	 * @param {Function} c Callback
+	 * @param {Function|String} [c] Callback or Easing
+	 * @param {String} [e] Easing
 	 * @returns {*}
 	 * @see https://github.com/misantronic/framewreck#animate-module
 	 * @example F('#id').animate(['X:100 Y:50', 'O:0.5', 'X:0 Y:0', 'O:1'], function() {
 	 * 	console.log("all done");
 	 * });
 	 */
-	animate: function(a, c) {
+	animate: function(a, c, e) {
 		var _ = this, i;
 
 		_.A  = a;
-		_.Ac = c;
+		_.Ac = c&&!c.big ? c : null;
+		_.Ae = !_.Ac ? c : e;
 
 		for(i = _.x[F.L]; i--;)
 			_._a(F(_.x[i]), 0);
@@ -65,7 +67,7 @@ F.ext({
 			map[type] ? obj[map[type]] = val : map[type] = 'transform';
 
 			// set transition
-			trs[k] = map[type] + ' '+dur +'s linear '+ del +'s';
+			trs[k] = map[type] + ' '+dur +'s '+ (_.Ae || 'linear') +' '+ del +'s';
 
 			if(type == 'X') trf.tx = val;
 			if(type == 'Y') trf.ty = val;
