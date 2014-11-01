@@ -112,7 +112,7 @@ F = function (c) {
 	 */
 	_.require = function (a, c, s, r, i) {
 		s=0;i=a[F.L];
-		with(d)for(;(r=createElement('script')).src=a.shift();head.appendChild(r))r.onload=function(){s++;c&&s==i&&c(_)}
+		for(;(r= d.createElement('script')).src=a.shift(); d.head.appendChild(r))r.onload=function(){s++;c&&s==i&&c(_)}
 
 		return _
 	};
