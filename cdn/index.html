@@ -24,19 +24,26 @@
 			text-decoration: none;
 		}
 
+		.clear { clear: both; }
+
 		#wrapper {
 			width: 980px;
 			margin: 0 auto;
 		}
 
 		#modules {
+			width: 50%;
 			line-height: 180%;
-			margin-bottom: 60px;
 		}
 
 		#modules label {
 			display: inline-block;
 			width: 80px;
+		}
+
+		#version {
+			width: 50%;
+			margin-bottom: 60px;
 		}
 
 		#output {
@@ -53,6 +60,10 @@
 
 		a {
 			color: blue;
+		}
+
+		select {
+			padding: 5px;
 		}
 	</style>
 </head>
@@ -89,6 +100,15 @@
 			</form>
 		</div>
 
+		<div id="version">
+			<h2>Version</h2>
+
+			<select id="slct_version">
+				<option value="latest" selected="selected">v.1.2.6a</option>
+				<option value="1.2.5">v.1.2.5</option>
+			</select>
+		</div>
+
 		<h2>Embed code</h2>
 		<div id="output"></div>
 	</div>
@@ -99,6 +119,7 @@
 		var modules 	= '';
 
 		F('.cbx_module').on('change', updateModules);
+		F('#slct_version').on('change', updateModules);
 
 		function updateModules() {
 			var module;
@@ -141,18 +162,42 @@
 				modules = '';
 			}
 
-			url = basePath + modules;
+			// version
+			var v = F('#slct_version').val();
+			if(v == 'latest') v = '';
+			var version = v ? '@'+ v : '';
+
+			url = basePath + version + modules;
 
 			output.innerHTML = '&lt;script&nbsp;src=&quot;'+ url +'&quot;&gt;&lt;/script&gt;';
+
+			selectText('output');
 		}
 
 		function isFalse(item) {
 			return item == false;
 		}
 
+		function selectText(element) {
+			var doc = document;
+			var text = doc.getElementById(element);
+
+			if (doc.body.createTextRange) { // ms
+				var range = doc.body.createTextRange();
+				range.moveToElementText(text);
+				range.select();
+			} else if (window.getSelection) { // moz, opera, webkit
+				var selection = window.getSelection();
+				var range = doc.createRange();
+				range.selectNodeContents(text);
+				selection.removeAllRanges();
+				selection.addRange(range);
+			}
+		}
+
 		F('#base_modules_all').on('click', function() {
 			var checkboxes = F('form#modules_base').find('.cbx_module:not([id="cbx_core"])');
-			if(checkboxes.checked().every(isFalse)) {
+			if(checkboxes.checked().some(isFalse)) {
 				checkboxes.checked(true);
 			} else {
 				checkboxes.checked(false);
