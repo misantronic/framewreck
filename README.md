@@ -23,23 +23,23 @@ $ bower install framewreck
 
 ### all modules
 ```html
-<script src="http://cdn.jsdelivr.net/g/framewreck"></script>
+<script src="//cdn.jsdelivr.net/g/framewreck"></script>
 ```
 
 **or**
 
 ### module wise
 ```html
-<script src="http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js"></script>
+<script src="//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js"></script>
 <script>
 // asynchronously load other modules 
 F().require([
-		'http://cdn.jsdelivr.net/framewreck/latest/modules/events/fw.events.min.js',
-		'http://cdn.jsdelivr.net/framewreck/latest/modules/animate/fw.animate.min.js',
-		'http://cdn.jsdelivr.net/framewreck/latest/modules/dom/fw.dom.min.js',
-		'http://cdn.jsdelivr.net/framewreck/latest/modules/css/fw.css.min.js',
-		'http://cdn.jsdelivr.net/framewreck/latest/modules/ajax/fw.ajax.min.js',
-		'http://cdn.jsdelivr.net/framewreck/latest/modules/data/fw.data.min.js'
+		'//cdn.jsdelivr.net/framewreck/latest/modules/events/fw.events.min.js',
+		'//cdn.jsdelivr.net/framewreck/latest/modules/animate/fw.animate.min.js',
+		'//cdn.jsdelivr.net/framewreck/latest/modules/dom/fw.dom.min.js',
+		'//cdn.jsdelivr.net/framewreck/latest/modules/css/fw.css.min.js',
+		'//cdn.jsdelivr.net/framewreck/latest/modules/ajax/fw.ajax.min.js',
+		'//cdn.jsdelivr.net/framewreck/latest/modules/data/fw.data.min.js'
 	], function() {
 		// ...
 	});
@@ -51,7 +51,7 @@ F().require([
 ### Core: CSS Selectors
 ```javascript
 // load module
-F().require(['dist/modules/css/fw.core.min.js']);
+F().require(['dist/modules/core/fw.core.min.js']);
 
 // IDs and classes
 F('#id');
@@ -73,7 +73,7 @@ F('#id .class').find('a:last-of-type');
 
 ```javascript
 // load module
-F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/css/fw.css.min.js']);
+F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/css/fw.css.min.js']);
 
 // Set CSS
 F('#id').css({ display: 'block', backgroundColor: 'blue', padding: '10px' });
@@ -86,7 +86,7 @@ var cssValue = F('#id').css('padding') // outputs '10px'
 
 ```javascript
 // load module
-F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/dom/fw.dom.min.js']);
+F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/dom/fw.dom.min.js']);
 
 // Output HTML of a selector
 var html = F('#id').find('.class').html();
@@ -134,7 +134,7 @@ Add/Remove/Fire default or custom events using the browsers native event-system.
 
 ```javascript
 // load module
-F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/events/fw.events.min.js']);
+F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/events/fw.events.min.js']);
 
 var eventHandler = function(e) {
 	console.log(e, e.detail); // output event and given parameter object
@@ -157,7 +157,7 @@ Make asynchronously XHR-Requests via GET/POST
 
 ```javascript
 // load module
-F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/ajax/fw.ajax.min.js']);
+F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/ajax/fw.ajax.min.js']);
 
 F().ajax(
 	'get', 
@@ -237,7 +237,7 @@ $('#id').hide(1, function() {							// hide #id with a duration of 1s, show it i
 // callback
 F('#id').animate( [ 'O:0' ], function() { 
 	this.css({ display: 'none' }) 
-})
+});
 
 // note: all translations are relative to the contexts initial position
 F('#id').animate( ['X:100', 'X:100'] ); 		// #id is still at 100
@@ -255,15 +255,15 @@ S | scale() | `F('#id').animate( ['S:3'] )`
 W | width | `F('#id').animate( ['W:100'] )`
 H | height | `F('#id').animate( ['H:100'] )`
 P | padding | `F('#id').animate( ['P:10'] )`
-P | padding-top | `F('#id').animate( ['PT:10'] )`
-P | padding-right | `F('#id').animate( ['PR:10'] )`
-P | padding-bottom | `F('#id').animate( ['PB:10'] )`
-P | padding-left | `F('#id').animate( ['PL:10'] )`
+PT | padding-top | `F('#id').animate( ['PT:10'] )`
+PR | padding-right | `F('#id').animate( ['PR:10'] )`
+PB | padding-bottom | `F('#id').animate( ['PB:10'] )`
+PL | padding-left | `F('#id').animate( ['PL:10'] )`
 M | margin | `F('#id').animate( ['M:10'] )`
-M | margin-top | `F('#id').animate( ['MT:10'] )`
-M | margin-right | `F('#id').animate( ['MR:10'] )`
-M | margin-bottom | `F('#id').animate( ['MB:10'] )`
-M | margin-left | `F('#id').animate( ['ML:10'] )`
+MT | margin-top | `F('#id').animate( ['MT:10'] )`
+MR | margin-right | `F('#id').animate( ['MR:10'] )`
+MB | margin-bottom | `F('#id').animate( ['MB:10'] )`
+ML | margin-left | `F('#id').animate( ['ML:10'] )`
 
 ## Contact
 
