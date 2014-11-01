@@ -1,9 +1,7 @@
 F.ext({
-	Ad: .5,
-
 	/**
 	 * Animates the context according to the animation rules
-	 * @param {Array|String} a Animations
+	 * @param {Array|String} a AnimationQueue
 	 * @param {Function} c Callback
 	 * @param [i] placeholder
 	 * @returns {*}
@@ -52,7 +50,7 @@ F.ext({
 				type 	= line[0],						// animation type
 				prop 	= line[1].split(","),			// property
 				val 	= prop[0],						// value
-				dur 	= prop[1] || _.Ad, 				// duration
+				dur 	= prop[1] || .5, 				// duration
 				del 	= parseFloat(prop[2]) || 0,		// delay
 				cur		= el.css(map[type]),  			// current property value
 				mD 		= el.data('matrixData'),
