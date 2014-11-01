@@ -228,10 +228,10 @@ F('#id').animate( ['R:30'] );							// rotate #id 30 deg
 F('#id').animate( ['X:100,2,1'] );						// translates x #id 100 pixels with a duration of 2s and a delay of 1s
 
 // shorthands
-$('#id').hide();										// hide #id
-$('#id').show();										// show #id
-$('#id').hide(1, function() {							// hide #id with a duration of 1s, show it in callback
-	$('#id').show();
+$('#id').hide();										// non-animated hiding of #id
+$('#id').show(1);										// fade in #id with a duration of 1s
+$('#id').hide(0.5, function() {							// hide #id with a duration of 0.5s, show it afterwards in callback
+	$('#id').show(0.5);
 });
 
 // callback
