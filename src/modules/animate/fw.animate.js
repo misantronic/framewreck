@@ -15,10 +15,6 @@ F.ext({
 	animate: function(a, c, i) {
 		var _ = this;
 
-		// animation shorthands
-		// deprecated: use .hide() / .show()
-		// a = a == 'hide' ? ['O:0'] : a == 'show' ? ['O:1'] : a;
-
 		_.A  = a;
 		_.Ac = c;
 
