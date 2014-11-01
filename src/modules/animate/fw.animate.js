@@ -109,8 +109,7 @@ F.ext({
 		// trigger animation on next tick
 		setTimeout(function() {
 			el.on("transitionend", h).css(obj)
-		}, 0);
-
+		}, 0)
 	},
 
 	/**
