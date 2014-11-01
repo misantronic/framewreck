@@ -5,13 +5,13 @@
  * @constructor
  */
 F = function (c) {
-	var _ = this					// this context
+	var _ = this				// this context
 		, x						// the context selected by querySelector
 		, l						// length of x
 		, i						// placeholder counter1
 		, j						// placeholder counter2
 		, a						// placeholder array
-		, g;						// placeholder generic
+		, g;					// placeholder generic
 
 	// Global vars
 	F.d = d = document;
@@ -19,7 +19,7 @@ F = function (c) {
 	F.Q = Q = "querySelectorAll";
 	F.H = "innerHTML";
 
-	if (_.__proto__.constructor != F)return new F(c);
+	if (_.__proto__.constructor != F) return new F(c);
 
 	/**
 	 * Iterate over context, call v for each item
@@ -28,18 +28,18 @@ F = function (c) {
 	 * @returns {F}
 	 */
 	_.each = function (v) {
-		for (i = l; i--;)v(F(_[i]), i);
+		for (i = l; i--;) v(F(_[i]), i);
 		return _
 	};
 
 	/**
-	 * Reset keys inside this object and recount length
+	 * Reset keys inside F object and recount length
 	 */
 	_.y = function () {
 		for (i = 99; i--;)x[i] ? _[i] = x[i] : delete _[i];	// clean up objects indicies and assign new indicies
 		_[L] = l = x[L];								// set .length and internal placeholder l
-		this.x = x;
-		return this
+		_.x = x;
+		return _
 	};
 
 	/**
@@ -112,7 +112,7 @@ F = function (c) {
 	 */
 	_.require = function (a, c, s, r, i) {
 		s=0;i=a[F.L];
-		with(d)for(;(r=createElement('script')).src=a.shift();head.appendChild(r))r.onload=function(){s++;c&&s==i&&c(this)}
+		with(d)for(;(r=createElement('script')).src=a.shift();head.appendChild(r))r.onload=function(){s++;c&&s==i&&c(_)}
 
 		return _
 	};
