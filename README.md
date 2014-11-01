@@ -34,17 +34,16 @@ $ bower install framewreck
 <script>
 // asynchronously load other modules 
 F().require([
-		'//cdn.jsdelivr.net/framewreck/latest/modules/events/fw.events.min.js',
 		'//cdn.jsdelivr.net/framewreck/latest/modules/animate/fw.animate.min.js',
 		'//cdn.jsdelivr.net/framewreck/latest/modules/dom/fw.dom.min.js',
-		'//cdn.jsdelivr.net/framewreck/latest/modules/css/fw.css.min.js',
-		'//cdn.jsdelivr.net/framewreck/latest/modules/ajax/fw.ajax.min.js',
-		'//cdn.jsdelivr.net/framewreck/latest/modules/data/fw.data.min.js'
+		'...'
 	], function() {
 		// ...
 	});
 </script>
 ```
+
+You can also use [this generator](http://rawgit.com/misantronic/framewreck/master/cdn/index.html) to choose from all available modules and generate a dynamic URL.
 
 ## Modules
 
