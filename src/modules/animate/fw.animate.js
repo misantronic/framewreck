@@ -3,15 +3,14 @@ F.ext({
 	 * Animates the context according to the animation rules
 	 * @param {Array|String} a AnimationQueue
 	 * @param {Function} c Callback
-	 * @param [i] placeholder
 	 * @returns {*}
 	 * @see https://github.com/misantronic/framewreck#animate-module
 	 * @example F('#id').animate(['X:100 Y:50', 'O:0.5', 'X:0 Y:0', 'O:1'], function() {
 	 * 	console.log("all done");
 	 * });
 	 */
-	animate: function(a, c, i) {
-		var _ = this;
+	animate: function(a, c) {
+		var _ = this, i;
 
 		_.A  = a;
 		_.Ac = c;
@@ -119,10 +118,9 @@ F.ext({
 	 * @param {String} [d] duration to fade out in seconds
 	 * @param {Function} [c] callback
 	 * @param [_] placeholder
-	 * @param [i] placeholder
 	 * @returns {F}
 	 */
-	hide: function(d, c, _, i) {
+	hide: function(d, c, _) {
 		_ = this;
 		if(!d) return _.css({display: 'none'});
 		return _.animate( [ 'O:0,' + d ], function() {
