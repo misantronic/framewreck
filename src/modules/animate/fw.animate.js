@@ -127,7 +127,7 @@ F.ext({
 	hide: function(d, c, _, i) {
 		_ = this;
 		if(!d) return _.css({display: 'none'});
-		return _.animate( [ 'O:0,'+(d || _.Ad) ], function() {
+		return _.animate( [ 'O:0,' + d ], function() {
 			_.css({display: 'none'});
 			c&&c.call(_)
 		})
@@ -147,7 +147,7 @@ F.ext({
 		for(i = _.x[F.L]; i--;)
 			F(_[i]).css('display') == 'none' && F(_[i]).css({opacity: 0, display: 'block'}),
 				setTimeout(function(e) {
-					e.animate( [ 'O:1,'+(d || _.Ad) ], function() {
+					e.animate( [ 'O:1,' + d ], function() {
 						c&&c.call(_)
 					});
 				}, 0, F(_[i]));
