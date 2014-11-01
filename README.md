@@ -241,12 +241,14 @@ $('#id').hide(0.5);		// hide #id with a duration of 0.5s
 #### Callback
 
 ```javascript
-F('#id').animate( [ 'O:0' ], function() { 
+F('#id').animate( [ 'O:0' ], function() {	// is invoked as soon as the animation stops
 	this.css({ display: 'none' }) 
 });
 ```
 
 #### Easing
+
+A cheatsheet with available easing functions can be found at [easings.net](http://easings.net)
 
 ```javascript
 F('#id').animate( ['X:100'], 'ease-out' );
