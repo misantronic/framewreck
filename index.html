@@ -1,43 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Framewreck by misantronic</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="Framewreck : A lightweight modular JavaScript framework">
 
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Framewreck</title>
   </head>
+
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/misantronic/framewreck">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/misantronic/framewreck/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/misantronic/framewreck/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
 
-    <div class="wrapper">
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/misantronic/framewreck">View on GitHub</a>
 
-      <section>
-        <div id="title">
-          <h1>Framewreck</h1>
-          <p>A lightweight modular JavaScript framework</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/misantronic">misantronic</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
+          <h1 id="project_title">Framewreck</h1>
+          <h2 id="project_tagline">A lightweight modular JavaScript framework</h2>
 
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/misantronic/framewreck/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/misantronic/framewreck/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
 <a name="framewreck--" class="anchor" href="#framewreck--"><span class="octicon octicon-link"></span></a>framewreck <a href="https://travis-ci.org/misantronic/framewreck"><img src="https://travis-ci.org/misantronic/framewreck.svg?branch=master" alt="Build Status"></a> <a href="https://gemnasium.com/misantronic/frameWreck"><img src="https://gemnasium.com/misantronic/frameWreck.svg" alt="Dependency Status"></a>
 </h1>
@@ -58,7 +51,7 @@
 <li><a href="#chaining">Chaining</a></li>
 </ul>
 
-<p>Opational features:</p>
+<p>Optional features:</p>
 
 <ul>
 <li><a href="#animate-module">Animations</a></li>
@@ -122,6 +115,10 @@
 <span class="nx">F</span><span class="p">(</span><span class="s1">'#id .class:first-child'</span><span class="p">);</span>
 <span class="nx">F</span><span class="p">(</span><span class="s1">'#id .class'</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'a:first-of-type'</span><span class="p">);</span>
 <span class="nx">F</span><span class="p">(</span><span class="s1">'#id .class'</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'a:last-of-type'</span><span class="p">);</span>
+
+<span class="c1">// Next / Previous siblings</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">next</span><span class="p">();</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">prev</span><span class="p">();</span>
 </pre></div>
 
 <h3>
@@ -422,14 +419,22 @@ The commands in the animation queue are invoked at the same time ( <code>[ 'X:5 
 </table>
 
 <h2>
-<a name="contact" class="anchor" href="#contact"><span class="octicon octicon-link"></span></a>Contact</h2>
+<a name="contact-and-comments" class="anchor" href="#contact-and-comments"><span class="octicon octicon-link"></span></a>Contact and comments</h2>
 
 <p>If you have any questions, praise or contempt feel free to write me: <a href="mailto:misantronic@posteo.se">misantronic@posteo.se</a>.
-Of course, you can file an issue if you find evil bugs.</p>
+Of course, you can file an issue if you find evil bugs.<br>
+For the sake of keeping things simple and small, I did not take care of optimizing my scripts for crappy browsers like IE8 etc.</p>
       </section>
-
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Framewreck maintained by <a href="https://github.com/misantronic">misantronic</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -440,6 +445,7 @@ Of course, you can file an issue if you find evil bugs.</p>
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
+
 
   </body>
 </html>
