@@ -33,7 +33,7 @@ F = function (c) {
 	};
 
 	/**
-	 * Reset keys inside this object and recount length
+	 * Reset keys inside F object and recount length
 	 */
 	_.y = function () {
 		for (i = 99; i--;)x[i] ? _[i] = x[i] : delete _[i];	// clean up objects indicies and assign new indicies
@@ -112,7 +112,7 @@ F = function (c) {
 	 */
 	_.require = function (a, c, s, r, i) {
 		s=0;i=a[F.L];
-		with(d)for(;(r=createElement('script')).src=a.shift();head.appendChild(r))r.onload=function(){s++;c&&s==i&&c(this)}
+		with(d)for(;(r=createElement('script')).src=a.shift();head.appendChild(r))r.onload=function(){s++;c&&s==i&&c(_)}
 
 		return _
 	};
