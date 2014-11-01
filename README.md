@@ -292,7 +292,8 @@ MR | margin-right | `F('#id').animate( ['MR:10'] )`
 MB | margin-bottom | `F('#id').animate( ['MB:10'] )`
 ML | margin-left | `F('#id').animate( ['ML:10'] )`
 
-## Contact
+## Contact and comments
 
 If you have any questions, praise or contempt feel free to write me: <misantronic@posteo.se>.
-Of course, you can file an issue if you find evil bugs.
+Of course, you can file an issue if you find evil bugs.<br>
+For the sake of keeping things simple and small, I did not take care of optimizing my scripts for crappy browsers like IE8 etc.
