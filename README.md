@@ -211,6 +211,8 @@ The commands in the animation queue are invoked at the same time ( `[ 'X:5 Y:5 W
 
 Dependencies: [CSS](#css-module), [Events](#event-module), [Data](#data-module)
 
+#### Basic examples
+
 ```javascript
 // load module
 F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/events/fw.events.min.js', 'dist/modules/data/fw.data.min.js', 'dist/modules/animate/fw.animate.min.js']);
@@ -226,20 +228,38 @@ F('#id').animate( ['S:2'] );							// scale #id to factor 2
 F('#id').animate( ['R:30'] );							// rotate #id 30 deg
 
 F('#id').animate( ['X:100,2,1'] );						// translates x #id 100 pixels with a duration of 2s and a delay of 1s
+```
 
-// shorthands
-$('#id').hide();										// non-animated hiding of #id
-$('#id').show(1);										// fade in #id with a duration of 1s
-$('#id').hide(0.5, function() {							// hide #id with a duration of 0.5s, show it afterwards in callback
-	$('#id').show(0.5);
-});
+#### Shorthands
 
-// callback
+```javascript
+$('#id').hide();		// non-animated hiding of #id
+$('#id').show(1);		// fade in #id with a duration of 1s
+$('#id').hide(0.5);		// hide #id with a duration of 0.5s
+```
+
+#### Callback
+
+```javascript
 F('#id').animate( [ 'O:0' ], function() { 
 	this.css({ display: 'none' }) 
 });
+```
 
-// note: all translations are relative to the contexts initial position
+#### Easing
+
+```javascript
+F('#id').animate( ['X:100'], 'ease-out' );
+F('#id').animate( ['X:100'], function() { 
+	alert("done") 
+}, 'ease-out' );
+```
+
+#### Notes
+
+All translations are relative to the contexts initial position
+
+```javascript
 F('#id').animate( ['X:100', 'X:100'] ); 		// #id is still at 100
 ```
 
