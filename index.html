@@ -44,9 +44,10 @@
 
 <p><strong>A lightweight modular JavaScript framework.</strong></p>
 
-<p>Modular structure featuring:</p>
+<p>Main features:</p>
 
 <ul>
+<li>Minified and GZipped only ~1.5 kb</li>
 <li><a href="#core-css-selectors">CSS Selectors</a></li>
 <li><a href="#css-module">CSS Manipulation</a></li>
 <li><a href="#dom-module">DOM Manipulation</a></li>
@@ -54,9 +55,13 @@
 <li><a href="#ajax-module">AJAX-Requests</a></li>
 <li><a href="#event-module">Events</a></li>
 <li><a href="#data-module">Data</a></li>
-<li><a href="#animate-module">Animations</a></li>
 <li><a href="#chaining">Chaining</a></li>
-<li>Minified and GZipped only ~1.5 kb</li>
+</ul>
+
+<p>Opational features:</p>
+
+<ul>
+<li><a href="#animate-module">Animations</a></li>
 </ul>
 
 <h2>
@@ -68,10 +73,12 @@
 <h2>
 <a name="embed-via-cdn" class="anchor" href="#embed-via-cdn"><span class="octicon octicon-link"></span></a>Embed via CDN</h2>
 
-<h3>
-<a name="all-modules" class="anchor" href="#all-modules"><span class="octicon octicon-link"></span></a>all modules</h3>
+<p>You can use <a href="http://rawgit.com/misantronic/framewreck/master/cdn/index.html">this generator</a> to choose from all available modules and generate a dynamic URL.</p>
 
-<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://cdn.jsdelivr.net/framewreck/latest/framewreck.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<h3>
+<a name="all-main-modules" class="anchor" href="#all-main-modules"><span class="octicon octicon-link"></span></a>all main modules</h3>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//cdn.jsdelivr.net/g/framewreck"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </pre></div>
 
 <p><strong>or</strong></p>
@@ -79,16 +86,13 @@
 <h3>
 <a name="module-wise" class="anchor" href="#module-wise"><span class="octicon octicon-link"></span></a>module wise</h3>
 
-<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script&gt;</span>
 <span class="c1">// asynchronously load other modules </span>
 <span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span>
-        <span class="s1">'http://cdn.jsdelivr.net/framewreck/latest/modules/events/fw.events.min.js'</span><span class="p">,</span>
-        <span class="s1">'http://cdn.jsdelivr.net/framewreck/latest/modules/animate/fw.animate.min.js'</span><span class="p">,</span>
-        <span class="s1">'http://cdn.jsdelivr.net/framewreck/latest/modules/dom/fw.dom.min.js'</span><span class="p">,</span>
-        <span class="s1">'http://cdn.jsdelivr.net/framewreck/latest/modules/css/fw.css.min.js'</span><span class="p">,</span>
-        <span class="s1">'http://cdn.jsdelivr.net/framewreck/latest/modules/ajax/fw.ajax.min.js'</span><span class="p">,</span>
-        <span class="s1">'http://cdn.jsdelivr.net/framewreck/latest/modules/data/fw.data.min.js'</span>
+        <span class="s1">'//cdn.jsdelivr.net/framewreck/latest/modules/animate/fw.animate.min.js'</span><span class="p">,</span>
+        <span class="s1">'//cdn.jsdelivr.net/framewreck/latest/modules/dom/fw.dom.min.js'</span><span class="p">,</span>
+        <span class="s1">'...'</span>
     <span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// ...</span>
     <span class="p">});</span>
@@ -102,7 +106,7 @@
 <a name="core-css-selectors" class="anchor" href="#core-css-selectors"><span class="octicon octicon-link"></span></a>Core: CSS Selectors</h3>
 
 <div class="highlight highlight-javascript"><pre><span class="c1">// load module</span>
-<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/css/fw.core.min.js'</span><span class="p">]);</span>
+<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/core/fw.core.min.js'</span><span class="p">]);</span>
 
 <span class="c1">// IDs and classes</span>
 <span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">);</span>
@@ -124,7 +128,7 @@
 <a name="css-module" class="anchor" href="#css-module"><span class="octicon octicon-link"></span></a>CSS module</h3>
 
 <div class="highlight highlight-javascript"><pre><span class="c1">// load module</span>
-<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/css/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/css/fw.css.min.js'</span><span class="p">]);</span>
+<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/core/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/css/fw.css.min.js'</span><span class="p">]);</span>
 
 <span class="c1">// Set CSS</span>
 <span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span> <span class="nx">display</span><span class="o">:</span> <span class="s1">'block'</span><span class="p">,</span> <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">'blue'</span><span class="p">,</span> <span class="nx">padding</span><span class="o">:</span> <span class="s1">'10px'</span> <span class="p">});</span>
@@ -137,7 +141,7 @@
 <a name="dom-module" class="anchor" href="#dom-module"><span class="octicon octicon-link"></span></a>DOM module</h3>
 
 <div class="highlight highlight-javascript"><pre><span class="c1">// load module</span>
-<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/css/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/dom/fw.dom.min.js'</span><span class="p">]);</span>
+<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/core/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/dom/fw.dom.min.js'</span><span class="p">]);</span>
 
 <span class="c1">// Output HTML of a selector</span>
 <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.class'</span><span class="p">).</span><span class="nx">html</span><span class="p">();</span>
@@ -185,7 +189,7 @@
 <p>Add/Remove/Fire default or custom events using the browsers native event-system.</p>
 
 <div class="highlight highlight-javascript"><pre><span class="c1">// load module</span>
-<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/css/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/events/fw.events.min.js'</span><span class="p">]);</span>
+<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/core/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/events/fw.events.min.js'</span><span class="p">]);</span>
 
 <span class="kd">var</span> <span class="nx">eventHandler</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">);</span> <span class="c1">// output event and given parameter object</span>
@@ -208,7 +212,7 @@
 <p>Make asynchronously XHR-Requests via GET/POST</p>
 
 <div class="highlight highlight-javascript"><pre><span class="c1">// load module</span>
-<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/css/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/ajax/fw.ajax.min.js'</span><span class="p">]);</span>
+<span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/core/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/ajax/fw.ajax.min.js'</span><span class="p">]);</span>
 
 <span class="nx">F</span><span class="p">().</span><span class="nx">ajax</span><span class="p">(</span>
     <span class="s1">'get'</span><span class="p">,</span> 
@@ -263,6 +267,9 @@ The commands in the animation queue are invoked at the same time ( <code>[ 'X:5 
 
 <p>Dependencies: <a href="#css-module">CSS</a>, <a href="#event-module">Events</a>, <a href="#data-module">Data</a></p>
 
+<h4>
+<a name="basic-examples" class="anchor" href="#basic-examples"><span class="octicon octicon-link"></span></a>Basic examples</h4>
+
 <div class="highlight highlight-javascript"><pre><span class="c1">// load module</span>
 <span class="nx">F</span><span class="p">().</span><span class="nx">require</span><span class="p">([</span><span class="s1">'dist/modules/core/fw.core.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/events/fw.events.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/data/fw.data.min.js'</span><span class="p">,</span> <span class="s1">'dist/modules/animate/fw.animate.min.js'</span><span class="p">]);</span>
 
@@ -277,18 +284,41 @@ The commands in the animation queue are invoked at the same time ( <code>[ 'X:5 
 <span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span><span class="s1">'R:30'</span><span class="p">]</span> <span class="p">);</span>                           <span class="c1">// rotate #id 30 deg</span>
 
 <span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span><span class="s1">'X:100,2,1'</span><span class="p">]</span> <span class="p">);</span>                      <span class="c1">// translates x #id 100 pixels with a duration of 2s and a delay of 1s</span>
+</pre></div>
 
-<span class="c1">// shorthands</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">);</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span><span class="s1">'show'</span><span class="p">);</span>
+<h4>
+<a name="shorthands" class="anchor" href="#shorthands"><span class="octicon octicon-link"></span></a>Shorthands</h4>
 
-<span class="c1">// callback</span>
-<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span> <span class="s1">'O:0'</span> <span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+<div class="highlight highlight-javascript"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>        <span class="c1">// non-animated hiding of #id</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">show</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>       <span class="c1">// fade in #id with a duration of 1s</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">hide</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>     <span class="c1">// hide #id with a duration of 0.5s</span>
+</pre></div>
+
+<h4>
+<a name="callback" class="anchor" href="#callback"><span class="octicon octicon-link"></span></a>Callback</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span> <span class="s1">'O:0'</span> <span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>   <span class="c1">// is invoked as soon as the animation stops</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">css</span><span class="p">({</span> <span class="nx">display</span><span class="o">:</span> <span class="s1">'none'</span> <span class="p">})</span> 
-<span class="p">})</span>
+<span class="p">});</span>
+</pre></div>
 
-<span class="c1">// note: all translations are relative to the contexts initial position</span>
-<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span><span class="s1">'X:100'</span><span class="p">,</span> <span class="s1">'X:100'</span><span class="p">]</span> <span class="p">);</span>         <span class="c1">// #id is still at 100</span>
+<h4>
+<a name="easing" class="anchor" href="#easing"><span class="octicon octicon-link"></span></a>Easing</h4>
+
+<p>A cheatsheet with available easing functions can be found at <a href="http://easings.net">easings.net</a>.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span><span class="s1">'X:100'</span><span class="p">],</span> <span class="s1">'ease-out'</span> <span class="p">);</span>
+<span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span><span class="s1">'X:100'</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">"done"</span><span class="p">)</span> 
+<span class="p">},</span> <span class="s1">'ease-out'</span> <span class="p">);</span>
+</pre></div>
+
+<h4>
+<a name="notes" class="anchor" href="#notes"><span class="octicon octicon-link"></span></a>Notes</h4>
+
+<p>All translations are relative to the contexts initial position</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">F</span><span class="p">(</span><span class="s1">'#id'</span><span class="p">).</span><span class="nx">animate</span><span class="p">(</span> <span class="p">[</span><span class="s1">'X:100'</span><span class="p">,</span> <span class="s1">'X:100'</span><span class="p">]</span> <span class="p">);</span>         <span class="c1">// #id is still at 100</span>
 </pre></div>
 
 <h4>
@@ -337,6 +367,56 @@ The commands in the animation queue are invoked at the same time ( <code>[ 'X:5 
 <td>H</td>
 <td>height</td>
 <td><code>F('#id').animate( ['H:100'] )</code></td>
+</tr>
+<tr>
+<td>P</td>
+<td>padding</td>
+<td><code>F('#id').animate( ['P:10'] )</code></td>
+</tr>
+<tr>
+<td>PT</td>
+<td>padding-top</td>
+<td><code>F('#id').animate( ['PT:10'] )</code></td>
+</tr>
+<tr>
+<td>PR</td>
+<td>padding-right</td>
+<td><code>F('#id').animate( ['PR:10'] )</code></td>
+</tr>
+<tr>
+<td>PB</td>
+<td>padding-bottom</td>
+<td><code>F('#id').animate( ['PB:10'] )</code></td>
+</tr>
+<tr>
+<td>PL</td>
+<td>padding-left</td>
+<td><code>F('#id').animate( ['PL:10'] )</code></td>
+</tr>
+<tr>
+<td>M</td>
+<td>margin</td>
+<td><code>F('#id').animate( ['M:10'] )</code></td>
+</tr>
+<tr>
+<td>MT</td>
+<td>margin-top</td>
+<td><code>F('#id').animate( ['MT:10'] )</code></td>
+</tr>
+<tr>
+<td>MR</td>
+<td>margin-right</td>
+<td><code>F('#id').animate( ['MR:10'] )</code></td>
+</tr>
+<tr>
+<td>MB</td>
+<td>margin-bottom</td>
+<td><code>F('#id').animate( ['MB:10'] )</code></td>
+</tr>
+<tr>
+<td>ML</td>
+<td>margin-left</td>
+<td><code>F('#id').animate( ['ML:10'] )</code></td>
 </tr>
 </tbody>
 </table>
