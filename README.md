@@ -13,7 +13,7 @@ Main features:
  - [Data](#data-module)
  - [Chaining](#chaining)
  
-Opational features:
+Optional features:
  - [Animations](#animate-module)
 
 ## Install with Bower
