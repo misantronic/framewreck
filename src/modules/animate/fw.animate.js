@@ -1,5 +1,5 @@
 F.ext({
-	Ad: 0.5,
+	Ad: .5,
 
 	/**
 	 * Animates the context according to the animation rules
@@ -118,14 +118,10 @@ F.ext({
 			el.on("transitionend", h).css(obj)
 		}, 0);
 
-	}
-});
-//F.vendor = (Array.prototype.slice.call(getComputedStyle(F.d.documentElement, '')).join('').match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o']))[1];
+	},
 
-// method aliases
-F.ext({
 	/**
-	 * animated fading out of context
+	 * animated or non-animated hiding of context
 	 * @param {String} [d] duration to fade out in seconds
 	 * @param {Function} [c] callback
 	 * @param [_] placeholder
@@ -134,16 +130,15 @@ F.ext({
 	 */
 	hide: function(d, c, _, i) {
 		_ = this;
-		for(i = _.x[F.L]; i--;)
-			F(_[i]).animate( [ 'O:0,'+(d || _.Ad) ], function() {
-				_.css({display: 'none'});
-				c&&c.call(_)
-			});
-		return _
+		if(!d) return _.css({display: 'none'});
+		return _.animate( [ 'O:0,'+(d || _.Ad) ], function() {
+			_.css({display: 'none'});
+			c&&c.call(_)
+		})
 	},
 
 	/**
-	 * animated fading out of context
+	 * animated or non-animated showing of context
 	 * @param {String} [d] duration to fade in in seconds
 	 * @param {Function} [c] callback
 	 * @param [_] placeholder
@@ -152,16 +147,18 @@ F.ext({
 	 */
 	show: function(d, c, _, i) {
 		_ = this;
+		if(!d) _.css({opacity: 1, display: 'block'});
 		for(i = _.x[F.L]; i--;)
 			F(_[i]).css('display') == 'none' && F(_[i]).css({opacity: 0, display: 'block'}),
-			setTimeout(function(e) {
-				e.animate( [ 'O:1,'+(d || _.Ad) ], function() {
-					c&&c.call(_)
-				});
-			}, 0, F(_[i]));
+				setTimeout(function(e) {
+					e.animate( [ 'O:1,'+(d || _.Ad) ], function() {
+						c&&c.call(_)
+					});
+				}, 0, F(_[i]));
 		return _
 	}
 });
+//F.vendor = (Array.prototype.slice.call(getComputedStyle(F.d.documentElement, '')).join('').match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o']))[1];
 
 // === Sylvester ===
 // Vector and Matrix mathematics modules for JavaScript
