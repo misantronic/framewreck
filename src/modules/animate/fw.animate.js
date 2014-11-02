@@ -69,29 +69,29 @@ F.ext({
 			// set transition
 			trs[k] = map[type] + ' '+dur +'s '+ (_.Ae || 'linear') +' '+ del +'s';
 
-			if(type == 'X') trf.tx = val;
-			if(type == 'Y') trf.ty = val;
-			if(type == 'R') trf.deg = val;
-			if(type == 'S') trf.scale = val;
+			if(type == 'X') trf.x = val;
+			if(type == 'Y') trf.y = val;
+			if(type == 'R') trf.d = val;
+			if(type == 'S') trf.s = val;
 		}
 
 		if(mD && mD.T) {
-			if(trf.tx == []._)
-				trf.tx = mD.T.e(1, 3);
+			if(trf.x == []._)
+				trf.x = mD.T.e(1, 3);
 
-			if(trf.ty == []._)
-				trf.ty = mD.T.e(2, 3);
+			if(trf.y == []._)
+				trf.y = mD.T.e(2, 3);
 		}
 
-		var rad = parseFloat(trf.deg || 0) * (Math.PI/180),
+		var rad = parseFloat(trf.d || 0) * (Math.PI/180),
 			cos = Math.cos(rad),
 			sin = Math.sin(rad),
 			// translation
-			tM = $M([ [1, 0, trf.tx], [0, 1, trf.ty], mA ]),
+			tM = $M([ [1, 0, trf.x], [0, 1, trf.y], mA ]),
 			// rotation
-			rM = trf.deg == []._ && mD ? mD.R : $M([ [cos, -sin, 0], [sin, cos, 0], mA ]),
+			rM = trf.d == []._ && mD ? mD.R : $M([ [cos, -sin, 0], [sin, cos, 0], mA ]),
 			// scale
-			sM = trf.scale == []._ && mD ? mD.S : $M([ [trf.scale, 0,  0], [0,  trf.scale, 0], mA ]),
+			sM = trf.s == []._ && mD ? mD.S : $M([ [trf.s, 0,  0], [0,  trf.s, 0], mA ]),
 			// multiply matrices
 			m = tM.x(rM).x(sM);
 
