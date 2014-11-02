@@ -57,19 +57,13 @@ F.ext({
 				mD 		= el.data('matrixData'),
 				mA		= [0, 0, 1];
 
-			// reset width and height
-			if(type == 'W')
-				el.css({width: cur});
-			if(type == 'H')
-				el.css({height: cur});
-
 			// set object property + value
 			map[type] ? obj[map[type]] = val : map[type] = 'transform';
 
 			// set transition
-			trs[k] = map[type] + ' '+dur +'s '+ (_.Ae || 'linear') +' '+ del +'s';
+			trs[k] = map[type] + ' '+ dur +'s '+ (_.Ae || 'linear') +' '+ del +'s';
 
-			type == 'X' ? trf.x = val : type == 'Y' ? trf.y = val : type == 'R' ? trf.d = val : type == 'S' && (trf.s = val);
+			type == 'W' ? el.css({width: cur}) : type == 'H' ? el.css({height: cur}) : type == 'X' ? trf.x = val : type == 'Y' ? trf.y = val : type == 'R' ? trf.d = val : type == 'S' && (trf.s = val);
 		}
 
 		if(mD && mD.T) {
