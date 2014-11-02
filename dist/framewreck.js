@@ -214,7 +214,7 @@ F.ext({
 			g = F.H,
 			e.tagName.match(/INP|SEL|TEX/) && (g = "value"),
 			e.multiple
-				? F(e).find(':checked').each(function(item){ A.push(item.val()) }) && a.push(A)
+				? F(e).find(':'+F.C).each(function(item){ A.push(item.val()) }) && a.push(A)
 				: a.push(e[g]),
 			v != []._ && (e[g] = v);
 		return v && this || a.join("").replace(/\s/g, "")
