@@ -147,6 +147,23 @@
 				'test',
 				'custom attr setting failed'
 			);
+
+			/** ADD / REMOVE CLASS **/
+
+			F('#wrapper').addClass('test');
+
+			QUnit.ok(
+					F('#wrapper.test').length,
+					'addClass() failed'
+			);
+
+			F('.box').removeClass('box');
+
+			QUnit.equal(
+					F('.box').length,
+					0,
+					'addClass() failed'
+			);
 		});
 	</script>
 </head>

@@ -104,6 +104,34 @@ F.ext({
 			v&&x[i].setAttribute(k, v);
 
 		return v?this:x[0].getAttribute(k)
+	},
+
+	/**
+	 * Add a class to context's classList
+	 * @param c classname
+	 * @param [i] placeholder
+	 * @param [x] placeholder
+	 */
+	addClass: function(c, i, x) {
+		x = this.x;
+		for (i = x[F.L]; i--;)
+			x[i].classList.add(c);
+
+		return this
+	},
+
+	/**
+	 * Remove a class to context's classList
+	 * @param c classname
+	 * @param [i] placeholder
+	 * @param [x] placeholder
+	 */
+	removeClass: function(c, i, x) {
+		x = this.x;
+		for (i = x[F.L]; i--;)
+			x[i].classList.remove(c);
+
+		return this
 	}
 });
 

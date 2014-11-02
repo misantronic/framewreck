@@ -124,6 +124,10 @@ F('input.checkboxOrRadio').checked(); 		// return checkbox or radio button state
 // Serialize
 F('form').serialize(); // output an object containg all serialized form-field values
 
+// Add / Remove classes
+F('#id').addClass('myClass');
+F('#id').removeClass('myClass');
+
 // Remove elements
 F('#id').remove();
 
