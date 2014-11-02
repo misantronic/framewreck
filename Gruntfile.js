@@ -59,6 +59,17 @@ module.exports = function(grunt) {
 					'dist/modules/events/fw.events.min.js'		: ['src/modules/events/fw.events.js']
 				}
 			}
+		},
+
+		compress: {
+			main: {
+				options: {
+					mode: 'gzip'
+				},
+				expand: true,
+				src: ['dist/framewreck.min.js'],
+				ext: '.js.gz'
+			}
 		}
 	});
 
@@ -66,8 +77,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-qunit');
+	grunt.loadNpmTasks('grunt-contrib-compress');
 
 	// tasks
 	grunt.registerTask('test', ['qunit']);
-	grunt.registerTask('default', ['qunit', 'concat', 'uglify']);
+	grunt.registerTask('default', ['qunit', 'concat', 'uglify', 'compress']);
 };
