@@ -20,6 +20,7 @@ F = function (c) {
 	F.L = L = "length";
 	F.Q = "querySelectorAll";
 	F.H = "innerHTML";
+	F.C	= "checked";
 	e = "createElement";
 
 	if (_.__proto__.constructor != F) return new F(c);
@@ -212,7 +213,9 @@ F.ext({
 			e = x[i],
 			g = F.H,
 			e.tagName.match(/INP|SEL|TEX/) && (g = "value"),
-			e.multiple ? F(e).find('option:checked').each(function(item){ A.push(item.val()) }) && a.push(A) : a.push(e[g]),
+			e.multiple
+				? F(e).find(':checked').each(function(item){ A.push(item.val()) }) && a.push(A)
+				: a.push(e[g]),
 			v != []._ && (e[g] = v);
 		return v && this || a.join("").replace(/\s/g, "")
 	},
@@ -264,7 +267,7 @@ F.ext({
 		a = [];
 		for (i = x[F.L]; i--;)
 			if ((g = x[i]).type.match(/ch|rad/))
-				v != []._ ? g.checked = v : a.push(g.checked);
+				v != []._ ? g[F.C] = v : a.push(g[F.C]);
 
 		return !a[F.L] ? this : a[F.L] ^ 1 ? a : a[0]
 	},
@@ -283,7 +286,7 @@ F.ext({
 		this.find('input,select,textarea');
 		for(i = this[F.L]; i--;)
 			g=F(this[i]),
-			a[g[0].name] = g[0].type.match(/ch|rad/)?g.checked():g.val();
+			a[g[0].name] = g[0].type.match(/ch|rad/)?g[F.C]():g.val();
 
 		return a
 	},

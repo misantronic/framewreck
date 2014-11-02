@@ -20,6 +20,7 @@ F = function (c) {
 	F.L = L = "length";
 	F.Q = "querySelectorAll";
 	F.H = "innerHTML";
+	F.C	= "checked";
 	e = "createElement";
 
 	if (_.__proto__.constructor != F) return new F(c);
