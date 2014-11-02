@@ -174,32 +174,30 @@ F.M.prototype = {
 		return this.E[i-1][j-1]
 	},
 
-	// Maps the matrix to another matrix (of the same dimensions) according to the given function
-	map: function(fn) {
-		var _ = this, els = [], ni = _.E[F.L], ki = ni, i, nj, kj = _.E[0][F.L], j;
-		do { i = ki - ni;
-			nj = kj;
-			els[i] = [];
-			do { j = kj - nj;
-				els[i][j] = fn(_.E[i][j], i + 1, j + 1);
-			} while (--nj);
-		} while (--ni);
-		return $M(els)
-	},
-
 	// Returns the result of multiplying the matrix from the right by the argument.
 	// If the argument is a scalar then just multiply all the elements. If the argument is
 	// a vector, a vector is returned, which saves you having to remember calling
 	// col(1) on the result.
 	x: function(matrix) {
-		var _ = this;
+		var _ = this, ni, ki, sum, nc, c, elements = [], i, nj, kj, j, cols, M;
 		if (!matrix.E) {
-			return _.map(function(x) { return x * matrix; });
+			var els = [];
+			ki = ni;
+			ni = _.E[F.L];
+			kj = _.E[0][F.L];
+			do { i = ki - ni;
+				nj = kj;
+				els[i] = [];
+				do { j = kj - nj;
+					els[i][j] = fn(_.E[i][j], i + 1, j + 1);
+				} while (--nj)
+			} while (--ni);
+			return $M(els)(function(x) { return x * matrix; })
 		}
-		var M = matrix.E || matrix;
+		M = matrix.E || matrix;
 		if (M[0][0] == []._) M = $M(M).E;
 		if (!_.E[0][F.L] == M[F.L]) return null;
-		var ni = _.E[F.L], ki = ni, i, nj, kj = M[0][F.L], j, cols = _.E[0][F.L], elements = [], sum, nc, c;
+		ni = _.E[F.L]; ki = ni; kj = M[0][F.L]; cols = _.E[0][F.L];
 		do { i = ki - ni;
 			elements[i] = [];
 			nj = kj;
@@ -207,9 +205,9 @@ F.M.prototype = {
 				sum = 0;
 				nc = cols;
 				do { c = cols - nc;
-					sum += _.E[i][c] * M[c][j];
+					sum += _.E[i][c] * M[c][j]
 				} while (--nc);
-				elements[i][j] = sum;
+				elements[i][j] = sum
 			} while (--nj);
 		} while (--ni);
 		return $M(elements)
@@ -217,23 +215,22 @@ F.M.prototype = {
 };
 
 $M = function(els) {
-	var M = new F.M(), i, elements = els.E || els;
+	var M = new F.M(), i, elements = els.E || els, ni = elements[F.L], ki = ni, nj, kj, j, n, k;
 	if (elements[0][0] != []._) {
-		var ni = elements[F.L], ki = ni, nj, kj, j;
 		M.E = [];
 		do { i = ki - ni;
 			nj = elements[i][F.L]; kj = nj;
 			M.E[i] = [];
 			do { j = kj - nj;
-				M.E[i][j] = elements[i][j];
-			} while (--nj);
+				M.E[i][j] = elements[i][j]
+			} while (--nj)
 		} while(--ni);
-		return M;
+		return M
 	}
-	var n = elements[F.L], k = n;
+	n = elements[F.L]; k = n;
 	M.E = [];
 	do { i = k - n;
-		M.E.push([elements[i]]);
+		M.E.push([elements[i]])
 	} while (--n);
 
 	return M
