@@ -182,8 +182,8 @@ F.M.prototype = {
 		var _ = this, ni, ki, sum, nc, c, elements = [], i, nj, kj, j, cols, M;
 		if (!matrix.E) {
 			var els = [];
-			ki = ni;
 			ni = _.E[F.L];
+			ki = ni;
 			kj = _.E[0][F.L];
 			do { i = ki - ni;
 				nj = kj;
