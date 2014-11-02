@@ -60,7 +60,6 @@ F('#id').find('.class');
 F('#id .class').find('a');
 
 // Index selectors
-F('#id .class').get(1);
 F('#id .class:0')
 F('#id:1 .class:0 p')
 
@@ -68,13 +67,19 @@ F('#id:1 .class:0 p')
 F('#id .class:first-child');
 F('#id .class').find('a:first-of-type');
 F('#id .class').find('a:last-of-type');
+```
+
+#### Selector methods
+```javascript
+// Index selector
+F('#id .class').get(1);
 
 // Next / Previous siblings
 F('#id').next();
 F('#id').prev();
 
 // Parent elements
-F('#id').parent()
+F('#id').parent();
 ```
 
 ### CSS module
