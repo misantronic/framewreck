@@ -69,10 +69,7 @@ F.ext({
 			// set transition
 			trs[k] = map[type] + ' '+dur +'s '+ (_.Ae || 'linear') +' '+ del +'s';
 
-			if(type == 'X') trf.x = val;
-			if(type == 'Y') trf.y = val;
-			if(type == 'R') trf.d = val;
-			if(type == 'S') trf.s = val;
+			type == 'X' ? trf.x = val : type == 'Y' ? trf.y = val : type == 'R' ? trf.d = val : type == 'S' && (trf.s = val);
 		}
 
 		if(mD && mD.T) {
