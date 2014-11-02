@@ -55,6 +55,12 @@
 					"next() failed"
 			);
 
+			QUnit.equal(
+					F('#wrapper p').parent()[0],
+					F('#wrapper .box')[0],
+					"parent() failed"
+			);
+
 			var check = false;
 			F('#wrapper').find('p').each(function(item) {
 				check = item.constructor === F && item[0].constructor == HTMLParagraphElement

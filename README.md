@@ -72,6 +72,9 @@ F('#id .class').find('a:last-of-type');
 // Next / Previous siblings
 F('#id').next();
 F('#id').prev();
+
+// Parent elements
+F('#id').parent()
 ```
 
 ### CSS module

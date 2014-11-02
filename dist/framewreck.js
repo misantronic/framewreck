@@ -89,7 +89,7 @@ F = function (c) {
 	};
 
 	/**
-	 * Get previous sibling element from first element in context
+	 * Get previous sibling element of first element in context
 	 * @returns {F}
 	 */
 	_.prev = function() {
@@ -98,11 +98,21 @@ F = function (c) {
 	};
 
 	/**
-	 * Get next sibling element from first element in context
+	 * Get next sibling element of first element in context
 	 * @returns {F}
 	 */
 	_.next = function() {
 		x = [x[0].nextElementSibling];
+		return _.y()
+	};
+
+	/**
+	 * Get parent element of first element in context
+	 * @returns {F}
+	 */
+	_.parent = function() {
+		x = [x[0].parentElement];
+
 		return _.y()
 	};
 
