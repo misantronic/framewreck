@@ -90,6 +90,7 @@ F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/css/fw.css.min.js
 
 // Set CSS
 F('#id').css({ display: 'block', 'background-color': 'blue', padding: 10, width: 200 });
+F('#id').css('background-color', 'blue');
 
 // Get CSS
 var cssValue = F('#id').css('padding') // outputs '10px'
