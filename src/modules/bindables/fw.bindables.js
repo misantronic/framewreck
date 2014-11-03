@@ -42,6 +42,15 @@ F.ext({
 		});
 
 		return this
+	},
+
+	/**
+	 * Get bindables value
+	 * @param n name of the bindable
+	 * @returns {String}
+	 */
+	getBindable: function(n) {
+		return F('[data-bindable="'+ n +'"]').val()
 	}
 });
 
