@@ -53,6 +53,7 @@
 	</div>
 
 	<p>
+		<div data-bindable="intro"></div>
 		My name is <span data-bindable="name"></span>.<br>
 		You can contact me at <span data-bindable="email"></span>.<br>
 		My user class is at level <span data-bindable="user-class"></span>.
@@ -74,6 +75,7 @@
 
 			console.log(F('#wrapper').data('init'));
 
+			F().registerBindable('intro', 'Hello World!');
 			F('#name').registerBindable('name');
 			F('#email').registerBindable('email');
 			F('#select').registerBindable('user-class');
