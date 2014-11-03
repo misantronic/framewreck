@@ -95,12 +95,6 @@ F.ext({
 		obj.transform = 'matrix('+ m.e(1, 1) +', '+ m.e(2, 1) +', '+ m.e(1, 2) +', '+ m.e(2, 2) +', '+ m.e(1, 3) +', '+ m.e(2, 3) +')';
 		obj.transition 	= trs.join(",");
 
-		console.log("tM", tM);
-		console.log("rM", rM);
-		console.log("sM", sM);
-		console.log("trf", trf);
-		console.log("obj", obj);
-
 		function h() {
 			el.off('transitionend', h);
 
