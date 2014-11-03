@@ -15,6 +15,7 @@ Main features:
  
 Optional features:
  - [Animations](#animate-module)
+ - [Bindings](#binding-module)
 
 ## Install with Bower
 ```shell
@@ -304,6 +305,46 @@ MT | margin-top | `F('#id').animate( ['MT:10'] )`
 MR | margin-right | `F('#id').animate( ['MR:10'] )`
 MB | margin-bottom | `F('#id').animate( ['MB:10'] )`
 ML | margin-left | `F('#id').animate( ['ML:10'] )`
+
+### Binding module
+
+The binding-module makes it possible to bind values of DOM-elements in a bidirectional way.
+
+*Note:* This module is optional and not included in dist/framewreck.min.js<br>
+
+Dependencies: [Events](#event-module), [Dom](#dom-module)
+
+#### Howto
+
+First define a binding-field which is suppossed to be filled with data on the HTML-view:
+```html
+<span data-bindings="name"></div>
+```
+
+To bind your data to the template use `registerBindable`:
+```javascript
+// load module
+F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/events/fw.events.min.js', 'dist/modules/dom/fw.dom.min.js', 'dist/modules/bindings/fw.bindings.min.js']);
+
+F().registerBindable( 'name', '@misantronic' );
+```
+The binding-field 'name' will now be filled with your data.
+
+Use `setBindable` to update your template
+```javascript
+F().setBindable( 'name', 'David Skx' );
+```
+
+If you want to connect the binding-field to a formular field add:
+```html
+<input type="text" id="inp_name">
+<span data-bindings="name"></div>
+```
+```javascript
+F('#inp_name').registerBindable( 'name', '@misantronic' );
+```
+The binding-field 'name' will now be filled with your data.<br>
+Also, If you change #inp_name, the binding-field will update automatically its value as well.
 
 ## Contact and comments
 
