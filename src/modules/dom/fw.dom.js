@@ -4,12 +4,10 @@ F.ext({
 	 * or set or return the value of an input
 	 * or select field
 	 * @param {*} [v] value
-	 * @param [x] placeholder for context
 	 * @returns {F|string}
 	 */
-	html: function (v, x) {
-		x = this.x;
-		var a = [], e, g;
+	html: function (v) {
+		var a = [], e, g, x = this.x;
 		for (var A = [], i = 0; i < x[F.L]; i++)
 			e = x[i],
 			g = F.H,
@@ -28,11 +26,12 @@ F.ext({
 	 * to the first element in context
 	 * @param {String} v selector or HTML/Text
 	 * @param [x] placeholder for context
+	 * @param [i] placeholder
 	 */
-	append: function (v, x) {
+	append: function (v, x, i) {
 		x = this.x;
 		var g = v[0]=='<' ? 0 : F.d[F.Q](v)[0];
-		for (var i = x[F.L]; i--;)
+		for (i = x[F.L]; i--;)
 			g ? g.appendChild(x[i]) : x[i][F.H] += v;
 
 		return this
@@ -41,11 +40,12 @@ F.ext({
 	/**
 	 * Remove context
 	 * @param [x] placeholder for context
+	 * @param [i] placeholder
 	 * @returns {*}
 	 */
-	remove: function (x) {
+	remove: function (x, i) {
 		x = this.x;
-		for (var i = x[F.L]; i--;)
+		for (i = x[F.L]; i--;)
 			x[i].parentNode.removeChild(x[i]);
 
 		return this
