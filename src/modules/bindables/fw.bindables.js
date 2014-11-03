@@ -14,6 +14,9 @@ F.ext({
 		if(b = F.bO[n])
 			return _.setBindable(n, v);
 
+		if(!_[F.L])
+			return _.setBindable(n, v != []._ ? v : _.val());
+
 		return _
 			.attr('data-bindable', n)
 			.on('change', c)

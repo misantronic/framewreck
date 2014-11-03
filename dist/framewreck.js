@@ -232,7 +232,7 @@ F.ext({
 				? F(e).find(':'+F.C).each(function(item){ A.push(item.val()) }) && a.push(A)
 				: a.push(e[g]),
 			v != []._ && (e[g] = v);
-		return v && this || a.join("").replace(/\s/g, "")
+		return v && this || a.join("")
 	},
 
 	/**
