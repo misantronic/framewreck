@@ -97,6 +97,9 @@
 			<form id="modules_extra">
 				<input value="animate" type="checkbox" class="cbx_module" name="modules/animate/fw.animate.min.js" id="cbx_animate"/>
 				<label for="cbx_animate">Animate</label>
+
+				<input value="bindables" type="checkbox" class="cbx_module" name="modules/bindables/fw.bindables.min.js" id="cbx_bindables"/>
+				<label for="cbx_bindables">Bindables</label>
 			</form>
 		</div>
 
@@ -145,6 +148,12 @@
 						// add dependencies
 						if(F('#cbx_css, #cbx_events, #cbx_data').checked().some(isFalse)) {
 							F('#cbx_css, #cbx_events, #cbx_data').checked(true);
+							updateModules(); return;
+						}
+					} else if(module == F('#cbx_bindables').attr('name')) {
+						// add dependencies
+						if(F('#cbx_events, #cbx_dom').checked().some(isFalse)) {
+							F('#cbx_events, #cbx_dom').checked(true);
 							updateModules(); return;
 						}
 					}
@@ -213,7 +222,7 @@
 
 		F('#extra_modules_all').on('click', function() {
 			var checkboxes = F('form#modules_extra').find('.cbx_module');
-			if([checkboxes.checked()].every(isFalse)) {
+			if(checkboxes.checked().every(isFalse)) {
 				checkboxes.checked(true);
 			} else {
 				checkboxes.checked(false);
