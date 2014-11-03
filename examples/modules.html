@@ -29,7 +29,10 @@
 		<div class="box">
 			<form action="" method="POST">
 				<label for="name"></label>
-				<input type="text" name="name" value="@misantronic" id="name">
+				<input type="text" name="name" value="@misantronic" id="name" autocomplete="off">
+				<br/>
+				<label for="email"></label>
+				<input type="text" name="email" id="email" autocomplete="off">
 				<br/>
 				<label for="password"></label>
 				<input type="password" name="password" value="password" id="password">
@@ -49,6 +52,12 @@
 		</div>
 	</div>
 
+	<p>
+		My name is <span data-bindable="name"></span>.<br>
+		You can contact me at <span data-bindable="email"></span>.<br>
+		My user class is at level <span data-bindable="user-class"></span>.
+	</p>
+
 	<script src="../src/modules/core/fw.core.js"></script>
 	<script>
 	F()
@@ -58,11 +67,16 @@
 			'../src/modules/css/fw.css.js',
 			'../src/modules/ajax/fw.ajax.js',
 			'../src/modules/data/fw.data.js',
-			'../src/modules/animate/fw.animate.js'
+			'../src/modules/animate/fw.animate.js',
+			'../src/modules/bindables/fw.bindables.js'
 		], function() {
 			F('#wrapper').data('init', 'F() initialized');
 
 			console.log(F('#wrapper').data('init'));
+
+			F('#name').registerBindable('name');
+			F('#email').registerBindable('email');
+			F('#select').registerBindable('user-class');
 		});
 	</script>
 </body>
