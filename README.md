@@ -83,6 +83,8 @@ F('#id').prev();
 F('#id').parent();
 ```
 
+---
+
 ### CSS module
 
 ```javascript
@@ -96,6 +98,8 @@ F('#id').css('background-color', 'blue');
 // Get CSS
 var cssValue = F('#id').css('padding') // outputs '10px'
 ```
+
+---
 
 ### DOM module
 
@@ -147,6 +151,8 @@ F('#id').attr('class', 'myClass');		// set attribute
 F('#id').attr('data-test', 'myData');	// set custom attribute
 ```
 
+---
+
 ### Event module
 
 Add/Remove/Fire default or custom events using the browsers native event-system.
@@ -169,6 +175,8 @@ F('#id').on('myEvent', eventHandler);
 F('#id').fire('myEvent', { name: '@misantronic' } );
 F('#id').off('myEvent', eventHandler);
 ```
+
+---
 
 ### AJAX module
 
@@ -195,6 +203,8 @@ F().ajax(
 );
 ```
 
+---
+
 ### Data module
 
 The data module enables saving all types of data to the context using the dynamic DOM attribute structure.
@@ -206,6 +216,8 @@ F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/data/fw.data.min.j
 F('#id').data('myObject', { name: '@misantronic' });
 F('#id').data('myObject') // outputs { name: '@misantronic' }
 ```
+
+---
 
 ### Chaining
 
@@ -220,6 +232,8 @@ F('#id')
 	.fire('event', { name: '@misantronic' } )
 	.off('event', eventHandler);
 ```
+
+---
 
 ### Animate module
 
@@ -304,6 +318,8 @@ MT | margin-top | `F('#id').animate( ['MT:10'] )`
 MR | margin-right | `F('#id').animate( ['MR:10'] )`
 MB | margin-bottom | `F('#id').animate( ['MB:10'] )`
 ML | margin-left | `F('#id').animate( ['ML:10'] )`
+
+---
 
 ### Binding module
 
