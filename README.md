@@ -314,6 +314,8 @@ Dependencies: [Events](#event-module), [Dom](#dom-module)
 
 #### Howto
 
+See the example at [jsfiddle.net](http://jsfiddle.net/5rfwokb3/)
+
 Define a binding-element which is suppossed to be filled with data on your view.<br>
 You can also define a form-element, which will be connected to your binding-element.
 ```html
