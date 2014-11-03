@@ -318,13 +318,14 @@ Define a binding-element which is suppossed to be filled with data on your view.
 You can also define a form-element, which will be connected to your binding-element.
 ```html
 <!-- Binding-element -->
-<span data-bindings="name"></div>
+Hi, my name is <span data-bindable="name"></div>
 
 <!-- Form-element -->
 <input type="text" id="inp_name">
 ```
 
 Now, you bind your data to the binding-element
+
 ```javascript
 // load module
 F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/events/fw.events.min.js', 'dist/modules/dom/fw.dom.min.js', 'dist/modules/bindings/fw.bindings.min.js']);
@@ -332,6 +333,7 @@ F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/events/fw.events.
 // register binding-element 'name', fill it with '@misantronic' and connect it to #inp_name
 F('#inp_name').registerBindable( 'name', '@misantronic' );
 ```
+
 The binding-element `name` will now be filled with your data.<br>
 You can now get/set data:
 
