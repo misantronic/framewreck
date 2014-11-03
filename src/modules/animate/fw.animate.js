@@ -74,6 +74,10 @@ F.ext({
 				trf.y = mD.T.e(2, 3);
 		}
 
+		if(trf.x == []._) trf.x = 0;
+		if(trf.y == []._) trf.y = 0;
+		if(trf.s == []._) trf.s = 1;
+
 		var rad = parseFloat(trf.d || 0) * (Math.PI/180),
 			cos = Math.cos(rad),
 			sin = Math.sin(rad),
@@ -91,7 +95,11 @@ F.ext({
 		obj.transform = 'matrix('+ m.e(1, 1) +', '+ m.e(2, 1) +', '+ m.e(1, 2) +', '+ m.e(2, 2) +', '+ m.e(1, 3) +', '+ m.e(2, 3) +')';
 		obj.transition 	= trs.join(",");
 
-		//console.log("obj.transform", obj.transform);
+		console.log("tM", tM);
+		console.log("rM", rM);
+		console.log("sM", sM);
+		console.log("trf", trf);
+		console.log("obj", obj);
 
 		function h() {
 			el.off('transitionend', h);
