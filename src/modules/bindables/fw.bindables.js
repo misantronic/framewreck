@@ -6,12 +6,12 @@ F.ext({
 	 * @returns {F}
 	 */
 	registerBindable: function(n, v) {
-		var _ = this, b, c = function() {
-			var val = F(this).val();
-			b != val && _.setBindable(n, val)
+		var _ = this, val, c = function() {
+			val = _.val();
+			F.bO[n] != val && _.setBindable(n, val)
 		};
 
-		if(b = F.bO[n])
+		if(F.bO[n] && v != []._)
 			return _.setBindable(n, v);
 
 		if(!_[F.L])
@@ -29,23 +29,26 @@ F.ext({
 	 * Save bindable value and refresh all bindable dom elements
 	 * @param {String} [n] name name of the bindable
 	 * @param {String} [v] the value of the bindable object
+	 * @param [s] placeholder
 	 * @returns {F}
 	 * @private
 	 */
-	setBindable: function(n, v) {
+	setBindable: function(n, v, s) {
 		if(n && v != []._) F.bO[n] = v;
 
-		F('[data-bindable]').each(function(element) {
-			try {
-				element.val(F.bO[element.attr('data-bindable')]);
-			} catch(e) {}
+		F('[data-bindable]').each(function(el) {
+			s = el[0].selectionStart;
+			el.val(F.bO[el.attr('data-bindable')]);
+			if(F.d.activeElement == el[0])
+				el[0].selectionStart = s,
+				el[0].selectionEnd = s
 		});
 
 		return this
 	},
 
 	/**
-	 * Get bindables value
+	 * Get bindables value of first element matching
 	 * @param n name of the bindable
 	 * @returns {String}
 	 */

@@ -4,8 +4,14 @@
 	<meta charset="UTF-8">
 	<title>frameWreck examples</title>
 	<style>
+		body {
+			font-family: Arial, sans-serif;
+			font-size: 12px;
+		}
+
 		#wrapper {
 			width: 400px;
+			line-height: 200%;
 		}
 
 		#wrapper h1 {
@@ -15,6 +21,12 @@
 		.box {
 			border: 1px solid #ccc;
 			margin: 5px;
+			padding: 5px;
+		}
+
+		.box label {
+			display: inline-block;
+			width: 75px;
 		}
 	</style>
 </head>
@@ -28,14 +40,11 @@
 		</div>
 		<div class="box">
 			<form action="" method="POST">
-				<label for="name"></label>
+				<label for="name">Name:</label>
 				<input type="text" name="name" value="@misantronic" id="name" autocomplete="off">
 				<br/>
-				<label for="email"></label>
+				<label for="email">e-Mail:</label>
 				<input type="text" name="email" id="email" autocomplete="off">
-				<br/>
-				<label for="password"></label>
-				<input type="password" name="password" value="password" id="password">
 				<br/>
 				<label for="select"></label>
 				<select name="select" id="select">
@@ -44,9 +53,14 @@
 					<option value="2" selected="selected">User</option>
 				</select>
 				<br/>
+				<label for="checkbox1">Terms:</label>
 				<input type="checkbox" name="terms" id="checkbox1"/>
-				<input type="checkbox" name="newsletter" id="checkbox2" checked="checked"/>
+
 				<br/>
+				<label for="checkbox2">Newsletter:</label>
+				<input type="checkbox" name="newsletter" id="checkbox2" checked="checked"/>
+
+				<br/><br/>
 				<input type="submit" name="submit" value="submit">
 			</form>
 		</div>
