@@ -318,7 +318,7 @@ Define a binding-element which is suppossed to be filled with data on your view.
 You can also define a form-element, which will be connected to your binding-element.
 ```html
 <!-- Binding-element -->
-Hi, my name is <span data-bindable="name"></div>
+Hi, my name is <span data-bindable="name"></span>
 
 <!-- Form-element -->
 <input type="text" id="inp_name">
