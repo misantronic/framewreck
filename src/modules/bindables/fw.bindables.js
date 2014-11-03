@@ -30,18 +30,21 @@ F.ext({
 	 * @param {String} [n] name name of the bindable
 	 * @param {String} [v] the value of the bindable object
 	 * @param [s] placeholder
+	 * @param [a] placeholder
+	 * @param [e] placeholder
+	 * @param [f] placeholder
 	 * @returns {F}
 	 * @private
 	 */
-	setBindable: function(n, v, s) {
+	setBindable: function(n, v, s, a, e, f) {
 		if(n && v != []._) F.bO[n] = v;
 
-		F('[data-bindable]').each(function(el) {
-			s = el[0].selectionStart;
-			el.val(F.bO[el.attr('data-bindable')]);
-			if(F.d.activeElement == el[0])
-				el[0].selectionStart = s,
-				el[0].selectionEnd = s
+		F('['+ (f="data-bindable") +']').each(function(el) {
+			s = (e = el[0])[a="selectionStart"];
+			el.val(F.bO[el.attr(f)]);
+			if(F.d.activeElement == e)
+				e[a] = s,
+				e.selectionEnd = s
 		});
 
 		return this
