@@ -314,7 +314,7 @@ Dependencies: [Events](#event-module), [Dom](#dom-module)
 
 #### Howto
 
-First define a binding-field which is suppossed to be filled with data on the HTML-view.
+First define a binding-field which is suppossed to be filled with data on the HTML-view.<br>
 Optionally, you can also define a form-element, which will be connected to your binding-field.
 ```html
 <span data-bindings="name"></div>
@@ -330,8 +330,8 @@ F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/events/fw.events.
 // register binding-field 'name', fill it with '@misantronic' and connect it to #inp_name
 F('#inp_name').registerBindable( 'name', '@misantronic' );
 ```
-The binding-field 'name' will now be filled with your data.
-Also, If you change #inp_name, the binding-field will update automatically its value as well. You can leave that out if you don't have a form-element.
+The binding-field 'name' will now be filled with your data.<br>
+Also, If you change `#inp_name`, the binding-field will automatically update its value as well. You can leave that out if you don't have a form-element.
 
 ```javascript
 // update binding-field (and form-element)
