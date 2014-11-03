@@ -332,8 +332,8 @@ F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/events/fw.events.
 // register binding-element 'name', fill it with '@misantronic' and connect it to #inp_name
 F('#inp_name').registerBindable( 'name', '@misantronic' );
 ```
-The binding-element 'name' will now be filled with your data.<br>
-Since `#inp_name` is connected to the binding-element, it will automatically update its value.
+The binding-element `name` will now be filled with your data.<br>
+You can now get/set data:
 
 ```javascript
 // update binding-element (and form-element)
@@ -342,6 +342,8 @@ F().setBindable( 'name', 'David Skx' );
 // get binding-element value
 F().getBindable( 'name' );
 ```
+
+Since `#inp_name` is connected to the binding-element, it will automatically update its value everytime you change it.
 
 ## Contact and comments
 
