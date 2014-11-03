@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>test</title>
+
+	<link rel="stylesheet" href="../../../bower_components/qunit/qunit/qunit.css">
+	<script src="../../../bower_components/qunit/qunit/qunit.js"></script>
+
+	<script src="../../../src/modules/core/fw.core.js"></script>
+	<script src="../../../src/modules/dom/fw.dom.js"></script>
+	<script src="../../../src/modules/events/fw.events.js"></script>
+	<script src="../../../src/modules/bindables/fw.bindables.js"></script>
+	<script>
+		// polyfill for phantomjs -> CustomEvent
+		(function () {
+			function CustomEvent ( event, params ) {
+				params = params || { bubbles: false, cancelable: false, detail: undefined };
+				var evt = document.createEvent( 'CustomEvent' );
+				evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+				return evt;
+			};
+
+			CustomEvent.prototype = window.Event.prototype;
+
+			window.CustomEvent = CustomEvent;
+		})();
+
+		// tests
+		QUnit.module("bindables");
+		QUnit.test("bindables", function() {
+			F('#wrapper').find('#name').registerBindable('name', 'misantronic');
+
+			QUnit.equal(
+					F('#wrapper').find('#name').val(),
+					"misantronic",
+					"registerBindable() failed"
+			);
+
+			QUnit.equal(
+					F('#test-bindable').val(),
+					"misantronic",
+					"registerBindable() failed"
+			);
+
+			F('#wrapper').find('#email').registerBindable('email');
+
+			QUnit.equal(
+					F('#test-bindable2').val(),
+					"misantronic@posteo.se",
+					"registerBindable() failed"
+			);
+
+			F('#wrapper').find('#name').val('david').fire('keydown');
+
+			QUnit.equal(
+					F('#test-bindable').val(),
+					"david",
+					"bidirectional binding failed"
+			);
+
+		});
+	</script>
+</head>
+<body>
+	<div id="qunit"></div>
+	<div id='qunit-fixture'>
+		<div id="wrapper">
+			<input type="text" name="name" id="name" autocomplete="off">
+			<input type="text" name="email" id="email" value="misantronic@posteo.se" autocomplete="off">
+
+			My name is <span id="test-bindable" data-bindable="name"></span>.<br>
+			My name is <span id="test-bindable2" data-bindable="email"></span>.<br>
+		</div>
+	</div>
+</body>
+</html>
