@@ -20,7 +20,12 @@ module.exports = function(grunt) {
 					'src/modules/dom/fw.dom.js',
 					'src/modules/events/fw.events.js'
 				],
-				dest: 'dist/<%= pkg.name %>.js'
+				dest: 'dist/<%= pkg.name %>.min.js'
+			},
+
+			all: {
+				src: ['<%= concat.dist.dest %>'].concat( [ 'src/modules/animate/fw.animate.js', 'src/modules/bindables/fw.bindables.js' ]),
+				dest: 'dist/<%= pkg.name %>.all.js'
 			}
 		},
 
@@ -37,6 +42,7 @@ module.exports = function(grunt) {
 				},
 				files: {
 					'dist/<%= pkg.name %>.min.js'		: ['<%= concat.dist.dest %>'],
+					'dist/<%= pkg.name %>.all.js'		: ['<%= concat.all.dest %>'],
 
 					'dist/modules/core/fw.core.min.js'				: ['src/modules/core/fw.core.js'],
 					'dist/modules/ajax/fw.ajax.min.js'				: ['src/modules/ajax/fw.ajax.js'],
@@ -70,7 +76,16 @@ module.exports = function(grunt) {
 				},
 				expand: true,
 				src: ['dist/framewreck.min.js'],
-				ext: '.js.gz'
+				ext: '.min.js.gz'
+			},
+
+			all: {
+				options: {
+					mode: 'gzip'
+				},
+				expand: true,
+				src: ['dist/framewreck.all.js'],
+				ext: '.all.js.gz'
 			}
 		}
 	});
