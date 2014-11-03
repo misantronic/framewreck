@@ -227,7 +227,6 @@ The animate module makes CSS3-Transforms and Animations super-easy using a uniqu
 The commands in the animation queue are invoked at the same time ( `[ 'X:5 Y:5 W:10' ]` ) or one after another ( `[ 'X:5' , 'Y:5', 'W:10' ]` ).
 
 *Note:* This module is optional and not included in dist/framewreck.min.js<br>
-
 Dependencies: [CSS](#css-module), [Events](#event-module), [Data](#data-module)
 
 #### Basic examples
@@ -311,7 +310,6 @@ ML | margin-left | `F('#id').animate( ['ML:10'] )`
 The binding-module makes it possible to bind values of DOM-elements in a bidirectional way.
 
 *Note:* This module is optional and not included in dist/framewreck.min.js<br>
-
 Dependencies: [Events](#event-module), [Dom](#dom-module)
 
 #### Howto
@@ -321,7 +319,7 @@ First define a binding-field which is suppossed to be filled with data on the HT
 <span data-bindings="name"></div>
 ```
 
-To bind your data to the template use `registerBindable`:
+To bind your data to the binding-field use `registerBindable`
 ```javascript
 // load module
 F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/events/fw.events.min.js', 'dist/modules/dom/fw.dom.min.js', 'dist/modules/bindings/fw.bindings.min.js']);
@@ -330,7 +328,7 @@ F().registerBindable( 'name', '@misantronic' );
 ```
 The binding-field 'name' will now be filled with your data.
 
-Use `setBindable` to update your template
+Use `setBindable` to update your binding-field
 ```javascript
 F().setBindable( 'name', 'David Skx' );
 ```
