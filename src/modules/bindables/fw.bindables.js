@@ -50,7 +50,7 @@ F.ext({
 	 * @returns {String}
 	 */
 	getBindable: function(n) {
-		return F('[data-bindable="'+ n +'"]').val()
+		return F('[data-bindable="'+ n +'"]').get(0).val()
 	}
 });
 

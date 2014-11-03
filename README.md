@@ -314,35 +314,32 @@ Dependencies: [Events](#event-module), [Dom](#dom-module)
 
 #### Howto
 
-First define a binding-field which is suppossed to be filled with data on the HTML-view:
+First define a binding-field which is suppossed to be filled with data on the HTML-view.
+Optionally, you can also define a form-element, which will be connected to your binding-field.
 ```html
 <span data-bindings="name"></div>
+...
+<input type="text" id="inp_name">
 ```
 
-To bind your data to the binding-field use `registerBindable`
+Now, you bind your data to the binding-field
 ```javascript
 // load module
 F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/events/fw.events.min.js', 'dist/modules/dom/fw.dom.min.js', 'dist/modules/bindings/fw.bindings.min.js']);
 
-F().registerBindable( 'name', '@misantronic' );
-```
-The binding-field 'name' will now be filled with your data.
-
-Use `setBindable` to update your binding-field
-```javascript
-F().setBindable( 'name', 'David Skx' );
-```
-
-If you want to connect the binding-field to a formular field add:
-```html
-<input type="text" id="inp_name">
-<span data-bindings="name"></div>
-```
-```javascript
+// register binding-field 'name', fill it with '@misantronic' and connect it to #inp_name
 F('#inp_name').registerBindable( 'name', '@misantronic' );
 ```
-The binding-field 'name' will now be filled with your data.<br>
-Also, If you change #inp_name, the binding-field will update automatically its value as well.
+The binding-field 'name' will now be filled with your data.
+Also, If you change #inp_name, the binding-field will update automatically its value as well. You can leave that out if you don't have a form-element.
+
+```javascript
+// update binding-field (and form-element)
+F().setBindable( 'name', 'David Skx' );
+
+// get binding-field value
+F().getBindable( 'name' );
+```
 
 ## Contact and comments
 
