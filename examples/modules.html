@@ -7,6 +7,11 @@
 		body {
 			font-family: Arial, sans-serif;
 			font-size: 12px;
+			padding: 10px;
+		}
+
+		h1, h2, p {
+			margin: 0 0 10px;
 		}
 
 		#wrapper {
@@ -20,7 +25,6 @@
 
 		.box {
 			border: 1px solid #ccc;
-			margin: 5px;
 			padding: 5px;
 		}
 
@@ -28,16 +32,15 @@
 			display: inline-block;
 			width: 75px;
 		}
+
+		#email, #name {
+			width: 275px;
+		}
 	</style>
 </head>
 <body>
 	<div id="wrapper">
 		<h1>Head</h1>
-		<div class="box">
-			<p>Text 1</p>
-			<p>Text 2</p>
-			<p>Text 3</p>
-		</div>
 		<div class="box">
 			<form action="" method="POST">
 				<label for="name">Name:</label>
@@ -64,17 +67,16 @@
 				<input type="submit" name="submit" value="submit">
 			</form>
 		</div>
+		<div class="box">
+			My name is <span data-bindable="name"></span>.<br>
+			You can contact me at <span data-bindable="email"></span>.<br>
+			My user class is at level <span data-bindable="user-class"></span>.
+		</div>
 	</div>
-
-	<div data-bindable="intro"></div>
-	My name is <span data-bindable="name"></span>.<br>
-	You can contact me at <span data-bindable="email"></span>.<br>
-	My user class is at level <span data-bindable="user-class"></span>.
 
 	<script src="../src/modules/core/fw.core.js"></script>
 	<script>
-	F()
-		.require([
+	F().require([
 			'../src/modules/events/fw.events.js',
 			'../src/modules/dom/fw.dom.js',
 			'../src/modules/css/fw.css.js',
@@ -87,7 +89,6 @@
 
 			console.log(F('#wrapper').data('init'));
 
-			F().registerBindable('intro', 'Hello World!');
 			F('#name').registerBindable('name');
 			F('#email').registerBindable('email');
 			F('#select').registerBindable('user-class');
