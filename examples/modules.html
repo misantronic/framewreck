@@ -74,21 +74,17 @@
 		</div>
 
 		<script id="template" type="x-tmpl-framewreck">
-			<h1>Hello {{ name }}!</h1>
+			<h1>{{{title}}}</h1>
 
 			<p>{{description}}</p>
 
-			<ul>
-			{{#each projects}}
-				<li>{{#value}}</li>
-			{{/each}}
-			</ul>
 
-			<ul>
-			{{#each animals}}
-				<li>{{#name}}, {{#speed}}</li>
+			{{#each projects}}
+				<h2>{{#name}}</h2>
+				<bockquote><p>{{#quote}}</p></bockquote>
+				<p>{{#description}}</p>
+				<pre><code class="lang-javascript">{{{#code}}}</code></pre>
 			{{/each}}
-			</ul>
 		</script>
 	</div>
 
@@ -112,21 +108,32 @@
 			F('#email').registerBindable('email');
 			F('#select').registerBindable('user-class');
 
-			console.log(F('#template').parseTemplate({
-				name: '@misantronic',
-				description: 'When jQuery gets too bulky – wreck it up with framewreck.',
+			var context = {
+				title: '512byt.es',
+				description: '<a href="https://github.com/misantronic">@misantronic</a>\'s javascript <a href="http://en.wikipedia.org/wiki/Code_golf">code golf</a> projects.<br>',
 				projects: [
-					'framewreck',
-					'invasion',
-					'hyperhydration'
-				],
-				animals: [
-					{ name: 'lion', 	speed: 30 },
-					{ name: 'tiger', 	speed: 40 },
-					{ name: 'raven', 	speed: 20 },
-					{ name: 'crow', 	speed: 10 }
+					{
+						name: 'Invasion',
+						quote: 'A Space Invader clone. Invaders from outer space are coming to kill your mom! (501 bytes)',
+						description: '',
+						code: 'p=389;$=l=m=t=0;c=" _ ";onkeydown=function(e){(k=e.which)==39?p++:k==37?p--:!l&(l=p)};setInterval(\'_="<pre>";l&(l-=20)<0&&(l=0);m=(m+=20)>p?b[+new Date%6]:m;for(i=0;i<400;i++){if(i%20==0)_+="\\n";if(~b[n="indexOf"](l))b.splice(b[n](l),1),$+=5,l=0;if(~b[n](p)||p==m)p=n,b=[],c="xxx";_+=i==p?"oIo":~b[n](i)?".#.":i==m&&m?" * ":i==l&&l?" | ":c}document.body.innerHTML=_+="\\nP "+$;t+=o;for(i in b)b[i]+=t%5e3==0?20:t%2e3==0?1:t%1e3==0&&-1\',o=50);for(b=[],j=2;j<136;j+=j==14||j==94?29:j==55?27:2)b.push(j)'
+					},
+					{
+						name: 'Tron',
+						quote: 'Destroy your friends! Competitive 1on1 Tron-clone. (757 bytes)',
+						description: '',
+						code: 'a=A=0;with(c.getContext("2d"))onkeyup=function(e){d=(k=e.which)==39?2:k==37?4:k==38?1:k==40?3:d;D=k==87?1:k==68?2:k==83?3:k==65?4:D;k==32&&X&S()},(S=function(){X=0;w=[{x:795,y:400}];d=1;W=[{x:5,y:0}];D=3;v=setInterval(\'c.width=c.width;p1[H="innerHTML"]=A+=z(w,d,W,"blue",0);p2[H]=a+=z(W,D,w,"red",1);if(X)clearInterval(v)\',60)})(),z=function(f,g,F,B,b){h={x:f[l=f[m="length"]-1].x,y:f[l].y};beginPath();L=lineWidth=10;h.x+=g==2?L:g==4&&-L;h.y+=g==3?L:g==1&&-L;if(F[I="filter"](t=function(o){return o.x==(T=this).x&o.y==T.y},h)[m]||f[I](t,h)[m])return X=1;strokeStyle=_=createLinearGradient(0,0,800,0);for($ in _);_[$](b,"magenta");_[$](.3,"#AFD2E6");_[$](.6,"#FF1493");_[$](!b,B);for(i=f.push({x:h.x,y:h.y})-1;i--;){lineTo(f[i].x,f[i].y)};stroke();return 0}'
+					},
+					{
+						name: 'framewreck',
+						quote: 'When jQuery gets too bulky – wreck it up with framewreck.',
+						description: 'A lightweight modular JavaScript framework. (3 Kb, GZipped 1.5 Kb)',
+						code: '/*! framewreck 1.3.0 build on 2014-11-03 */ F=function(a){var b,c,d,e,f,g,h,i,j=this;return F.d=i=document,F.L=L="length",F.Q="querySelectorAll",F.H="innerHTML",F.C="checked",h="createElement",j.__proto__.constructor!=F?new F(a):(j.each=function(a){for(d=c;d--;)a(F(j[d]),d);return j},j.y=function(){for(d=99;d--;)b[d]?j[d]=b[d]:delete j[d];return j[L]=c=b[L],j.x=b,j},j.find=function(a){if(a&&!a.big)return b=[a],j.y();try{f=a.split(" "),a="";for(d in f)a+=" "+(g=f[d].split(":"))[0]+(isNaN(e=g[1])?e?":"+e:"":":nth-of-type("+(+e+1)+")");for(b||(c=1,b=[i]),f=[],d=c;d--;)f[d]=b[d][F.Q](a);for(b=[],d=0;d<f[L];d++)if((g=f[d])[L]&&!g.options)for(e=0;e<g[L];e++)b.push(g[e]);else b.push(g);return b.toString().match(/No/)&&(b=[]),j.y()}catch(h){}},j.get=function(a){return b=[b[a]],j.y()},j.prev=function(){return b=[b[0].previousElementSibling],j.y()},j.next=function(){return b=[b[0].nextElementSibling],j.y()},j.parent=function(){return b=[b[0].parentElement],j.y()},j.require=function(a,b,c,d,e){for(c=0,e=a[F.L];(d=i[h]("script")).src=a.shift();i.head.appendChild(d))d.onload=function(){c++,b&&c==e&&b(j)};return j},a&&"<"==a[0]?((g=i[h]("div"))[F.H]=a,b=g.childNodes,j.y()):j.find(a))},F.ext=function(a){for(i in a)F.prototype[i]=a[i]},F.ext({ajax:function(v,D,C,P,X){with(X=new XMLHttpRequest)return onreadystatechange=function(){4^readyState||C(this)},open(v,D,1),send(P),X}}),F.ext({css:function(a,b,c,d,e){if(c=this.x,a&&a.big&&b==[]._)return getComputedStyle(c[0],null).getPropertyValue(a);for(d=c[F.L];d--;)if(b!=[]._)c[d].style[a]=b;else for(e in a)c[d].style[e]=a[e]+(isNaN(a[e])||"opacity"==e?"":"px");return this}}),F.ext({data:function(a,b,c,d){for(c=this.x,d=c[F.L];d--;)b&&(!c[d].D&&(c[d].D={}),c[d].D[a]=b);return b?this:c[0].D?c[0].D[a]:null}}),F.ext({html:function(a){for(var b,c,d=[],e=this.x,f=[],g=0;g<e[F.L];g++)b=e[g],c=F.H,b.tagName.match(/INP|SEL|TEX/)&&(c="value"),b.multiple?F(b).find(":"+F.C).each(function(a){f.push(a.val())})&&d.push(f):d.push(b[c]),a!=[]._&&(b[c]=a);return a&&this||d.join("")},append:function(a,b,c){b=this.x;var d="<"==a[0]?0:F.d[F.Q](a)[0];for(c=b[F.L];c--;)d?d.appendChild(b[c]):b[c][F.H]+=a;return this},remove:function(a,b){for(a=this.x,b=a[F.L];b--;)a[b].parentNode.removeChild(a[b]);return this},checked:function(a,b,c,d,e){for(b=this.x,c=[],e=b[F.L];e--;)(d=b[e]).type.match(/ch|rad/)&&(a!=[]._?d[F.C]=a:c.push(d[F.C]));return c[F.L]?1^c[F.L]?c:c[0]:this},serialize:function(a,b,c,d){for(d=this.x,a={},this.find("input,select,textarea"),b=this[F.L];b--;)c=F(this[b]),a[c[0].name]=c[0].type.match(/ch|rad/)?c[F.C]():c.val();return a},attr:function(a,b,c){for(c=this.x,i=c[F.L];i--;)b&&c[i].setAttribute(a,b);return b?this:c[0].getAttribute(a)},addClass:function(a,b,c){for(c=this.x,b=c[F.L];b--;)c[b].classList.add(a);return this},removeClass:function(a,b,c){for(c=this.x,b=c[F.L];b--;)c[b].classList.remove(a);return this}}),F.ext({val:F.prototype.html,appendTo:F.prototype.append}),F.ext({on:function(a,b,c,d){for(c=this.x,d=c[F.L];d--;)c[d].addEventListener(a,b);return this},off:function(a,b,c,d){for(c=this.x,d=c[F.L];d--;)c[d].removeEventListener(a,b);return this},fire:function(a,b,c,d){for(c=this.x,d=c[F.L];d--;)c[d].dispatchEvent(new CustomEvent(a,{detail:b}));return this}});'
+					}
 				]
-			}).html());
+			};
+
+			F('#template').parse(context).appendTo('#wrapper');
 		});
 	</script>
 </body>

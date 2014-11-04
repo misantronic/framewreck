@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 			},
 
 			all: {
-				src: ['<%= concat.dist.dest %>'].concat( [ 'src/modules/animate/fw.animate.js', 'src/modules/bindables/fw.bindables.js' ]),
+				src: ['<%= concat.dist.dest %>'].concat( [ 'src/modules/animate/fw.animate.js', 'src/modules/bindables/fw.bindables.js', 'src/modules/templates/fw.templates.js' ]),
 				dest: 'dist/<%= pkg.name %>.all.js'
 			}
 		},
@@ -48,6 +48,7 @@ module.exports = function(grunt) {
 					'dist/modules/ajax/fw.ajax.min.js'				: ['src/modules/ajax/fw.ajax.js'],
 					'dist/modules/animate/fw.animate.min.js'		: ['src/modules/animate/fw.animate.js'],
 					'dist/modules/bindables/fw.bindables.min.js'	: ['src/modules/bindables/fw.bindables.js'],
+					'dist/modules/templates/fw.templates.min.js'	: ['src/modules/templates/fw.templates.js'],
 					'dist/modules/css/fw.css.min.js'				: ['src/modules/css/fw.css.js'],
 					'dist/modules/data/fw.data.min.js'				: ['src/modules/data/fw.data.js'],
 					'dist/modules/dom/fw.dom.min.js'				: ['src/modules/dom/fw.dom.js'],
@@ -60,6 +61,7 @@ module.exports = function(grunt) {
 					'dist/modules/core/fw.core.min.js'				: ['src/modules/core/fw.core.js'],
 					'dist/modules/ajax/fw.ajax.min.js'				: ['src/modules/ajax/fw.ajax.js'],
 					'dist/modules/animate/fw.animate.min.js'		: ['src/modules/animate/fw.animate.js'],
+					'dist/modules/templates/fw.templates.min.js'	: ['src/modules/templates/fw.templates.js'],
 					'dist/modules/css/fw.css.min.js'				: ['src/modules/css/fw.css.js'],
 					'dist/modules/data/fw.data.min.js'				: ['src/modules/data/fw.data.js'],
 					'dist/modules/dom/fw.dom.min.js'				: ['src/modules/dom/fw.dom.js'],
