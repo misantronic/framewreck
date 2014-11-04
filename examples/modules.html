@@ -72,6 +72,24 @@
 			You can contact me at <span data-bindable="email"></span>.<br>
 			My user class is at level <span data-bindable="user-class"></span>.
 		</div>
+
+		<script id="template" type="x-tmpl-framewreck">
+			<h1>Hello {{ name }}!</h1>
+
+			<p>{{description}}</p>
+
+			<ul>
+			{{#each projects}}
+				<li>{{#value}}</li>
+			{{/each}}
+			</ul>
+
+			<ul>
+			{{#each animals}}
+				<li>{{#value}}</li>
+			{{/each}}
+			</ul>
+		</script>
 	</div>
 
 	<script src="../src/modules/core/fw.core.js"></script>
@@ -83,7 +101,8 @@
 			'../src/modules/ajax/fw.ajax.js',
 			'../src/modules/data/fw.data.js',
 			'../src/modules/animate/fw.animate.js',
-			'../src/modules/bindables/fw.bindables.js'
+			'../src/modules/bindables/fw.bindables.js',
+			'../src/modules/templates/fw.templates.js'
 		], function() {
 			F('#wrapper').data('init', 'F() initialized');
 
@@ -92,6 +111,22 @@
 			F('#name').registerBindable('name');
 			F('#email').registerBindable('email');
 			F('#select').registerBindable('user-class');
+
+			console.log(F('#template').parseTemplate({
+				name: '@misantronic',
+				description: 'When jQuery gets too bulky – wreck it up with framewreck.',
+				projects: [
+					'framewreck',
+					'invasion',
+					'hyperhydration'
+				],
+				animals: [
+					'lion',
+					'tiger',
+					'raven',
+					'crow'
+				]
+			}).html());
 		});
 	</script>
 </body>
