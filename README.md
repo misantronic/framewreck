@@ -1,8 +1,8 @@
 # framewreck [![Build Status](https://travis-ci.org/misantronic/framewreck.svg?branch=master)](https://travis-ci.org/misantronic/framewreck) [![Dependency Status](https://gemnasium.com/misantronic/frameWreck.svg)](https://gemnasium.com/misantronic/frameWreck)
 
-**A lightweight modular JavaScript framework.**
-
 > When [jQuery](http://jquery.com) is too bulky – wreck it up with framewreck.
+
+**A lightweight modular JavaScript framework.**
 
 Main features:
  - Minified and GZipped only ~1.5 kb
