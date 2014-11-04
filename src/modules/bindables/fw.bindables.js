@@ -39,12 +39,10 @@ F.ext({
 	setBindable: function(n, v, s, a, e, f) {
 		if(n && v != []._) F.bO[n] = v;
 
-		F('['+ (f="data-bindable") +']').each(function(el) {
-			s = (e = el[0])[a="selectionStart"];
-			el.val(F.bO[el.attr(f)]);
-			if(F.d.activeElement == e)
-				e[a] = s,
-				e.selectionEnd = s
+		F('['+ (f="data-bindable") +']').each(function(g) {
+			s = (e = g[0])[a="selectionStart"];
+			g.val(F.bO[g.attr(f)]);
+			F.d.activeElement == e && (e[a] = e.selectionEnd = s)
 		});
 
 		return this
