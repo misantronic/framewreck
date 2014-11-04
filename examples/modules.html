@@ -86,7 +86,7 @@
 
 			<ul>
 			{{#each animals}}
-				<li>{{#value}}</li>
+				<li>{{#name}}, {{#speed}}</li>
 			{{/each}}
 			</ul>
 		</script>
@@ -121,10 +121,10 @@
 					'hyperhydration'
 				],
 				animals: [
-					'lion',
-					'tiger',
-					'raven',
-					'crow'
+					{ name: 'lion', 	speed: 30 },
+					{ name: 'tiger', 	speed: 40 },
+					{ name: 'raven', 	speed: 20 },
+					{ name: 'crow', 	speed: 10 }
 				]
 			}).html());
 		});
