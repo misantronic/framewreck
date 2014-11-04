@@ -1,6 +1,6 @@
 # framewreck [![Build Status](https://travis-ci.org/misantronic/framewreck.svg?branch=master)](https://travis-ci.org/misantronic/framewreck) [![Dependency Status](https://gemnasium.com/misantronic/frameWreck.svg)](https://gemnasium.com/misantronic/frameWreck)
 
-> When [jQuery](http://jquery.com) is too bulky – wreck it up with framewreck.
+> When [jQuery](http://jquery.com) get too bulky – wreck it up with framewreck.
 
 **A lightweight modular JavaScript framework.**
 
