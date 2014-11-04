@@ -2,6 +2,8 @@
 
 **A lightweight modular JavaScript framework.**
 
+> When [jQuery](http://jquery.com) is too bulky – wreck it up with framewreck.
+
 Main features:
  - Minified and GZipped only ~1.5 kb
  - [CSS Selectors](#core-css-selectors)
