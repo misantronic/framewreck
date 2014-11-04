@@ -16,7 +16,7 @@ F.ext({
 				? F(e).find(':'+F.C).each(function(item){ A.push(item.val()) }) && a.push(A)
 				: a.push(e[g]),
 			v != []._ && (e[g] = v);
-		return v && this || a.join("")
+		return v && this || a.join("").trim()
 	},
 
 	/**
@@ -31,7 +31,7 @@ F.ext({
 	append: function (v, x, i) {
 		x = this.x;
 		var g = v[0]=='<' ? 0 : F.d[F.Q](v)[0];
-		for (i = x[F.L]; i--;)
+		for (i = 0; i < x[F.L]; i++)
 			g ? g.appendChild(x[i]) : x[i][F.H] += v;
 
 		return this
