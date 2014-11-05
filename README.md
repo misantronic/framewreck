@@ -18,6 +18,7 @@ Main features:
 Optional features:
  - [Animations](#animate-module)
  - [Bindings](#binding-module)
+ - [Templates](#template-engine)
 
 ## Install with Bower
 ```shell
@@ -28,9 +29,14 @@ $ bower install framewreck
 
 You can use [this generator](http://rawgit.com/misantronic/framewreck/master/cdn/index.html) to choose from all available modules and generate a dynamic URL.
 
-### all main modules
+### main modules
 ```html
 <script src="//cdn.jsdelivr.net/g/framewreck"></script>
+```
+
+### all modules
+```html
+<script src="//cdn.jsdelivr.net/framewreck/latest/framewreck.all.js"></script>
 ```
 
 **or**
@@ -366,6 +372,94 @@ F().getBindable( 'name' );
 ```
 
 Since `#inp_name` is connected to the binding-element, it will automatically update its value everytime you change it.
+
+### Template-Engine
+
+The template-engine is inspired by common engines like mustache or handlebars but wrecked down to a few main features 
+which are currently variables, iterating an array and conditionals. Thus the whole engine is minified and GZipped only ~500 bytes small.<br>
+All templates are wrapped in `<script type="x-tmpl-framewreck"></script>` and follow the `{{...}}`-syntax.
+
+*Note:* This module is optional and not included in dist/framewreck.min.js<br>
+Dependencies: [Dom](#dom-module)
+
+```html
+<script id="template" type="x-tmpl-framewreck">
+<h1>{{title}}</h1>
+
+{{#if description}}
+	<p>{{description}}</p>
+{{/if}}
+
+{{#each projects}}
+	<div class="project">
+		<h2>{{#name}}</h2>
+		<bockquote>
+			<p>{{#quote}}</p>
+		</bockquote>
+
+		{{#if versions}}
+			<h3>Versions:</h3>
+			{{##each versions}}
+				<p>v.{{## value}}</p>
+			{{//each}}
+		{{#else}}
+			<p>NO Versions</p>
+		{{/if}}
+		
+		{{#if tests}}
+			<h3>Tests:</h3>
+			{{##each tests}}
+				<p>
+					Test ran on {{##run}}.<br/>
+					Success: {{##success}}
+				</p>
+			{{//tests}}
+		{{/if}}
+
+		<h3>Code:</h3>
+		<pre><code class="lang-javascript">{{{#code}}}</code></pre>
+	</div>
+{{/each}}
+</script>
+```
+
+```javascript
+// load module
+F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/dom/fw.dom.min.js', 'dist/modules/templates/fw.templates.min.js']);
+
+var context = {
+	title: '512byt.es',
+	description: '<a href="https://github.com/misantronic">@misantronic</a>\'s javascript <a href="http://en.wikipedia.org/wiki/Code_golf">code golf</a> projects.<br>',
+	projects: [
+		{
+			name: 'Invasion',
+			quote: 'A Space Invader clone. Invaders from outer space are coming to kill your mom! (501 bytes)',
+			code: 'p=389;$=l=m=t=0;c=" _ ";onkeydown=function(e){(k=e.which)==39?p++:k==37?p--:!l&(l=p)};setInterval(\'_="<pre>";l&(l-=20)<0&&(l=0);m=(m+=20)>p?b[+new Date%6]:m;for(i=0;i<400;i++){if(i%20==0)_+="\\n";if(~b[n="indexOf"](l))b.splice(b[n](l),1),$+=5,l=0;if(~b[n](p)||p==m)p=n,b=[],c="xxx";_+=i==p?"oIo":~b[n](i)?".#.":i==m&&m?" * ":i==l&&l?" | ":c}document.body.innerHTML=_+="\\nP "+$;t+=o;for(i in b)b[i]+=t%5e3==0?20:t%2e3==0?1:t%1e3==0&&-1\',o=50);for(b=[],j=2;j<136;j+=j==14||j==94?29:j==55?27:2)b.push(j)',
+			tests: [
+				{ run: "2014-11-05", success: "yes" },
+				{ run: "2014-11-04", success: "no" },
+				{ run: "2014-11-03", success: "yes" }
+			],
+			versions: [
+				"1.0.0", "1.1.0", "1.2.0"
+			]
+		},
+		{
+			name: 'Tron',
+			quote: 'Destroy your friends! Competitive 1on1 Tron-clone. (757 bytes)',
+			code: 'a=A=0;with(c.getContext("2d"))onkeyup=function(e){d=(k=e.which)==39?2:k==37?4:k==38?1:k==40?3:d;D=k==87?1:k==68?2:k==83?3:k==65?4:D;k==32&&X&S()},(S=function(){X=0;w=[{x:795,y:400}];d=1;W=[{x:5,y:0}];D=3;v=setInterval(\'c.width=c.width;p1[H="innerHTML"]=A+=z(w,d,W,"blue",0);p2[H]=a+=z(W,D,w,"red",1);if(X)clearInterval(v)\',60)})(),z=function(f,g,F,B,b){h={x:f[l=f[m="length"]-1].x,y:f[l].y};beginPath();L=lineWidth=10;h.x+=g==2?L:g==4&&-L;h.y+=g==3?L:g==1&&-L;if(F[I="filter"](t=function(o){return o.x==(T=this).x&o.y==T.y},h)[m]||f[I](t,h)[m])return X=1;strokeStyle=_=createLinearGradient(0,0,800,0);for($ in _);_[$](b,"magenta");_[$](.3,"#AFD2E6");_[$](.6,"#FF1493");_[$](!b,B);for(i=f.push({x:h.x,y:h.y})-1;i--;){lineTo(f[i].x,f[i].y)};stroke();return 0}'
+		},
+		{
+			name: 'Script Loader',
+			quote: 'Dynamically load scripts (131 bytes)',
+			code: 'function l(a,c,f){with(document)for(;(f=createElement(\'script\')).src=a.shift();head.appendChild(f))f.onload=function(){c&&c(this)}}'
+		}
+	]
+};
+
+F('#template').parse(context).appendTo('body');
+```
+
 
 ## Contact and comments
 
