@@ -2,6 +2,7 @@ F.ext({
 	/**
 	 *
 	 * @param {Object} ctx Context object
+	 * @param [r] placeholder
 	 * @returns {F}
 	 */
 	parse: function(ctx, r) {
@@ -20,6 +21,9 @@ F.ext({
 		function parseObject(html, ctx, n, s, a) {
 			// look for each-tag
 			return html[r](RegExp("{{#{"+n+"}each(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/{"+n+"}each}}", "g"), function(p1, prop1, partial) {
+
+				//console.log("partial", partial)
+
 				s = "";
 				if(ctx[prop1])
 				// when each is found
@@ -30,6 +34,11 @@ F.ext({
 							a = ctx[prop1][i].big ? ctx[prop1][i] : ctx[prop1][i][prop2];
 
 							return escapeHTML(p2, a)
+						});
+
+						// check if statement
+						s = s[r](parseIf(n), function(p2, prop3, partial) {
+							return ctx[prop1][i][prop3] ? partial : ''
 						});
 
 						// check for another each
@@ -62,12 +71,25 @@ F.ext({
 			return RegExp("{+\\{#{"+ n +"} *(\\w+) *}}+", "g")
 		}
 
+		/**
+		 * RegExp for {{#if}} ... {{/if}, {{##if}} ... {{//if}, etc
+		 * @param n Number of #
+		 * @returns {RegExp}
+		 */
+		function parseIf(n) {
+			return RegExp("(?:{{#{"+n+"}if(?: *))(\\w+)(?: *)}}([\\s\\S]*?)(?:{{\\/{"+n+"}if}})", "g")
+		}
+
 		return F(
 				// each
 				parseObject(this.html(), ctx, 1)
-				// vars
+				// vars at level 0
 				[r](parseTag(0), function(p, $1) {
 					return escapeHTML(p, ctx[$1])
+				})
+				// if's at level 0
+				[r](parseIf(1), function(p, $1, $2) {
+					return ctx[$1] ? $2 : ''
 				})
 				// remove whitespace
 				.trim()
