@@ -3,10 +3,14 @@ F.ext({
 	 *
 	 * @param {Object} ctx Context object
 	 * @param [r] placeholder
+	 * @param [e1] placeholder
+	 * @param [e2] placeholder
 	 * @returns {F}
 	 */
-	parse: function(ctx, r) {
+	parse: function(ctx, r, e1, e2) {
 		r = "replace";
+		e1 = /{{(#+)else a}}[\s\S]*/;
+		e2 = /[\s\S]*\{{(#+)else a}}/;
 
 		/**
 		 * parse object
@@ -21,9 +25,6 @@ F.ext({
 		function parseObject(html, ctx, n, s, a) {
 			// look for each-tag
 			return html[r](RegExp("{{#{"+n+"}each(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/{"+n+"}each}}", "g"), function(p1, prop1, partial) {
-
-				//console.log("partial", partial)
-
 				s = "";
 				if(ctx[prop1])
 				// when each is found
@@ -38,7 +39,7 @@ F.ext({
 
 						// check if statement
 						s = s[r](parseIf(n), function(p2, prop3, partial) {
-							return ctx[prop1][i][prop3] ? partial : ''
+							return partial.replace(ctx[prop1][i][prop3] ? e1 : e2, '')
 						});
 
 						// check for another each
@@ -82,14 +83,17 @@ F.ext({
 
 		return F(
 				// each
-				parseObject(this.html(), ctx, 1)
+				parseObject(
+					this.html()
+						// Workaround: replace {{#else}} to fit matching
+						.replace(/{{(#+) *else *}}/g, "{{$1else a}}"), ctx, 1)
 				// vars at level 0
 				[r](parseTag(0), function(p, $1) {
 					return escapeHTML(p, ctx[$1])
 				})
 				// if's at level 0
 				[r](parseIf(1), function(p, $1, $2) {
-					return ctx[$1] ? $2 : ''
+					return $2.replace(ctx[$1] ? e1 : e2, '')
 				})
 				// remove whitespace
 				.trim()
