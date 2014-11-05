@@ -27,7 +27,7 @@ F.ext({
 			return html[r](RegExp("{{#{"+n+"}each(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/{"+n+"}each}}", "g"), function(p1, prop1, partial) {
 				s = "";
 				if(ctx[prop1])
-				// when each is found
+					// when each is found
 					ctx[prop1].forEach(function(obj, i) {
 						// replace vars
 						s += partial[r](parseTag(n), function(p2, prop2) {
@@ -37,7 +37,7 @@ F.ext({
 							return escapeHTML(p2, a)
 						});
 
-						// check if statement
+						// if statement
 						s = s[r](parseIf(n), function(p2, prop3, partial) {
 							return partial.match(e1)
 								? partial.replace(ctx[prop1][i][prop3]
