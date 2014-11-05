@@ -376,7 +376,7 @@ Since `#inp_name` is connected to the binding-element, it will automatically upd
 ### Template-Engine
 
 The template-engine is inspired by common engines like mustache or handlebars but wrecked down to a few main features.<br>
-Minified and GZipped the engine is < 500 bytes.<br>
+Minified and GZipped the engine is ~500 bytes.<br>
 All templates are wrapped in `<script type="x-tmpl-framewreck"></script>` and follow the `{{...}}`-syntax.<br>
 
 *Note:* This module is optional and not included in dist/framewreck.min.js<br>
