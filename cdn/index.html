@@ -113,10 +113,6 @@
 				<option value="1.4.1" selected="selected">v.1.4.1</option>
 				<option value="1.4.0">v.1.4.0</option>
 				<option value="1.3.0">v.1.3.0</option>
-				<option value="1.2.7">v.1.2.7</option>
-				<option value="1.2.6b">v.1.2.6b</option>
-				<option value="1.2.6a">v.1.2.6a</option>
-				<option value="1.2.5">v.1.2.5</option>
 			</select>
 		</div>
 
@@ -192,6 +188,10 @@
 
 			url = basePath + version + modules;
 
+			if(F('.cbx_module').checked().every(isTrue)) {
+				url = '//cdn.jsdelivr.net/framewreck/'+ version +'/framewreck.all.js';
+			}
+
 			output.innerHTML = '&lt;script&nbsp;src=&quot;'+ url +'&quot;&gt;&lt;/script&gt;';
 
 			selectText('output');
@@ -199,6 +199,10 @@
 
 		function isFalse(item) {
 			return item == false;
+		}
+
+		function isTrue(item) {
+			return item == true;
 		}
 
 		function selectText(element) {
