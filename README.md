@@ -377,52 +377,64 @@ Since `#inp_name` is connected to the binding-element, it will automatically upd
 
 The template-engine is inspired by common engines like mustache or handlebars but wrecked down to a few main features 
 which are currently variables, iterating an array and conditionals. Thus the whole engine is minified and GZipped only ~500 bytes small.<br>
-All templates are wrapped in `<script type="x-tmpl-framewreck"></script>` and follow the `{{...}}`-syntax.
+All templates are wrapped in `<script type="x-tmpl-framewreck"></script>` and follow the `{{...}}`-syntax.<br>
 
 *Note:* This module is optional and not included in dist/framewreck.min.js<br>
 Dependencies: [Dom](#dom-module)
 
+Template-Example:
 ```html
 <script id="template" type="x-tmpl-framewreck">
-<h1>{{title}}</h1>
-
-{{#if description}}
-	<p>{{description}}</p>
-{{/if}}
-
-{{#each projects}}
-	<div class="project">
-		<h2>{{#name}}</h2>
-		<bockquote>
-			<p>{{#quote}}</p>
-		</bockquote>
-
-		{{#if versions}}
-			<h3>Versions:</h3>
-			{{##each versions}}
-				<p>v.{{## value}}</p>
-			{{//each}}
-		{{#else}}
-			<p>NO Versions</p>
-		{{/if}}
-		
-		{{#if tests}}
-			<h3>Tests:</h3>
-			{{##each tests}}
-				<p>
-					Test ran on {{##run}}.<br/>
-					Success: {{##success}}
-				</p>
-			{{//tests}}
-		{{/if}}
-
-		<h3>Code:</h3>
-		<pre><code class="lang-javascript">{{{#code}}}</code></pre>
-	</div>
-{{/each}}
+	<h1>{{title}}</h1>
+	
+	{{#if description}}
+		<p>{{description}}</p>
+	{{/if}}
+	
+	{{#each projects}}
+		<div class="project">
+			<h2>{{#name}}</h2>
+			<bockquote>
+				<p>{{#quote}}</p>
+			</bockquote>
+	
+			{{#if versions}}
+				<h3>Versions:</h3>
+				{{##each versions}}
+					<p>v.{{## value}}</p>
+				{{//each}}
+			{{#else}}
+				<p>NO Versions</p>
+			{{/if}}
+			
+			{{#if tests}}
+				<h3>Tests:</h3>
+				{{##each tests}}
+					<p>
+						Test ran on {{##run}}.<br/>
+						Success: {{##success}}
+					</p>
+				{{//tests}}
+			{{/if}}
+	
+			<h3>Code:</h3>
+			<pre><code class="lang-javascript">{{{#code}}}</code></pre>
+		</div>
+	{{/each}}
 </script>
 ```
 
+Please note that every time you add an `each`-loop inside another, you have to add another hash/ending slash.
+
+```html
+{{#each projects}}
+	{{##each tests}}
+		...
+	{{//each}}
+{{/each}}
+```
+
+Run Parser:
 ```javascript
 // load module
 F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/dom/fw.dom.min.js', 'dist/modules/templates/fw.templates.min.js']);
