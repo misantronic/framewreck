@@ -9,8 +9,8 @@ F.ext({
 	 */
 	parse: function(ctx, r, e1, e2) {
 		r = "replace";
-		e1 = /{{(#+)else a}}[\s\S]*/;
-		e2 = /[\s\S]*\{{(#+)else a}}/;
+		e1 = /{{(#+)else}}[\s\S]*/;
+		e2 = /[\s\S]*\{{(#+)else}}/;
 
 		/**
 		 * parse object
@@ -39,7 +39,11 @@ F.ext({
 
 						// check if statement
 						s = s[r](parseIf(n), function(p2, prop3, partial) {
-							return partial.replace(ctx[prop1][i][prop3] ? e1 : e2, '')
+							return partial.match(e1)
+								? partial.replace(ctx[prop1][i][prop3]
+									? e1 : e2, '')
+								: ctx[prop1][i][prop3]
+									? partial : ''
 						});
 
 						// check for another each
@@ -69,7 +73,7 @@ F.ext({
 		 * @private
 		 */
 		function parseTag(n) {
-			return RegExp("{+\\{#{"+ n +"} *(\\w+) *}}+", "g")
+			return RegExp("{+\\{#{"+ n +"} *(?!else)(\\w+) *}}+", "g")
 		}
 
 		/**
@@ -83,10 +87,7 @@ F.ext({
 
 		return F(
 				// each
-				parseObject(
-					this.html()
-						// Workaround: replace {{#else}} to fit matching
-						.replace(/{{(#+) *else *}}/g, "{{$1else a}}"), ctx, 1)
+				parseObject(this.html(), ctx, 1)
 				// vars at level 0
 				[r](parseTag(0), function(p, $1) {
 					return escapeHTML(p, ctx[$1])
