@@ -76,6 +76,10 @@ F.ext({
 			return RegExp("{+\\{#{"+ n +"} *(?!else)(\\w+) *}}+", "g")
 		}
 
+		function parseJS() {
+			return RegExp("{% *(.*) *%}", "g")
+		}
+
 		/**
 		 * RegExp for {{#if}} ... {{/if}, {{##if}} ... {{//if}, etc
 		 * @param n Number of #
@@ -95,6 +99,10 @@ F.ext({
 				// if's at level 0
 				[r](parseIf(1), function(p, $1, $2) {
 					return $2.replace(ctx[$1] ? e1 : e2, '')
+				})
+				// JS
+				[r](parseJS(), function(p, $1) {
+					return eval($1);
 				})
 				// remove whitespace
 				.trim()
