@@ -160,6 +160,12 @@
 							F('#cbx_events, #cbx_dom').checked(true);
 							updateModules(); return;
 						}
+					} else if(module == F('#cbx_templates').attr('name')) {
+						// add dependencies
+						if(F('#cbx_dom').checked().some(isFalse)) {
+							F('#cbx_dom').checked(true);
+							updateModules(); return;
+						}
 					}
 
 					modules_extra_arr.push(module);
