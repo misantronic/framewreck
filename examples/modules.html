@@ -14,6 +14,8 @@
 			margin: 0 0 10px;
 		}
 
+		.clear { clear: both; }
+
 		#wrapper {
 			width: 400px;
 			line-height: 200%;
@@ -38,13 +40,18 @@
 		}
 
 		#page-wrapper {
-			margin: 20px 0;
+			margin: 40px 0;
 			line-height: normal;
 		}
 
 		#page-wrapper pre {
 			max-width: 400px;
 			word-wrap: break-word;
+		}
+
+		#page-wrapper .project {
+			float: left;
+			margin-right: 15px;
 		}
 	</style>
 </head>
@@ -82,23 +89,39 @@
 			You can contact me at <span data-bindable="email"></span>.<br>
 			My user class is at level <span data-bindable="user-class"></span>.
 		</div>
-
-		<script id="template" type="x-tmpl-framewreck">
-			<div id="page-wrapper">
-				<h1>{{title}}</h1>
-
-				<p>{{description}}</p>
-
-
-				{{#each projects}}
-					<h2>{{name}}</h2>
-					<bockquote><p>{{quote}}</p></bockquote>
-					<p>{{description}}</p>
-					<pre><code class="lang-javascript">{{{code}}}</code></pre>
-				{{/each}}
-			</div>
-		</script>
 	</div>
+	<div id="page-wrapper"></div>
+
+	<script id="template" type="x-tmpl-framewreck">
+		<h1>{{ title }}</h1>
+
+		<p>{{ description }}</p>
+
+		{{#each projects}}
+			<div class="project">
+				<h2>{{# name }}</h2>
+				<bockquote>
+					<p>{{# quote }}</p>
+				</bockquote>
+
+				<p>{{# description }}</p>
+
+				<h3>Versions:</h3>
+				{{##each versions}}
+					<p>v.{{## no}}</p>
+				{{//each}}
+
+				<h3>Animals:</h3>
+				{{##each animals}}
+					<p>{{## value}}</p>
+				{{//each}}
+
+				<h3>Code:</h3>
+				<pre><code class="lang-javascript">{{{# code }}}</code></pre>
+			</div>
+		{{/each}}
+		<br class="clear"/>
+	</script>
 
 	<script src="../src/modules/core/fw.core.js"></script>
 	<script>
@@ -128,7 +151,15 @@
 						name: 'Invasion',
 						quote: 'A Space Invader clone. Invaders from outer space are coming to kill your mom! (501 bytes)',
 						description: '',
-						code: 'p=389;$=l=m=t=0;c=" _ ";onkeydown=function(e){(k=e.which)==39?p++:k==37?p--:!l&(l=p)};setInterval(\'_="<pre>";l&(l-=20)<0&&(l=0);m=(m+=20)>p?b[+new Date%6]:m;for(i=0;i<400;i++){if(i%20==0)_+="\\n";if(~b[n="indexOf"](l))b.splice(b[n](l),1),$+=5,l=0;if(~b[n](p)||p==m)p=n,b=[],c="xxx";_+=i==p?"oIo":~b[n](i)?".#.":i==m&&m?" * ":i==l&&l?" | ":c}document.body.innerHTML=_+="\\nP "+$;t+=o;for(i in b)b[i]+=t%5e3==0?20:t%2e3==0?1:t%1e3==0&&-1\',o=50);for(b=[],j=2;j<136;j+=j==14||j==94?29:j==55?27:2)b.push(j)'
+						code: 'p=389;$=l=m=t=0;c=" _ ";onkeydown=function(e){(k=e.which)==39?p++:k==37?p--:!l&(l=p)};setInterval(\'_="<pre>";l&(l-=20)<0&&(l=0);m=(m+=20)>p?b[+new Date%6]:m;for(i=0;i<400;i++){if(i%20==0)_+="\\n";if(~b[n="indexOf"](l))b.splice(b[n](l),1),$+=5,l=0;if(~b[n](p)||p==m)p=n,b=[],c="xxx";_+=i==p?"oIo":~b[n](i)?".#.":i==m&&m?" * ":i==l&&l?" | ":c}document.body.innerHTML=_+="\\nP "+$;t+=o;for(i in b)b[i]+=t%5e3==0?20:t%2e3==0?1:t%1e3==0&&-1\',o=50);for(b=[],j=2;j<136;j+=j==14||j==94?29:j==55?27:2)b.push(j)',
+						versions: [
+							{ no: "1.0.0" },
+							{ no: "1.1.0" },
+							{ no: "1.2.0" }
+						],
+						animals: [
+							'Crow', 'Raven'
+						]
 					},
 					{
 						name: 'Tron',
@@ -145,7 +176,7 @@
 				]
 			};
 
-			F('#template').parse(context).appendTo('#wrapper');
+			F('#template').parse(context).appendTo('#page-wrapper');
 		});
 	</script>
 </body>
