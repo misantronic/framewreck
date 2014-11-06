@@ -22,7 +22,7 @@ F.ext({
 		 * @returns {String}
 		 * @private
 		 */
-		function parseObject(h, ctx, n, s, t) {
+		function pO(h, ctx, n, s, t) {
 			// look for each-tag
 			return h[r](RegExp("{{#{"+n+"}each(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/{"+n+"}each}}", "g"), function(p, a, b) {
 				s = "";
@@ -30,15 +30,15 @@ F.ext({
 					// when each is found
 					ctx[a].forEach(function(obj, i) {
 						// replace vars
-						s += b[r](parseTag(n), function(p, c) {
+						s += b[r](pT(n), function(p, c) {
 							// return string or object
 							t = ctx[a][i].big ? ctx[a][i] : ctx[a][i][c];
 
-							return escapeHTML(p, t)
+							return _e(p, t)
 						});
 
 						// if statement
-						s = s[r](parseIf(n), function(p, c, d, f) {
+						s = s[r](pI(n), function(p, c, d, f) {
 							try {
 								f = eval("ctx."+a+"["+i+"]."+ c)
 							} catch(e) {
@@ -52,7 +52,7 @@ F.ext({
 
 						// check for another each
 						if(s.match(RegExp("{{#{"+ (n+1) +"}each", "g")))
-							s = parseObject(s, ctx[a][i], n+1)
+							s = pO(s, ctx[a][i], n+1)
 					});
 
 				return s
@@ -66,7 +66,7 @@ F.ext({
 		 * @returns {String}
 		 * @private
 		 */
-		function escapeHTML(a, b) {
+		function _e(a, b) {
 			return a.substr(0, 3) == '{{{' && a.slice(-3) == '}}}' ? new Option(b)[F.H] : b
 		}
 
@@ -76,7 +76,7 @@ F.ext({
 		 * @returns {RegExp}
 		 * @private
 		 */
-		function parseTag(n) {
+		function pT(n) {
 			return RegExp("{+\\{#{"+ n +"} *(?!else)(\\w+) *}}+", "g")
 		}
 
@@ -85,19 +85,19 @@ F.ext({
 		 * @param n Number of #
 		 * @returns {RegExp}
 		 */
-		function parseIf(n) {
+		function pI(n) {
 			return RegExp("(?:{{#{"+n+"}if(?: *))(.*)(?: *)}}([\\s\\S]*?)(?:{{\\/{"+n+"}if}})", "g")
 		}
 
 		return F(
 				// each
-				parseObject(this.html(), ctx, 1)
+				pO(this.html(), ctx, 1)
 				// vars at level 0
-				[r](parseTag(0), function(p, $1) {
-					return escapeHTML(p, ctx[$1])
+				[r](pT(0), function(p, $1) {
+					return _e(p, ctx[$1])
 				})
 				// if's at level 0
-				[r](parseIf(1), function(p, $1, $2) {
+				[r](pI(1), function(p, $1, $2) {
 					return $2[r](ctx[$1] ? e : E, '')
 				})
 				// JS
