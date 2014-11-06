@@ -82,7 +82,7 @@ F.ext({
 				try {
 					f = eval(V + c)
 				} catch(e) {
-					f = false
+					f = 0
 				}
 
 				return d.match(e)
