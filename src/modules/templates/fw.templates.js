@@ -24,13 +24,13 @@ F.ext({
 		 */
 		function pO(d, e, f, g, h) {
 			// look for each-tag
-			return d[h](RegExp("{{#{"+f+"}each(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/{"+f+"}each}}", "g"), function(p1, prop1, partial) {
+			return d[a](RegExp("{{#{"+f+"}each(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/{"+f+"}each}}", "g"), function(p1, prop1, partial) {
 				g = "";
 				if(e[prop1])
 					// when each is found
 					e[prop1].forEach(function(obj, i) {
 						// replace vars
-						g += partial[h](pT(f), function(p2, prop2) {
+						g += partial[a](pT(f), function(p2, prop2) {
 							// return string or object
 							h = e[prop1][i].big ? e[prop1][i] : e[prop1][i][prop2];
 
@@ -38,7 +38,7 @@ F.ext({
 						});
 
 						// if statement
-						g = g[h](pI(f), function(p2, prop3, partial, bool) {
+						g = g[a](pI(f), function(p2, prop3, partial, bool) {
 							try {
 								bool = eval("ctx."+prop1+"["+i+"]."+ prop3)
 							} catch(e) {
@@ -46,7 +46,7 @@ F.ext({
 							}
 
 							return partial.match(b)
-								? partial.replace(bool ? b : c, '')
+								? partial[a](bool ? b : c, '')
 								: bool ? partial : ''
 						});
 
@@ -98,7 +98,7 @@ F.ext({
 				})
 				// if's at level 0
 				[a](pI(1), function(p, $1, $2) {
-					return $2.replace(ctx[$1] ? b : c, '')
+					return $2[a](ctx[$1] ? b : c, '')
 				})
 				// JS
 				[a](/{%(.*)%}/g, function(p, $1) {
