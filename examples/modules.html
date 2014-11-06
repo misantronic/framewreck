@@ -96,13 +96,19 @@
 			My user class is at level <span data-bindable="user-class"></span>.
 		</div>
 
-		<h1>{{ title }}</h1>
+		<h1>{{title}}</h1>
 
 		{{#if description}}
 			<p>{{ description }}</p>
 		{{#else}}
 			<p><b>OMG NO DESCRIPTION</b></p>
 		{{/if}}
+
+		<h2>Address</h2>
+		<p>
+			{{address.street}}<br>
+			{{address.zip}} {{address.city}}
+		</p>
 
 		{{#each projects}}
 			<div class="project">
@@ -169,6 +175,11 @@
 			var context = {
 				title: '512byt.es',
 				description: '<a href="https://github.com/misantronic">@misantronic</a>\'s javascript <a href="http://en.wikipedia.org/wiki/Code_golf">code golf</a> projects.<br>',
+				address: {
+					street: 'Misantronicstreet 1',
+					zip: '77700',
+					city: 'Hamburg'
+				},
 				projects: [
 					{
 						name: 'Invasion',

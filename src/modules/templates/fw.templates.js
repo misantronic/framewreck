@@ -30,12 +30,7 @@ F.ext({
 					// when each is found
 					ctx[a].forEach(function(obj, i) {
 						// replace vars
-						s += b[r](pT(n), function(p, c) {
-							// return string or object
-							t = ctx[a][i].big ? ctx[a][i] : ctx[a][i][c];
-
-							return _e(p, t)
-						});
+						s += b.parseTag(n, "ctx['"+a+"']["+i+"]", ctx);
 
 						// if statement
 						s = s.parseIf(n, "ctx."+a+"["+i+"].", ctx);
@@ -58,16 +53,6 @@ F.ext({
 		 */
 		function _e(a, b) {
 			return a.substr(0, 3) == '{{{' && a.slice(-3) == '}}}' ? new Option(b)[F.H] : b
-		}
-
-		/**
-		 * RexExp for {{abc}}, {{#abc}}, {{##abc}} etc tags
-		 * @param {Number} n Number of #
-		 * @returns {RegExp}
-		 * @private
-		 */
-		function pT(n) {
-			return RegExp("{+\\{#{"+ n +"} *(?!else)(\\w+) *}}+", "g")
 		}
 
 		/**
@@ -97,13 +82,29 @@ F.ext({
 			})
 		};
 
+		/**
+		 * Parse tags like {{abc}}, {{#abc}}, {{##abc}} etc
+		 * @param {Number} n Number of #
+		 * @returns {RegExp}
+		 */
+		String.prototype.parseTag = function(n, V, ctx) {
+			return this[r](RegExp("{+\\{#{"+ n +"} *(?!else)([A-Za-z0-9_.]+) *}}+", "g"), function(p, $1, f) {
+				try {
+					f = eval(!V.big ? V+"['"+$1.replace(/\./g, "']['")+"']" : V)
+				} catch(e) {}
+
+				// return string or object
+				if(f) f = f.big ? f : f[$1];
+
+				return _e(p, f ? f : '')
+			})
+		};
+
 		return F(
 				// each
 				pO(this.html(), ctx, 1)
 				// vars at level 0
-				[r](pT(0), function(p, $1) {
-					return _e(p, ctx[$1])
-				})
+				.parseTag(0, "ctx", ctx)
 				// if's at level 0
 				.parseIf(1, "ctx.", ctx)
 				// JS
