@@ -75,7 +75,7 @@ F.ext({
 		 * @param n Number of #
 		 * @param V eval base
 		 * @param ctx context to look for vars in eval
-		 * @param [n] placeholder
+		 * @param [m] placeholder
 		 * @param [v] placeholder
 		 * @returns {RegExp}
 		 */
