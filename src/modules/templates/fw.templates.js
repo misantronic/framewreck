@@ -97,8 +97,14 @@ F.ext({
 					return _e(p, ctx[$1])
 				})
 				// if's at level 0
-				[r](pI(1), function(p, $1, $2) {
-					return $2[r](ctx[$1] ? e : E, '')
+				[r](pI(1), function(p, $1, $2, f) {
+					try {
+						f = eval("ctx."+ $1)
+					} catch(e) {
+						f = false
+					}
+
+					return $2[r](f ? e : E, '')
 				})
 				// JS
 				[r](/{%(.*)%}/g, function(p, $1) {

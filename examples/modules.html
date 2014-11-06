@@ -98,7 +98,9 @@
 
 		<h1>{{ title }}</h1>
 
-		<p>{{ description }}</p>
+		{{#if projects.length > 0}}
+			<p>{{ description }}</p>
+		{{/if}}
 
 		{{#each projects}}
 			<div class="project">
