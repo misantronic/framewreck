@@ -85,8 +85,6 @@ F.ext({
 				m = c.match(/(^!|^not) */), v = V;
 				if(m) c = c.replace(m[0], ""), v = '!'+v;
 
-				console.log(v+c)
-
 				try {
 					f = eval(v+c)
 				} catch(e) {
