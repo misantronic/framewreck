@@ -38,17 +38,7 @@ F.ext({
 						});
 
 						// if statement
-						s = s[r](pI(n), function(p, c, d, f) {
-							try {
-								f = eval("ctx."+a+"["+i+"]."+ c)
-							} catch(e) {
-								f = false
-							}
-
-							return d.match(e)
-								? d[r](f ? e : E, '')
-								: f ? d : ''
-						});
+						s = s.parseIf(n, "ctx."+a+"["+i+"].", ctx);
 
 						// check for another each
 						if(s.match(RegExp("{{#{"+ (n+1) +"}each", "g")))
@@ -81,13 +71,25 @@ F.ext({
 		}
 
 		/**
-		 * RegExp for {{#if}} ... {{/if}, {{##if}} ... {{//if}, etc
+		 * Parse {{#if}} ... {{/if}, {{##if}} ... {{//if}, etc
 		 * @param n Number of #
+		 * @param V eval base
+		 * @param ctx context to look for vars in eval
 		 * @returns {RegExp}
 		 */
-		function pI(n) {
-			return RegExp("(?:{{#{"+n+"}if(?: *))(.*)(?: *)}}([\\s\\S]*?)(?:{{\\/{"+n+"}if}})", "g")
-		}
+		String.prototype.parseIf = function(n, V, ctx) {
+			return this[r](RegExp("(?:{{#{"+n+"}if(?: *))(.*)(?: *)}}([\\s\\S]*?)(?:{{\\/{"+n+"}if}})", "g"), function(p, c, d, f) {
+				try {
+					f = eval(V + c)
+				} catch(e) {
+					f = false
+				}
+
+				return d.match(e)
+					? d[r](f ? e : E, '')
+					: f ? d : ''
+			})
+		};
 
 		return F(
 				// each
@@ -97,15 +99,7 @@ F.ext({
 					return _e(p, ctx[$1])
 				})
 				// if's at level 0
-				[r](pI(1), function(p, $1, $2, f) {
-					try {
-						f = eval("ctx."+ $1)
-					} catch(e) {
-						f = false
-					}
-
-					return $2[r](f ? e : E, '')
-				})
+				.parseIf(1, "ctx.", ctx)
 				// JS
 				[r](/{%(.*)%}/g, function(p, $1) {
 					return eval($1);

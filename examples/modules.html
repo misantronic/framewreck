@@ -98,8 +98,10 @@
 
 		<h1>{{ title }}</h1>
 
-		{{#if projects.length > 0}}
+		{{#if description}}
 			<p>{{ description }}</p>
+		{{#else}}
+			<p><b>OMG NO DESCRIPTION</b></p>
 		{{/if}}
 
 		{{#each projects}}
