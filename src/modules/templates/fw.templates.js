@@ -90,7 +90,7 @@ F.ext({
 		String.prototype.parseTag = function(n, V, ctx) {
 			return this[r](RegExp("{+\\{#{"+ n +"} *(?!else)([A-Za-z0-9_.]+) *}}+", "g"), function(p, $1, f) {
 				try {
-					f = eval(!V.big ? V+"['"+$1.replace(/\./g, "']['")+"']" : V)
+					f = eval(!V.big || ~$1.indexOf('.') ? V+"['"+$1.replace(/\./g, "']['")+"']" : V)
 				} catch(e) {}
 
 				// return string or object
