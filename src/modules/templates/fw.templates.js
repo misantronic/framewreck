@@ -75,15 +75,25 @@ F.ext({
 		 * @param n Number of #
 		 * @param V eval base
 		 * @param ctx context to look for vars in eval
+		 * @param [n] placeholder
+		 * @param [v] placeholder
 		 * @returns {RegExp}
 		 */
-		String.prototype.parseIf = function(n, V, ctx) {
+		String.prototype.parseIf = function(n, V, ctx, m, v) {
 			return this[r](RegExp("(?:{{#{"+n+"}if(?: *))(.*)(?: *)}}([\\s\\S]*?)(?:{{\\/{"+n+"}if}})", "g"), function(p, c, d, f) {
+				// match ! or not statement
+				m = c.match(/(^!|^not) */), v = V;
+				if(m) c = c.replace(m[0], ""), v = '!'+v;
+
+				console.log(v+c)
+
 				try {
-					f = eval(V + c)
+					f = eval(v+c)
 				} catch(e) {
 					f = 0
 				}
+
+
 
 				return d.match(e)
 					? d[r](f ? e : E, '')

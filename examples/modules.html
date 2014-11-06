@@ -125,13 +125,21 @@
 					NO VERSION!
 				{{/if}}
 
-				{{#if animals.length == 2}}
+				{{#if animals.length}}
 					<h3>Animals:</h3>
 					{{##each animals}}
 						<p>{{## value}}</p>
 					{{//each}}
 				{{#else}}
 					NO ANIMALS!!
+				{{/if}}
+
+				{{#if   ! animals}}
+					<div>REALLY NO ANIMALS</div>
+				{{/if}}
+
+				{{#if   not animals}}
+					<div>REALLY REEEAALLLY NO ANIMALS</div>
 				{{/if}}
 
 				<h3>Code:</h3>
