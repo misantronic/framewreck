@@ -434,7 +434,7 @@ Dependencies: [Dom](#dom-module)
 </script>
 ```
 
-Please note that every time you add an `each`-loop inside another, you have to add another hash/ending slash.
+Please note that every time you add an `each`-loop inside another, you have to add another hash/ending slash to every expression.
 
 ```html
 {{#each projects}}
