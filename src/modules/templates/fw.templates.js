@@ -2,106 +2,106 @@ F.ext({
 	/**
 	 *
 	 * @param {Object} ctx Context object
-	 * @param [a] placeholder
-	 * @param [b] placeholder
-	 * @param [c] placeholder
+	 * @param [r] placeholder
+	 * @param [e] placeholder
+	 * @param [E] placeholder
 	 * @returns {F}
 	 */
-	parse: function(ctx, a, b, c) {
-		a = "replace";
-		b = /{{(#+)else}}[\s\S]*/;
-		c = /[\s\S]*\{{(#+)else}}/;
+	parse: function(ctx, r, e, E) {
+		r = "replace";
+		e = /{{(#+)else}}[\s\S]*/;
+		E = /[\s\S]*\{{(#+)else}}/;
 
 		/**
 		 * parse object
-		 * @param {String} d HTML
-		 * @param {Object} e Context object
-		 * @param {Number} f number of the iteration
-		 * @param [g] placeholder
-		 * @param [h] placeholder
+		 * @param {String} h HTML
+		 * @param {Object} ctx Context object
+		 * @param {Number} n number of the iteration
+		 * @param [s] placeholder
+		 * @param [t] placeholder
 		 * @returns {String}
 		 * @private
 		 */
-		function pO(d, e, f, g, h) {
+		function parseObject(h, ctx, n, s, t) {
 			// look for each-tag
-			return d[a](RegExp("{{#{"+f+"}each(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/{"+f+"}each}}", "g"), function(p1, prop1, partial) {
-				g = "";
-				if(e[prop1])
+			return h[r](RegExp("{{#{"+n+"}each(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/{"+n+"}each}}", "g"), function(p, a, b) {
+				s = "";
+				if(ctx[a])
 					// when each is found
-					e[prop1].forEach(function(obj, i) {
+					ctx[a].forEach(function(obj, i) {
 						// replace vars
-						g += partial[a](pT(f), function(p2, prop2) {
+						s += b[r](parseTag(n), function(p, c) {
 							// return string or object
-							h = e[prop1][i].big ? e[prop1][i] : e[prop1][i][prop2];
+							t = ctx[a][i].big ? ctx[a][i] : ctx[a][i][c];
 
-							return _e(p2, h)
+							return escapeHTML(p, t)
 						});
 
 						// if statement
-						g = g[a](pI(f), function(p2, prop3, partial, bool) {
+						s = s[r](parseIf(n), function(p, c, d, f) {
 							try {
-								bool = eval("ctx."+prop1+"["+i+"]."+ prop3)
+								f = eval("ctx."+a+"["+i+"]."+ c)
 							} catch(e) {
-								bool = false
+								f = false
 							}
 
-							return partial.match(b)
-								? partial[a](bool ? b : c, '')
-								: bool ? partial : ''
+							return d.match(e)
+								? d[r](f ? e : E, '')
+								: f ? d : ''
 						});
 
 						// check for another each
-						if(g.match(RegExp("{{#{"+ (f+1) +"}each", "g")))
-							g = pO(g, e[prop1][i], f+1)
+						if(s.match(RegExp("{{#{"+ (n+1) +"}each", "g")))
+							s = parseObject(s, ctx[a][i], n+1)
 					});
 
-				return g
+				return s
 			});
 		}
 
 		/**
 		 * escape {{{ }}} tags
-		 * @param {String} d tag
-		 * @param {String} e Value
+		 * @param {String} a tag
+		 * @param {String} b Value
 		 * @returns {String}
 		 * @private
 		 */
-		function _e(d, e) {
-			return d.substr(0, 3) == '{{{' && d.slice(-3) == '}}}' ? new Option(e)[F.H] : e
+		function escapeHTML(a, b) {
+			return a.substr(0, 3) == '{{{' && a.slice(-3) == '}}}' ? new Option(b)[F.H] : b
 		}
 
 		/**
 		 * RexExp for {{abc}}, {{#abc}}, {{##abc}} etc tags
-		 * @param {Number} d Number of #
+		 * @param {Number} n Number of #
 		 * @returns {RegExp}
 		 * @private
 		 */
-		function pT(d) {
-			return RegExp("{+\\{#{"+ d +"} *(?!else)(\\w+) *}}+", "g")
+		function parseTag(n) {
+			return RegExp("{+\\{#{"+ n +"} *(?!else)(\\w+) *}}+", "g")
 		}
 
 		/**
 		 * RegExp for {{#if}} ... {{/if}, {{##if}} ... {{//if}, etc
-		 * @param d Number of #
+		 * @param n Number of #
 		 * @returns {RegExp}
 		 */
-		function pI(d) {
-			return RegExp("(?:{{#{"+d+"}if(?: *))(.*)(?: *)}}([\\s\\S]*?)(?:{{\\/{"+d+"}if}})", "g")
+		function parseIf(n) {
+			return RegExp("(?:{{#{"+n+"}if(?: *))(.*)(?: *)}}([\\s\\S]*?)(?:{{\\/{"+n+"}if}})", "g")
 		}
 
 		return F(
 				// each
-				pO(this.html(), ctx, 1)
+				parseObject(this.html(), ctx, 1)
 				// vars at level 0
-				[a](pT(0), function(p, $1) {
-					return _e(p, ctx[$1])
+				[r](parseTag(0), function(p, $1) {
+					return escapeHTML(p, ctx[$1])
 				})
 				// if's at level 0
-				[a](pI(1), function(p, $1, $2) {
-					return $2[a](ctx[$1] ? b : c, '')
+				[r](parseIf(1), function(p, $1, $2) {
+					return $2[r](ctx[$1] ? e : E, '')
 				})
 				// JS
-				[a](/{%(.*)%}/g, function(p, $1) {
+				[r](/{%(.*)%}/g, function(p, $1) {
 					return eval($1);
 				})
 				// remove whitespace
