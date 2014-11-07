@@ -379,7 +379,6 @@ The template-engine is inspired by common engines like mustache or handlebars<br
 All templates are wrapped in `<script type="x-tmpl-framewreck"></script>` and follow the popular handlebar-`{{...}}`-syntax.<br>
 
 *Note:* This module is optional and not included in dist/framewreck.min.js<br>
-Dependencies: [Dom](#dom-module)
 
 #### Template-Example
 
@@ -391,7 +390,7 @@ Dependencies: [Dom](#dom-module)
 		<p>{{description}}</p>
 	{{/if}}
 	
-	{{#each projects}}
+	{{projects}}
 		<div class="project">
 			<h2>{{#name}}</h2>
 			<bockquote>
@@ -400,22 +399,22 @@ Dependencies: [Dom](#dom-module)
 	
 			{{#if versions}}
 				<h3>Versions:</h3>
-				{{##each versions}}
+				{{versions}}
 					<p>v.{{## value}}</p>
-				{{//each}}
+				{{/versions}}
 			{{#else}}
 				<p>NO Versions</p>
 			{{/if}}
 			
 			{{#if tests}}
 				<h3>Tests:</h3>
-				{{##each tests}}
+				{{tests}}
 					{{##if show == 5}}
 					<p>
 						Test ran on {{##run}}.
 					</p>
 					{{//if}}
-				{{//tests}}
+				{{/tests}}
 			{{/if}}
 			
 			{{#if ! tests}}
@@ -429,18 +428,18 @@ Dependencies: [Dom](#dom-module)
 			<h3>Code:</h3>
 			<pre><code class="lang-javascript">{{{#code}}}</code></pre>
 		</div>
-	{{/each}}
+	{{/projects}}
 </script>
 ```
 
-Please note that every time you add an `each`-loop inside another, you have to add another hash/ending slash to every expression.
+Please note that every time you add an `if`-block inside another, you have to add another hash/ending slash to every expression.
 
 ```html
-{{#each projects}}
-	{{##each tests}}
+{{#if projects}}
+	{{##if tests.length > 0}}
 		...
-	{{//each}}
-{{/each}}
+	{{//if}}
+{{/if}}
 ```
 
 Run Parser:

@@ -88,7 +88,7 @@ F.ext({
 		};
 
 		return F(
-				this.html()
+				this[0].innerHTML
 				// each
 				.parseObject(ctx, 1)
 				// vars at level 0

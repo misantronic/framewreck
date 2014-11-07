@@ -4,7 +4,7 @@ F.ext({
 	 * @param {Array|String} a AnimationQueue
 	 * @param {Function|String} [c] Callback or Easing
 	 * @param {String} [e] Easing
-	 * @returns {*}
+	 * @returns {F}
 	 * @see https://github.com/misantronic/framewreck#animate-module
 	 * @example F('#id').animate(['X:100 Y:50', 'O:0.5', 'X:0 Y:0', 'O:1'], function() {
 	 * 	console.log("all done");
