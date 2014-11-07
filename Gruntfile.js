@@ -89,6 +89,18 @@ module.exports = function(grunt) {
 				src: ['dist/framewreck.all.js'],
 				ext: '.all.js.gz'
 			}
+		},
+
+		jsdoc : {
+			basic : {
+				src: ['src/**/**/*.js'],
+				options: {
+					destination: 'docs/',
+					template : "node_modules/grunt-jsdoc/node_modules/ink-docstrap/template",
+					configure : "node_modules/grunt-jsdoc/node_modules/ink-docstrap/template/jsdoc.conf.json"
+
+				}
+			}
 		}
 	});
 
@@ -97,8 +109,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-qunit');
 	grunt.loadNpmTasks('grunt-contrib-compress');
+	grunt.loadNpmTasks('grunt-jsdoc');
 
 	// tasks
+	grunt.registerTask('docs', ['jsdoc']);
 	grunt.registerTask('test', ['qunit']);
 	grunt.registerTask('default', ['qunit', 'concat', 'uglify', 'compress']);
 };
