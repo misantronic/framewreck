@@ -19,7 +19,7 @@ F.ext({
 		 */
 		S.parseObject = function(ctx, n, s, i) {
 			// look for each-tag
-			return this[r = "replace"](RegExp("{{#{"+n+"}each(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/{"+n+"}each}}", "g"), function(p, a, b) {
+			return this[r = "replace"](RegExp("{{#(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/(?: *)\\1(?: *)}}", "g"), function(p, a, b) {
 				s = "";
 				if(ctx[a])
 					// when each is found
@@ -30,8 +30,8 @@ F.ext({
 						// if statement
 						s = s.parseIf(n, "ctx."+a+"["+i+"].", ctx),
 
-						// check for another each
-						s.match(RegExp("{{#{"+ (n+1) +"}each", "g")) && (s = s.parseObject(ctx[a][i], n+1));
+							// check for another each
+						s.match(RegExp("{{#(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/(?: *)\\1(?: *)}}", "g")) && (s = s.parseObject(ctx[a][i], n+1));
 
 				return s
 			});
@@ -78,8 +78,8 @@ F.ext({
 					f = eval(!V.big || ~$1.indexOf('.') ? V+"['"+$1.replace(/\./g, "']['")+"']" : V)
 				} catch(e) {}
 
-				// return string or object
-				f = f ? f.big ? f : f[$1] : '';
+				// return string or object or tag itself, if the value is not a string
+				f = f ? f.big ? f : typeof f[$1] != "string" ? p : f[$1] : '';
 
 				// if set, escape {{{ }}} tags
 				return p[2] == '{' ? new Option(f)[F.H] : f
