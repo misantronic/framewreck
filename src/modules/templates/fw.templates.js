@@ -14,25 +14,24 @@ F.ext({
 		 * @param {Object} ctx Context object
 		 * @param {Number} n number of the iteration
 		 * @param [s] placeholder
+		 * @param [i] placeholder
 		 * @returns {String}
 		 */
-		S.parseObject = function(ctx, n, s) {
+		S.parseObject = function(ctx, n, s, i) {
 			// look for each-tag
 			return this[r = "replace"](RegExp("{{#{"+n+"}each(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/{"+n+"}each}}", "g"), function(p, a, b) {
 				s = "";
 				if(ctx[a])
 					// when each is found
-					ctx[a].forEach(function(z, i) {
+					for(i in ctx[a])
 						// replace vars
-						s += b.parseTag(n, "ctx['"+a+"']["+i+"]", ctx);
+						s += b.parseTag(n, "ctx['"+a+"']["+i+"]", ctx),
 
 						// if statement
-						s = s.parseIf(n, "ctx."+a+"["+i+"].", ctx);
+						s = s.parseIf(n, "ctx."+a+"["+i+"].", ctx),
 
 						// check for another each
-						if(s.match(RegExp("{{#{"+ (n+1) +"}each", "g")))
-							s = s.parseObject(ctx[a][i], n+1)
-					});
+						s.match(RegExp("{{#{"+ (n+1) +"}each", "g")) && (s = s.parseObject(ctx[a][i], n+1));
 
 				return s
 			});
