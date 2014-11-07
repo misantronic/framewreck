@@ -392,15 +392,15 @@ All templates are wrapped in `<script type="x-tmpl-framewreck"></script>` and fo
 	
 	{{projects}}
 		<div class="project">
-			<h2>{{#name}}</h2>
+			<h2>{{name}}</h2>
 			<bockquote>
-				<p>{{#quote}}</p>
+				<p>{{quote}}</p>
 			</bockquote>
 	
 			{{#if versions}}
 				<h3>Versions:</h3>
 				{{versions}}
-					<p>v.{{## value}}</p>
+					<p>v.{{ value}}</p>
 				{{/versions}}
 			{{#else}}
 				<p>NO Versions</p>
@@ -411,7 +411,7 @@ All templates are wrapped in `<script type="x-tmpl-framewreck"></script>` and fo
 				{{tests}}
 					{{##if show == 5}}
 					<p>
-						Test ran on {{##run}}.
+						Test ran on {{run}}.
 					</p>
 					{{//if}}
 				{{/tests}}
@@ -426,7 +426,7 @@ All templates are wrapped in `<script type="x-tmpl-framewreck"></script>` and fo
 			{{/if}}
 	
 			<h3>Code:</h3>
-			<pre><code class="lang-javascript">{{{#code}}}</code></pre>
+			<pre><code class="lang-javascript">{{{code}}}</code></pre>
 		</div>
 	{{/projects}}
 </script>

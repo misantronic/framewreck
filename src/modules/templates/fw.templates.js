@@ -20,7 +20,7 @@ F.ext({
 		 */
 		S.parseObject = function(ctx, n, s, i, x) {
 			// look for each-tag
-			return this[r = "replace"](x=RegExp("{{#(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/(?: *)\\1(?: *)}}", "g"), function(p, a, b) {
+			return this[r = "replace"](x=RegExp("{{(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/(?: *)\\1(?: *)}}", "g"), function(p, a, b) {
 				s = "";
 				if(ctx[a])
 					// when each is found
@@ -67,7 +67,7 @@ F.ext({
 		};
 
 		/**
-		 * Parse tags like {{abc}}, {{#abc}}, {{##abc}} etc
+		 * Parse tags ({{abc}})
 		 * @param {Number} n Number of #
 		 * @param {String} V eval base
 		 * @param {Object} ctx context to look for vars in eval
@@ -75,7 +75,7 @@ F.ext({
 		 * @returns {RegExp}
 		 */
 		S.parseTag = function(n, V, ctx, t) {
-			return this[r](RegExp("{+\\{#{"+ n +"} *(?!else)([A-Za-z0-9_.]+) *}}+", "g"), function(p, $1, f) {
+			return this[r](RegExp("{+\\{ *(?!else)([A-Za-z0-9_.]+) *}}+", "g"), function(p, $1, f) {
 				try {
 					f = eval(!V.big || $1.match(t=/\./g) ? V+"['"+$1.replace(t, "']['")+"']" : V)
 				} catch(e) {}

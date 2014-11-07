@@ -110,20 +110,20 @@
 			{{address.zip}} {{address.city}}
 		</p>
 
-		{{#projects}}
+		{{projects}}
 			<div class="project">
-				<h2>{{# name }}</h2>
+				<h2>{{ name }}</h2>
 				<bockquote>
-					<p>{{# quote }}</p>
+					<p>{{ quote }}</p>
 				</bockquote>
 
-				<p>{{# description }}</p>
+				<p>{{description}}</p>
 
 				{{#if versions}}
 					<h3>Versions:</h3>
-					{{#versions}}
+					{{versions}}
 						{{##if show == 5}}
-							<p>v.{{##no}}</p>
+							<p>v.{{no}}</p>
 						{{//if}}
 					{{/versions}}
 				{{#else}}
@@ -132,8 +132,8 @@
 
 				{{#if animals.length}}
 					<h3>Animals:</h3>
-					{{#animals}}
-						<p>{{## value}}</p>
+					{{animals}}
+						<p>{{ value}}</p>
 					{{/animals}}
 				{{#else}}
 					NO ANIMALS!!
@@ -148,7 +148,7 @@
 				{{/if}}
 
 				<h3>Code:</h3>
-				<pre><code class="lang-javascript">{{{# code }}}</code></pre>
+				<pre><code class="lang-javascript">{{{ code }}}</code></pre>
 			</div>
 		{{/projects}}
 		{% console.log("I was executed inside the template returning", ctx) %}
