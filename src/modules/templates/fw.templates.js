@@ -51,7 +51,7 @@ F.ext({
 		S.parseIf = function(n, V, ctx, m, v, e) {
 			return this[r](RegExp("(?:{{#{"+n+"}if(?: *))(.*)(?: *)}}([\\s\\S]*?)(?:{{\\/{"+n+"}if}})", "g"), function(p, c, d, f) {
 				// match ! or not statement
-				m = c.match(/(^!|^not) */), v = V;
+				m = c.match(/(^!|^not) */); v = V;
 				if(m) c = c.replace(m[0], ""), v = '!'+v;
 
 				try {
