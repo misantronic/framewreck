@@ -22,7 +22,7 @@ F.ext({
 				s = "";
 				if(ctx[a])
 					// when each is found
-					ctx[a].forEach(function(obj, i) {
+					ctx[a].forEach(function(z, i) {
 						// replace vars
 						s += b.parseTag(n, "ctx['"+a+"']["+i+"]", ctx);
 
