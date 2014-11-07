@@ -88,19 +88,19 @@ F.ext({
 		};
 
 		return F(
-				this[0].innerHTML
-				// each
-				.parseObject(ctx, 1)
-				// vars at level 0
-				.parseTag(0, "ctx", ctx)
-				// if's at level 0
-				.parseIf(1, "ctx.", ctx)
-				// JS
-				[r](/{%(.*)%}/g, function(p, $1) {
-					return eval($1);
-				})
-				// remove whitespace
-				.trim()
-			)
+			this[0][F.H]
+			// each
+			.parseObject(ctx, 1)
+			// vars at level 0
+			.parseTag(0, "ctx", ctx)
+			// if's at level 0
+			.parseIf(1, "ctx.", ctx)
+			// JS
+			[r](/{%(.*)%}/g, function(p, $1) {
+				return eval($1);
+			})
+			// remove whitespace
+			.trim()
+		)
 	}
 });
