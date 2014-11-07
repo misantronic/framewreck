@@ -169,13 +169,13 @@
 		 */
 		S.parseObject = function(ctx, n, s, i, x) {
 			// look for each-tag
-			return this[r = "replace"](x=RegExp("{{#(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/(?: *)\\1(?: *)}}", "g"), function(p, a, b) {
+			return this[r = "replace"](x=RegExp("{{(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/(?: *)\\1(?: *)}}", "g"), function(p, a, b) {
 				s = "";
 				if(ctx[a])
 					// when each is found
 					for(i in ctx[a])
 						// replace vars
-						s += b.parseTag(n, "ctx['"+a+"']["+i+"]", ctx),
+						s += b.parseTag("ctx['"+a+"']["+i+"]", ctx),
 
 						// if statement
 						s = s.parseIf(n, "ctx."+a+"["+i+"].", ctx),
@@ -216,16 +216,16 @@
 		};
 
 		/**
-		 * Parse tags like {{abc}}, {{#abc}}, {{##abc}} etc
-		 * @param {Number} n Number of #
+		 * Parse tags ({{abc}})
 		 * @param {String} V eval base
 		 * @param {Object} ctx context to look for vars in eval
+		 * @param [t] placeholder
 		 * @returns {RegExp}
 		 */
-		S.parseTag = function(n, V, ctx) {
-			return this[r](RegExp("{+\\{#{"+ n +"} *(?!else)([A-Za-z0-9_.]+) *}}+", "g"), function(p, $1, f) {
+		S.parseTag = function(V, ctx, t) {
+			return this[r](RegExp("{+\\{ *(?!else)([A-Za-z0-9_.]+) *}}+", "g"), function(p, $1, f) {
 				try {
-					f = eval(!V.big || ~$1.indexOf('.') ? V+"['"+$1.replace(/\./g, "']['")+"']" : V)
+					f = eval(!V.big || $1.match(t=/\./g) ? V+"['"+$1.replace(t, "']['")+"']" : V)
 				} catch(e) {}
 
 				// return string or object or tag itself, if the value is not a string
@@ -237,20 +237,20 @@
 		};
 
 		return F(
-				this.html()
-				// each
-				.parseObject(ctx, 1)
-				// vars at level 0
-				.parseTag(0, "ctx", ctx)
-				// if's at level 0
-				.parseIf(1, "ctx.", ctx)
-				// JS
-				[r](/{%(.*)%}/g, function(p, $1) {
-					return eval($1);
-				})
-				// remove whitespace
-				.trim()
-			)
+			this[0][F.H]
+			// each
+			.parseObject(ctx, 1)
+			// vars at level 0
+			.parseTag("ctx", ctx)
+			// if's at level 0
+			.parseIf(1, "ctx.", ctx)
+			// JS
+			[r](/{%(.*)%}/g, function(p, $1) {
+				return eval($1);
+			})
+			// remove whitespace
+			.trim()
+		)
 	}
 });</pre>
 	</article>

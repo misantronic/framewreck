@@ -26,7 +26,7 @@ F.ext({
 					// when each is found
 					for(i in ctx[a])
 						// replace vars
-						s += b.parseTag(n, "ctx['"+a+"']["+i+"]", ctx),
+						s += b.parseTag("ctx['"+a+"']["+i+"]", ctx),
 
 						// if statement
 						s = s.parseIf(n, "ctx."+a+"["+i+"].", ctx),
@@ -68,13 +68,12 @@ F.ext({
 
 		/**
 		 * Parse tags ({{abc}})
-		 * @param {Number} n Number of #
 		 * @param {String} V eval base
 		 * @param {Object} ctx context to look for vars in eval
 		 * @param [t] placeholder
 		 * @returns {RegExp}
 		 */
-		S.parseTag = function(n, V, ctx, t) {
+		S.parseTag = function(V, ctx, t) {
 			return this[r](RegExp("{+\\{ *(?!else)([A-Za-z0-9_.]+) *}}+", "g"), function(p, $1, f) {
 				try {
 					f = eval(!V.big || $1.match(t=/\./g) ? V+"['"+$1.replace(t, "']['")+"']" : V)
@@ -93,7 +92,7 @@ F.ext({
 			// each
 			.parseObject(ctx, 1)
 			// vars at level 0
-			.parseTag(0, "ctx", ctx)
+			.parseTag("ctx", ctx)
 			// if's at level 0
 			.parseIf(1, "ctx.", ctx)
 			// JS
