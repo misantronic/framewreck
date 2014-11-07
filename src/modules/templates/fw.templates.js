@@ -15,11 +15,12 @@ F.ext({
 		 * @param {Number} n number of the iteration
 		 * @param [s] placeholder
 		 * @param [i] placeholder
+		 * @param [x] placeholder
 		 * @returns {String}
 		 */
-		S.parseObject = function(ctx, n, s, i) {
+		S.parseObject = function(ctx, n, s, i, x) {
 			// look for each-tag
-			return this[r = "replace"](RegExp("{{#(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/(?: *)\\1(?: *)}}", "g"), function(p, a, b) {
+			return this[r = "replace"](x=RegExp("{{#(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/(?: *)\\1(?: *)}}", "g"), function(p, a, b) {
 				s = "";
 				if(ctx[a])
 					// when each is found
@@ -31,7 +32,7 @@ F.ext({
 						s = s.parseIf(n, "ctx."+a+"["+i+"].", ctx),
 
 							// check for another each
-						s.match(RegExp("{{#(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/(?: *)\\1(?: *)}}", "g")) && (s = s.parseObject(ctx[a][i], n+1));
+						s.match(x) && (s = s.parseObject(ctx[a][i], n+1));
 
 				return s
 			});
