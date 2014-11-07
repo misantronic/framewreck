@@ -52,10 +52,9 @@ F.ext({
 	},
 
 	/**
-	 * Checks one or a set of checkboxes/radio buttons
-	 * or return if checked
-	 * If set length == 1: return Boolean
-	 * If set length > 1: return Array with boolean for each set
+	 * Checks one or a set of checkboxes/radio buttons or return if checked.
+	 * If set length == 1: return Boolean.
+	 * If set length > 1: return Array with boolean for each set.
 	 * @param {Boolean} [v] change checkbox state
 	 * @param [x] placeholder for context
 	 * @param [a] placeholder
