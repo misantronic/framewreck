@@ -3,28 +3,22 @@ F.ext({
 	 *
 	 * @param {Object} ctx Context object
 	 * @param [r] placeholder
-	 * @param [e] placeholder
-	 * @param [E] placeholder
+	 * @param [S] placeholder
 	 * @returns {F}
 	 */
-	parse: function(ctx, r, e, E) {
-		r = "replace";
-		e = /{{(#+)else}}[\s\S]*/;
-		E = /[\s\S]*\{{(#+)else}}/;
+	parse: function(ctx, r, S) {
+		S = String.prototype;
 
 		/**
-		 * parse object
-		 * @param {String} h HTML
+		 * Parse object
 		 * @param {Object} ctx Context object
 		 * @param {Number} n number of the iteration
 		 * @param [s] placeholder
-		 * @param [t] placeholder
 		 * @returns {String}
-		 * @private
 		 */
-		function pO(h, ctx, n, s, t) {
+		S.parseObject = function(ctx, n, s) {
 			// look for each-tag
-			return h[r](RegExp("{{#{"+n+"}each(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/{"+n+"}each}}", "g"), function(p, a, b) {
+			return this[r = "replace"](RegExp("{{#{"+n+"}each(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/{"+n+"}each}}", "g"), function(p, a, b) {
 				s = "";
 				if(ctx[a])
 					// when each is found
@@ -37,34 +31,24 @@ F.ext({
 
 						// check for another each
 						if(s.match(RegExp("{{#{"+ (n+1) +"}each", "g")))
-							s = pO(s, ctx[a][i], n+1)
+							s = s.parseObject(ctx[a][i], n+1)
 					});
 
 				return s
 			});
-		}
-
-		/**
-		 * escape {{{ }}} tags
-		 * @param {String} a tag
-		 * @param {String} b Value
-		 * @returns {String}
-		 * @private
-		 */
-		function _e(a, b) {
-			return a.substr(0, 3) == '{{{' && a.slice(-3) == '}}}' ? new Option(b)[F.H] : b
-		}
+		};
 
 		/**
 		 * Parse {{#if}} ... {{/if}, {{##if}} ... {{//if}, etc
-		 * @param n Number of #
-		 * @param V eval base
-		 * @param ctx context to look for vars in eval
+		 * @param {Number} n Number of #
+		 * @param {String} V eval base
+		 * @param {Object} ctx context to look for vars in eval
 		 * @param [m] placeholder
 		 * @param [v] placeholder
+		 * @param [e] placeholder
 		 * @returns {RegExp}
 		 */
-		String.prototype.parseIf = function(n, V, ctx, m, v) {
+		S.parseIf = function(n, V, ctx, m, v, e) {
 			return this[r](RegExp("(?:{{#{"+n+"}if(?: *))(.*)(?: *)}}([\\s\\S]*?)(?:{{\\/{"+n+"}if}})", "g"), function(p, c, d, f) {
 				// match ! or not statement
 				m = c.match(/(^!|^not) */), v = V;
@@ -76,8 +60,8 @@ F.ext({
 					f = 0
 				}
 
-				return d.match(e)
-					? d[r](f ? e : E, '')
+				return d.match(e = /{{(#+)else}}[\s\S]*/)
+					? d[r](f ? e : /[\s\S]*\{{(#+)else}}/, '')
 					: f ? d : ''
 			})
 		};
@@ -85,24 +69,28 @@ F.ext({
 		/**
 		 * Parse tags like {{abc}}, {{#abc}}, {{##abc}} etc
 		 * @param {Number} n Number of #
+		 * @param {String} V eval base
+		 * @param {Object} ctx context to look for vars in eval
 		 * @returns {RegExp}
 		 */
-		String.prototype.parseTag = function(n, V, ctx) {
+		S.parseTag = function(n, V, ctx) {
 			return this[r](RegExp("{+\\{#{"+ n +"} *(?!else)([A-Za-z0-9_.]+) *}}+", "g"), function(p, $1, f) {
 				try {
 					f = eval(!V.big || ~$1.indexOf('.') ? V+"['"+$1.replace(/\./g, "']['")+"']" : V)
 				} catch(e) {}
 
 				// return string or object
-				if(f) f = f.big ? f : f[$1];
+				f = f ? f.big ? f : f[$1] : '';
 
-				return _e(p, f ? f : '')
+				// if set, escape {{{ }}} tags
+				return p[2] == '{' ? new Option(f)[F.H] : f
 			})
 		};
 
 		return F(
+				this.html()
 				// each
-				pO(this.html(), ctx, 1)
+				.parseObject(ctx, 1)
 				// vars at level 0
 				.parseTag(0, "ctx", ctx)
 				// if's at level 0
