@@ -61,7 +61,7 @@ F().require([
 ### Core: CSS Selectors
 ```javascript
 // load module
-F().require(['dist/modules/core/fw.core.min.js']);
+F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js']);
 
 // IDs and classes
 F('#id');
@@ -97,7 +97,7 @@ F('#id').parent();
 
 ```javascript
 // load module
-F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/css/fw.css.min.js']);
+F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/css/fw.css.min.js']);
 
 // Set CSS
 F('#id').css({ display: 'block', 'background-color': 'blue', padding: 10, width: 200 });
@@ -113,7 +113,7 @@ var cssValue = F('#id').css('padding') // outputs '10px'
 
 ```javascript
 // load module
-F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/dom/fw.dom.min.js']);
+F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/dom/fw.dom.min.js']);
 
 // Output HTML of a selector
 var html = F('#id').find('.class').html();
@@ -167,7 +167,7 @@ Add/Remove/Fire default or custom events using the browsers native event-system.
 
 ```javascript
 // load module
-F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/events/fw.events.min.js']);
+F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/events/fw.events.min.js']);
 
 var eventHandler = function(e) {
 	console.log(e, e.detail); // output event and given parameter object
@@ -192,7 +192,7 @@ Make asynchronously XHR-Requests via GET/POST
 
 ```javascript
 // load module
-F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/ajax/fw.ajax.min.js']);
+F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/ajax/fw.ajax.min.js']);
 
 F().ajax(
 	'get', 
@@ -219,7 +219,7 @@ The data module enables saving all types of data to the context using the dynami
 
 ```javascript
 // load module
-F().require(['dist/modules/css/fw.core.min.js', 'dist/modules/data/fw.data.min.js']);
+F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/css/fw.core.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/data/fw.data.min.js']);
 
 F('#id').data('myObject', { name: '@misantronic' });
 F('#id').data('myObject') // outputs { name: '@misantronic' }
@@ -255,7 +255,7 @@ Dependencies: [CSS](#css-module), [Events](#event-module), [Data](#data-module)
 
 ```javascript
 // load module
-F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/events/fw.events.min.js', 'dist/modules/data/fw.data.min.js', 'dist/modules/animate/fw.animate.min.js']);
+F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/events/fw.events.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/data/fw.data.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/animate/fw.animate.min.js']);
 
 // animate( Array animationQueue )
 // syntax: propery:value[[,duration],delay]
@@ -354,7 +354,7 @@ Now, you bind your data to the binding-element
 
 ```javascript
 // load module
-F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/events/fw.events.min.js', 'dist/modules/dom/fw.dom.min.js', 'dist/modules/bindings/fw.bindings.min.js']);
+F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/events/fw.events.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/dom/fw.dom.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/bindings/fw.bindings.min.js']);
 
 // register binding-element 'name', fill it with '@misantronic' and connect it to #inp_name
 F('#inp_name').registerBindable( 'name', '@misantronic' );
@@ -379,6 +379,7 @@ The template-engine is inspired by common engines like mustache or handlebars<br
 All templates are wrapped in `<script type="x-tmpl-framewreck"></script>` and follow the popular handlebar-`{{...}}`-syntax.<br>
 
 *Note:* This module is optional and not included in dist/framewreck.min.js<br>
+*No dependencies*
 
 #### Template-Example
 
@@ -435,7 +436,7 @@ All templates are wrapped in `<script type="x-tmpl-framewreck"></script>` and fo
 Run Parser:
 ```javascript
 // load module
-F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/templates/fw.templates.min.js']);
+F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/templates/fw.templates.min.js']);
 
 var context = {
 	title: '512byt.es',
