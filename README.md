@@ -470,6 +470,27 @@ var context = {
 F('#template').parse(context).appendTo('body');
 ```
 
+In this example, accessing the `{{projects}}...{{/projects}}`-Tag actually invokes an each-loop which iterates through the `projects`-array, 
+defined in `context`. It will outputs three project-blocks.
+
+#### Helper functions
+
+You can define your own helper function which are accessible from any context in any template.
+
+```javascript
+F('#template')
+	.registerHelper('link', function(href, title, target) {
+		target = target || '_self';
+		return '<a href="'+ href +'" title="'+ title +'" target="'+ target +'">'+ title +'</a>'
+	})
+	.parse(context).appendTo('#page-wrapper');
+```
+
+```html
+<script id="template" type="x-tmpl-framewreck">
+	{{link "http://512byt.es" "Visit 512byt.es" "_blank"}}
+</script>
+```
 
 ## Contact and comments
 
