@@ -23,12 +23,11 @@ F.ext({
 		/**
 		 * Parse object
 		 * @param {Object} ctx Context object
-		 * @param {Number} n number of the iteration
 		 * @param [s] placeholder
 		 * @param [x] placeholder
 		 * @returns {String}
 		 */
-		S.parseObject = function(ctx, n, s, x) {
+		S.parseObject = function(ctx, s, x) {
 			// look for each-tag
 			return this[r](x=RegExp("{{(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/(?: *)\\1(?: *)}}", "g"), function(p, a, b) {
 				s = "";
@@ -39,10 +38,10 @@ F.ext({
 						s += b.parseTag("ctx['"+a+"']["+i+"]", ctx),
 
 						// if statement
-						s = s.parseIf(n, "ctx."+a+"["+i+"].", ctx),
+						s = s.parseIf("ctx."+a+"["+i+"].", ctx),
 
 							// check for another each
-						s.match(x) && (s = s.parseObject(ctx[a][i], n+1));
+						s.match(x) && (s = s.parseObject(ctx[a][i]));
 
 				return s
 			});
@@ -50,7 +49,6 @@ F.ext({
 
 		/**
 		 * Parse {{#if}} ... {{/if}, {{##if}} ... {{//if}, etc
-		 * @param {Number} n Number of #
 		 * @param {String} V eval base
 		 * @param {Object} ctx context to look for vars in eval
 		 * @param [m] placeholder
@@ -58,7 +56,7 @@ F.ext({
 		 * @param [e] placeholder
 		 * @returns {RegExp}
 		 */
-		S.parseIf = function(n, V, ctx, m, v, e) {
+		S.parseIf = function(V, ctx, m, v, e) {
 			return this[r](/{##(\d)##}([\s\S]*){##\/\1##}/g, function(p, a, b, f) {
 				a = map[+a];
 
@@ -106,7 +104,7 @@ F.ext({
 			// vars at level 0
 			.parseTag("ctx", ctx)
 			// if's at level 0
-			.parseIf(1, "ctx.", ctx)
+			.parseIf("ctx.", ctx)
 			// JS
 			[r](/{%(.*)%}/g, function(p, $1) {
 				return eval($1);
