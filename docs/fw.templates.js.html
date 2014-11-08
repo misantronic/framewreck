@@ -157,17 +157,16 @@
 	parse: function(ctx, r) {
 		var S = String.prototype,
 			// map for if statements
-			map = [],
+			M = [],
 			i = 0,
 			// replace ifs with map numbers
 			s = this[0][F.H][r = "replace"](/(?:{{#if(?: *))(.*)(?: *)}}/g, function(p, a) {
-				map[i] = a;
+				M[i] = a;
 				return '{##'+(i++)+'##}'
 			});
 
-		for(i=map[F.L];i--;) {
+		for(i=M[F.L];i--;)
 			s = s[r](RegExp('{##'+i+'##}([\\s\\S]*?){{\\/if}}', 'g'), "{##"+i+"##}$1{##/"+ i +"##}");
-		}
 
 		/**
 		 * Parse object
@@ -207,7 +206,7 @@
 		 */
 		S.FIf = function(V, ctx, m, v, e) {
 			return this[r](/{##(\d)##}([\s\S]*){##\/\1##}/g, function(p, a, b, f) {
-				a = map[+a];
+				a = M[+a];
 
 				// match ! or not statement
 				m = a.match(/(^!|^not) */); v = V;
