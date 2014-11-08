@@ -293,6 +293,7 @@ Dependencies: [CSS](#css-module), [Events](#event-module), [Data](#data-module)
 F().require(
 	[
 		'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 
+		'//cdn.jsdelivr.net/framewreck/latest/modules/css/fw.css.min.js', 
 		'//cdn.jsdelivr.net/framewreck/latest/modules/events/fw.events.min.js', 
 		'//cdn.jsdelivr.net/framewreck/latest/modules/data/fw.data.min.js', 
 		'//cdn.jsdelivr.net/framewreck/latest/modules/animate/fw.animate.min.js'
