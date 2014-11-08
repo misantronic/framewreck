@@ -435,7 +435,7 @@ All templates are wrapped in `<script type="x-tmpl-framewreck"></script>` and fo
 Run Parser:
 ```javascript
 // load module
-F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/dom/fw.dom.min.js', 'dist/modules/templates/fw.templates.min.js']);
+F().require(['dist/modules/core/fw.core.min.js', 'dist/modules/templates/fw.templates.min.js']);
 
 var context = {
 	title: '512byt.es',
