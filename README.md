@@ -61,21 +61,26 @@ F().require([
 ### Core: CSS Selectors
 ```javascript
 // load module
-F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js']);
+F().require(
+	[
+		'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js'
+	], function() {
 
-// IDs and classes
-F('#id');
-F('#id').find('.class');
-F('#id .class').find('a');
-
-// Index selectors
-F('#id .class:0')
-F('#id:1 .class:0 p')
-
-// Pseudo classes
-F('#id .class:first-child');
-F('#id .class').find('a:first-of-type');
-F('#id .class').find('a:last-of-type');
+		// IDs and classes
+		F('#id');
+		F('#id').find('.class');
+		F('#id .class').find('a');
+		
+		// Index selectors
+		F('#id .class:0')
+		F('#id:1 .class:0 p')
+		
+		// Pseudo classes
+		F('#id .class:first-child');
+		F('#id .class').find('a:first-of-type');
+		F('#id .class').find('a:last-of-type');
+		
+	});
 ```
 
 #### Selector methods
@@ -97,14 +102,20 @@ F('#id').parent();
 
 ```javascript
 // load module
-F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/css/fw.css.min.js']);
+F().require(
+	[
+		'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 
+		'//cdn.jsdelivr.net/framewreck/latest/modules/css/fw.css.min.js'
+	], function() {
 
-// Set CSS
-F('#id').css({ display: 'block', 'background-color': 'blue', padding: 10, width: 200 });
-F('#id').css('background-color', 'blue');
-
-// Get CSS
-var cssValue = F('#id').css('padding') // outputs '10px'
+		// Set CSS
+		F('#id').css({ display: 'block', 'background-color': 'blue', padding: 10, width: 200 });
+		F('#id').css('background-color', 'blue');
+		
+		// Get CSS
+		var cssValue = F('#id').css('padding') // outputs '10px'
+		
+	});
 ```
 
 ---
@@ -113,50 +124,56 @@ var cssValue = F('#id').css('padding') // outputs '10px'
 
 ```javascript
 // load module
-F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/dom/fw.dom.min.js']);
+F().require(
+	[
+		'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 
+		'//cdn.jsdelivr.net/framewreck/latest/modules/dom/fw.dom.min.js'
+	], function() {
 
-// Output HTML of a selector
-var html = F('#id').find('.class').html();
-
-// Set HTML of a selector
-F('#id').find('.class').html('<a href="#">Link</a>');
-
-// Append HTML/Text to a DOM-Element
-F('#id').append('<a href="#">Link</a>');
-
-// Move an existing DOM-Element to another
-F('#id-2').appendTo('.class-1');
-
-// create HTML-Elements in F() constructor
-F('<a href="#">Link</a>').appendTo('body');
-
-// Set/get value of an input/textarea
-F('input').val('value');
-var value = F('input').val();
-
-// Set/get Select selected value
-F('body').find('select').val(1)
-var value = F('body').find('select').val();
-
-// Checkbox / Radio buttons
-F('input.checkboxOrRadio').checked(true); 	// checks a checkbox or radio button
-F('input.checkboxOrRadio').checked(false); 	// unchecks a checkbox or radio button
-F('input.checkboxOrRadio').checked(); 		// return checkbox or radio button state
-
-// Serialize
-F('form').serialize(); // output an object containg all serialized form-field values
-
-// Add / Remove classes
-F('#id').addClass('myClass');
-F('#id').removeClass('myClass');
-
-// Remove elements
-F('#id').remove();
-
-// Attributes
-F('#id').attr('id');					// return attribute
-F('#id').attr('class', 'myClass');		// set attribute
-F('#id').attr('data-test', 'myData');	// set custom attribute
+		// Output HTML of a selector
+		var html = F('#id').find('.class').html();
+		
+		// Set HTML of a selector
+		F('#id').find('.class').html('<a href="#">Link</a>');
+		
+		// Append HTML/Text to a DOM-Element
+		F('#id').append('<a href="#">Link</a>');
+		
+		// Move an existing DOM-Element to another
+		F('#id-2').appendTo('.class-1');
+		
+		// create HTML-Elements in F() constructor
+		F('<a href="#">Link</a>').appendTo('body');
+		
+		// Set/get value of an input/textarea
+		F('input').val('value');
+		var value = F('input').val();
+		
+		// Set/get Select selected value
+		F('body').find('select').val(1)
+		var value = F('body').find('select').val();
+		
+		// Checkbox / Radio buttons
+		F('input.checkboxOrRadio').checked(true); 	// checks a checkbox or radio button
+		F('input.checkboxOrRadio').checked(false); 	// unchecks a checkbox or radio button
+		F('input.checkboxOrRadio').checked(); 		// return checkbox or radio button state
+		
+		// Serialize
+		F('form').serialize(); // output an object containg all serialized form-field values
+		
+		// Add / Remove classes
+		F('#id').addClass('myClass');
+		F('#id').removeClass('myClass');
+		
+		// Remove elements
+		F('#id').remove();
+		
+		// Attributes
+		F('#id').attr('id');					// return attribute
+		F('#id').attr('class', 'myClass');		// set attribute
+		F('#id').attr('data-test', 'myData');	// set custom attribute
+	
+	});
 ```
 
 ---
@@ -167,21 +184,27 @@ Add/Remove/Fire default or custom events using the browsers native event-system.
 
 ```javascript
 // load module
-F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/events/fw.events.min.js']);
+F().require(
+	[
+		'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 
+		'//cdn.jsdelivr.net/framewreck/latest/modules/events/fw.events.min.js'
+	], function() {
 
-var eventHandler = function(e) {
-	console.log(e, e.detail); // output event and given parameter object
-};
-
-// common events
-F('a.button').on('click', eventHandler);
-F('a.button').on('mouseover', eventHandler);
-...
-
-// custom events
-F('#id').on('myEvent', eventHandler);
-F('#id').fire('myEvent', { name: '@misantronic' } );
-F('#id').off('myEvent', eventHandler);
+		var eventHandler = function(e) {
+			console.log(e, e.detail); // output event and given parameter object
+		};
+		
+		// common events
+		F('a.button').on('click', eventHandler);
+		F('a.button').on('mouseover', eventHandler);
+		...
+		
+		// custom events
+		F('#id').on('myEvent', eventHandler);
+		F('#id').fire('myEvent', { name: '@misantronic' } );
+		F('#id').off('myEvent', eventHandler);
+		
+	});
 ```
 
 ---
@@ -192,23 +215,29 @@ Make asynchronously XHR-Requests via GET/POST
 
 ```javascript
 // load module
-F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/ajax/fw.ajax.min.js']);
+F().require(
+	[
+		'//cdn.jsdelivr.net/framewreck/latest/modules/css/fw.core.min.js', 
+		'//cdn.jsdelivr.net/framewreck/latest/modules/ajax/fw.ajax.min.js'
+	], function() {
 
-F().ajax(
-	'get', 
-	'http://server.com/api?id=1337', 
-	function(e) { 
-		console.log(e.responseText) 
+		F().ajax(
+			'get', 
+			'http://server.com/api?id=1337', 
+			function(e) { 
+				console.log(e.responseText) 
+			});
+			
+		F().ajax(
+			'post', 
+			'http://server.com', 
+			function(e) { 
+				console.log(e.responseText) 
+			}, 
+			{ name: '@misantronic' }
+		);
+		
 	});
-	
-F().ajax(
-	'post', 
-	'http://server.com', 
-	function(e) { 
-		console.log(e.responseText) 
-	}, 
-	{ name: '@misantronic' }
-);
 ```
 
 ---
@@ -219,10 +248,16 @@ The data module enables saving all types of data to the context using the dynami
 
 ```javascript
 // load module
-F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/css/fw.core.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/data/fw.data.min.js']);
-
-F('#id').data('myObject', { name: '@misantronic' });
-F('#id').data('myObject') // outputs { name: '@misantronic' }
+F().require(
+	[
+		'//cdn.jsdelivr.net/framewreck/latest/modules/css/fw.core.min.js', 
+		'//cdn.jsdelivr.net/framewreck/latest/modules/data/fw.data.min.js'
+	], function() {
+		
+		F('#id').data('myObject', { name: '@misantronic' });
+		F('#id').data('myObject') // outputs { name: '@misantronic' }
+	
+	});
 ```
 
 ---
@@ -255,19 +290,27 @@ Dependencies: [CSS](#css-module), [Events](#event-module), [Data](#data-module)
 
 ```javascript
 // load module
-F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/events/fw.events.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/data/fw.data.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/animate/fw.animate.min.js']);
+F().require(
+	[
+		'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 
+		'//cdn.jsdelivr.net/framewreck/latest/modules/events/fw.events.min.js', 
+		'//cdn.jsdelivr.net/framewreck/latest/modules/data/fw.data.min.js', 
+		'//cdn.jsdelivr.net/framewreck/latest/modules/animate/fw.animate.min.js'
+	], function() {
 
-// animate( Array animationQueue )
-// syntax: propery:value[[,duration],delay]
-
-F('#id').animate( ['O:0'] ); 							// changes #id's opacity to 0
-F('#id').animate( ['X:100'] ); 							// translates x #id 100 pixels
-F('#id').animate( ['X:100 Y:100'] ); 					// translates x/y #id 100 pixels
-F('#id').animate( ['X:100 Y:100', 'O:0.5', 'W:100'] ); 	// queuing: translates x/y #id 100 pixels, after that change the opacity to 0.5, after that change the width to 100px
-F('#id').animate( ['S:2'] );							// scale #id to factor 2
-F('#id').animate( ['R:30'] );							// rotate #id 30 deg
-
-F('#id').animate( ['X:100,2,1'] );						// translates x #id 100 pixels with a duration of 2s and a delay of 1s
+		// animate( Array animationQueue )
+		// syntax: propery:value[[,duration],delay]
+		
+		F('#id').animate( ['O:0'] ); 							// changes #id's opacity to 0
+		F('#id').animate( ['X:100'] ); 							// translates x #id 100 pixels
+		F('#id').animate( ['X:100 Y:100'] ); 					// translates x/y #id 100 pixels
+		F('#id').animate( ['X:100 Y:100', 'O:0.5', 'W:100'] ); 	// queuing: translates x/y #id 100 pixels, after that change the opacity to 0.5, after that change the width to 100px
+		F('#id').animate( ['S:2'] );							// scale #id to factor 2
+		F('#id').animate( ['R:30'] );							// rotate #id 30 deg
+		
+		F('#id').animate( ['X:100,2,1'] );						// translates x #id 100 pixels with a duration of 2s and a delay of 1s
+	
+	});
 ```
 
 #### Shorthands
@@ -354,21 +397,29 @@ Now, you bind your data to the binding-element
 
 ```javascript
 // load module
-F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/events/fw.events.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/dom/fw.dom.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/bindings/fw.bindings.min.js']);
+F().require(
+	[
+		'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 
+		'//cdn.jsdelivr.net/framewreck/latest/modules/events/fw.events.min.js', 
+		'//cdn.jsdelivr.net/framewreck/latest/modules/dom/fw.dom.min.js', 
+		'//cdn.jsdelivr.net/framewreck/latest/modules/bindings/fw.bindings.min.js'
+	], function() {
 
-// register binding-element 'name', fill it with '@misantronic' and connect it to #inp_name
-F('#inp_name').registerBindable( 'name', '@misantronic' );
-```
-
-The binding-element `name` will now be filled with your data.<br>
-You can now get/set data:
-
-```javascript
-// update binding-element (and form-element)
-F().setBindable( 'name', 'David Skx' );
-
-// get binding-element value
-F().getBindable( 'name' );
+		// register binding-element 'name', fill it with '@misantronic' and connect it to #inp_name
+		F('#inp_name').registerBindable( 'name', '@misantronic' );
+		```
+		
+		The binding-element `name` will now be filled with your data.<br>
+		You can now get/set data:
+		
+		```javascript
+		// update binding-element (and form-element)
+		F().setBindable( 'name', 'David Skx' );
+		
+		// get binding-element value
+		F().getBindable( 'name' );
+	
+	});
 ```
 
 Since `#inp_name` is connected to the binding-element, it will automatically update its value everytime you change it.
@@ -436,39 +487,44 @@ All templates are wrapped in `<script type="x-tmpl-framewreck"></script>` and fo
 Run Parser:
 ```javascript
 // load module
-F().require(['http://cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 'http://cdn.jsdelivr.net/framewreck/latest/modules/templates/fw.templates.min.js']);
-
-var context = {
-	title: '512byt.es',
-	description: '<a href="https://github.com/misantronic">@misantronic</a>\'s javascript <a href="http://en.wikipedia.org/wiki/Code_golf">code golf</a> projects.<br>',
-	projects: [
-		{
-			name: 'Invasion',
-			quote: 'A Space Invader clone. Invaders from outer space are coming to kill your mom! (501 bytes)',
-			code: 'p=389;$=l=m=t=0;c=" _ ";onkeydown=function(e){(k=e.which)==39?p++:k==37?p--:!l&(l=p)};setInterval(\'_="<pre>";l&(l-=20)<0&&(l=0);m=(m+=20)>p?b[+new Date%6]:m;for(i=0;i<400;i++){if(i%20==0)_+="\\n";if(~b[n="indexOf"](l))b.splice(b[n](l),1),$+=5,l=0;if(~b[n](p)||p==m)p=n,b=[],c="xxx";_+=i==p?"oIo":~b[n](i)?".#.":i==m&&m?" * ":i==l&&l?" | ":c}document.body.innerHTML=_+="\\nP "+$;t+=o;for(i in b)b[i]+=t%5e3==0?20:t%2e3==0?1:t%1e3==0&&-1\',o=50);for(b=[],j=2;j<136;j+=j==14||j==94?29:j==55?27:2)b.push(j)',
-			tests: [
-				{ run: "2014-11-05", show: 5 },
-				{ run: "2014-11-04", show: 0 },
-				{ run: "2014-11-03", show: 0 }
-			],
-			versions: [
-				"1.0.0", "1.1.0", "1.2.0"
+F().require(
+	[
+		'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 
+	 	'//cdn.jsdelivr.net/framewreck/latest/modules/templates/fw.templates.min.js'
+	], function() {
+		var context = {
+			title: '512byt.es',
+			description: '<a href="https://github.com/misantronic">@misantronic</a>\'s javascript <a href="http://en.wikipedia.org/wiki/Code_golf">code golf</a> projects.<br>',
+			projects: [
+				{
+					name: 'Invasion',
+					quote: 'A Space Invader clone. Invaders from outer space are coming to kill your mom! (501 bytes)',
+					code: 'p=389;$=l=m=t=0;c=" _ ";onkeydown=function(e){(k=e.which)==39?p++:k==37?p--:!l&(l=p)};setInterval(\'_="<pre>";l&(l-=20)<0&&(l=0);m=(m+=20)>p?b[+new Date%6]:m;for(i=0;i<400;i++){if(i%20==0)_+="\\n";if(~b[n="indexOf"](l))b.splice(b[n](l),1),$+=5,l=0;if(~b[n](p)||p==m)p=n,b=[],c="xxx";_+=i==p?"oIo":~b[n](i)?".#.":i==m&&m?" * ":i==l&&l?" | ":c}document.body.innerHTML=_+="\\nP "+$;t+=o;for(i in b)b[i]+=t%5e3==0?20:t%2e3==0?1:t%1e3==0&&-1\',o=50);for(b=[],j=2;j<136;j+=j==14||j==94?29:j==55?27:2)b.push(j)',
+					tests: [
+						{ run: "2014-11-05", show: 5 },
+						{ run: "2014-11-04", show: 0 },
+						{ run: "2014-11-03", show: 0 }
+					],
+					versions: [
+						"1.0.0", "1.1.0", "1.2.0"
+					]
+				},
+				{
+					name: 'Tron',
+					quote: 'Destroy your friends! Competitive 1on1 Tron-clone. (757 bytes)',
+					code: 'a=A=0;with(c.getContext("2d"))onkeyup=function(e){d=(k=e.which)==39?2:k==37?4:k==38?1:k==40?3:d;D=k==87?1:k==68?2:k==83?3:k==65?4:D;k==32&&X&S()},(S=function(){X=0;w=[{x:795,y:400}];d=1;W=[{x:5,y:0}];D=3;v=setInterval(\'c.width=c.width;p1[H="innerHTML"]=A+=z(w,d,W,"blue",0);p2[H]=a+=z(W,D,w,"red",1);if(X)clearInterval(v)\',60)})(),z=function(f,g,F,B,b){h={x:f[l=f[m="length"]-1].x,y:f[l].y};beginPath();L=lineWidth=10;h.x+=g==2?L:g==4&&-L;h.y+=g==3?L:g==1&&-L;if(F[I="filter"](t=function(o){return o.x==(T=this).x&o.y==T.y},h)[m]||f[I](t,h)[m])return X=1;strokeStyle=_=createLinearGradient(0,0,800,0);for($ in _);_[$](b,"magenta");_[$](.3,"#AFD2E6");_[$](.6,"#FF1493");_[$](!b,B);for(i=f.push({x:h.x,y:h.y})-1;i--;){lineTo(f[i].x,f[i].y)};stroke();return 0}'
+				},
+				{
+					name: 'Script Loader',
+					quote: 'Dynamically load scripts (131 bytes)',
+					code: 'function l(a,c,f){with(document)for(;(f=createElement(\'script\')).src=a.shift();head.appendChild(f))f.onload=function(){c&&c(this)}}'
+				}
 			]
-		},
-		{
-			name: 'Tron',
-			quote: 'Destroy your friends! Competitive 1on1 Tron-clone. (757 bytes)',
-			code: 'a=A=0;with(c.getContext("2d"))onkeyup=function(e){d=(k=e.which)==39?2:k==37?4:k==38?1:k==40?3:d;D=k==87?1:k==68?2:k==83?3:k==65?4:D;k==32&&X&S()},(S=function(){X=0;w=[{x:795,y:400}];d=1;W=[{x:5,y:0}];D=3;v=setInterval(\'c.width=c.width;p1[H="innerHTML"]=A+=z(w,d,W,"blue",0);p2[H]=a+=z(W,D,w,"red",1);if(X)clearInterval(v)\',60)})(),z=function(f,g,F,B,b){h={x:f[l=f[m="length"]-1].x,y:f[l].y};beginPath();L=lineWidth=10;h.x+=g==2?L:g==4&&-L;h.y+=g==3?L:g==1&&-L;if(F[I="filter"](t=function(o){return o.x==(T=this).x&o.y==T.y},h)[m]||f[I](t,h)[m])return X=1;strokeStyle=_=createLinearGradient(0,0,800,0);for($ in _);_[$](b,"magenta");_[$](.3,"#AFD2E6");_[$](.6,"#FF1493");_[$](!b,B);for(i=f.push({x:h.x,y:h.y})-1;i--;){lineTo(f[i].x,f[i].y)};stroke();return 0}'
-		},
-		{
-			name: 'Script Loader',
-			quote: 'Dynamically load scripts (131 bytes)',
-			code: 'function l(a,c,f){with(document)for(;(f=createElement(\'script\')).src=a.shift();head.appendChild(f))f.onload=function(){c&&c(this)}}'
-		}
-	]
-};
-
-F('#template').parse(context).appendTo('body');
+		};
+		
+		F('#template').parse(context).appendTo('body');
+	
+	});
 ```
 
 In this example, accessing the `{{projects}}...{{/projects}}`-Tag actually invokes an each-loop which iterates through the `projects`-array, 
