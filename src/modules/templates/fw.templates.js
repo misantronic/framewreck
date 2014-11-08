@@ -28,7 +28,7 @@ F.ext({
 		 */
 		S.FObj = function(ctx, s, x) {
 			// look for each-tag
-			return this[r](x=RegExp("{{(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/(?: *)\\1(?: *)}}", "g"), function(p, a, b) {
+			return this[r](x=/{{(?: *)(\w+)(?: *)}}([\s\S]*?){{\/(?: *)\1(?: *)}}/g, function(p, a, b) {
 				s = "";
 				if(ctx[a])
 					// when each is found
@@ -76,14 +76,22 @@ F.ext({
 		};
 
 		/**
-		 * Parse tags ({{abc}})
+		 * Parse tags ({{abc}}), also look for helper functions
 		 * @param {String} V eval base
 		 * @param {Object} ctx context to look for vars in eval
 		 * @param [t] placeholder
 		 * @returns {RegExp}
 		 */
 		S.FTag = function(V, ctx, t) {
-			return this[r](RegExp("{+\\{ *([A-Za-z0-9_.]+) *}}+", "g"), function(p, $1, f) {
+			return this[r](/{+\{ *([A-Za-z0-9_.]+) *["']*(.*?)["']*}}+/g, function(p, $1, $2, f) {
+				if($2)
+					if(F.tH[$1])
+						return F.tH[$1].apply(0, $2[r](/["'] *["']*/g, '{|}').split('{|}'));
+					else {
+						console.warn('F: Helper', $1, 'not found!');
+						return '';
+					}
+
 				try {
 					f = eval(!V.big || $1.match(t=/\./g) ? V+"['"+$1.replace(t, "']['")+"']" : V)
 				} catch(e) {}
@@ -111,5 +119,22 @@ F.ext({
 			// remove whitespace
 			.trim()
 		)
+	},
+
+	/**
+	 * Register a new Template Helper
+	 * @param {String} n name of the helper
+	 * @param {Function} f helper function
+	 */
+	registerHelper: function(n, f) {
+		F.tH[n] = f;
+
+		return this
 	}
 });
+
+/**
+ * Template Helper
+ * @type {{}}
+ */
+F.tH = {};
