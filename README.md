@@ -409,11 +409,11 @@ All templates are wrapped in `<script type="x-tmpl-framewreck"></script>` and fo
 			{{#if tests}}
 				<h3>Tests:</h3>
 				{{tests}}
-					{{##if show == 5}}
+					{{#if show == 5}}
 					<p>
 						Test ran on {{run}}.
 					</p>
-					{{//if}}
+					{{/if}}
 				{{/tests}}
 			{{/if}}
 			
@@ -430,16 +430,6 @@ All templates are wrapped in `<script type="x-tmpl-framewreck"></script>` and fo
 		</div>
 	{{/projects}}
 </script>
-```
-
-Please note that every time you add an `if`-block inside another, you have to add another hash/ending slash to every expression.
-
-```html
-{{#if projects}}
-	{{##if tests.length > 0}}
-		...
-	{{//if}}
-{{/if}}
 ```
 
 Run Parser:
