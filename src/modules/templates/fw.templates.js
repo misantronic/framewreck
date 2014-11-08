@@ -27,7 +27,7 @@ F.ext({
 		 * @param [x] placeholder
 		 * @returns {String}
 		 */
-		S.parseObject = function(ctx, s, x) {
+		S.FObj = function(ctx, s, x) {
 			// look for each-tag
 			return this[r](x=RegExp("{{(?: *)(\\w+)(?: *)}}([\\s\\S]*?){{\\/(?: *)\\1(?: *)}}", "g"), function(p, a, b) {
 				s = "";
@@ -35,13 +35,13 @@ F.ext({
 					// when each is found
 					for(i in ctx[a])
 						// replace vars
-						s += b.parseTag("ctx['"+a+"']["+i+"]", ctx),
+						s += b.FTag("ctx['"+a+"']["+i+"]", ctx),
 
 						// if statement
-						s = s.parseIf("ctx."+a+"["+i+"].", ctx),
+						s = s.FIf("ctx."+a+"["+i+"].", ctx),
 
 							// check for another each
-						s.match(x) && (s = s.parseObject(ctx[a][i]));
+						s.match(x) && (s = s.FObj(ctx[a][i]));
 
 				return s
 			});
@@ -56,7 +56,7 @@ F.ext({
 		 * @param [e] placeholder
 		 * @returns {RegExp}
 		 */
-		S.parseIf = function(V, ctx, m, v, e) {
+		S.FIf = function(V, ctx, m, v, e) {
 			return this[r](/{##(\d)##}([\s\S]*){##\/\1##}/g, function(p, a, b, f) {
 				a = map[+a];
 
@@ -83,7 +83,7 @@ F.ext({
 		 * @param [t] placeholder
 		 * @returns {RegExp}
 		 */
-		S.parseTag = function(V, ctx, t) {
+		S.FTag = function(V, ctx, t) {
 			return this[r](RegExp("{+\\{ *([A-Za-z0-9_.]+) *}}+", "g"), function(p, $1, f) {
 				try {
 					f = eval(!V.big || $1.match(t=/\./g) ? V+"['"+$1.replace(t, "']['")+"']" : V)
@@ -100,11 +100,11 @@ F.ext({
 		return F(
 			s
 			// each
-			.parseObject(ctx, 1)
+			.FObj(ctx, 1)
 			// vars at level 0
-			.parseTag("ctx", ctx)
+			.FTag("ctx", ctx)
 			// if's at level 0
-			.parseIf("ctx.", ctx)
+			.FIf("ctx.", ctx)
 			// JS
 			[r](/{%(.*)%}/g, function(p, $1) {
 				return eval($1);
