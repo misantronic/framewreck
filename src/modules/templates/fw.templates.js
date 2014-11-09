@@ -11,6 +11,7 @@ F.ext({
 			M = [],
 			i = 0,
 			// replace ifs with map numbers
+			// TODO: grab HTML from every element except script tags
 			s = this[0][F.H][r = "replace"](/(?:{{#if(?: *))(.*)(?: *)}}/g, function(p, a) {
 				M[i] = a;
 				return '{##'+(i++)+'##}'
@@ -119,6 +120,12 @@ F.ext({
 			// remove whitespace
 			.trim()
 		)
+	},
+
+	loadTemplate: function(context, path, callback) {
+		F().ajax('GET', path, function(e) {
+			callback.call(F(e.responseText).template(context));
+		});
 	},
 
 	/**

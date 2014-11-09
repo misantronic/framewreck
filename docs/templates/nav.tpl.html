@@ -1,0 +1,22 @@
+<nav>
+	<ul>
+		{{menu}}
+		<li class="{{id}}">
+			{{#if link}}
+			<a href="{{link}}">{{name}}</a>
+			{{#else}}
+			{{name}}
+			{{/if}}
+			{{#if submenu}}
+			<ul>
+				{{submenu}}
+				<li>
+					<a href="{{submenuLink}}">{{submenuName}}</a>
+				</li>
+				{{/submenu}}
+			</ul>
+			{{/if}}
+		</li>
+		{{/menu}}
+	</ul>
+</nav>

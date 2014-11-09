@@ -24,15 +24,48 @@ F.ext({
 	 * or insert HTML/Text
 	 * Note: selector v will always appended
 	 * to the first element in context
-	 * @param {String} v selector or HTML/Text
+	 * @param {String|Object} v selector or HTML/Text
 	 * @param [x] placeholder for context
 	 * @param [i] placeholder
 	 */
 	append: function (v, x, i) {
 		x = this.x;
-		var g = v[0]=='<' ? 0 : F.d[F.Q](v)[0];
+		/*var g = v[0]=='<' ? 0 : F.d[F.Q](v)[0];
 		for (i = 0; i < x[F.L]; i++)
 			g ? g.appendChild(x[i]) : x[i][F.H] += v;
+		}*/
+
+		try {
+			for (i = 0; i < x[F.L]; i++)
+				v.big
+					? v[0] == '<'
+						? x[i][F.H] += v
+						: x[i].appendChild(F.d[F.Q](v)[0])
+					: x[i].appendChild(v instanceof F ? v[0] : v)
+		} catch(e) { console.warn(e) }
+
+
+		return this
+	},
+
+	/**
+	 *
+	 * @param v selector or HTML/Text
+	 * @param [x] placeholder
+	 * @param [i] placeholder
+	 * @returns {*}
+	 */
+	appendTo: function(v, x, i) {
+		x = this.x;
+
+		try {
+			for (i = 0; i < x[F.L]; i++)
+				v.big
+					? v[0] == '<'
+						? x[i][F.H] += v
+						: F.d[F.Q](v)[0].appendChild(x[i])
+					: v.appendChild(x[i])
+		} catch(e) { console.warn(e) }
 
 		return this
 	},
@@ -138,7 +171,7 @@ F.ext({
 
 // method aliases
 F.ext({
-	val: F.prototype.html,
-	appendTo: F.prototype.append
+	val: F.prototype.html/*,
+	appendTo: F.prototype.append*/
 });
 
