@@ -423,8 +423,10 @@ Since `#inp_name` is connected to the binding-element, it will automatically upd
 
 ### Template-Engine
 
-The template-engine is inspired by common engines like mustache or handlebars<br>but wrecked down to ~1.5 Kb.<br>
-All templates are wrapped in `<script type="x-tmpl-framewreck"></script>` and follow the popular handlebar-`{{...}}`-syntax.<br>
+The Template-Engine is inspired by common engines like [Mustache](http://mustache.github.io/) or [Handlebars](http://handlebarsjs.com/)<br>
+but wrecked down to ~1.5 Kb.<br>
+Templates are [wrapped in `<script type="x-tmpl-framewreck"></script>`-tags](#template-example) or [being loaded from external files](#loading-external-templates) via AJAX.<br>
+The whole syntax is an easier version of the popular handlebar-`{{...}}`-style.<br>
 
 *Note:* This module is optional and not included in dist/framewreck.min.js<br>
 Dependencies: [AJAX](#ajax-module) *(if you want to use `loadTemplate`)*
