@@ -11,8 +11,8 @@ F.ext({
 			M = [],
 			i = 0,
 			// replace ifs with map numbers
-			// TODO: grab HTML from every element except script tags
-			s = this[0][F.H][r = "replace"](/(?:{{#if(?: *))(.*)(?: *)}}/g, function(p, a) {
+			t = this[0],
+			s = (t.tagName == 'SCRIPT' ? t[F.H] : t.outerHTML)[r = "replace"](/(?:{{#if(?: *))(.*)(?: *)}}/g, function(p, a) {
 				M[i] = a;
 				return '{##'+(i++)+'##}'
 			});
