@@ -19,7 +19,7 @@ var nav = {
 	]
 };
 
-F().loadTemplate(nav, 'templates/nav.tpl.html', function() {
+F().loadTemplate('templates/nav.tpl.html', function() {
 	F('#nav-wrapper').append(this);
 
 	F('nav a').on('click', function() {
@@ -27,14 +27,14 @@ F().loadTemplate(nav, 'templates/nav.tpl.html', function() {
 
 		return false;
 	});
-});
+}, nav);
 
 function parseContent(path) {
 	path = path.split('#')[1] || 'home';
 
 	F('#content-output').html('');
 	//F('#'+ path).template().appendTo('#content-output');
-	F().loadTemplate({}, 'templates/'+ path +'.tpl.html', function() {
+	F().loadTemplate('templates/'+ path +'.tpl.html', function() {
 		this.appendTo('#content-output');
 	});
 }

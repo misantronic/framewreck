@@ -1,7 +1,7 @@
 F.ext({
 	/**
 	 *
-	 * @param {Object} ctx Context object
+	 * @param {Object} [ctx] Context object
 	 * @param [r] placeholder
 	 * @returns {F}
 	 */
@@ -122,9 +122,15 @@ F.ext({
 		)
 	},
 
-	loadTemplate: function(context, path, callback) {
-		F().ajax('GET', path, function(e) {
-			callback.call(F(e.responseText).template(context));
+	/**
+	 * Asynchronously load template-file from a relative path
+	 * @param {String} p relative template path
+	 * @param {Function} [f] callback
+	 * @param {Object} [c] Context object
+	 */
+	loadTemplate: function(p, f, c) {
+		F().ajax('GET', p, function(e) {
+			f.call(F(e.responseText).template(c));
 		});
 	},
 

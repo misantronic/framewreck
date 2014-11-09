@@ -430,7 +430,7 @@ The template-engine is inspired by common engines like mustache or handlebars<br
 All templates are wrapped in `<script type="x-tmpl-framewreck"></script>` and follow the popular handlebar-`{{...}}`-syntax.<br>
 
 *Note:* This module is optional and not included in dist/framewreck.min.js<br>
-*No dependencies*
+Dependencies: [AJAX](#ajax-module) *(if you want to use `loadTemplate`*
 
 #### Template-Example
 
