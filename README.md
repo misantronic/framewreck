@@ -78,8 +78,7 @@ F().require(
 		// Pseudo classes
 		F('#id .class:first-child');
 		F('#id .class').find('a:first-of-type');
-		F('#id .class').find('a:last-of-type');
-		
+		F('#id .class').find('a:last-of-type');		
 	});
 ```
 
@@ -523,7 +522,7 @@ F().require(
 			]
 		};
 		
-		F('#template').parse(context).appendTo('body');
+		F('#template').template(context).appendTo('body');
 	
 	});
 ```
@@ -541,7 +540,7 @@ F('#template')
 		target = target || '_self';
 		return '<a href="'+ href +'" title="'+ title +'" target="'+ target +'">'+ title +'</a>'
 	})
-	.parse(context).appendTo('#page-wrapper');
+	.template(context).appendTo('#page-wrapper');
 ```
 
 ```html

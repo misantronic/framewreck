@@ -5,7 +5,7 @@ F.ext({
 	 * @param [r] placeholder
 	 * @returns {F}
 	 */
-	parse: function(ctx, r) {
+	template: function(ctx, r) {
 		var S = String.prototype,
 			// map for if statements
 			M = [],

@@ -1,275 +1,208 @@
 <!DOCTYPE html>
-
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>DocStrap Index</title>
-
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
-
-	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
-
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Docs</title>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/general.css">
 </head>
-
 <body>
-<div class="container-fluid">
-	<div class="navbar navbar-fixed-top navbar-inverse">
-		<div class="navbar-inner">
-			<a class="brand" href="index.html">DocStrap</a>
-			<ul class="nav">
-				
-				<li class="dropdown">
-					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
-						class="caret"></b></a>
 
-					<ul class="dropdown-menu ">
-						
-						<li>
-							<a href="F.html">F</a>
-						</li>
-						
+	<div id="wrapper">
+		<header></header>
+		<div id="nav-wrapper"></div>
+		<div id="content-wrapper">
+			<h1>
+				framewreck
+				&nbsp;&nbsp;
+				<a href="https://travis-ci.org/misantronic/framewreck">
+					<img src="https://travis-ci.org/misantronic/framewreck.svg">
+				</a>
+				<a href="https://gemnasium.com/misantronic/frameWreck">
+					<img src="https://gemnasium.com/misantronic/frameWreck.svg">
+				</a>
+			</h1>
+			<div id="content-output"></div>
+		</div>
+		<br class="clear"/>
+	</div>
 
-					</ul>
-				</li>
-				
-				<li class="dropdown">
-					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
-						class="caret"></b></a>
-
-					<ul class="dropdown-menu ">
-						
-						<li>
-							<a href="global.html#addClass">addClass</a>
-						</li>
-						
-						<li>
-							<a href="global.html#ajax">ajax</a>
-						</li>
-						
-						<li>
-							<a href="global.html#animate">animate</a>
-						</li>
-						
-						<li>
-							<a href="global.html#append">append</a>
-						</li>
-						
-						<li>
-							<a href="global.html#attr">attr</a>
-						</li>
-						
-						<li>
-							<a href="global.html#checked">checked</a>
-						</li>
-						
-						<li>
-							<a href="global.html#css">css</a>
-						</li>
-						
-						<li>
-							<a href="global.html#data">data</a>
-						</li>
-						
-						<li>
-							<a href="global.html#fire">fire</a>
-						</li>
-						
-						<li>
-							<a href="global.html#getBindable">getBindable</a>
-						</li>
-						
-						<li>
-							<a href="global.html#hide">hide</a>
-						</li>
-						
-						<li>
-							<a href="global.html#html">html</a>
-						</li>
-						
-						<li>
-							<a href="global.html#off">off</a>
-						</li>
-						
-						<li>
-							<a href="global.html#on">on</a>
-						</li>
-						
-						<li>
-							<a href="global.html#parse">parse</a>
-						</li>
-						
-						<li>
-							<a href="global.html#registerBindable">registerBindable</a>
-						</li>
-						
-						<li>
-							<a href="global.html#registerHelper">registerHelper</a>
-						</li>
-						
-						<li>
-							<a href="global.html#remove">remove</a>
-						</li>
-						
-						<li>
-							<a href="global.html#removeClass">removeClass</a>
-						</li>
-						
-						<li>
-							<a href="global.html#serialize">serialize</a>
-						</li>
-						
-						<li>
-							<a href="global.html#setBindable">setBindable</a>
-						</li>
-						
-						<li>
-							<a href="global.html#show">show</a>
-						</li>
-						
-
-					</ul>
-				</li>
-				
+	<script id="nav" type="text/x-tmpl-framewreck">
+		<nav>
+			<ul>
+				{{menu}}
+					<li class="{{id}}">
+						{{#if link}}
+							<a href="{{link}}">{{name}}</a>
+						{{#else}}
+							{{name}}
+						{{/if}}
+						{{#if submenu}}
+							<ul>
+								{{submenu}}
+									<li>
+										<a href="{{submenuLink}}">{{submenuName}}</a>
+									</li>
+								{{/submenu}}
+							</ul>
+						{{/if}}
+					</li>
+				{{/menu}}
 			</ul>
+		</nav>
+	</script>
+
+	<script id="home" type="text/x-tmpl-framewreck">
+		<div id="content">
+			<blockquote><p>When <a href="http://jquery.com/">jQuery</a> gets too bulky – wreck it up with framewreck.</p></blockquote>
+			<p><i>A lightweight modular JavaScript framework.</i></p>
+			<p>
+				Main features:<br/>
+				<ul>
+					<li>Minified and GZipped only ~1.5 kb</li>
+					<li>CSS Selectors</li>
+					<li>CSS Manipulation</li>
+					<li>DOM Manipulation</li>
+					<li>Traversing</li>
+					<li>AJAX-Requests</li>
+					<li>Events</li>
+					<li>Data</li>
+					<li>Chaining</li>
+				</ul>
+				Optional features:<br/>
+				<ul>
+					<li>Animations</li>
+					<li>Bindings</li>
+					<li>Template-Engine</li>
+				</ul>
+			</p>
 		</div>
-	</div>
+	</script>
 
-	<div class="row-fluid">
+	<script id="getting-started" type="text/x-tmpl-framewreck">
+		<div id="content">
+			<h2>Getting started</h2>
+			<p></p>
 
-		
-		<div class="span8">
-			
-				<div id="main">
-					
+			<h3>Install with bower</h3>
+			<div class="highlight highlight-shell"><pre>$ bower install framewreck</pre></div>
 
+			<h3>Embed via CDN</h3>
+			<p>You can use <a href="../cdn/index.html">this generator</a> to choose from all available modules and generate a dynamic URL.</p>
 
-	
-	<span class="page-title">Index</span>
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-				</div>
-
-				<div class="clearfix"></div>
-				<footer>
-					
-					
-		<span class="copyright">
-		DocStrap Copyright © 2012-2014 The contributors to the JSDoc3 and DocStrap projects.
-		</span>
-					<br />
-					
-		<span class="jsdoc-message">
-		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on Sat Nov 8th 2014 using the <a
-			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-		</span>
-				</footer>
+			<h4>Main modules</h4>
+			<div class="highlight highlight-html">
+				<pre>&lt;script src=&quot;//cdn.jsdelivr.net/g/framewreck&quot;&gt;&lt;/script&gt;</pre>
 			</div>
 
-			
-			<div class="span3">
-				<div id="toc"></div>
+			<p><i>or</i></p>
+
+			<h4>All modules</h4>
+
+			<div class="highlight highlight-html">
+				<pre>&lt;script src=&quot;//cdn.jsdelivr.net/framewreck/latest/framewreck.all.js&quot;&gt;&lt;/script&gt;</pre>
 			</div>
-			
-			<br clear="both">
+
+			<p><i>or</i></p>
+
+			<h4>Module wise</h4>
+
+			<div class="highlight highlight-html">
+				<pre>&lt;script src=&quot;//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+// asynchronously load other modules
+F().require([
+		'//cdn.jsdelivr.net/framewreck/latest/modules/animate/fw.animate.min.js',
+		'//cdn.jsdelivr.net/framewreck/latest/modules/dom/fw.dom.min.js',
+		'...'
+	], function() {
+		// ...
+	});
+&lt;/script&gt;</pre>
+			</div>
 		</div>
+	</script>
 
-	</div>
-	<!--<script src="scripts/sunlight.js"></script>-->
-	<script src="scripts/docstrap.lib.js"></script>
-	<script src="scripts/bootstrap-dropdown.js"></script>
-	<script src="scripts/toc.js"></script>
+	<script id="api-core" type="text/x-tmpl-framewreck">
+		<div id="content">
+			<h2>Module: Core</h2>
+			<h3>CSS Selectors</h3>
+			<div class="highlight highlight-javascript">
+				<pre>F().require(
+		[
+			'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js'
+		], function() {
 
+			// IDs and classes
+			F('#id');
+			F('#id').find('.class');
+			F('#id .class').find('a');
+
+			// Index selectors
+			F('#id .class:0')
+			F('#id:1 .class:0 p')
+
+			// Pseudo classes
+			F('#id .class:first-child');
+			F('#id .class').find('a:first-of-type');
+			F('#id .class').find('a:last-of-type');
+
+		});</pre>
+			</div>
+
+			<h3>Selector methods</h3>
+			<div class="highlight highlight-javascript">
+				<pre>// Index selector
+F('#id .class').get(1);
+
+// Next / Previous siblings
+F('#id').next();
+F('#id').prev();
+
+// Parent elements
+F('#id').parent();</pre>
+			</div>
+		</div>
+	</script>
+
+	<script src="../dist/framewreck.all.js"></script>
 	<script>
-		$( function () {
-			$( "[id*='$']" ).each( function () {
-				var $this = $( this );
-
-				$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-			} );
-
-			$( "#toc" ).toc( {
-				anchorName  : function ( i, heading, prefix ) {
-					return $( heading ).attr( "id" ) || ( prefix + i );
-				},
-				selectors   : "h1,h2,h3,h4",
-				showAndHide : false,
-				scrollTo    : "100px"
-			} );
-
-			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-			$( '.dropdown-toggle' ).dropdown();
-//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-			$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-				var $this = $( this );
-
-				var example = $this.find( "code" );
-				exampleText = example.html();
-				var lang = /{@lang (.*?)}/.exec( exampleText );
-				if ( lang && lang[1] ) {
-					exampleText = exampleText.replace( lang[0], "" );
-					example.html( exampleText );
-					lang = lang[1];
-				} else {
-					lang = "javascript";
+		var nav = {
+			menu: [
+				{ name: 'Home', link: '#home', id: 'home' },
+				{ name: 'Getting started', link: '#getting-started', id: 'getting-started' },
+				{
+					name: 'Modules', id: 'modules',
+					submenu: [
+						{ submenuName: 'Core', submenuLink: '#api-core' },
+						{ submenuName: 'CSS', submenuLink: '#api-css' },
+						{ submenuName: 'DOM', submenuLink: '#api-dom' },
+						{ submenuName: 'Events', submenuLink: '#api-events' },
+						{ submenuName: 'Data', submenuLink: '#api-data' },
+						{ submenuName: 'AJAX', submenuLink: '#api-ajax' },
+						{ submenuName: 'Animate', submenuLink: '#api-animate' },
+						{ submenuName: 'Bindables', submenuLink: '#api-bindables' },
+						{ submenuName: 'Templates', submenuLink: '#api-templates' }
+					]
 				}
+			]
+		};
 
-				if ( lang ) {
+		F('#nav').template(nav).appendTo('#nav-wrapper');
+		F('nav a').on('click', function() {
+			parseContent(this.href);
 
-					$this
-						.addClass( "sunlight-highlight-" + lang )
-						.addClass( "linenums" )
-						.html( example.html() );
+			return false;
+		});
 
-				}
-			} );
+		function parseContent(path) {
+			path = (path || "home").split('#')[1];
 
-			Sunlight.highlightAll( {
-				lineNumbers : true,
-				showMenu : true,
-				enableDoclinks : true
-			} );
-		} );
-	 </script>
+			F('#content-output').html('');
+			F('#'+ path).template().appendTo('#content-output');
+		}
 
-
-
-	<!--Navigation and Symbol Display-->
-	
-
-
-	<!--Google Analytics-->
-	
-
+		parseContent(location.href);
+	</script>
 </body>
 </html>
