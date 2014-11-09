@@ -562,7 +562,7 @@ var navContext = {
 
 // load template
 F().loadTemplate('templates/nav.tpl.html', function() {
-	// this is and F-instance containing the template
+	// this is an F-instance containing the template
 	F('#nav-wrapper').append(this);
 
 }, navContext);
