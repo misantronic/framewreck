@@ -58,9 +58,11 @@ F().require([
 
 ## Modules
 
+Please note that all examples have `require`-statements containing the required modules. 
+These can be dismissed, if you embed framewreck.min.js (for main modules) or framewreck.all.js (for all modules).
+
 ### Core: CSS Selectors
 ```javascript
-// load module
 F().require(
 	[
 		'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js'
@@ -100,7 +102,6 @@ F('#id').parent();
 ### CSS module
 
 ```javascript
-// load module
 F().require(
 	[
 		'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 
@@ -122,7 +123,6 @@ F().require(
 ### DOM module
 
 ```javascript
-// load module
 F().require(
 	[
 		'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 
@@ -182,7 +182,6 @@ F().require(
 Add/Remove/Fire default or custom events using the browsers native event-system.
 
 ```javascript
-// load module
 F().require(
 	[
 		'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 
@@ -213,7 +212,6 @@ F().require(
 Make asynchronously XHR-Requests via GET/POST
 
 ```javascript
-// load module
 F().require(
 	[
 		'//cdn.jsdelivr.net/framewreck/latest/modules/css/fw.core.min.js', 
@@ -246,7 +244,6 @@ F().require(
 The data module enables saving all types of data to the context using the dynamic DOM attribute structure.
 
 ```javascript
-// load module
 F().require(
 	[
 		'//cdn.jsdelivr.net/framewreck/latest/modules/css/fw.core.min.js', 
@@ -266,7 +263,6 @@ F().require(
 Any method returning `F` can be chained to the next.
 
 ```javascript
-// load module
 F('#id')
 	.find('.class')
 	.html('test')
@@ -288,7 +284,6 @@ Dependencies: [CSS](#css-module), [Events](#event-module), [Data](#data-module)
 #### Basic examples
 
 ```javascript
-// load module
 F().require(
 	[
 		'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 
@@ -396,7 +391,7 @@ Hi, my name is <span data-bindable="name"></span>
 Now, you bind your data to the binding-element
 
 ```javascript
-// load module
+// load modules and register various bindables
 F().require(
 	[
 		'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 
@@ -435,6 +430,7 @@ Dependencies: [AJAX](#ajax-module) *(if you want to use `loadTemplate`)*
 #### Template-Example
 
 ```html
+<!-- Example for a template -->
 <script id="template" type="x-tmpl-framewreck">
 	<h1>{{title}}</h1>
 	
@@ -486,7 +482,7 @@ Dependencies: [AJAX](#ajax-module) *(if you want to use `loadTemplate`)*
 
 Run Parser:
 ```javascript
-// load module
+// load modules, define template context, parse template and append it to the body
 F().require(
 	[
 		'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js', 
@@ -535,6 +531,7 @@ defined in `context`. It will outputs three project-blocks.
 You can define your own helper functions which are accessible from any context in any template.
 
 ```javascript
+// example for a Link-Helper
 F('#template')
 	.registerHelper('link', function(href, title, target) {
 		target = target || '_self';
@@ -544,6 +541,7 @@ F('#template')
 ```
 
 ```html
+<!-- Link-Helper Template -->
 <script id="template" type="x-tmpl-framewreck">
 	{{link "http://512byt.es" "Visit 512byt.es" "_blank"}}
 </script>
