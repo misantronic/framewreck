@@ -106,7 +106,7 @@
 			</form>
 		</div>
 
-		<div id="version">
+		<!--<div id="version">
 			<h2>Version</h2>
 
 			<select id="slct_version">
@@ -114,7 +114,7 @@
 				<option value="1.4.0">v.1.4.0</option>
 				<option value="1.3.0">v.1.3.0</option>
 			</select>
-		</div>
+		</div>-->
 
 		<h2>Embed code</h2>
 		<div id="output"></div>
@@ -157,6 +157,12 @@
 							F('#cbx_events, #cbx_dom').checked(true);
 							updateModules(); return;
 						}
+					} else if(module == F('#cbx_templates').attr('name')) {
+						// add dependencies
+						if(F('#cbx_ajax').checked().some(isFalse)) {
+							F('#cbx_ajax').checked(true);
+							updateModules(); return;
+						}
 					}
 
 					modules_extra_arr.push(module);
@@ -176,9 +182,10 @@
 			}
 
 			// version
-			var v = F('#slct_version').val();
+			//var v = F('#slct_version').val();
 			//if(v == 'latest') v = '';
-			var version = v ? '@'+ v : '';
+			//var version = v ? '@'+ v : '';
+			var version = '';
 
 			url = basePath + version + modules;
 
