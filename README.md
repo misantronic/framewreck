@@ -532,7 +532,7 @@ defined in `context`. It will outputs three project-blocks.
 
 #### Helper functions
 
-You can define your own helper function which are accessible from any context in any template.
+You can define your own helper functions which are accessible from any context in any template.
 
 ```javascript
 F('#template')
@@ -548,6 +548,26 @@ F('#template')
 	{{link "http://512byt.es" "Visit 512byt.es" "_blank"}}
 </script>
 ```
+
+#### Load external templates
+
+```javascript
+// define context
+var navContext = {
+	menu: [
+		{ name: 'Home', link: '/home' },
+		{ name: 'Projects', link: '/projects' }
+	]
+}
+
+// load template
+F().loadTemplate('templates/nav.tpl.html', function() {
+	// this is and F-instance containing the template
+	F('#nav-wrapper').append(this);
+
+}, navContext);
+```
+
 
 ## Contact and comments
 
