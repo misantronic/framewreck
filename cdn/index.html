@@ -159,7 +159,7 @@
 						}
 					} else if(module == F('#cbx_templates').attr('name')) {
 						// add dependencies
-						if([F('#cbx_ajax')].checked().some(isFalse)) {
+						if([F('#cbx_ajax').checked()].some(isFalse)) {
 							F('#cbx_ajax').checked(true);
 							updateModules(); return;
 						}
