@@ -549,7 +549,7 @@ F('#template')
 </script>
 ```
 
-#### Load external templates
+#### Loading external templates
 
 ```javascript
 // define context
