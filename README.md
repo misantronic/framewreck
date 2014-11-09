@@ -419,6 +419,8 @@ F().require(
 
 Since `#inp_name` is connected to the binding-element, it will automatically update its value everytime you change it.
 
+---
+
 ### Template-Engine
 
 The template-engine is inspired by common engines like mustache or handlebars<br>but wrecked down to ~1 Kb.<br>
