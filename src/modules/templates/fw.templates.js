@@ -129,8 +129,12 @@ F.ext({
 	 * @param {Object} [c] Context object
 	 */
 	loadTemplate: function(p, f, c) {
-		F().ajax('GET', p, function(e) {
-			f.call(F(e.responseText).template(c));
+		var x = this.x;
+		F().ajax('GET', p, function(e, t) {
+			t = F(e.responseText).template(c);
+			if(x) t.appendTo(x[0]);
+
+			f&&f.call(t)
 		});
 	},
 
