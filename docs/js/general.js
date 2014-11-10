@@ -32,12 +32,9 @@ F().loadTemplate('templates/nav.tpl.html', function() {
 function parseContent(path) {
 	path = path.split('#')[1] || 'home';
 
-	F('#content-output').html('');
-	//F('#'+ path).template().appendTo('#content-output');
-	console.log('templates/'+ path +'.tpl.html')
-	F().loadTemplate('templates/'+ path +'.tpl.html', function() {
-		this.appendTo('#content-output');
-	});
+	F('#content-output')
+		.html('')
+		.loadTemplate('templates/'+ path +'.tpl.html');
 }
 
 parseContent(location.href);
