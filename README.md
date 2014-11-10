@@ -5,7 +5,7 @@
 **A lightweight modular JavaScript framework.**
 
 Main features:
- - Minified and GZipped only ~1.5 kb
+ - Minified and GZipped only ~2 kb
  - [CSS Selectors](#core-css-selectors)
  - [CSS Manipulation](#css-module)
  - [DOM Manipulation](#dom-module)
