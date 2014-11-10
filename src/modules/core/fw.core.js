@@ -1,6 +1,6 @@
 /**
  *
- * @param {String|HTMLElement} c context querySelect or HTML Element to become the context
+ * @param {String|HTMLElement} [c] context querySelect or HTML Element to become the context
  * @returns {F|*}
  * @constructor
  */
