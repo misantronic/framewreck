@@ -127,9 +127,10 @@ F.ext({
 	 * @param {String} p relative template path
 	 * @param {Function} [f] callback
 	 * @param {Object} [c] Context object
+	 * @param [x] placeholder
 	 */
-	loadTemplate: function(p, f, c) {
-		var x = this.x;
+	loadTemplate: function(p, f, c, x) {
+		x = this.x;
 		F().ajax('GET', p, function(e, t) {
 			t = F(e.responseText).template(c);
 			if(x) t.appendTo(x[0]);
