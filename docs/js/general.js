@@ -1,9 +1,9 @@
 var nav = {
 	menu: [
-		{ name: 'Home', link: '#home', id: 'home' },
-		{ name: 'Getting started', link: '#getting-started', id: 'getting-started' },
+		{ name: 'Home', link: '#home', id: 'home level-0' },
+		{ name: 'Getting started', link: '#getting-started', id: 'getting-started level-0' },
 		{
-			name: 'Modules', id: 'modules',
+			name: 'Modules', link: '#modules', id: 'modules level-0',
 			submenu: [
 				{ submenuName: 'Core', submenuLink: '#api-core' },
 				{ submenuName: 'CSS', submenuLink: '#api-css' },

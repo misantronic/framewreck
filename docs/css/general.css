@@ -22,27 +22,51 @@ nav ul {
 }
 
 nav ul li {
-	padding: 0 0 0 20px;
+	padding: 0 0 0 0;
 	margin: 0 0 4px 0;
+	font-size: 16px;
+}
+
+nav ul li a {
+	display: block;
+	text-align: right;
+	padding-right: 15px;
+	color: #000;
+}
+
+nav ul li ul {
+	margin-top: 15px;
+}
+
+nav ul li ul li a {
+	padding: 4px;
+	background-color: #4183c4;
+	color: #FFF;
+	text-align: left;
+}
+
+nav ul li.level-0 {
+	font-size: 20px;
 }
 
 .clear { clear: both; }
 
 #wrapper {
-	width: 860px;
-	margin: 0 auto;
+	width: 920px;
+	margin: 20px 0 0 40px;
 }
 
 #nav-wrapper {
-	width: 200px;
+	width: 220px;
 	float: left;
+	padding-top: 65px;
 }
 
 #content-wrapper {
 	float: left;
-	width: 630px;
-	border-left: 1px solid #e7e7e7;
-	padding-left: 29px;
+	width: 670px;
+	border-left: 2px solid #ddd;
+	padding-left: 28px;
 }
 
 #wrapper pre {
