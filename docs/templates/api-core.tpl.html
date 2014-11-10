@@ -1,24 +1,28 @@
 <div id="content">
 	<h2>Module: Core</h2>
-	<h3>CSS Selectors</h3>
+
+	<h3>Embed</h3>
 	<div class="highlight highlight-javascript">
 		<pre>F().require([ '//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js' ], function() {
-
-	// IDs and classes
-	F('#id');
-	F('#id').find('.class');
-	F('#id .class').find('a');
-
-	// Index selectors
-	F('#id .class:0')
-	F('#id:1 .class:0 p')
-
-	// Pseudo classes
-	F('#id .class:first-child');
-	F('#id .class').find('a:first-of-type');
-	F('#id .class').find('a:last-of-type');
-
+	// do stuff
 });</pre>
+	</div>
+
+	<h3>CSS Selectors</h3>
+	<div class="highlight highlight-javascript">
+		<pre>// IDs and classes
+F('#id');
+F('#id').find('.class');
+F('#id .class').find('a');
+
+// Index selectors
+F('#id .class:0')
+F('#id:1 .class:0 p')
+
+// Pseudo classes
+F('#id .class:first-child');
+F('#id .class').find('a:first-of-type');
+F('#id .class').find('a:last-of-type');</pre>
 	</div>
 
 	<h3>Selector methods</h3>

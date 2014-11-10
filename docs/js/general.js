@@ -34,6 +34,7 @@ function parseContent(path) {
 
 	F('#content-output').html('');
 	//F('#'+ path).template().appendTo('#content-output');
+	console.log('templates/'+ path +'.tpl.html')
 	F().loadTemplate('templates/'+ path +'.tpl.html', function() {
 		this.appendTo('#content-output');
 	});

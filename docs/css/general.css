@@ -1,5 +1,8 @@
 body {
 	font-family: Roboto, sans-serif;
+	border-top: 4px solid #EEE;
+	padding: 0;
+	margin: 0;
 }
 
 a {
@@ -13,6 +16,10 @@ a:hover {
 
 h1, h2, h3, h4, p {
 	margin-top: 0;
+}
+
+p {
+	margin-bottom: 25px;
 }
 
 nav ul {
@@ -40,8 +47,8 @@ nav ul li ul {
 
 nav ul li ul li a {
 	padding: 4px;
-	background-color: #4183c4;
-	color: #FFF;
+	background-color: #F1F1F1;
+	color: #4183c4;
 	text-align: left;
 }
 
@@ -57,14 +64,14 @@ nav ul li.level-0 {
 }
 
 #nav-wrapper {
-	width: 220px;
+	width: 170px;
 	float: left;
-	padding-top: 65px;
+	padding-top: 60px;
 }
 
 #content-wrapper {
 	float: left;
-	width: 670px;
+	width: 720px;
 	border-left: 2px solid #ddd;
 	padding-left: 28px;
 }
@@ -73,6 +80,15 @@ nav ul li.level-0 {
 	background: #F1F1F1;
 	padding: 15px;
 	overflow: auto;
+}
+
+#wrapper code.inline {
+	padding: 0;
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	margin: 0 3px 0 0;
+	background-color: rgba(0,0,0,0.04);
+	border-radius: 3px;
 }
 
 #wrapper blockquote {
