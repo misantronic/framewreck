@@ -3,14 +3,14 @@
 
 	<h3>Embed</h3>
 	<div class="highlight highlight-javascript">
-		<pre>F().require([ '//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js' ], function() {
+		<pre><code class="javascript">F().require([ '//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js' ], function() {
 	// do stuff
-});</pre>
+});</code></pre>
 	</div>
 
 	<h3>CSS Selectors</h3>
 	<div class="highlight highlight-javascript">
-		<pre>// IDs and classes
+		<pre><code class="javascript">// IDs and classes
 F('#id');
 F('#id').find('.class');
 F('#id .class').find('a');
@@ -22,12 +22,12 @@ F('#id:1 .class:0 p')
 // Pseudo classes
 F('#id .class:first-child');
 F('#id .class').find('a:first-of-type');
-F('#id .class').find('a:last-of-type');</pre>
+F('#id .class').find('a:last-of-type');</code></pre>
 	</div>
 
 	<h3>Selector methods</h3>
 	<div class="highlight highlight-javascript">
-		<pre>// Index selector
+		<pre><code class="javascript">// Index selector
 F('#id .class').get(1);
 
 // Next / Previous siblings
@@ -35,6 +35,6 @@ F('#id').next();
 F('#id').prev();
 
 // Parent elements
-F('#id').parent();</pre>
+F('#id').parent();</code></pre>
 	</div>
 </div>

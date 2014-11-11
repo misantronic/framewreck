@@ -38,21 +38,20 @@ function parseContent(path) {
 			// look for tabs
 			F('.tabs').each(function(item) {
 				var tabLi = item.find('ul > li');
-				console.log(item);
 				tabLi.on('click', function(e) {
 					tabLi.removeClass('active');
 					var i = F(this).addClass('active').attr('data-i');
 
-					item.find('.tab-content > div').hide(0.25, function() {
-						item.find('.tab-content > div').get(i).show(0.5);
+					item.find('.tab-content > div').hide(0.4, function() {
+						item.find('.tab-content > div').get(i).show(1.25);
 					});
 
-					return false;
+					e.preventDefault()
 				});
 			});
+
+			hljs.initHighlighting();
 		});
-
-
 }
 
 parseContent(location.href);

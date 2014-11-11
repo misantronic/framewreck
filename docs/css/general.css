@@ -1,8 +1,8 @@
 body {
 	font-family: Roboto, sans-serif;
-	border-top: 4px solid #EEE;
 	padding: 0;
 	margin: 0;
+	color: #333;
 }
 
 a {
@@ -36,49 +36,66 @@ nav ul li {
 
 nav ul li a {
 	display: block;
-	text-align: right;
-	padding-right: 15px;
-	color: #000;
+	color: #333;
+}
+
+nav ul li a::before {
+
+}
+
+nav ul li a:hover {
+	text-decoration: none;
+	color: #4183c4;
 }
 
 nav ul li ul {
-	margin-top: 15px;
+	margin-top: 10px;
 }
 
 nav ul li ul li a {
-	padding: 4px;
-	background-color: #F1F1F1;
-	color: #4183c4;
-	text-align: left;
+	padding: 4px 0 0 10px;
+}
+
+nav ul li ul li a::before {
+	content: '';
+
 }
 
 nav ul li.level-0 {
 	font-size: 20px;
 }
 
+code {
+	padding: 0 !important;
+	background: none !important;
+}
+
 .clear { clear: both; }
 
 #wrapper {
-	width: 920px;
-	margin: 20px 0 0 40px;
+	width: 100%;
+	margin: 0;
 }
 
 #nav-wrapper {
-	width: 170px;
-	float: left;
-	padding-top: 60px;
+	padding: 60px 40px 40px;
+	background: #F9F9F9;
+	height: 100%;
+	position: fixed;
+	border-right: 2px solid #F4F4F4;
 }
 
 #content-wrapper {
 	float: left;
 	width: 720px;
-	border-left: 2px solid #ddd;
 	padding-left: 28px;
 	min-height: 600px;
+	padding-top: 47px;
+	margin-left: 235px;
 }
 
 #wrapper pre {
-	background: #F1F1F1;
+	background: #F4F4F4;
 	padding: 15px;
 	overflow: auto;
 }
@@ -88,7 +105,7 @@ nav ul li.level-0 {
 	padding-top: 0.2em;
 	padding-bottom: 0.2em;
 	margin: 0 3px 0 0;
-	background-color: rgba(0,0,0,0.04);
+	background-color: #F4F4F4;
 	border-radius: 3px;
 }
 
@@ -96,7 +113,7 @@ nav ul li.level-0 {
 	padding: 0 15px;
 	color: #777;
 	margin: 0;
-	border-left: 4px solid #ddd;
+	border-left: 4px solid #F4F4F4;
 }
 
 #wrapper .highlight {
@@ -107,7 +124,7 @@ nav ul li.level-0 {
 	height: 4px;
 	padding: 0;
 	margin: 16px 0;
-	background-color: #e7e7e7;
+	background-color: #F4F4F4;
 	border: 0 none;
 }
 
@@ -129,26 +146,31 @@ nav ul li.level-0 {
 
 .tabs ul li {
 	float: left;
-	padding: 4px 15px;
-	margin: 0 0 0 5px;
-	border-width: 1px 1px 0 1px;
-	border-color: #e7e7e7;
-	border-style: solid;
+	padding: 7px 20px;
+	margin: 0 5px 0 0;
+}
+
+.tabs ul li a {
+	color: #333;
+}
+
+.tabs ul li a:hover {
+	text-decoration: none;
 }
 
 .tabs ul li.active {
-	position: relative;
-	top: 1px;
-	background-color: #F1F1F1;
-	margin-top: -1px;
-	padding-bottom: 5px;
+	background-color: #F4F4F4;
+}
+
+.tabs ul li.active a {
+	font-weight: bold;
 }
 
 .tabs > .tab-content {
-	border: 1px solid #e7e7e7;
+	border: 1px solid #F4F4F4;
 	clear: both;
 	padding: 15px 5px;
-	background-color: #F1F1F1;
+	background-color: #F4F4F4;
 }
 
 .tabs > .tab-content > div {
