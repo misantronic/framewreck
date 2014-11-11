@@ -38,6 +38,7 @@ function parseContent(path) {
 			// look for tabs
 			F('.tabs').each(function(item) {
 				var tabLi = item.find('ul > li');
+				console.log(item);
 				tabLi.on('click', function(e) {
 					tabLi.removeClass('active');
 					var i = F(this).addClass('active').attr('data-i');
