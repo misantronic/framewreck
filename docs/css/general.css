@@ -74,6 +74,7 @@ nav ul li.level-0 {
 	width: 720px;
 	border-left: 2px solid #ddd;
 	padding-left: 28px;
+	min-height: 600px;
 }
 
 #wrapper pre {
@@ -108,4 +109,57 @@ nav ul li.level-0 {
 	margin: 16px 0;
 	background-color: #e7e7e7;
 	border: 0 none;
+}
+
+.tabs {
+
+}
+
+.tabs ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.tabs ul:after {
+	content:'';
+	display:block;
+	clear: both;
+}
+
+.tabs ul li {
+	float: left;
+	padding: 4px 15px;
+	margin: 0 0 0 5px;
+	border-width: 1px 1px 0 1px;
+	border-color: #e7e7e7;
+	border-style: solid;
+}
+
+.tabs ul li.active {
+	position: relative;
+	top: 1px;
+	background-color: #F1F1F1;
+	margin-top: -1px;
+	padding-bottom: 5px;
+}
+
+.tabs > .tab-content {
+	border: 1px solid #e7e7e7;
+	clear: both;
+	padding: 15px 5px;
+	background-color: #F1F1F1;
+}
+
+.tabs > .tab-content > div {
+	display: none;
+}
+
+.tabs > .tab-content > div:first-child {
+	display: block;
+}
+
+.tabs > .tab-content > div .highlight,
+.tabs > .tab-content > div pre {
+	margin: 0 !important;
 }

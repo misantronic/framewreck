@@ -34,7 +34,24 @@ function parseContent(path) {
 
 	F('#content-output')
 		.html('')
-		.loadTemplate('templates/'+ path +'.tpl.html');
+		.loadTemplate('templates/'+ path +'.tpl.html', function() {
+			// look for tabs
+			F('.tabs').each(function(item) {
+				var tabLi = item.find('ul > li');
+				tabLi.on('click', function(e) {
+					tabLi.removeClass('active');
+					var i = F(this).addClass('active').attr('data-i');
+
+					item.find('.tab-content > div').hide(0.25, function() {
+						item.find('.tab-content > div').get(i).show(0.5);
+					});
+
+					return false;
+				});
+			});
+		});
+
+
 }
 
 parseContent(location.href);
