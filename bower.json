@@ -16,7 +16,6 @@
     "tests"
   ],
   "devDependencies": {
-    "qunit": "~1.15.0",
-    "bootstrap": "~3.3.0"
+    "qunit": "~1.15.0"
   }
 }
