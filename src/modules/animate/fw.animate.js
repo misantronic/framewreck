@@ -11,100 +11,100 @@ F.ext({
 	 * });
 	 */
 	animate: function(a, c, e) {
-		var _ = this, i;
+		var _ = this, i, t = 0;
 
 		_.A  = a;
 		_.Ac = c&&!c.big ? c : null;
 		_.Ae = !_.Ac ? c : e;
 
+		function d(el, i) {
+			var anims	= _.A[i].split(" "),
+				trs 	= [], // transition
+				trf		= {}, // transform
+				obj		= {},
+				delay	= 0,
+				map 	= {
+					W	: "width",
+					H	: "height",
+					O	: "opacity",
+					P	: "padding",
+					PT	: "padding-top",
+					PR	: "padding-right",
+					PB	: "padding-bottom",
+					PL	: "padding-left",
+					M	: "margin",
+					MT	: "margin-top",
+					MR	: "margin-right",
+					MB	: "margin-bottom",
+					ML	: "margin-left"
+				};
+
+			for(var k=0; k < anims[F.L]; k++) {
+				var anim 	= anims[k],
+					line	= anim.split(":"),
+					type 	= line[0],						// animation type
+					prop 	= line[1].split(","),			// property
+					val 	= prop[0],						// value
+					dur 	= prop[1] || .5, 				// duration
+					del 	= parseFloat(prop[2]) || 0,		// delay
+					cur		= el.css(map[type]),  			// current property value
+					mD 		= el.data('matrixData'),
+					mA		= [0, 0, 1];
+
+				delay = Math.max(dur, delay);
+
+				// set object property + value
+				map[type] ? obj[map[type]] = val : map[type] = 'transform';
+
+				// set transition
+				trs[k] = map[type] + ' '+ dur +'s '+ (_.Ae || 'linear') +' '+ del +'s';
+
+				type == 'W' ? el.css({width: cur}) : type == 'H' ? el.css({height: cur}) : type == 'X' ? trf.x = val : type == 'Y' ? trf.y = val : type == 'R' ? trf.d = val : type == 'S' && (trf.s = val);
+			}
+
+			if(mD && mD.T) {
+				if(trf.x == []._)
+					trf.x = mD.T.e(1, 3);
+
+				if(trf.y == []._)
+					trf.y = mD.T.e(2, 3);
+			}
+
+			if(trf.x == []._) trf.x = 0;
+			if(trf.y == []._) trf.y = 0;
+			if(trf.s == []._) trf.s = 1;
+
+			var rad = parseFloat(trf.d || 0) * (Math.PI/180),
+				cos = Math.cos(rad),
+				sin = Math.sin(rad),
+			// translation
+				tM = $M([ [1, 0, trf.x], [0, 1, trf.y], mA ]),
+			// rotation
+				rM = trf.d == []._ && mD ? mD.R : $M([ [cos, -sin, 0], [sin, cos, 0], mA ]),
+			// scale
+				sM = trf.s == []._ && mD ? mD.S : $M([ [trf.s, 0,  0], [0,  trf.s, 0], mA ]),
+			// multiply matrices
+				m = tM.x(rM).x(sM);
+
+			el.data('matrixData', { T: tM, R: rM, S: sM });
+
+			obj.transform = 'matrix('+ m.e(1, 1) +', '+ m.e(2, 1) +', '+ m.e(1, 2) +', '+ m.e(2, 2) +', '+ m.e(1, 3) +', '+ m.e(2, 3) +')';
+			obj.transition 	= trs.join(",");
+
+			// trigger animation on next tick
+			setTimeout(function() {
+				el.css(obj);
+				clearTimeout(t);
+				t = setTimeout(function() {
+					_.A[++i]?d(el, i):_.Ac&&_.Ac.call(_)
+				}, delay*1e3)
+			}, 0)
+		}
+
 		for(i = _.x[F.L]; i--;)
-			_._a(F(_.x[i]), 0);
+			d(F(_.x[i]), 0);
 
 		return _
-	},
-
-	_a: function(el, i) {
-		var _		= this,
-			anims	= _.A[i].split(" "),
-			trs 	= [], // transition
-			trf		= {}, // transform
-			obj		= {},
-			map 	= {
-				W	: "width",
-				H	: "height",
-				O	: "opacity",
-				P	: "padding",
-				PT	: "padding-top",
-				PR	: "padding-right",
-				PB	: "padding-bottom",
-				PL	: "padding-left",
-				M	: "margin",
-				MT	: "margin-top",
-				MR	: "margin-right",
-				MB	: "margin-bottom",
-				ML	: "margin-left"
-			};
-
-		for(var k=0; k < anims[F.L]; k++) {
-			var anim 	= anims[k],
-				line	= anim.split(":"),
-				type 	= line[0],						// animation type
-				prop 	= line[1].split(","),			// property
-				val 	= prop[0],						// value
-				dur 	= prop[1] || .5, 				// duration
-				del 	= parseFloat(prop[2]) || 0,		// delay
-				cur		= el.css(map[type]),  			// current property value
-				mD 		= el.data('matrixData'),
-				mA		= [0, 0, 1];
-
-			// set object property + value
-			map[type] ? obj[map[type]] = val : map[type] = 'transform';
-
-			// set transition
-			trs[k] = map[type] + ' '+ dur +'s '+ (_.Ae || 'linear') +' '+ del +'s';
-
-			type == 'W' ? el.css({width: cur}) : type == 'H' ? el.css({height: cur}) : type == 'X' ? trf.x = val : type == 'Y' ? trf.y = val : type == 'R' ? trf.d = val : type == 'S' && (trf.s = val);
-		}
-
-		if(mD && mD.T) {
-			if(trf.x == []._)
-				trf.x = mD.T.e(1, 3);
-
-			if(trf.y == []._)
-				trf.y = mD.T.e(2, 3);
-		}
-
-		if(trf.x == []._) trf.x = 0;
-		if(trf.y == []._) trf.y = 0;
-		if(trf.s == []._) trf.s = 1;
-
-		var rad = parseFloat(trf.d || 0) * (Math.PI/180),
-			cos = Math.cos(rad),
-			sin = Math.sin(rad),
-			// translation
-			tM = $M([ [1, 0, trf.x], [0, 1, trf.y], mA ]),
-			// rotation
-			rM = trf.d == []._ && mD ? mD.R : $M([ [cos, -sin, 0], [sin, cos, 0], mA ]),
-			// scale
-			sM = trf.s == []._ && mD ? mD.S : $M([ [trf.s, 0,  0], [0,  trf.s, 0], mA ]),
-			// multiply matrices
-			m = tM.x(rM).x(sM);
-
-		el.data('matrixData', { T: tM, R: rM, S: sM });
-
-		obj.transform = 'matrix('+ m.e(1, 1) +', '+ m.e(2, 1) +', '+ m.e(1, 2) +', '+ m.e(2, 2) +', '+ m.e(1, 3) +', '+ m.e(2, 3) +')';
-		obj.transition 	= trs.join(",");
-
-		function h() {
-			el.off('transitionend', h);
-
-			_.A[++i]?_._a(el, i):_.Ac&&_.Ac.call(_)
-		}
-
-		// trigger animation on next tick
-		setTimeout(function() {
-			el.on("transitionend", h).css(obj)
-		}, 0)
 	},
 
 	/**
@@ -116,8 +116,7 @@ F.ext({
 	 */
 	hide: function(d, c, _) {
 		_ = this;
-		if(!d) return _.css({display: 'none'});
-		return _.animate( [ 'O:0,' + d ], function() {
+		return !d ? _.css({display: 'none'}) : _.animate( [ 'O:0,' + d ], function() {
 			_.css({display: 'none'});
 			c&&c.call(_)
 		})
