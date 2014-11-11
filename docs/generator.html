@@ -3,11 +3,11 @@
 <head lang="en">
 	<meta charset="UTF-8">
 	<title>CDN Generator</title>
-	<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 	<style>
 		body {
-			font-family: "Droid Sans Mono", "Courier New", sans-serif;
-			font-size: 18px;
+			font-family: "Roboto", "Courier New", sans-serif;
+			font-size: 14px;
 		}
 
 		h1 {
@@ -19,7 +19,7 @@
 		}
 
 		h2 a {
-			font-size: 0.7em;
+			font-size: 0.9em;
 			float: right;
 			text-decoration: none;
 		}
@@ -27,12 +27,12 @@
 		.clear { clear: both; }
 
 		#wrapper {
-			width: 980px;
+			width: 100%;
 			margin: 0 auto;
 		}
 
 		#modules {
-			width: 60%;
+			width: 100%;
 			line-height: 180%;
 		}
 
@@ -47,15 +47,9 @@
 		}
 
 		#output {
-			font-family: "Droid Sans Mono", "Courier New", sans-serif;
-			font-size: 1.2em;
+			background: #F1F1F1;
 			padding: 15px;
-			background: #FCFCFC;
-			border: 1px solid #444;
-			width: 100%;
 			overflow: auto;
-			box-sizing: border-box;
-			white-space:  nowrap;
 		}
 
 		a {
@@ -117,7 +111,7 @@
 		</div>-->
 
 		<h2>Embed code</h2>
-		<div id="output"></div>
+		<pre id="output"></pre>
 	</div>
 
 	<script src="../dist/framewreck.min.js"></script>
@@ -159,8 +153,8 @@
 						}
 					} else if(module == F('#cbx_templates').attr('name')) {
 						// add dependencies
-						if([F('#cbx_ajax').checked()].some(isFalse)) {
-							F('#cbx_ajax').checked(true);
+						if(F('#cbx_ajax, #cbx_dom').checked().some(isFalse)) {
+							F('#cbx_ajax, #cbx_dom').checked(true);
 							updateModules(); return;
 						}
 					}
