@@ -40,8 +40,9 @@ F = function (c) {
 	 * Reset keys inside F object and recount length
 	 */
 	_.y = function () {
-		for (i = 99; i--;)x[i] ? _[i] = x[i] : delete _[i];	// clean up objects indicies and assign new indicies
-		_[L] = l = x[L];								// set .length and internal placeholder l
+		for (i = 99; i--;)
+			x[i] ? _[i] = x[i] : delete _[i];	// clean up objects indicies and assign new indicies
+		_[L] = l = x[L];						// set .length and internal placeholder l
 		_.x = x;
 		return _
 	};
