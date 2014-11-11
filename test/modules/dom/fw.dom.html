@@ -18,65 +18,60 @@
 			F('#test').html('<b>TestValue</b>');
 
 			QUnit.equal(
-					F('#test').html(),
+					F('#test-wrapper #test').html(),
 					"<b>TestValue</b>",
 					"html() insert failed"
 			);
 
 			/** SET VAL **/
-
-			F('#name').val('test');
+			F('#test-wrapper #name').val('test');
 
 			QUnit.equal(
-					F('#name').val(),
+					F('#test-wrapper #name').val(),
 					"test",
 					"input val() insert failed"
 			);
 
-			F('#select').val(1);
+			F('#test-wrapper #select').val(1);
 
 			/** GET VAL **/
-
 			QUnit.equal(
-					F('#select').val(),
+					F('#test-wrapper #select').val(),
 					"1",
 					"select val() failed"
 			);
 
 			/** APPEND HTML **/
-
-			F('#wrapper').append('<a id="test-link" href="http://www.github.com">Link</a>');
+			F('#test-wrapper').append('<a id="test-link" href="http://www.github.com">Link</a>');
 
 			QUnit.equal(
-					F('a#test-link').length,
-					1,
+					F('#test-wrapper a#test-link').html(),
+					'Link',
 					"append() failed"
 			);
 
 			/** APPENDTO context **/
-
-			F('#test-link').appendTo('#test');
+			F('#test-wrapper #test-link').appendTo('#test-wrapper #test');
 
 			QUnit.equal(
-					F('#test').find('a').html(),
+					F('#test-wrapper a#test-link').html(),
 					'Link',
 					"appendTo() failed"
 			);
 
-			F('<a id="test-link2" href="http://github.com">Test</a>').appendTo('body');
+			F('<a id="test-link2" href="http://github.com">Test</a>').appendTo('#test-wrapper');
 
 			QUnit.equal(
-					F('#test-link2').length,
+					F('#test-wrapper #test-link2').length,
 					1,
 					"create an element in F() constructor failed"
 			);
 
 			/** REMOVE **/
-
-			F('#test').remove();
+			F('#test-wrapper #test').remove();
 
 			QUnit.equal(
-					F('#test').length,
+					F('#test-wrapper #test').length,
 					0,
 					"remove() failed"
 			);
@@ -84,46 +79,45 @@
 			/** CHECKBOX CHECKED **/
 
 			QUnit.ok(
-				F('#checkbox2').checked(),
+				F('#test-wrapper #checkbox2').checked(),
 				"checked() on checkbox failed"
 			);
 
 			QUnit.ok(
-				F('#checkbox1').checked(true).checked(),
+				F('#test-wrapper #checkbox1').checked(true).checked(),
 				"checked(true) on checkbox failed"
 			);
 
 			/** RADIO CHECKED **/
 
 			QUnit.ok(
-				F('#radio2').checked(),
+				F('#test-wrapper #radio2').checked(),
 				"checked() on radio button failed"
 			);
 
 			QUnit.ok(
-				F('#radio1').checked(true).checked(),
+				F('#test-wrapper #radio1').checked(true).checked(),
 				"checked(true) on radio button failed"
 			);
 
 			/** SERIALIZE **/
-
-			F('#name').val('test');
+			F('#test-wrapper #name').val('test');
 
 			QUnit.equal(
-				F('form').serialize().name,
+				F('#test-wrapper form').serialize().name,
 				'test',
 				'serialize() failed'
 			);
 
-			F('#checkbox2').checked(false);
+			F('#test-wrapper #checkbox2').checked(false);
 
 			QUnit.ok(
-				F('form').serialize().checkbox1,
+				F('#test-wrapper form').serialize().checkbox1,
 				'serialize() failed'
 			);
 
 			QUnit.equal(
-				F('form').serialize().select,
+				F('#test-wrapper form').serialize().select,
 				"2",
 				'serialize() failed'
 			);
@@ -131,36 +125,36 @@
 			/** ATTR **/
 
 			QUnit.equal(
-				F('#wrapper').attr('id'),
-				'wrapper',
+				F('#test-wrapper').attr('id'),
+				'test-wrapper',
 				'attr getting failed'
 			);
 
 			QUnit.equal(
-				F('#wrapper').attr('class', 'testClass').attr('class'),
+				F('#test-wrapper').attr('class', 'testClass').attr('class'),
 				'testClass',
 				'attr setting failed'
 			);
 
 			QUnit.equal(
-				F('#wrapper').attr('data-test', 'test').attr('data-test'),
+				F('#test-wrapper').attr('data-test', 'test').attr('data-test'),
 				'test',
 				'custom attr setting failed'
 			);
 
 			/** ADD / REMOVE CLASS **/
 
-			F('#wrapper').addClass('test');
+			F('#test-wrapper').addClass('test');
 
 			QUnit.ok(
-					F('#wrapper.test').length,
+					F('#test-wrapper.test').length,
 					'addClass() failed'
 			);
 
-			F('.box').removeClass('box');
+			F('#test-wrapper .box').removeClass('box');
 
 			QUnit.equal(
-					F('.box').length,
+					F('#test-wrapper .box').length,
 					0,
 					'addClass() failed'
 			);
@@ -170,7 +164,7 @@
 <body>
 	<div id="qunit"></div>
 	<div id='qunit-fixture'>
-		<div id="wrapper">
+		<div id="test-wrapper">
 			<div id="test"></div>
 			<div class="box">
 				<form action="" method="POST">

@@ -7,7 +7,6 @@
 F = function (c) {
 	var _ = this				// this context
 		, x						// the context selected by querySelector
-		, l						// length of x
 		, i						// placeholder counter1
 		, j						// placeholder counter2
 		, a						// placeholder array
@@ -32,19 +31,23 @@ F = function (c) {
 	 * @returns {F}
 	 */
 	_.each = function (v) {
-		for (i = l; i--;) v(F(_[i]), i);
+		for (i = _[L]; i--;) v(F(_[i]), i);
 		return _
 	};
 
 	/**
 	 * Reset keys inside F object and recount length
+	 * @param [$] placeholder
+	 * @returns {F}
 	 */
-	_.y = function () {
-		for (i = 99; i--;)
-			x[i] ? _[i] = x[i] : delete _[i];	// clean up objects indicies and assign new indicies
-		_[L] = l = x[L];						// set .length and internal placeholder l
-		_.x = x;
-		return _
+	_.y = function ($) {
+		$ = F();
+		$.x = x;
+		for(i = 0; i < x[L]; i++)
+			$[i] = x[i];
+		$[L] = x[L];
+
+		return $
 	};
 
 	/**
@@ -64,8 +67,8 @@ F = function (c) {
 			for (i in a)
 				v += " " + (g = a[i].split(":"))[0] + (!isNaN(j = g[1]) ? ":nth-of-type(" + (+j + 1) + ")" : j ? ":" + j : "");
 
-			if (!x)l = 1, x = [d];
-			for (a = [], i = l; i--;)a[i] = x[i][F.Q](v);
+			if (!x) x = [d];
+			for (a = [], i = x[L]; i--;)a[i] = x[i][F.Q](v);
 
 			x = [];
 			for (i = 0; i < a[L]; i++)
@@ -85,7 +88,7 @@ F = function (c) {
 	 * @returns {F}
 	 */
 	_.get = function (v) {
-		x = [x[v]];
+		x = [_.x[v]];
 		return _.y()
 	};
 
@@ -94,7 +97,7 @@ F = function (c) {
 	 * @returns {F}
 	 */
 	_.prev = function() {
-		x = [x[0].previousElementSibling];
+		x = [_.x[0].previousElementSibling];
 		return _.y()
 	};
 
@@ -103,7 +106,7 @@ F = function (c) {
 	 * @returns {F}
 	 */
 	_.next = function() {
-		x = [x[0].nextElementSibling];
+		x = [_.x[0].nextElementSibling];
 		return _.y()
 	};
 
@@ -112,7 +115,7 @@ F = function (c) {
 	 * @returns {F}
 	 */
 	_.parent = function() {
-		x = [x[0].parentElement];
+		x = [_.x[0].parentElement];
 
 		return _.y()
 	};
@@ -139,7 +142,7 @@ F = function (c) {
 		return _.y()
 	}
 
-	return _.find(c)
+	if(c) return _.find(c)
 };
 
 /**

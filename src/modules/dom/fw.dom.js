@@ -108,11 +108,10 @@ F.ext({
 	 * @returns {{}}
 	 */
 	serialize: function(a, i, g, x) {
-		x = this.x;
 		a = {};
-		this.find('input,select,textarea');
-		for(i = this[F.L]; i--;)
-			g=F(this[i]),
+		x = this.find('input,select,textarea');
+		for(i = x[F.L]; i--;)
+			g=F(x[i]),
 			a[g[0].name] = g[0].type.match(/ch|rad/)?g[F.C]():g.val();
 
 		return a
@@ -165,7 +164,6 @@ F.ext({
 
 // method aliases
 F.ext({
-	val: F.prototype.html/*,
-	appendTo: F.prototype.append*/
+	val: F.prototype.html
 });
 

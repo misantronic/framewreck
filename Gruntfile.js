@@ -109,7 +109,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-qunit');
 	grunt.loadNpmTasks('grunt-contrib-compress');
-	grunt.loadNpmTasks('grunt-jsdoc');
 
 	// tasks
 	//grunt.registerTask('docs', ['jsdoc']);
