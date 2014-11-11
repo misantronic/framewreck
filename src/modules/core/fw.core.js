@@ -56,6 +56,7 @@ F = function (c) {
 	 * @returns {F}
 	 */
 	_.find = function (v) {
+		x = _.x;
 		if(v && !v.big){
 			x=[v];
 			return _.y()
