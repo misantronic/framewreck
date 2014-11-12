@@ -1,0 +1,48 @@
+<div id="content">
+	<h2>Module: Template-Engine</h2>
+
+	<blockquote>
+		<p>
+			The Template-Engine is inspired by common engines like <a href="http://mustache.github.io/">Mustache</a> or <a href="http://handlebarsjs.com">Handlebars</a><br>
+			but wrecked down to ~1.5 Kb.
+		</p>
+	</blockquote>
+
+	<p>
+		Templates are wrapped in &lt;script type="x-tmpl-framewreck"&gt;&lt;/script&gt;-tags or being loaded from external files via AJAX.<br>
+		The whole syntax is an easier version of the popular handlebar-`&#123;&#123;...}}`-style.<br>
+		<br>
+		*Note:* This module is optional and not included in dist/framewreck.min.js<br>
+		Dependencies: AJAX <i>(if you want to use loadTemplate())</i>
+	</p>
+
+	<h3>Embed</h3>
+	<div class="highlight highlight-javascript">
+		<pre><code class="javascript">F().require([
+	'//cdn.jsdelivr.net/framewreck/latest/modules/core/fw.core.min.js',
+	'//cdn.jsdelivr.net/framewreck/latest/modules/templates/fw.templates.min.js',
+	'//cdn.jsdelivr.net/framewreck/latest/modules/ajax/fw.ajax.min.js',
+	'//cdn.jsdelivr.net/framewreck/latest/modules/dom/fw.dom.min.js',
+], function() {
+	// do stuff
+});</code></pre>
+	</div>
+
+	<h3>Examples</h3>
+
+	<div class="tabs">
+		<ul>
+			<li class="active" data-i="0"><a href="#">HTML</a></li>
+			<li data-i="1"><a href="#">JavaScript</a></li>
+		</ul>
+		<div class="tab-content">
+			<div class="highlight highlight-html">
+				<pre><code class="handlebars"></code></pre>
+			</div>
+			<div class="highlight highlight-javascript">
+				<pre><code class="javascript"></code></pre>
+			</div>
+		</div>
+	</div>
+
+</div>

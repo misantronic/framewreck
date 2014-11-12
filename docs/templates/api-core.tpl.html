@@ -8,9 +8,16 @@
 });</code></pre>
 	</div>
 
-	<h3>CSS Selectors</h3>
-	<div class="highlight highlight-javascript">
-		<pre><code class="javascript">// IDs and classes
+	<h3>Examples</h3>
+
+	<div class="tabs">
+		<ul>
+			<li class="active" data-i="0"><a href="#">CSS Selectors</a></li>
+			<li data-i="1"><a href="#">Selector methods</a></li>
+		</ul>
+		<div class="tab-content">
+			<div class="highlight highlight-javascript">
+				<pre><code class="javascript">// IDs and classes
 F('#id');
 F('#id').find('.class');
 F('#id .class').find('a');
@@ -23,11 +30,9 @@ F('#id:1 .class:0 p')
 F('#id .class:first-child');
 F('#id .class').find('a:first-of-type');
 F('#id .class').find('a:last-of-type');</code></pre>
-	</div>
-
-	<h3>Selector methods</h3>
-	<div class="highlight highlight-javascript">
-		<pre><code class="javascript">// Index selector
+			</div>
+			<div class="highlight highlight-javascript">
+				<pre><code class="javascript">// Index selector
 F('#id .class').get(1);
 
 // Next / Previous siblings
@@ -36,5 +41,8 @@ F('#id').prev();
 
 // Parent elements
 F('#id').parent();</code></pre>
+			</div>
+		</div>
 	</div>
+
 </div>

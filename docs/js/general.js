@@ -43,7 +43,7 @@ function parseContent(path) {
 					var i = F(this).addClass('active').attr('data-i');
 
 					item.find('.tab-content > div').hide(0.4, function() {
-						item.find('.tab-content > div').get(i).show(1.25);
+						item.find('.tab-content > div').get(i).show(0.8);
 					});
 
 					e.preventDefault()
@@ -51,7 +51,7 @@ function parseContent(path) {
 			});
 
 			hljs.initHighlighting();
-		});
+		}, {});
 }
 
 parseContent(location.href);

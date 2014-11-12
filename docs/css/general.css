@@ -185,3 +185,7 @@ code {
 .tabs > .tab-content > div pre {
 	margin: 0 !important;
 }
+
+#wrapper .tabs > .tab-content .highlight {
+	margin-bottom: 0;
+}
