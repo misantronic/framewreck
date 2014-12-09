@@ -58,6 +58,7 @@ Minc([
 ## Modules
 
 ### Core: CSS Selectors
+```javascript
 // IDs and classes
 F('#id');
 F('#id').find('.class');
