@@ -175,7 +175,7 @@ F('#id').off('myEvent', eventHandler);
 
 ### AJAX module
 
-Make asynchronously XHR-Requests via GET/POST
+Do asynchronously XHR-Requests via GET/POST
 
 ```javascript
 F().ajax(
