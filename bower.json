@@ -16,7 +16,7 @@
     "tests"
   ],
   "devDependencies": {
-    "qunit": "~1.15.0",
+    "qunit": "latest",
     "minc": "latest"
   },
   "moduleType": [
