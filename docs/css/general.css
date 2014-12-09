@@ -72,6 +72,8 @@ code {
 
 .clear { clear: both; }
 
+.uppercase { text-transform: uppercase }
+
 #wrapper {
 	width: 100%;
 	margin: 0;
@@ -98,6 +100,14 @@ code {
 	background: #F4F4F4;
 	padding: 15px;
 	overflow: auto;
+}
+
+#wrapper pre.inline {
+	display: inline;
+	padding: 3px;
+	position: relative;
+	top: -1px;
+	margin: 0 4px;
 }
 
 #wrapper code.inline {

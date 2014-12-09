@@ -9,11 +9,11 @@
 	</blockquote>
 
 	<p>
-		Templates are wrapped in &lt;script type="x-tmpl-framewreck"&gt;&lt;/script&gt;-tags or being loaded from external files via AJAX.<br>
-		The whole syntax is an easier version of the popular handlebar-`&#123;&#123;...}}`-style.<br>
+		Templates are wrapped in <pre><code class="html">&lt;script type="x-tmpl-framewreck"&gt;&lt;/script&gt;</code></pre> or being loaded from external files via AJAX.<br>
+		The whole syntax is an easier version of the popular handlebar-<pre class="inline">&#123;&#123;...}}</pre>-style.<br>
 		<br>
-		*Note:* This module is optional and not included in dist/framewreck.min.js<br>
-		Dependencies: AJAX <i>(if you want to use loadTemplate())</i>
+		<i class="uppercase">Note:</i> This module is optional and not included in dist/framewreck.min.js<br>
+		Dependencies: AJAX (if you want to use <pre class="inline">loadTemplate()</pre>)
 	</p>
 
 	<h3>Embed</h3>
@@ -32,12 +32,15 @@
 
 	<div class="tabs">
 		<ul>
-			<li class="active" data-i="0"><a href="#">HTML</a></li>
+			<li class="active" data-i="0"><a href="#">Template HTML</a></li>
 			<li data-i="1"><a href="#">JavaScript</a></li>
 		</ul>
 		<div class="tab-content">
 			<div class="highlight highlight-html">
-				<pre><code class="handlebars"></code></pre>
+				<pre><code class="handlebars">&lt;script type="x-tmpl-framewreck"&gt;&lt;/script&gt;
+	&lt;h1&lt;{{title}}&lt;/h1&gt;
+
+</code></pre>
 			</div>
 			<div class="highlight highlight-javascript">
 				<pre><code class="javascript"></code></pre>

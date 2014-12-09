@@ -28,10 +28,16 @@
 		</div>
 	</div>
 
-	<script src="../src/modules/core/fw.core.js"></script>
+	<script src="../bower_components/minc/src/minc.min.js"></script>
 	<script>
 		var box;
-		F().require([ '../src/modules/events/fw.events.js', '../src/modules/css/fw.css.js', '../src/modules/data/fw.data.js', '../src/modules/animate/fw.animate.js' ], function() {
+		Minc([
+			'../src/modules/core/fw.core.js',
+			'../src/modules/events/fw.events.js',
+			'../src/modules/css/fw.css.js',
+			'../src/modules/data/fw.data.js',
+			'../src/modules/animate/fw.animate.js'
+		]).done(function(F) {
 			box = F('.box:0');
 			box.animate(['R:89 X:250 Y:250 S:0.75', 'X:0 Y:0 R:0 S:1']);
 		});

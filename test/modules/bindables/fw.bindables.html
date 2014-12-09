@@ -51,7 +51,7 @@
 					"registerBindable() failed"
 			);
 
-			F('#wrapper').find('#name').val('david').fire('keydown');
+			F('#wrapper').find('#name').val('david').trigger('keydown');
 
 			QUnit.equal(
 					F('#test-bindable').val(),

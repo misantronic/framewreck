@@ -80,18 +80,6 @@
 
 			QUnit.ok(F().test, "extending failed");
 		});
-
-		QUnit.module("require");
-
-		QUnit.asyncTest( "asynchronous require a module", function(assert) {
-			QUnit.expect(1);
-
-			F().require(['../../../src/modules/events/fw.events.js'], function() {
-				assert.ok(F().on, "asynchronous require failed");
-
-				QUnit.start();
-			});
-		});
 	</script>
 </head>
 <body>

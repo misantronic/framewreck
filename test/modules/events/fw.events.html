@@ -34,7 +34,7 @@
 
 			F('#wrapper')
 				.on('myTestEvent', handler)
-				.fire('myTestEvent');
+				.trigger('myTestEvent');
 
 			QUnit.equal(
 					x,
@@ -44,7 +44,7 @@
 
 			F('#wrapper')
 				.off('myTestEvent', handler)
-				.fire('myTestEvent');
+				.trigger('myTestEvent');
 
 			QUnit.equal(
 					x,
