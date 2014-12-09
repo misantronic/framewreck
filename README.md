@@ -41,7 +41,7 @@ You can use [this generator](http://rawgit.com/misantronic/framewreck/master/cdn
 
 **or**
 
-### module wise with [Minc](https://github.com/misantronic/minc)
+### module wise with [minc.js](https://github.com/misantronic/minc)
 ```html
 <script>
 // asynchronously load other modules 
@@ -56,9 +56,6 @@ Minc([
 ```
 
 ## Modules
-
-Please note that all examples have `require`-statements containing the required modules. 
-These can be dismissed, if you embed framewreck.min.js (for main modules) or framewreck.all.js (for all modules).
 
 ### Core: CSS Selectors
 // IDs and classes
